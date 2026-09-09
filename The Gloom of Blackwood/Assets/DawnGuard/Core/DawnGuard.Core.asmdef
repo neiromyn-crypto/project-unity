@@ -1,0 +1,6 @@
+{
+  "name": "DawnGuard.Core",
+  "rootNamespace": "DawnGuard.Core",
+  "noEngineReferences": true,
+  "autoReferenced": true
+}

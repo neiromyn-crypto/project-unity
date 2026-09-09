@@ -1,0 +1,263 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14d84b62caa622a4997aaf68238ae7e2, type: 3}
+  m_Name: DemoCatalog
+  m_EditorClassIdentifier: Assembly-CSharp::DawnGuard.Unity.GameCatalog
+  rules:
+    width: 16
+    depth: 16
+    startingCredits: 120
+    daySeconds: 90
+    droneSpeed: 5
+    droneRange: 4.5
+    droneDamage: 12
+    droneShotsPerSecond: 2
+    dawnReward: 60
+    buildings:
+    - id: shelter
+      title: "\u0423\u0411\u0415\u0416\u0418\u0429\u0415"
+      role: 0
+      width: 2
+      depth: 2
+      cost: 0
+      maxHealth: 600
+      requiredDay: 1
+      requiredTech: 0
+      powerUse: 0
+      powerSupply: 0
+      dailyIncome: 0
+      range: 0
+      damage: 0
+      shotsPerSecond: 0
+      upgradeCost: 100
+      maxLevel: 1
+    - id: camp
+      title: "\u041B\u0410\u0413\u0415\u0420\u042C"
+      role: 1
+      width: 2
+      depth: 2
+      cost: 180
+      maxHealth: 180
+      requiredDay: 2
+      requiredTech: 0
+      powerUse: 0
+      powerSupply: 0
+      dailyIncome: 40
+      range: 0
+      damage: 0
+      shotsPerSecond: 0
+      upgradeCost: 140
+      maxLevel: 3
+    - id: generator
+      title: "\u042D\u041D\u0415\u0420\u0413\u0418\u042F"
+      role: 2
+      width: 2
+      depth: 2
+      cost: 180
+      maxHealth: 220
+      requiredDay: 2
+      requiredTech: 0
+      powerUse: 0
+      powerSupply: 8
+      dailyIncome: 0
+      range: 0
+      damage: 0
+      shotsPerSecond: 0
+      upgradeCost: 120
+      maxLevel: 3
+    - id: wall
+      title: "\u0421\u0422\u0415\u041D\u0410"
+      role: 3
+      width: 1
+      depth: 1
+      cost: 40
+      maxHealth: 180
+      requiredDay: 1
+      requiredTech: 0
+      powerUse: 0
+      powerSupply: 0
+      dailyIncome: 0
+      range: 0
+      damage: 0
+      shotsPerSecond: 0
+      upgradeCost: 50
+      maxLevel: 3
+    - id: gun
+      title: "\u041F\u0423\u041B\u0415\u041C\u0401\u0422"
+      role: 4
+      width: 1
+      depth: 1
+      cost: 120
+      maxHealth: 140
+      requiredDay: 1
+      requiredTech: 0
+      powerUse: 0
+      powerSupply: 0
+      dailyIncome: 0
+      range: 5
+      damage: 9
+      shotsPerSecond: 2
+      upgradeCost: 100
+      maxLevel: 3
+    - id: lab
+      title: "\u041B\u0410\u0411\u041E\u0420\u0410\u0422\u041E\u0420\u0418\u042F"
+      role: 5
+      width: 2
+      depth: 2
+      cost: 160
+      maxHealth: 160
+      requiredDay: 2
+      requiredTech: 0
+      powerUse: 2
+      powerSupply: 0
+      dailyIncome: 0
+      range: 0
+      damage: 0
+      shotsPerSecond: 0
+      upgradeCost: 100
+      maxLevel: 1
+    - id: tesla
+      title: "\u0422\u0415\u0421\u041B\u0410"
+      role: 4
+      width: 1
+      depth: 1
+      cost: 200
+      maxHealth: 140
+      requiredDay: 3
+      requiredTech: 1
+      powerUse: 4
+      powerSupply: 0
+      dailyIncome: 0
+      range: 4.5
+      damage: 25
+      shotsPerSecond: 1.2
+      upgradeCost: 140
+      maxLevel: 3
+    enemies:
+    - id: walker
+      title: "\u0417\u041E\u041C\u0411\u0418"
+      health: 48
+      speed: 0.75
+      damagePerSecond: 10
+      reward: 4
+      size: 0.65
+    - id: runner
+      title: "\u0411\u0415\u0413\u0423\u041D"
+      health: 32
+      speed: 1.35
+      damagePerSecond: 8
+      reward: 5
+      size: 0.5
+    - id: brute
+      title: "\u0413\u0420\u041E\u041C\u0418\u041B\u0410"
+      health: 260
+      speed: 0.55
+      damagePerSecond: 28
+      reward: 25
+      size: 1.1
+    waves:
+    - title: "\u041F\u0435\u0440\u0432\u0430\u044F \u0430\u0442\u0430\u043A\u0430:
+        \u0441\u0435\u0432\u0435\u0440\u043D\u044B\u0439 \u043F\u0440\u043E\u0445\u043E\u0434"
+      duration: 50
+      groups:
+      - enemyId: walker
+        count: 8
+        startAt: 2
+        interval: 1.4
+    - title: "\u0411\u0435\u0433\u0443\u043D\u044B"
+      duration: 55
+      groups:
+      - enemyId: walker
+        count: 10
+        startAt: 1
+        interval: 2.5
+      - enemyId: runner
+        count: 4
+        startAt: 17
+        interval: 3
+    - title: "\u041F\u0435\u0440\u0432\u044B\u0439 \u0433\u0440\u043E\u043C\u0438\u043B\u0430"
+      duration: 65
+      groups:
+      - enemyId: walker
+        count: 12
+        startAt: 1
+        interval: 2
+      - enemyId: brute
+        count: 1
+        startAt: 20
+        interval: 1
+    - title: "\u0421\u043C\u0435\u0448\u0430\u043D\u043D\u0430\u044F \u0441\u0442\u0430\u044F"
+      duration: 70
+      groups:
+      - enemyId: walker
+        count: 14
+        startAt: 1
+        interval: 2
+      - enemyId: runner
+        count: 8
+        startAt: 12
+        interval: 2
+    - title: "\u041F\u043E\u0441\u043B\u0435\u0434\u043D\u044F\u044F \u043D\u043E\u0447\u044C
+        \u043F\u0440\u043E\u0442\u043E\u0442\u0438\u043F\u0430"
+      duration: 80
+      groups:
+      - enemyId: walker
+        count: 16
+        startAt: 1
+        interval: 2
+      - enemyId: runner
+        count: 8
+        startAt: 18
+        interval: 2
+      - enemyId: brute
+        count: 3
+        startAt: 30
+        interval: 6
+    blockedCells:
+    - x: 0
+      z: 10
+    - x: 1
+      z: 10
+    - x: 2
+      z: 10
+    - x: 3
+      z: 10
+    - x: 4
+      z: 10
+    - x: 5
+      z: 10
+    - x: 9
+      z: 10
+    - x: 10
+      z: 10
+    - x: 11
+      z: 10
+    - x: 12
+      z: 10
+    - x: 13
+      z: 10
+    - x: 14
+      z: 10
+    - x: 15
+      z: 10
+    spawnCells:
+    - x: 6
+      z: 14
+    - x: 7
+      z: 14
+    - x: 8
+      z: 14
+  buildings: []
+  enemies: []
+  dronePrefab: {fileID: 0}
+  surfaceTemplate: {fileID: 2100000, guid: 690863828e225a84f8e82c2d7cb6ef16, type: 2}
+  tracerMaterial: {fileID: 2100000, guid: 7a69f2ee40d47b14e9a4faf1acbef604, type: 2}
