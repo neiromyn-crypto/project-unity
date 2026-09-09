@@ -4,6 +4,7 @@ using UnityEngine.UI;
 namespace DawnGuard.BlackwoodV2
 {
     // Native vector panel: no imported UI atlas, no extra package or material.
+    [RequireComponent(typeof(CanvasRenderer))]
     public sealed class BlackwoodPanel : MaskableGraphic
     {
         public float corner=12;

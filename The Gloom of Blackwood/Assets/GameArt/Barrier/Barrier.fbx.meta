@@ -7,8 +7,13 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Barrier_URP
+    second: {fileID: 2100000, guid: 300ce65c7a8fd0349a8e508173a23d22, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Material.001
-    second: {fileID: 2100000, guid: 1ab68563635099b4087cb03e1949f7dc, type: 2}
+    second: {fileID: 2100000, guid: 300ce65c7a8fd0349a8e508173a23d22, type: 2}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule

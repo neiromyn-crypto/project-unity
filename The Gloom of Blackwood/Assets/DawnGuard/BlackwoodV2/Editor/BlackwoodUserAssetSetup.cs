@@ -21,6 +21,8 @@ namespace DawnGuard.BlackwoodV2.Editor
         }
         public static void Integrate()
         {
+            // Meshy exports often arrive with an empty/white Unity material. Repair them first.
+            BlackwoodMeshyMaterialFixer.FixAll();
             Assign();
             BlackwoodUserAssetsBuilder.Build();
             var root=UnityEngine.Object.FindAnyObjectByType<BlackwoodRoot>();

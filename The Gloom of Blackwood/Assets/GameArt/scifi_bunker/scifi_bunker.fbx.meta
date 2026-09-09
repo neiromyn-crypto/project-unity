@@ -3,7 +3,17 @@ guid: e54399a8625de1644a353e7a9fedebf9
 ModelImporter:
   serializedVersion: 24501
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.001
+    second: {fileID: 2100000, guid: e2c84d264309ad540843027faa9165be, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: scifi_bunker_URP
+    second: {fileID: 2100000, guid: e2c84d264309ad540843027faa9165be, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

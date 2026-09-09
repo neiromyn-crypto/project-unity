@@ -122,19 +122,19 @@ namespace DawnGuard.Unity
 
         private GameObject FullPanel(Transform parent,string name,Color color,bool block)
         {
-            var go=new GameObject(name,typeof(RectTransform),typeof(Image)); go.transform.SetParent(parent,false);
+            var go=new GameObject(name,typeof(RectTransform),typeof(CanvasRenderer),typeof(Image)); go.transform.SetParent(parent,false);
             var rect=go.GetComponent<RectTransform>(); rect.anchorMin=Vector2.zero; rect.anchorMax=Vector2.one; rect.offsetMin=rect.offsetMax=Vector2.zero;
             go.GetComponent<Image>().color=color; go.GetComponent<Image>().raycastTarget=block; return go;
         }
         private GameObject Box(Transform parent,string name,Vector2 anchor,Vector2 position,Vector2 size,Color color)
         {
-            var go=new GameObject(name,typeof(RectTransform),typeof(Image)); go.transform.SetParent(parent,false);
+            var go=new GameObject(name,typeof(RectTransform),typeof(CanvasRenderer),typeof(Image)); go.transform.SetParent(parent,false);
             var rect=go.GetComponent<RectTransform>(); rect.anchorMin=rect.anchorMax=anchor; rect.pivot=new Vector2(0,1);
             rect.anchoredPosition=position; rect.sizeDelta=size; go.GetComponent<Image>().color=color; return go;
         }
         private Text Label(Transform parent,string name,Vector2 anchor,Vector2 position,Vector2 size,int fontSize,TextAnchor align)
         {
-            var go=new GameObject(name,typeof(RectTransform)); go.transform.SetParent(parent,false);
+            var go=new GameObject(name,typeof(RectTransform),typeof(CanvasRenderer)); go.transform.SetParent(parent,false);
             var rect=go.GetComponent<RectTransform>(); rect.anchorMin=rect.anchorMax=anchor;
             rect.pivot=new Vector2(0,1); rect.anchoredPosition=position; rect.sizeDelta=size;
             var text=go.AddComponent<Text>(); text.font=font; text.fontSize=fontSize; text.color=new Color(.94f,.96f,1);

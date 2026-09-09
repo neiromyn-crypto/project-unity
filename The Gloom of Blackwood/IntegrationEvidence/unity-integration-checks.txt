@@ -1,0 +1,23 @@
+PASS: 14 checks
+Initial camp has no walls or turrets
+One tower exhausts starting budget
+Three walls exhaust starting budget
+Overlap and out-of-board do not spend credits
+Day 1 has no forced timer; night forbids building
+Cancel a new purchase; move reserves footprint
+Power brownout preserves buildings
+Snapshot is a deep copy; invalid versions are rejected
+Enemy attacks blocked chokepoint, never walks through wall
+Kill rewards are credited once
+Invalid time step rejected
+First wave can complete with tower and active drone
+First wave can complete with three walls and active drone
+Defeat stops simulation; restart returns dawn economy
+PASS 11 Blackwood economy checks
+PASS first night gun credits=136 HP=600
+PASS first night three walls credits=136 HP=600
+PASS exact attack target, wall damage, destruction, movement and target change
+PASS reward exactly once
+PASS final night timer cannot bypass cleanup
+PASS dawn retreat has no kill rewards
+PASS SaveService day restore, night checkpoint and new-game archive

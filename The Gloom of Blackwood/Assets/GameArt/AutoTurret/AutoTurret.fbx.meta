@@ -3,7 +3,17 @@ guid: aecb5165267c63b47994c2c251840bc7
 ModelImporter:
   serializedVersion: 24501
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: AutoTurret_URP
+    second: {fileID: 2100000, guid: 4a9d4f5101ec5cd40a37315e589b9fe0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.001
+    second: {fileID: 2100000, guid: 4a9d4f5101ec5cd40a37315e589b9fe0, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

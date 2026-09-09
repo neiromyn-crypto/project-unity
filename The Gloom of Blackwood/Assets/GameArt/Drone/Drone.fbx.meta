@@ -3,7 +3,17 @@ guid: 7b95b94ce0c69ea40a23aad6da7de041
 ModelImporter:
   serializedVersion: 24501
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Drone_URP
+    second: {fileID: 2100000, guid: 7fbd0170f4378594c8a872bc9608b0ed, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.001
+    second: {fileID: 2100000, guid: 7fbd0170f4378594c8a872bc9608b0ed, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

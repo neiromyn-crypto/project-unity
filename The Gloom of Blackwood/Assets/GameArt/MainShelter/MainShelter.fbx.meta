@@ -7,8 +7,13 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: MainShelter_URP
+    second: {fileID: 2100000, guid: 49f9a955fa80bae47a14a5336cd4fa2f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Material.001
-    second: {fileID: 2100000, guid: 7eeb65b2cc8fa724195205893aafbd04, type: 2}
+    second: {fileID: 2100000, guid: 49f9a955fa80bae47a14a5336cd4fa2f, type: 2}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule

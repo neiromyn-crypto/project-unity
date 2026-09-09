@@ -1,0 +1,102 @@
+{
+    "version": 1,
+    "completed": false,
+    "resume": {
+        "schemaVersion": 1,
+        "day": 1,
+        "credits": 120,
+        "tech": 0,
+        "droneLevel": 1,
+        "dayRemaining": 75.0,
+        "buildings": [
+            {
+                "instanceId": 1,
+                "definitionId": "shelter",
+                "cell": {
+                    "x": 7,
+                    "z": 5
+                },
+                "level": 1,
+                "paidCredits": 0,
+                "purchasedDay": 1,
+                "health": 600.0,
+                "permanent": true
+            },
+            {
+                "instanceId": 2,
+                "definitionId": "camp",
+                "cell": {
+                    "x": 3,
+                    "z": 4
+                },
+                "level": 1,
+                "paidCredits": 0,
+                "purchasedDay": 1,
+                "health": 180.0,
+                "permanent": true
+            },
+            {
+                "instanceId": 3,
+                "definitionId": "generator",
+                "cell": {
+                    "x": 11,
+                    "z": 4
+                },
+                "level": 1,
+                "paidCredits": 0,
+                "purchasedDay": 1,
+                "health": 220.0,
+                "permanent": true
+            }
+        ]
+    },
+    "dayStart": {
+        "schemaVersion": 1,
+        "day": 1,
+        "credits": 120,
+        "tech": 0,
+        "droneLevel": 1,
+        "dayRemaining": 75.0,
+        "buildings": [
+            {
+                "instanceId": 1,
+                "definitionId": "shelter",
+                "cell": {
+                    "x": 7,
+                    "z": 5
+                },
+                "level": 1,
+                "paidCredits": 0,
+                "purchasedDay": 1,
+                "health": 600.0,
+                "permanent": true
+            },
+            {
+                "instanceId": 2,
+                "definitionId": "camp",
+                "cell": {
+                    "x": 3,
+                    "z": 4
+                },
+                "level": 1,
+                "paidCredits": 0,
+                "purchasedDay": 1,
+                "health": 180.0,
+                "permanent": true
+            },
+            {
+                "instanceId": 3,
+                "definitionId": "generator",
+                "cell": {
+                    "x": 11,
+                    "z": 4
+                },
+                "level": 1,
+                "paidCredits": 0,
+                "purchasedDay": 1,
+                "health": 220.0,
+                "permanent": true
+            }
+        ]
+    }
+}

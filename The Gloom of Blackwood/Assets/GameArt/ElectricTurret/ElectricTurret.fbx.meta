@@ -3,7 +3,17 @@ guid: ab5d789ce3e8f9149ad96d26d4c358d3
 ModelImporter:
   serializedVersion: 24501
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ElectricTurret_URP
+    second: {fileID: 2100000, guid: 50c0541c3d2f5984ebecef23a17d89c3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.001
+    second: {fileID: 2100000, guid: 50c0541c3d2f5984ebecef23a17d89c3, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

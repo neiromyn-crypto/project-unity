@@ -112,7 +112,7 @@ namespace DawnGuard.BlackwoodV2
             menu=Full(canvas,"Main menu",Ink,true);
             if(root.menuBackdrop!=null)
             {
-                var art=new GameObject("Background art",typeof(RectTransform),typeof(RawImage),typeof(AspectRatioFitter));
+                var art=new GameObject("Background art",typeof(RectTransform),typeof(CanvasRenderer),typeof(RawImage),typeof(AspectRatioFitter));
                 art.transform.SetParent(menu.transform,false); var raw=art.GetComponent<RawImage>(); raw.texture=root.menuBackdrop; raw.raycastTarget=false;
                 var fit=art.GetComponent<AspectRatioFitter>(); fit.aspectMode=AspectRatioFitter.AspectMode.EnvelopeParent;
                 fit.aspectRatio=(float)root.menuBackdrop.width/root.menuBackdrop.height;
@@ -237,19 +237,19 @@ namespace DawnGuard.BlackwoodV2
         private void OnDestroy() { if(clickSound!=null) Destroy(clickSound); }
         private GameObject Full(Transform parent,string name,Color color,bool block)
         {
-            var go=new GameObject(name,typeof(RectTransform),typeof(BlackwoodPanel)); go.transform.SetParent(parent,false);
+            var go=new GameObject(name,typeof(RectTransform),typeof(CanvasRenderer),typeof(BlackwoodPanel)); go.transform.SetParent(parent,false);
             var r=go.GetComponent<RectTransform>(); r.anchorMin=Vector2.zero; r.anchorMax=Vector2.one; r.offsetMin=r.offsetMax=Vector2.zero;
             var p=go.GetComponent<BlackwoodPanel>(); p.color=color; p.corner=0; p.raycastTarget=block; return go;
         }
         private GameObject Box(Transform parent,string name,Vector2 anchor,Vector2 position,Vector2 size,Color color)
         {
-            var go=new GameObject(name,typeof(RectTransform),typeof(BlackwoodPanel)); go.transform.SetParent(parent,false);
+            var go=new GameObject(name,typeof(RectTransform),typeof(CanvasRenderer),typeof(BlackwoodPanel)); go.transform.SetParent(parent,false);
             var r=go.GetComponent<RectTransform>(); r.anchorMin=r.anchorMax=anchor; r.pivot=new Vector2(0,1); r.anchoredPosition=position; r.sizeDelta=size;
             go.GetComponent<BlackwoodPanel>().color=color; return go;
         }
         private Text Label(Transform parent,string name,Vector2 anchor,Vector2 position,Vector2 size,int fontSize,Color color,TextAnchor align=TextAnchor.UpperLeft)
         {
-            var go=new GameObject(name,typeof(RectTransform),typeof(Text)); go.transform.SetParent(parent,false);
+            var go=new GameObject(name,typeof(RectTransform),typeof(CanvasRenderer),typeof(Text)); go.transform.SetParent(parent,false);
             var r=go.GetComponent<RectTransform>(); r.anchorMin=r.anchorMax=anchor; r.pivot=new Vector2(0,1); r.anchoredPosition=position; r.sizeDelta=size;
             var t=go.GetComponent<Text>(); t.font=font; t.fontSize=fontSize; t.color=color; t.alignment=align; t.raycastTarget=false;
             if(name=="Title") t.fontStyle=FontStyle.Bold;
