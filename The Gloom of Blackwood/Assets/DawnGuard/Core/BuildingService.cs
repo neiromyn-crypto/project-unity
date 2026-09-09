@@ -48,7 +48,7 @@ namespace DawnGuard.Core
             error="";
             var b=game.FindBuilding(id);
             if(game.Phase!=GamePhase.Day || b==null) { error="Ремонт доступен днём"; return false; }
-            int cost=(int)Math.Ceiling((game.MaxHealth(b)-b.health)*0.15f);
+            int cost=(int)Math.Ceiling((game.MaxHealth(b)-b.health)*game.Rules.repairCreditPerHealth);
             if(cost<=0) { error="Здание не повреждено"; return false; }
             if(!game.Wallet.TrySpend(cost)) { error="Ремонт: "+cost+" кредитов"; return false; }
             b.health=game.MaxHealth(b);
@@ -92,7 +92,7 @@ namespace DawnGuard.Core
             if(game.Phase!=GamePhase.Day || !game.HasPoweredLab())
             { error="Нужна работающая лаборатория днём"; return false; }
             if(game.Tech>=1) { error="Технология уже открыта"; return false; }
-            if(!game.Wallet.TrySpend(120)) { error="Исследование: 120 кредитов"; return false; }
+            if(!game.Wallet.TrySpend(game.Rules.researchCost)) { error="Исследование: "+game.Rules.researchCost+" кредитов"; return false; }
             game.SetTech(1);
             return true;
         }
@@ -103,7 +103,7 @@ namespace DawnGuard.Core
             if(game.Phase!=GamePhase.Day || !game.HasPoweredLab())
             { error="Нужна работающая лаборатория днём"; return false; }
             if(game.DroneLevel>=3) { error="Максимальный уровень дрона"; return false; }
-            int cost=100*game.DroneLevel;
+            int cost=game.Rules.droneUpgradeBaseCost*game.DroneLevel;
             if(!game.Wallet.TrySpend(cost)) { error="Нужно кредитов: "+cost; return false; }
             game.SetDroneLevel(game.DroneLevel+1);
             return true;

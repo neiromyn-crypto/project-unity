@@ -58,6 +58,8 @@ namespace DawnGuard.Core
         public float daySeconds = 90, droneSpeed = 5, droneRange = 4.5f;
         public float droneDamage = 12, droneShotsPerSecond = 2;
         public int dawnReward = 60;
+        public int researchCost = 120, droneUpgradeBaseCost = 100;
+        public float repairCreditPerHealth = .15f;
         public BuildingDefinition[] buildings;
         public EnemyDefinition[] enemies;
         public WaveDefinition[] waves;
@@ -77,7 +79,9 @@ namespace DawnGuard.Core
         public void Validate()
         {
             if (width < 4 || depth < 4 || startingCredits < 0 || daySeconds <= 0 ||
-                droneSpeed <= 0 || droneRange <= 0 || droneDamage <= 0 || droneShotsPerSecond <= 0)
+                droneSpeed <= 0 || droneRange <= 0 || droneDamage <= 0 || droneShotsPerSecond <= 0 ||
+                researchCost < 0 || droneUpgradeBaseCost < 0 || repairCreditPerHealth < 0 ||
+                float.IsNaN(repairCreditPerHealth) || float.IsInfinity(repairCreditPerHealth))
                 throw new ArgumentException("Invalid game rules.");
             if (buildings == null || enemies == null || waves == null || waves.Length == 0 ||
                 spawnCells == null || spawnCells.Length == 0 || blockedCells == null)

@@ -59,6 +59,7 @@ namespace DawnGuard.Core
         {
             foreach(var enemy in game.Enemies)
             {
+                enemy.attackTargetId=0;
                 if(enemy.health<=0) continue;
                 var def=game.Rules.Enemy(enemy.definitionId);
                 if(!enemy.travelling)
@@ -68,7 +69,9 @@ namespace DawnGuard.Core
                     var blocking=game.FindBuilding(game.Board.Occupant(next));
                     if(blocking!=null)
                     {
+                        enemy.attackTargetId=blocking.instanceId;
                         game.DamageBuilding(blocking,def.damagePerSecond*dt);
+                        if(game.FindBuilding(blocking.instanceId)==null) enemy.attackTargetId=0;
                         if(game.Phase!=GamePhase.Night) return;
                         continue;
                     }

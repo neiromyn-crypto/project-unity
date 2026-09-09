@@ -35,3 +35,13 @@ Thumbs.db
 !.env.example
 *.keystore
 *.jks
+
+# Local integration runner and disposable validation project.
+/IntegrationEvidence/UnityValidationProject/
+/IntegrationEvidence/Compile/
+/IntegrationEvidence/OriginalProfileBackup/
+/IntegrationEvidence/unity-batch*.log
+/IntegrationEvidence/batch-process-id.txt
+/IntegrationEvidence/command*.txt
+/IntegrationEvidence/editor-status.txt
+/IntegrationEvidence/refresh-only.txt

@@ -23,6 +23,8 @@ namespace DawnGuard.Core
         public float x, z, health;
         public Cell cell, nextCell;
         public bool travelling;
+        // Transient target selected by the damage simulation, never saved.
+        [NonSerialized] public int attackTargetId;
     }
 
     [Serializable]

@@ -1,0 +1,274 @@
+{
+  "csharp_sources_syntax_checked": 12,
+  "png_files_checked": 16,
+  "pngs": [
+    {
+      "file": "Art/Concepts/01_Shelter.png",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "file": "Art/Concepts/02_WorkerCamp.png",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "file": "Art/Concepts/03_PowerTower.png",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "file": "Art/Concepts/04_Wall.png",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "file": "Art/Concepts/05_MachineGun.png",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "file": "Art/Concepts/06_Laboratory.png",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "file": "Art/Concepts/07_Tesla.png",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "file": "Art/Concepts/08_Drone.png",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "file": "Art/Concepts/09_DronePad.png",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "file": "Art/Concepts/10_Pine.png",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "file": "Art/Concepts/11_Rubble.png",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "file": "Art/Concepts/12_GroundTile.png",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "file": "Art/Concepts/14_DayTarget.png",
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "file": "Art/Concepts/15_MenuTarget.png",
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "file": "Art/Concepts/16_NightTarget.png",
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "file": "Assets/DawnGuard/BlackwoodV2/Art/MenuBackdrop.png",
+      "width": 1672,
+      "height": 941
+    }
+  ],
+  "waves": [
+    {
+      "night": 1,
+      "title": "Северный проход",
+      "duration": 40,
+      "groups": [
+        {
+          "enemy": "walker",
+          "count": 8,
+          "start": 0.4,
+          "interval": 1.8
+        }
+      ],
+      "max_kill_income": 16
+    },
+    {
+      "night": 2,
+      "title": "Бегуны в лесу",
+      "duration": 50,
+      "groups": [
+        {
+          "enemy": "walker",
+          "count": 10,
+          "start": 1.0,
+          "interval": 2.4
+        },
+        {
+          "enemy": "runner",
+          "count": 4,
+          "start": 16.0,
+          "interval": 2.8
+        }
+      ],
+      "max_kill_income": 32
+    },
+    {
+      "night": 3,
+      "title": "Тяжёлые шаги",
+      "duration": 60,
+      "groups": [
+        {
+          "enemy": "walker",
+          "count": 12,
+          "start": 1.0,
+          "interval": 2.2
+        },
+        {
+          "enemy": "brute",
+          "count": 1,
+          "start": 20.0,
+          "interval": 1.0
+        }
+      ],
+      "max_kill_income": 39
+    },
+    {
+      "night": 4,
+      "title": "Двойной натиск",
+      "duration": 65,
+      "groups": [
+        {
+          "enemy": "walker",
+          "count": 14,
+          "start": 1.0,
+          "interval": 2.0
+        },
+        {
+          "enemy": "runner",
+          "count": 6,
+          "start": 16.0,
+          "interval": 2.5
+        }
+      ],
+      "max_kill_income": 46
+    },
+    {
+      "night": 5,
+      "title": "Лес проснулся",
+      "duration": 70,
+      "groups": [
+        {
+          "enemy": "walker",
+          "count": 16,
+          "start": 1.0,
+          "interval": 2.0
+        },
+        {
+          "enemy": "runner",
+          "count": 8,
+          "start": 20.0,
+          "interval": 2.0
+        },
+        {
+          "enemy": "brute",
+          "count": 1,
+          "start": 35.0,
+          "interval": 1.0
+        }
+      ],
+      "max_kill_income": 71
+    },
+    {
+      "night": 6,
+      "title": "Проверка обороны",
+      "duration": 75,
+      "groups": [
+        {
+          "enemy": "walker",
+          "count": 18,
+          "start": 1.0,
+          "interval": 2.0
+        },
+        {
+          "enemy": "runner",
+          "count": 10,
+          "start": 18.0,
+          "interval": 2.0
+        },
+        {
+          "enemy": "brute",
+          "count": 2,
+          "start": 35.0,
+          "interval": 8.0
+        }
+      ],
+      "max_kill_income": 96
+    },
+    {
+      "night": 7,
+      "title": "Перед рассветом",
+      "duration": 80,
+      "groups": [
+        {
+          "enemy": "walker",
+          "count": 20,
+          "start": 1.0,
+          "interval": 2.0
+        },
+        {
+          "enemy": "runner",
+          "count": 12,
+          "start": 18.0,
+          "interval": 2.0
+        },
+        {
+          "enemy": "brute",
+          "count": 3,
+          "start": 38.0,
+          "interval": 8.0
+        }
+      ],
+      "max_kill_income": 121
+    },
+    {
+      "night": 8,
+      "title": "Последний рубеж",
+      "duration": 90,
+      "groups": [
+        {
+          "enemy": "walker",
+          "count": 24,
+          "start": 1.0,
+          "interval": 2.0
+        },
+        {
+          "enemy": "runner",
+          "count": 12,
+          "start": 20.0,
+          "interval": 2.0
+        },
+        {
+          "enemy": "brute",
+          "count": 4,
+          "start": 38.0,
+          "interval": 8.0
+        }
+      ],
+      "max_kill_income": 144
+    }
+  ],
+  "pre_final_night_gross_budget_without_investments": 1381,
+  "unity_checks_supplied": 11,
+  "unity_checks_executed_here": false,
+  "unity_compilation_executed": false,
+  "unity_playmode_executed": false,
+  "device_performance_measured": false,
+  "blender_models_generated": false,
+  "errors": []
+}
