@@ -38,8 +38,9 @@ namespace DawnGuard.BlackwoodV2
             var cameraObject=new GameObject("Game Camera"); cameraObject.transform.SetParent(world);
             cameraView=cameraObject.AddComponent<Camera>(); cameraObject.AddComponent<AudioListener>();
             cameraView.orthographic=true;
-            cameraView.transform.position=new Vector3(8,20,-9);
-            cameraView.transform.LookAt(new Vector3(8,0,7.5f));
+            float elevation=root.cameraElevation*Mathf.Deg2Rad;
+            cameraView.transform.position=root.cameraFocus+new Vector3(0,Mathf.Sin(elevation),-Mathf.Cos(elevation))*26;
+            cameraView.transform.LookAt(root.cameraFocus);
             cameraView.nearClipPlane=.1f; cameraView.farClipPlane=100;
             cameraView.backgroundColor=new Color(.07f,.1f,.15f);
             sun=new GameObject("Sun").AddComponent<Light>(); sun.transform.SetParent(world);
@@ -94,7 +95,7 @@ namespace DawnGuard.BlackwoodV2
                 if(d.time<=0) { ReturnToPool(d.go,d.kind); dying.RemoveAt(i); }
             }
             float blend=1-Mathf.Exp(-18*Time.unscaledDeltaTime);
-            cameraView.orthographicSize=Mathf.Max(9.6f,10f/Mathf.Max(.4f,cameraView.aspect));
+            cameraView.orthographicSize=Mathf.Max(root.cameraSize,10f/Mathf.Max(.4f,cameraView.aspect));
             cameraView.clearFlags=CameraClearFlags.SolidColor;
             bool night=game.Phase==GamePhase.Night || game.Phase==GamePhase.Defeat;
             sun.intensity=Mathf.Lerp(sun.intensity,night ? .62f : 1.1f,blend*.25f);

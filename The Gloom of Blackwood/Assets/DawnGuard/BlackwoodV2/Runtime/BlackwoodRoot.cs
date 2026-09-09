@@ -16,6 +16,10 @@ namespace DawnGuard.BlackwoodV2
         public Transform sceneEnvironment;
         public GameObject startingPreview;
         public GameObject pinePrefab, rubblePrefab, padPrefab;
+        [Header("Scene composition")]
+        public Vector3 cameraFocus=new Vector3(8,0,7.5f);
+        [Range(5,14)] public float cameraSize=9.6f;
+        [Range(25,65)] public float cameraElevation=50.5f;
         public bool HasSavedCampaign { get; private set; }
         public GameSession Game { get; private set; }
         public BlackwoodHud Hud { get; private set; }

@@ -18,6 +18,7 @@ namespace DawnGuard.BlackwoodV2
     {
         string folder;
         BlackwoodRoot root;
+        int runtimeErrors;
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
         static void Boot()
         {
@@ -50,6 +51,7 @@ namespace DawnGuard.BlackwoodV2
         }
         void Log(string condition,string trace,LogType type)
         {
+            if(type==LogType.Exception || type==LogType.Error) runtimeErrors++;
             if(type==LogType.Exception || type==LogType.Error || type==LogType.Warning)
                 File.AppendAllText(folder+"/runtime-log.txt",type+": "+condition+"\n"+trace+"\n");
         }
@@ -79,6 +81,7 @@ namespace DawnGuard.BlackwoodV2
             Check(root.startingPreview==null,"Editor starting preview removed; no duplicate starting buildings");
             Check(FindObjectsByType<DawnGuard.Unity.GameRoot>().Length==0,"No old GameRoot in integration scene");
             Check(root.Game.Buildings.Count==3 && root.Game.Wallet.Credits==120,"Fresh isolated test profile");
+            Check(root.Hud.GetComponentsInChildren<Graphic>(true).All(g=>g.GetComponent<CanvasRenderer>()!=null),"Every UI graphic has its required CanvasRenderer");
             Check(root.Paused,"Main menu pauses simulation");
             Capture("menu-16x9",1600,900); Capture("menu-19_5x9",1950,900);
             Click("НАСТРОЙКИ"); yield return new WaitForSecondsRealtime(.15f);
@@ -151,6 +154,7 @@ namespace DawnGuard.BlackwoodV2
             for(int i=0;i<810;i++) retreat.Tick(.05f);
             Refresh(); Check(retreat.Day==2 && !liveGo.activeSelf,"Live dawn retreat skips death animation");
             File.AppendAllText(folder+"/checks.txt","Capture method: Unity URP SingleCameraRequest in Play Mode, actual scene and UI, 1600x900 and 1950x900.\n");
+            Check(runtimeErrors==0,"No runtime errors or exceptions during verification");
         }
         void Capture(string name,int width,int height)
         {
@@ -172,6 +176,16 @@ namespace DawnGuard.BlackwoodV2
                 var image=new Texture2D(width,height,TextureFormat.RGB24,false); image.ReadPixels(new Rect(0,0,width,height),0,0); image.Apply();
                 File.WriteAllBytes(folder+"/"+name+".png",image.EncodeToPNG()); Destroy(image);
                 Check(root.Hud.GetComponentsInChildren<Button>().All(b=>Inside(b.GetComponent<RectTransform>(),camera,width,height)),"Visible buttons inside "+width+"x"+height+" at "+name);
+                if(name.StartsWith("day"))
+                {
+                    foreach(var cell in new[]{new Cell(0,0),new Cell(15,0),new Cell(0,15),new Cell(15,15),new Cell(7,9)})
+                    {
+                        var worldPoint=new Vector3(cell.x+.5f,0,cell.z+.5f); var screen=camera.WorldToScreenPoint(worldPoint);
+                        Check(screen.x>0 && screen.x<width && screen.y>height*.15f && screen.y<height*.84f,"Playable cell stays between HUD bars: "+cell.x+","+cell.z+" at "+name);
+                        Vector3 actual;
+                        Check(root.World.TryGround(screen,out actual) && Vector3.Distance(actual,worldPoint)<.01f,"Build picking unchanged at "+cell.x+","+cell.z);
+                    }
+                }
             }
             finally
             {

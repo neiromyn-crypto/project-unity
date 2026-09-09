@@ -35,6 +35,7 @@ namespace DawnGuard.BlackwoodV2.Editor
             {
                 if(command=="refresh") { AssetDatabase.Refresh(); return; }
                 if(command=="inventory") Inventory();
+                else if(command=="compose") BlackwoodCompositionPass.Apply();
                 else if(command=="integrate") BlackwoodUserAssetSetup.Integrate();
                 else if(command=="validate") BlackwoodIntegrationChecks.Run();
                 else if(command=="verify-play")
