@@ -44,7 +44,7 @@ namespace DawnGuard.BlackwoodLTD.Editor
             foreach(var j in jobs.meshes)Write(meshes[j.id],Work+"/Input/"+j.id+".bwm",j.skinned);
             File.WriteAllText(Work+"/jobs.json",JsonUtility.ToJson(jobs,true));
         }
-        static void Write(Mesh m,string path,bool skin)
+        internal static void Write(Mesh m,string path,bool skin)
         {
             using(var stream=new FileStream(path,FileMode.Create,FileAccess.Write,FileShare.None,1048576))using(var w=new BinaryWriter(stream))
             {

@@ -35,7 +35,7 @@ namespace DawnGuard.BlackwoodLTD
         void Start()
         {
             Application.targetFrameRate=60;Application.runInBackground=true;Screen.sleepTimeout=SleepTimeout.NeverSleep;
-            savePath=string.IsNullOrEmpty(TestSavePath)?Path.Combine(Application.persistentDataPath,"blackwood-coast-map2-v1.json"):TestSavePath;
+            savePath=string.IsNullOrEmpty(TestSavePath)?Path.Combine(Application.persistentDataPath,"blackwood-operator-core-v1.json"):TestSavePath;
             CoastState saved=null;
             try{if(File.Exists(savePath)){saved=JsonUtility.FromJson<CoastState>(File.ReadAllText(savePath));Game=new CoastSession(catalog.rules,saved);HasSave=true;}}
             catch(Exception e){Debug.LogWarning("Coast save not loaded: "+e.Message);Notice="Сохранение повреждено. Можно начать новую экспедицию.";}

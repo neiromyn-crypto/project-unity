@@ -21,7 +21,8 @@ namespace DawnGuard.BlackwoodLTD
         public bool ServiceOpen {get{return service!=null&&service.activeSelf;}}
         GameObject gameUi,menu,dayBar,nightBar,service,settings,pause,results,confirmation,selectionBox;
         Text credits,stone,power,workers,camp,phase,threat,notice,selected,continueText,roundTitle,roundText,serviceTitle,serviceBody,support,selectedStats;
-        Image hpFill;Button startNight;Text nextLabel;
+        Image hpFill,operatorFill;Button startNight;Text nextLabel,operatorText;
+        readonly Dictionary<string,BlackwoodPanel> buildPanels=new Dictionary<string,BlackwoodPanel>();
         readonly Dictionary<string,Button> buildButtons=new Dictionary<string,Button>();
         readonly List<GameObject> serviceActions=new List<GameObject>();string serviceId;float refreshAt;
         Text[] floats=new Text[8];float[] floatLife=new float[8];Vector3[] floatPoints=new Vector3[8];int nextFloat;
@@ -56,8 +57,9 @@ namespace DawnGuard.BlackwoodLTD
             var top=Box(gameUi.transform,"Top HUD",new Vector2(.5f,1),new Vector2(-782,-14),new Vector2(1564,78),Ink);
             Text(top.transform,"BLACKWOOD",18,-12,215,38,29,Cream);Text(top.transform,"БЕРЕГОВОЙ РУБЕЖ",19,-48,210,22,14,Mint);
             credits=Resource(top.transform,240,"КРЕДИТЫ",Orange);stone=Resource(top.transform,390,"КАМЕНЬ",Cream);power=Resource(top.transform,540,"ЭНЕРГИЯ",Mint);workers=Resource(top.transform,690,"РАБОЧИЕ",Cream);
-            camp=Text(top.transform,"",853,-9,230,33,25,Cream);Text(top.transform,"ЛАГЕРЬ",853,-44,210,22,14,Muted);
-            var hp=Box(top.transform,"Camp health",new Vector2(0,1),new Vector2(934,-48),new Vector2(146,9),Panel);var fill=new GameObject("Health fill",typeof(RectTransform),typeof(CanvasRenderer),typeof(Image));fill.transform.SetParent(hp.transform,false);hpFill=fill.GetComponent<Image>();hpFill.color=Mint;var r=fill.GetComponent<RectTransform>();r.anchorMin=Vector2.zero;r.anchorMax=Vector2.one;r.offsetMin=r.offsetMax=Vector2.zero;
+            camp=Text(top.transform,"",853,-5,250,24,17,Cream);operatorText=Text(top.transform,"",853,-40,250,24,17,Mint);
+            var hp=Box(top.transform,"Command Core HP",new Vector2(0,1),new Vector2(853,-29),new Vector2(230,5),Panel);var fill=new GameObject("Core fill",typeof(RectTransform),typeof(CanvasRenderer),typeof(Image));fill.transform.SetParent(hp.transform,false);hpFill=fill.GetComponent<Image>();hpFill.color=Mint;var r=fill.GetComponent<RectTransform>();r.anchorMin=Vector2.zero;r.anchorMax=Vector2.one;r.offsetMin=r.offsetMax=Vector2.zero;
+            var op=Box(top.transform,"Operator HP",new Vector2(0,1),new Vector2(853,-66),new Vector2(230,5),Panel);var of=new GameObject("Operator fill",typeof(RectTransform),typeof(CanvasRenderer),typeof(Image));of.transform.SetParent(op.transform,false);operatorFill=of.GetComponent<Image>();operatorFill.color=Mint;var or=of.GetComponent<RectTransform>();or.anchorMin=Vector2.zero;or.anchorMax=Vector2.one;or.offsetMin=or.offsetMax=Vector2.zero;
             phase=Text(top.transform,"",1120,-7,257,68,23,Cream);
             Button(top.transform,"МЕНЮ",1395,-13,151,52,()=>root.OpenMenu());
             var forecast=Box(gameUi.transform,"Wave forecast",new Vector2(1,1),new Vector2(-270,-111),new Vector2(250,153),Ink);
@@ -104,7 +106,7 @@ namespace DawnGuard.BlackwoodLTD
             dayBar=Box(gameUi.transform,"Build toolbar",new Vector2(.5f,0),new Vector2(-782,175),new Vector2(1564,157),Ink);
             string[] ids={"wall","gun","arcane","tesla","cryo"};for(int i=0;i<ids.Length;i++)
             {
-                string id=ids[i];var d=root.catalog.rules.Defense(id);var b=Button(dayBar.transform,"",15+i*145,-14,135,128,()=>root.ChooseTool(id));buildButtons[id]=b;
+                string id=ids[i];var d=root.catalog.rules.Defense(id);var b=Button(dayBar.transform,"",15+i*145,-14,135,128,()=>root.ChooseTool(id));buildButtons[id]=b;buildPanels[id]=b.GetComponent<BlackwoodPanel>();
                 var icon=root.catalog.defenseIcons!=null&&i<root.catalog.defenseIcons.Length?root.catalog.defenseIcons[i]:null;if(icon!=null)Icon(b.transform,icon,40,-7,57,55);
                 Text(b.transform,d.title,6,-59,123,38,14,Cream).alignment=TextAnchor.MiddleCenter;
                 string price=id=="wall"?"12 КАМ.":d.credits+" КР.  "+d.stone+" КАМ.";
@@ -150,7 +152,7 @@ namespace DawnGuard.BlackwoodLTD
                 add("ГРУЗ 8 → 10 • 100 КР. + 50 КАМ.",()=>root.Act(g.UpgradeHarvest),null);
             }
             else if(serviceId=="power")add("+4 МОЩНОСТИ • 80 КР. + 60 КАМ.",()=>root.Act(g.UpgradePower),Orange);
-            else if(serviceId=="camp")add("ВОССТАНОВИТЬ ЛАГЕРЬ • "+Mathf.CeilToInt((g.Rules.campHP-s.campHP)/8)+" КАМ.",()=>root.Act(()=>g.Repair(0)),Orange);
+            else if(serviceId=="camp")add("ВОССТАНОВИТЬ ЯДРО • "+Mathf.CeilToInt((g.Rules.campHP-s.campHP)/8)+" КАМ.",()=>root.Act(()=>g.Repair(0)),Orange);
             else if(serviceId=="lab")
             {
                 if(!s.lab)add("ВКЛЮЧИТЬ • 60 КР. + 30 КАМ.",()=>{root.Act(g.ActivateLab);BuildServiceActions();},Orange);
@@ -172,7 +174,7 @@ namespace DawnGuard.BlackwoodLTD
             var c=Button(p.transform,"ПРОДОЛЖИТЬ",34,-344,500,73,()=>root.EnterGame(),Orange);continueText=c.GetComponentInChildren<Text>();
             Button(p.transform,"НОВАЯ ЭКСПЕДИЦИЯ",34,-435,500,64,()=>{if(root.HasSave)confirmation.SetActive(true);else root.NewGame();});
             Button(p.transform,"НАСТРОЙКИ",34,-516,500,60,()=>settings.SetActive(true));
-            Text(p.transform,"8 НОЧЕЙ  /  СТРОИТЕЛЬСТВО  /  ВЫЖИВАНИЕ",35,-606,500,28,16,Muted);
+            Text(p.transform,root.Game.Rules.waves.Length+" НОЧИ  /  ЗАЩИТИ КОМАНДНЫЙ УЗЕЛ",35,-606,500,28,16,Muted);
             var badge=Box(menu.transform,"Living world badge",new Vector2(1,0),new Vector2(-437,118),new Vector2(410,82),Ink);
             Text(badge.transform,"ЛЕС БОЛЬШЕ НЕ СПИТ",20,-16,380,29,21,Cream);Text(badge.transform,"Заражённые окружают береговой лагерь",20,-48,380,25,16,Mint);
         }
@@ -198,28 +200,29 @@ namespace DawnGuard.BlackwoodLTD
             if(root.Game==null)return;UpdateFloats();UpdateDroneIndicator();if(!force&&Time.unscaledTime<refreshAt)return;refreshAt=Time.unscaledTime+.12f;
             var g=root.Game;var s=g.S;bool day=s.phase==CoastPhase.Day;
             gameUi.SetActive(!root.MenuOpen);menu.SetActive(root.MenuOpen);pause.SetActive(root.ManualPause&&!root.MenuOpen);continueText.text=root.HasSave?"ПРОДОЛЖИТЬ • ДЕНЬ "+s.day:"В ЛАГЕРЬ";
-            credits.text=s.credits.ToString();stone.text=s.stone.ToString();power.text=g.PowerUsed+" / "+g.Capacity;workers.text=s.workers.Count+" / 6";camp.text=Mathf.CeilToInt(s.campHP)+" / 600";
+            credits.text=s.credits.ToString();stone.text=s.stone.ToString();power.text=g.PowerUsed+" / "+g.Capacity;workers.text=s.workers.Count+" / 6";camp.text="ЯДРО "+Mathf.CeilToInt(s.campHP)+" / "+g.Rules.campHP;
+            operatorText.text="ОПЕРАТОР "+Mathf.CeilToInt(s.operatorHP)+" / "+g.Rules.operatorHP;operatorText.color=s.campHP<=0?Orange:Mint;operatorFill.color=operatorText.color;operatorFill.rectTransform.anchorMax=new Vector2(s.operatorHP/g.Rules.operatorHP,1);
             hpFill.rectTransform.anchorMax=new Vector2(s.campHP/g.Rules.campHP,1);
-            phase.text=(day?"ДЕНЬ ":"НОЧЬ ")+s.day+" / 8\n"+(day?TimeString(s.remaining):g.Unspawned>0?"ВРАГОВ: "+g.ThreatCount:"ЗАЧИСТКА: "+s.enemies.Count);
+            phase.text=(day?"ДЕНЬ ":"НОЧЬ ")+s.day+" / "+g.Rules.waves.Length+"\n"+(day?TimeString(s.remaining):g.Unspawned>0?"ВРАГОВ: "+g.ThreatCount:"ЗАЧИСТКА: "+s.enemies.Count);
             var sides=new bool[3];var counts=new Dictionary<string,int>();foreach(var group in g.Wave.groups){sides[group.front]=true;if(!counts.ContainsKey(group.kind))counts[group.kind]=0;counts[group.kind]+=group.count;}
             string sidesText="";for(int i=0;i<3;i++)if(sides[i])sidesText+=(sidesText.Length==0?"":" • ")+CoastSession.FrontName(i);
             string enemiesText="";foreach(var pair in counts){enemiesText+=(enemiesText.Length==0?"":"  ")+g.Rules.Enemy(pair.Key).title+" ×"+pair.Value;}
             threat.text=sidesText+"\n\n"+enemiesText;threat.fontSize=counts.Count>3?15:18;
-            notice.text=root.Notice;dayBar.SetActive(day);nightBar.SetActive(s.phase==CoastPhase.Night);startNight.interactable=day&&!root.Paused;
+            notice.text=s.operatorHP<=0?"ОПЕРАТОР ПОГИБ — СВЯЗЬ ПОТЕРЯНА":s.campHP<=0?"ЯДРО РАЗРУШЕНО — ОПЕРАТОР УЯЗВИМ":s.campHP<g.Rules.campHP*.25f?"КРИТИЧЕСКАЯ ПРОЧНОСТЬ КОМАНДНОГО УЗЛА":root.Notice;dayBar.SetActive(day);nightBar.SetActive(s.phase==CoastPhase.Night);startNight.interactable=day&&!root.Paused;
             support.text="ДРОН — ПОДДЕРЖКА\nЗаряды: "+s.supportCharges+" / 2"+(s.supportCooldown>0?" • "+Mathf.CeilToInt(s.supportCooldown)+" с":"");
-            foreach(var pair in buildButtons){var d=g.Rules.Defense(pair.Key);bool unlocked=(s.tech&d.unlock)==d.unlock;pair.Value.interactable=day&&!root.Paused;var graphic=pair.Value.GetComponent<BlackwoodPanel>();graphic.color=root.SelectedTool==pair.Key?new Color(.16f,.37f,.37f):unlocked?Panel:Ink;}
+            foreach(var pair in buildButtons){var d=g.Rules.Defense(pair.Key);bool unlocked=(s.tech&d.unlock)==d.unlock;pair.Value.interactable=day&&!root.Paused;buildPanels[pair.Key].color=root.SelectedTool==pair.Key?new Color(.16f,.37f,.37f):unlocked?Panel:Ink;}
             var b=g.Building(root.SelectedBuilding);selectionBox.SetActive(b!=null&&!ServiceOpen&&day&&!root.MenuOpen);if(b!=null){var d=g.Rules.Defense(b.kind);selected.text=d.title;selectedStats.text="ПРОЧНОСТЬ "+Mathf.CeilToInt(b.hp)+" / "+d.hp+"\n"+(d.damage>0?"УРОН "+(d.damage*(1+.2f*s.weaponLevels[CoastSession.WeaponIndex(b.kind)])).ToString("0.#")+" • КД "+d.cooldown+" с\nЦЕЛЬ: "+b.order:"ПЕРЕНОС / РЕМОНТ / ПРОДАЖА");}
             if(ServiceOpen)UpdateService();
-            bool end=s.phase==CoastPhase.Debrief||s.phase==CoastPhase.Victory||s.phase==CoastPhase.Defeat;results.SetActive(end);
-            if(end){roundTitle.text=s.phase==CoastPhase.Victory?"РАССВЕТ НАД BLACKWOOD":s.phase==CoastPhase.Defeat?"ЛАГЕРЬ ПАЛ":"НОЧЬ ВЫДЕРЖАНА";nextLabel.text=s.phase==CoastPhase.Debrief?"К НОВОМУ ДНЮ":s.phase==CoastPhase.Defeat?"ПОВТОРИТЬ ДЕНЬ":"В МЕНЮ";
-                roundText.text="Лагерь: "+Mathf.CeilToInt(s.campHP)+" / 600\nУничтожено: "+s.killed+"\nКамня доставлено: "+s.delivered+"\nПрорывы: север "+s.leaks[0]+", запад "+s.leaks[1]+", восток "+s.leaks[2]+"\n\n"+(s.phase==CoastPhase.Debrief?"Следующая ночь: "+g.Wave.title+"\n"+g.Wave.advice:s.phase==CoastPhase.Defeat?"Удлините путь в радиусе защиты.\nПрямые проходы слишком быстро выпускают врагов.":"Все восемь волн уничтожены. Море снова спокойно.");}
+            bool end=s.phase==CoastPhase.Debrief||s.phase==CoastPhase.Victory||s.phase==CoastPhase.Defeat&&(root.World.OperatorCore==null||root.World.OperatorCore.DeathElapsed>1.3f);results.SetActive(end);
+            if(end){roundTitle.text=s.phase==CoastPhase.Victory?"РАССВЕТ НАД BLACKWOOD":s.phase==CoastPhase.Defeat?"ОПЕРАТОР ПОГИБ":"НОЧЬ ВЫДЕРЖАНА";nextLabel.text=s.phase==CoastPhase.Debrief?"К НОВОМУ ДНЮ":s.phase==CoastPhase.Defeat?"ПОВТОРИТЬ ДЕНЬ":"В МЕНЮ";
+                roundText.text="Ядро: "+Mathf.CeilToInt(s.campHP)+" / "+g.Rules.campHP+" • Оператор: "+Mathf.CeilToInt(s.operatorHP)+" / "+g.Rules.operatorHP+"\nУничтожено: "+s.killed+"\nКамня доставлено: "+s.delivered+"\nПрорывы: север "+s.leaks[0]+", запад "+s.leaks[1]+", восток "+s.leaks[2]+"\n\n"+(s.phase==CoastPhase.Debrief?"Следующая ночь: "+g.Wave.title+"\n"+g.Wave.advice:s.phase==CoastPhase.Defeat?"Удлините путь в радиусе защиты.\nПрямые проходы слишком быстро выпускают врагов.":"Три стартовые ночи пройдены. Командный узел защищён.");}
         }
         void UpdateService()
         {
             var g=root.Game;var s=g.S;
             if(serviceId=="barracks"){serviceTitle.text="КАЗАРМА";serviceBody.text="РАБОЧИЕ "+s.workers.Count+" / 6\nГРУЗ "+(8+s.harvestLevel*2)+" КАМ. • РЕЙС ≈20 СЕК.\nЗа день доставлено: "+s.delivered+" КАМ.\n"+(s.queuedWorker!=0?"Обучение: "+Mathf.CeilToInt(s.hireRemaining)+" сек.":"Камень начисляется при разгрузке.");}
             else if(serviceId=="power"){serviceTitle.text="ЭНЕРГИЯ";serviceBody.text="ЗАНЯТО "+g.PowerUsed+" / "+g.Capacity+"\nУлучшений: "+s.generatorLevel+" / 2\nРабочие не занимают мощность.\nЗащита требует 2–3 энергии.";}
-            else if(serviceId=="camp"){serviceTitle.text="ЛАГЕРЬ";serviceBody.text="ПРОЧНОСТЬ "+Mathf.CeilToInt(s.campHP)+" / 600\nРемонт доступен днём.\n1 камень восстанавливает до 8 HP.\nРассвет даёт 100 кредитов.";}
+            else if(serviceId=="camp"){serviceTitle.text="КОМАНДНЫЙ УЗЕЛ";serviceBody.text="ЯДРО "+Mathf.CeilToInt(s.campHP)+" / "+g.Rules.campHP+" • ОПЕРАТОР "+Mathf.CeilToInt(s.operatorHP)+" / "+g.Rules.operatorHP+"\nРемонт доступен днём.\n1 камень восстанавливает до 8 HP.\nРассвет даёт 100 кредитов.";}
             else if(serviceId=="lab"){serviceTitle.text="ЛАБОРАТОРИЯ";serviceBody.text=!s.lab?"Введите лабораторию в работу со дня 2.\nЗатем исследуйте новый вид защиты.\nИсследование открывает покупку,\nно не дарит башню.":"ОТКРЫТО: "+((s.tech&1)>0?"АРКАН ":"")+((s.tech&2)>0?"КРИО ":"")+((s.tech&4)>0?"ТЕСЛА":"")+"\n"+(s.queuedTech!=0?"Исследование: "+Mathf.CeilToInt(s.labRemaining)+" сек.":"Выберите технологию. Длительность: 20 сек.")+"\nТесла доступна со дня 3.";}
             else{serviceTitle.text="ОРУЖЕЙНАЯ";serviceBody.text=!s.armory?"Введите оружейную в работу со дня 2.\nУлучшения действуют на всё семейство\nсуществующей и будущей защиты.":"Два уровня: +20% / +40% базового урона.\nПулемёт "+s.weaponLevels[0]+" • Аркан "+s.weaponLevels[1]+"\nТесла "+s.weaponLevels[2]+" • Крио "+s.weaponLevels[3]+"\n"+(s.queuedWeapon>=0?"Улучшение: "+Mathf.CeilToInt(s.armoryRemaining)+" сек.":"Выберите семейство.");}
         }

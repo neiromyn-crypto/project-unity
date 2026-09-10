@@ -1,0 +1,11 @@
+[
+  {
+    "id": "OperatorCore",
+    "name": "Existing command platform",
+    "before": 1968376,
+    "after": 31856,
+    "vertices": 52735,
+    "seconds": 28.94,
+    "skinned": false
+  }
+]

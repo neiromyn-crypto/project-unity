@@ -16,8 +16,8 @@ namespace DawnGuard.BlackwoodLTD
     }
     [Serializable] public sealed class EnemySpec
     {
-        public string id, title;
-        public float hp, speed, dps, physical=1;
+        public string id, title,role;
+        public float hp, speed, damage, attackInterval=1, visualScale=.72f, physical=1;
         public int reward;
     }
     [Serializable] public sealed class CoastSpawn
@@ -33,8 +33,9 @@ namespace DawnGuard.BlackwoodLTD
     }
     [Serializable] public sealed class CoastRules
     {
-        public int version=2, width=44, depth=36, startingCredits=220, startingStone=100, dawnCredits=100;
-        public float firstDay=120, daySeconds=90, campHP=600;
+        public int version=3, width=44, depth=36, startingCredits=220, startingStone=100, dawnCredits=100;
+        // campHP is retained as the existing serialized integrity field; it now protects the command node.
+        public float firstDay=120, daySeconds=90, campHP=300, operatorHP=100;
         public DefenseSpec[] defenses;
         public EnemySpec[] enemies;
         public CoastWave[] waves;
@@ -55,22 +56,15 @@ namespace DawnGuard.BlackwoodLTD
                     new DefenseSpec {id="cryo",title="КРИО-СТРАЖ",description="Замедляет группу на 25%. Нужен соседний источник урона.",credits=100,stone=25,power=2,unlock=2,damage=6,cooldown=1.5f,range=4,hp=160}
                 },
                 enemies=new[] {
-                    new EnemySpec {id="walker",title="ЗОМБИ",hp=48,speed=.85f,dps=10,reward=2},
-                    new EnemySpec {id="runner",title="БЕГУН",hp=32,speed=1.45f,dps=8,reward=3},
-                    new EnemySpec {id="brute",title="ГРОМИЛА",hp=260,speed=.6f,dps=24,reward=12},
-                    new EnemySpec {id="sapper",title="САПЁР",hp=160,speed=.8f,dps=10,reward=8},
-                    new EnemySpec {id="armored",title="БРОНИРОВАННЫЙ",hp=300,speed=.6f,dps=24,reward=14,physical=.6f},
-                    new EnemySpec {id="boss",title="СЕРДЦЕ ТЬМЫ",hp=2400,speed=.45f,dps=40,reward=80,physical=.75f}
+                    new EnemySpec {id="walker",title="БРОДЯГА",role="Basic Walker",hp=48,speed=.85f,damage=10,attackInterval=1.25f,reward=2,visualScale=.82f},
+                    new EnemySpec {id="runner",title="КИБЕР-ДЕМОН",role="Fast Enemy",hp=32,speed=1.45f,damage=6,attackInterval=.8f,reward=3,visualScale=.9f},
+                    new EnemySpec {id="brute",title="ТОЛСТЯК",role="Heavy / Brute",hp=200,speed=.6f,damage=24,attackInterval=2,reward=12,visualScale=1.15f},
+                    new EnemySpec {id="special",title="КОСТЯНАЯ ВЕДЬМА",role="Special Enemy",hp=90,speed=.8f,damage=12,attackInterval=1.5f,reward=8,visualScale=.9f}
                 },
                 waves=new[] {
-                    W("Первый рубеж","Север: соедините скальные опоры барьерами и прикройте поворот.",G("walker",0,14,1)),
-                    W("Шорох на западе","Новый вход на западе. Бегуны быстро проходят прямой участок.",G("walker",0,14,1),G("runner",1,8,9,1.8f)),
-                    W("Тяжёлые шаги","Громилы идут с востока. Подготовьте сильный одиночный урон.",G("walker",0,18,1),G("runner",2,6,8),G("brute",2,2,20,9)),
-                    W("Три направления","Все входы активны. Общий рубеж должен прикрывать боковые потоки.",G("walker",0,12,1),G("walker",1,12,3),G("runner",2,10,12),G("brute",1,2,28,8)),
-                    W("Трещина в стене","Сапёры с востока метят барьеры. Сохраните заряд ремонта.",G("walker",0,10,1),G("walker",1,10,3),G("runner",2,10,12),G("brute",0,3,22,6),G("sapper",2,2,28,12)),
-                    W("Железная кожа","Броня ослабляет физические атаки. Нужна магическая защита.",G("walker",1,18,1),G("runner",2,16,7),G("brute",0,5,20,5),G("armored",2,3,35,8)),
-                    W("Перед бурей","Последняя возможность усилить оборону перед финалом.",G("walker",0,18,1),G("runner",1,18,7),G("brute",2,4,20,5),G("sapper",1,2,32,8),G("armored",0,4,40,8)),
-                    W("Последняя ночь","Убейте Сердце тьмы и зачистите все три направления.",G("walker",0,22,1),G("runner",1,20,6),G("brute",2,6,20,5),G("sapper",2,2,32,9),G("armored",1,4,42,9),G("boss",0,1,48))
+                    W("Защитить оператора","8 бродяг с севера. Прикройте путь к командному узлу.",G("walker",0,8,1,2.5f)),
+                    W("Быстрый прорыв","Север и запад: 8 бродяг и 4 кибер-демона.",G("walker",0,8,1,2.5f),G("runner",1,4,12,3)),
+                    W("Тяжёлый контакт","8 бродяг, 4 кибер-демона и 1 толстяк с востока.",G("walker",0,8,1,2.5f),G("runner",1,4,12,3),G("brute",2,1,24))
                 }
             };
         }
@@ -90,7 +84,7 @@ namespace DawnGuard.BlackwoodLTD
         public int id,front,nx,nz,wallTarget;
         public string kind;
         public float x,z,hp,slow,attackTimer,stalled;
-        public bool moving,attacking;
+        public bool moving,attacking,breached;
         public CoastEnemy Copy() {return (CoastEnemy)MemberwiseClone();}
     }
     [Serializable] public sealed class CoastWorker
@@ -106,7 +100,7 @@ namespace DawnGuard.BlackwoodLTD
         public bool lab,armory;
         public int[] weaponLevels=new int[4], leaks=new int[3];
         public CoastPhase phase;
-        public float remaining,elapsed,campHP,hireRemaining,labRemaining,armoryRemaining;
+        public float remaining,elapsed,campHP,operatorHP,hireRemaining,labRemaining,armoryRemaining;
         public int queuedWorker,queuedTech,queuedWeapon=-1,spawnCursor,delivered,killed,supportCharges=2;
         public float supportCooldown,droneX=14,droneZ=6,repairRemaining;
         public int repairTarget;

@@ -7,6 +7,7 @@ namespace DawnGuard.BlackwoodLTD
     public sealed partial class CoastSession
     {
         readonly Dictionary<int,int[,]> sapperFields=new Dictionary<int,int[,]>();
+        readonly Dictionary<int,int[,]> breachFields=new Dictionary<int,int[,]>();
         int sapperRevision=-1;
         public static float PersonalSpace(string kind){return kind=="boss"?1.9f:kind=="brute"||kind=="armored"?1.55f:1.3f;}
         bool AdvanceEnemy(CoastEnemy e,float step)
@@ -27,25 +28,51 @@ namespace DawnGuard.BlackwoodLTD
         }
         void TickEnemies(float dt)
         {
-            if(sapperRevision!=Map.Revision){sapperFields.Clear();sapperRevision=Map.Revision;}
+            if(sapperRevision!=Map.Revision){sapperFields.Clear();breachFields.Clear();sapperRevision=Map.Revision;}
             int attackers=0;
             foreach(var e in S.enemies)
             {
                 if(e.hp<=0)continue;var spec=Rules.Enemy(e.kind);e.slow=Math.Max(0,e.slow-dt);e.attacking=false;
-                if(e.kind=="sapper"&&S.buildings.Exists(b=>b.kind=="wall")&&TickSapper(e,dt))continue;
+                // A clear route always wins. Only a barrier whose removal reconnects this
+                // enemy to the command node is eligible when the route is actually blocked.
+                if(Map.Distances[e.nx,e.nz]<0&&TickSapper(e,dt))continue;
+                e.wallTarget=0;
                 if(!e.moving)
                 {
                     if(e.nx==Map.Goal.x&&e.nz==Map.Goal.z)
                     {
-                        e.attacking=true;int slot=attackers++;float spread=slot%6-2.5f;MovePoint(ref e.x,ref e.z,Map.CampX+spread*1.1f,7.7f+(slot/6)*1.4f,spec.speed*dt);
-                        if(slot<6){S.campHP=Math.Max(0,S.campHP-spec.dps*dt);if(e.attackTimer<=0){S.leaks[e.front]++;e.attackTimer=100000;Emit("camp_hit",e.id,0,e.x,e.z);}}
-                        if(S.campHP<=0){S.phase=CoastPhase.Defeat;Emit("defeat",0,0,Map.CampX,5);return;}continue;
+                        int slot=attackers++;float spread=slot%6-2.5f;
+                        bool reached=MovePoint(ref e.x,ref e.z,Map.CampX+spread*.8f,7.1f+(slot/6)*1.4f,spec.speed*dt);
+                        e.attacking=reached&&slot<6;
+                        if(e.attacking)
+                        {
+                            if(!e.breached){S.leaks[e.front]++;e.breached=true;}
+                            e.attackTimer-=dt;
+                            if(e.attackTimer<=0){DamageCommandNode(spec.damage);e.attackTimer=Math.Max(.1f,spec.attackInterval);}
+                        }
+                        if(S.phase==CoastPhase.Defeat)return;continue;
                     }
                     Cell next;if(!Map.Next(new Cell(e.nx,e.nz),Map.Distances,out next)){e.stalled+=dt;continue;}
                     e.nx=next.x;e.nz=next.z;e.moving=true;
                 }
                 float slow=e.slow>0?(e.kind=="boss"?.875f:.75f):1;
                 if(AdvanceEnemy(e,spec.speed*slow*dt))e.moving=false;
+            }
+        }
+        public void DamageCommandNode(float amount)
+        {
+            if(!Finite(amount)||amount<0)throw new ArgumentOutOfRangeException("amount");
+            if(S.phase!=CoastPhase.Night||amount==0)return;
+            if(S.campHP>0)
+            {
+                S.campHP=Math.Max(0,S.campHP-amount);Emit("core_hit",0,0,Map.CampX,5.2f);
+                // The intact core absorbs this entire hit. The next hit can reach the operator.
+                if(S.campHP==0)Emit("core_broken",0,0,Map.CampX,5.2f);
+            }
+            else
+            {
+                S.operatorHP=Math.Max(0,S.operatorHP-amount);Emit("operator_hit",0,0,Map.CampX,5.2f);
+                if(S.operatorHP==0){S.phase=CoastPhase.Defeat;Emit("defeat",0,0,Map.CampX,5.2f);}
             }
         }
         bool TickSapper(CoastEnemy e,float dt)
@@ -57,15 +84,23 @@ namespace DawnGuard.BlackwoodLTD
                 int ax=Math.Max(0,Math.Min(Map.Width-2,(int)Math.Round(e.x-1))),az=Math.Max(7,Math.Min(Map.Depth-2,(int)Math.Round(e.z-1)));
                 foreach(var b in S.buildings)if(b.kind=="wall")
                 {
+                    int[,] reopened;
+                    if(!breachFields.TryGetValue(b.id,out reopened))
+                    {
+                        int old=Map.Occupancy[b.x,b.z];Map.Occupancy[b.x,b.z]=0;
+                        try{reopened=Map.Field(new[]{Map.Goal});}finally{Map.Occupancy[b.x,b.z]=old;}
+                        breachFields[b.id]=reopened;
+                    }
+                    if(reopened[ax,az]<0)continue;
                     int[,] f=WallField(b);int score=f[ax,az];if(score>=0&&score<best){best=score;wall=b;}
                 }
-                if(wall==null){e.wallTarget=0;return false;}e.wallTarget=wall.id;e.moving=false;e.nx=ax;e.nz=az;e.attackTimer=2;
+                if(wall==null){e.wallTarget=0;return false;}e.wallTarget=wall.id;e.moving=false;e.nx=ax;e.nz=az;e.attackTimer=0;
             }
             var field=WallField(wall);
             if(!e.moving&&field[e.nx,e.nz]==0)
             {
-                e.attacking=true;if((e.attackTimer-=dt)<=0){wall.hp-=60;e.attackTimer=2;Emit("wall_hit",e.id,wall.id,wall.x+.5f,wall.z+.5f);
-                    if(wall.hp<=0){S.buildings.Remove(wall);Map.Rebuild(S.buildings);RefreshPower();sapperFields.Clear();sapperRevision=Map.Revision;e.wallTarget=0;Emit("collapse",wall.id,0,wall.x+.5f,wall.z+.5f);}}
+                e.attacking=true;if((e.attackTimer-=dt)<=0){var spec=Rules.Enemy(e.kind);wall.hp-=spec.damage;e.attackTimer=Math.Max(.1f,spec.attackInterval);Emit("wall_hit",e.id,wall.id,wall.x+.5f,wall.z+.5f);
+                    if(wall.hp<=0){S.buildings.Remove(wall);Map.Rebuild(S.buildings);RefreshPower();sapperFields.Clear();breachFields.Clear();sapperRevision=Map.Revision;e.wallTarget=0;Emit("collapse",wall.id,0,wall.x+.5f,wall.z+.5f);}}
                 return true;
             }
             if(!e.moving){Cell next;if(!Map.Next(new Cell(e.nx,e.nz),field,out next)){e.wallTarget=0;return false;}e.nx=next.x;e.nz=next.z;e.moving=true;}

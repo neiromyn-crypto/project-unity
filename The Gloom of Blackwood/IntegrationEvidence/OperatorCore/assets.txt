@@ -1,0 +1,239 @@
+Assets/Enemy/Cyber_Demon/Cyber_Demon.fbx | rig=Generic | root=(1.00, 1.00, 1.00)
+  CLIP Armature|Armature|clip0|baselayer seconds=1 rate=30 loop=False
+  TAKE Armature|Armature|clip0|baselayer 0..0
+  MESH char1 vertices=17707 bounds=Center: (0.00, 0.85, 0.00), Extents: (0.65, 0.85, 0.26)
+Assets/Enemy/Cyber_Demon/Cyber_Demonn.fbx | rig=Generic | root=(1.00, 1.00, 1.00)
+  CLIP Dead seconds=2,958333 rate=24 loop=False
+  CLIP Right_Hand_Sword_Slash seconds=1,5 rate=24 loop=False
+  CLIP Running seconds=0,625 rate=24 loop=False
+  CLIP Walking seconds=1 rate=24 loop=False
+  TAKE Running 0..15
+  TAKE Walking 0..25
+  TAKE Dead 0..71
+  TAKE Right_Hand_Sword_Slash 0..36
+  MESH char1 vertices=17702 bounds=Center: (0.00, 0.00, 0.84), Extents: (0.65, 0.26, 0.84)
+Assets/Enemy/Skeletal_Witch_Rig_biped/Skeletal_Witch_Rig_biped_Character_output.fbx | rig=Generic | root=(1.00, 1.00, 1.00)
+  CLIP Armature|Armature|clip0|baselayer seconds=1 rate=30 loop=False
+  TAKE Armature|Armature|clip0|baselayer 0..0
+  MESH char1 vertices=20642 bounds=Center: (0.00, 0.85, 0.00), Extents: (0.58, 0.85, 0.26)
+Assets/Enemy/Skeletal_Witch_Rig_biped/Skeletal_Witch_Rig_biped_Meshy_AI_Meshy_Merged_Animations.fbx | rig=Generic | root=(1.00, 1.00, 1.00)
+  CLIP Right_Hand_Sword_Slash seconds=1,5 rate=24 loop=False
+  CLIP Running seconds=0,625 rate=24 loop=False
+  CLIP Shot_and_Fall_Forward seconds=2,166667 rate=24 loop=False
+  CLIP Walking seconds=1 rate=24 loop=False
+  TAKE Running 0..15
+  TAKE Walking 0..25
+  TAKE Right_Hand_Sword_Slash 0..36
+  TAKE Shot_and_Fall_Forward 0..53
+  MESH char1 vertices=20613 bounds=Center: (0.00, 0.00, 0.85), Extents: (0.58, 0.26, 0.85)
+Assets/Enemy/TOLSTYAK/Meshy_AI_Mawbound_Behemoth_biped_Meshy_AI_Meshy_Merged_Animations.fbx | rig=Human | root=(1.00, 1.00, 1.00)
+  CLIP Character_output.fbx seconds=0,03333334 rate=30 loop=False
+  CLIP Face_Punch_Reaction seconds=2,833333 rate=30 loop=True
+  CLIP Fall_Dead_from_Abdominal_Injury seconds=3,5 rate=30 loop=False
+  CLIP Idle_9 seconds=2 rate=30 loop=False
+  CLIP Running seconds=0,6333334 rate=30 loop=True
+  CLIP Step_in_High_Kick seconds=1,3 rate=30 loop=False
+  CLIP Sweep_Kick seconds=4,066667 rate=30 loop=False
+  CLIP Walking seconds=1,033333 rate=30 loop=False
+  TAKE Face_Punch_Reaction 0..85
+  TAKE Fall_Dead_from_Abdominal_Injury 0..105
+  TAKE Idle_9 0..60
+  TAKE Running 0..19
+  TAKE Step_in_High_Kick 0..39
+  TAKE Sweep_Kick 0..122
+  TAKE Walking 0..31
+  TAKE Character_output.fbx 0..1
+  MESH char1 vertices=87961 bounds=Center: (0.00, 0.84, 0.00), Extents: (1.15, 0.84, 0.52)
+  AVATAR Meshy_AI_Mawbound_Behemoth_biped_Meshy_AI_Meshy_Merged_AnimationsAvatar valid=True human=True
+Assets/Enemy/TOLSTYAK/TOLSTYAK.fbx | rig=Human | root=(1.00, 1.00, 1.00)
+  CLIP Armature|Armature|clip0|baselayer seconds=1 rate=30 loop=False
+  TAKE Armature|Armature|clip0|baselayer 0..0
+  MESH char1 vertices=87961 bounds=Center: (0.00, 0.84, 0.00), Extents: (1.15, 0.84, 0.52)
+  AVATAR TOLSTYAKAvatar valid=True human=True
+Assets/Enemy/Zombie/Animations/Zombie@Z_Attack.FBX | rig=Human | root=(1.00, 1.00, 1.00)
+  CLIP Z_Attack seconds=1 rate=30 loop=True
+  TAKE Z_Attack 0..30
+  MESH Z_Body vertices=256 bounds=Center: (0.00, 0.02, 1.16), Extents: (0.16, 0.14, 0.17)
+  MESH Z_BodyTop vertices=490 bounds=Center: (0.00, 0.04, 1.38), Extents: (0.22, 0.14, 0.20)
+  MESH Z_Head vertices=1074 bounds=Center: (0.00, -0.02, 1.65), Extents: (0.09, 0.11, 0.14)
+  MESH Z_Hip vertices=154 bounds=Center: (0.00, 0.00, 0.91), Extents: (0.18, 0.12, 0.14)
+  MESH Z_L_ArmPalm vertices=232 bounds=Center: (-0.64, -0.05, 1.10), Extents: (0.08, 0.09, 0.12)
+  MESH Z_L_Forearm vertices=99 bounds=Center: (-0.46, 0.07, 1.23), Extents: (0.16, 0.09, 0.11)
+  MESH Z_L_LegCalf vertices=189 bounds=Center: (-0.17, 0.03, 0.29), Extents: (0.11, 0.14, 0.29)
+  MESH Z_L_LegThigh vertices=96 bounds=Center: (-0.11, 0.00, 0.66), Extents: (0.10, 0.11, 0.21)
+  MESH Z_L_Upperarm vertices=128 bounds=Center: (-0.26, 0.08, 1.37), Extents: (0.15, 0.08, 0.13)
+  MESH Z_R_ArmPalm vertices=232 bounds=Center: (0.64, -0.05, 1.10), Extents: (0.08, 0.09, 0.12)
+  MESH Z_R_Forearm vertices=99 bounds=Center: (0.46, 0.07, 1.23), Extents: (0.16, 0.09, 0.11)
+  MESH Z_R_LegCalf vertices=189 bounds=Center: (0.17, 0.03, 0.29), Extents: (0.11, 0.14, 0.29)
+  MESH Z_R_LegThigh vertices=96 bounds=Center: (0.11, 0.00, 0.66), Extents: (0.10, 0.11, 0.21)
+  MESH Z_R_Upperarm vertices=128 bounds=Center: (0.26, 0.08, 1.37), Extents: (0.15, 0.08, 0.13)
+Assets/Enemy/Zombie/Animations/Zombie@Z_FallingBack.FBX | rig=Human | root=(1.00, 1.00, 1.00)
+  CLIP Z_FallingBack seconds=1,4 rate=30 loop=False
+  TAKE Z_FallingBack 0..42
+  MESH Zombie vertices=2520 bounds=Center: (0.00, 0.02, 0.90), Extents: (0.71, 0.16, 0.90)
+Assets/Enemy/Zombie/Animations/Zombie@Z_FallingForward.FBX | rig=Human | root=(1.00, 1.00, 1.00)
+  CLIP Z_FallingForward seconds=1,166667 rate=30 loop=False
+  TAKE Z_FallingForward 0..35
+  MESH Zombie vertices=2520 bounds=Center: (0.00, 0.02, 0.90), Extents: (0.71, 0.16, 0.90)
+Assets/Enemy/Zombie/Animations/Zombie@Z_Idle.FBX | rig=Human | root=(1.00, 1.00, 1.00)
+  CLIP Z_Idle seconds=2,666667 rate=30 loop=True
+  TAKE Z_Idle 0..80
+  MESH Z_Body vertices=256 bounds=Center: (0.00, 0.02, 1.16), Extents: (0.16, 0.14, 0.17)
+  MESH Z_BodyTop vertices=490 bounds=Center: (0.00, 0.04, 1.38), Extents: (0.22, 0.14, 0.20)
+  MESH Z_Head vertices=1074 bounds=Center: (0.00, -0.02, 1.65), Extents: (0.09, 0.11, 0.14)
+  MESH Z_Hip vertices=154 bounds=Center: (0.00, 0.00, 0.91), Extents: (0.18, 0.12, 0.14)
+  MESH Z_L_ArmPalm vertices=232 bounds=Center: (-0.64, -0.05, 1.10), Extents: (0.08, 0.09, 0.12)
+  MESH Z_L_Forearm vertices=99 bounds=Center: (-0.46, 0.07, 1.23), Extents: (0.16, 0.09, 0.11)
+  MESH Z_L_LegCalf vertices=189 bounds=Center: (-0.17, 0.03, 0.29), Extents: (0.11, 0.14, 0.29)
+  MESH Z_L_LegThigh vertices=96 bounds=Center: (-0.11, 0.00, 0.66), Extents: (0.10, 0.11, 0.21)
+  MESH Z_L_Upperarm vertices=128 bounds=Center: (-0.26, 0.08, 1.37), Extents: (0.15, 0.08, 0.13)
+  MESH Z_R_ArmPalm vertices=232 bounds=Center: (0.64, -0.05, 1.10), Extents: (0.08, 0.09, 0.12)
+  MESH Z_R_Forearm vertices=99 bounds=Center: (0.46, 0.07, 1.23), Extents: (0.16, 0.09, 0.11)
+  MESH Z_R_LegCalf vertices=189 bounds=Center: (0.17, 0.03, 0.29), Extents: (0.11, 0.14, 0.29)
+  MESH Z_R_LegThigh vertices=96 bounds=Center: (0.11, 0.00, 0.66), Extents: (0.10, 0.11, 0.21)
+  MESH Z_R_Upperarm vertices=128 bounds=Center: (0.26, 0.08, 1.37), Extents: (0.15, 0.08, 0.13)
+Assets/Enemy/Zombie/Animations/Zombie@Z_Run.FBX | rig=Human | root=(1.00, 1.00, 1.00)
+  CLIP Z_Run seconds=1,533333 rate=30 loop=True
+  TAKE Z_Run 0..50
+  MESH Z_Body vertices=260 bounds=Center: (0.00, 0.02, 1.16), Extents: (0.16, 0.14, 0.17)
+  MESH Z_BodyTop vertices=490 bounds=Center: (0.00, 0.04, 1.38), Extents: (0.22, 0.14, 0.20)
+  MESH Z_Head vertices=1074 bounds=Center: (0.00, -0.02, 1.65), Extents: (0.09, 0.11, 0.14)
+  MESH Z_Hip vertices=154 bounds=Center: (0.00, 0.00, 0.91), Extents: (0.18, 0.12, 0.14)
+  MESH Z_L_ArmPalm vertices=232 bounds=Center: (-0.64, -0.05, 1.10), Extents: (0.08, 0.09, 0.12)
+  MESH Z_L_Forearm vertices=99 bounds=Center: (-0.46, 0.07, 1.23), Extents: (0.16, 0.09, 0.11)
+  MESH Z_L_LegCalf vertices=189 bounds=Center: (-0.17, 0.03, 0.29), Extents: (0.11, 0.14, 0.29)
+  MESH Z_L_LegThigh vertices=96 bounds=Center: (-0.11, 0.00, 0.66), Extents: (0.10, 0.11, 0.21)
+  MESH Z_L_Upperarm vertices=128 bounds=Center: (-0.26, 0.08, 1.37), Extents: (0.15, 0.08, 0.13)
+  MESH Z_R_ArmPalm vertices=232 bounds=Center: (0.64, -0.05, 1.10), Extents: (0.08, 0.09, 0.12)
+  MESH Z_R_Forearm vertices=99 bounds=Center: (0.46, 0.07, 1.23), Extents: (0.16, 0.09, 0.11)
+  MESH Z_R_LegCalf vertices=189 bounds=Center: (0.17, 0.03, 0.29), Extents: (0.11, 0.14, 0.29)
+  MESH Z_R_LegThigh vertices=96 bounds=Center: (0.11, 0.00, 0.66), Extents: (0.10, 0.11, 0.21)
+  MESH Z_R_Upperarm vertices=128 bounds=Center: (0.26, 0.08, 1.37), Extents: (0.15, 0.08, 0.13)
+Assets/Enemy/Zombie/Animations/Zombie@Z_Run_InPlace.FBX | rig=Human | root=(1.00, 1.00, 1.00)
+  CLIP Z_Run_InPlace seconds=1,533333 rate=30 loop=True
+  TAKE Z_Run_InPlace 0..46
+  MESH Z_Body vertices=256 bounds=Center: (0.00, 0.02, 1.16), Extents: (0.16, 0.14, 0.17)
+  MESH Z_BodyTop vertices=490 bounds=Center: (0.00, 0.04, 1.38), Extents: (0.22, 0.14, 0.20)
+  MESH Z_Head vertices=1074 bounds=Center: (0.00, -0.02, 1.65), Extents: (0.09, 0.11, 0.14)
+  MESH Z_Hip vertices=154 bounds=Center: (0.00, 0.00, 0.91), Extents: (0.18, 0.12, 0.14)
+  MESH Z_L_ArmPalm vertices=232 bounds=Center: (-0.64, -0.05, 1.10), Extents: (0.08, 0.09, 0.12)
+  MESH Z_L_Forearm vertices=99 bounds=Center: (-0.46, 0.07, 1.23), Extents: (0.16, 0.09, 0.11)
+  MESH Z_L_LegCalf vertices=189 bounds=Center: (-0.17, 0.03, 0.29), Extents: (0.11, 0.14, 0.29)
+  MESH Z_L_LegThigh vertices=96 bounds=Center: (-0.11, 0.00, 0.66), Extents: (0.10, 0.11, 0.21)
+  MESH Z_L_Upperarm vertices=128 bounds=Center: (-0.26, 0.08, 1.37), Extents: (0.15, 0.08, 0.13)
+  MESH Z_R_ArmPalm vertices=232 bounds=Center: (0.64, -0.05, 1.10), Extents: (0.08, 0.09, 0.12)
+  MESH Z_R_Forearm vertices=99 bounds=Center: (0.46, 0.07, 1.23), Extents: (0.16, 0.09, 0.11)
+  MESH Z_R_LegCalf vertices=189 bounds=Center: (0.17, 0.03, 0.29), Extents: (0.11, 0.14, 0.29)
+  MESH Z_R_LegThigh vertices=96 bounds=Center: (0.11, 0.00, 0.66), Extents: (0.10, 0.11, 0.21)
+  MESH Z_R_Upperarm vertices=128 bounds=Center: (0.26, 0.08, 1.37), Extents: (0.15, 0.08, 0.13)
+Assets/Enemy/Zombie/Animations/Zombie@Z_Walk.FBX | rig=Human | root=(1.00, 1.00, 1.00)
+  CLIP Z_Walk seconds=2 rate=30 loop=True
+  TAKE Z_Walk 0..60
+  MESH Z_Body vertices=260 bounds=Center: (0.00, 0.02, 1.16), Extents: (0.16, 0.14, 0.17)
+  MESH Z_BodyTop vertices=490 bounds=Center: (0.00, 0.04, 1.38), Extents: (0.22, 0.14, 0.20)
+  MESH Z_Head vertices=1074 bounds=Center: (0.00, -0.02, 1.65), Extents: (0.09, 0.11, 0.14)
+  MESH Z_Hip vertices=154 bounds=Center: (0.00, 0.00, 0.91), Extents: (0.18, 0.12, 0.14)
+  MESH Z_L_ArmPalm vertices=232 bounds=Center: (-0.64, -0.05, 1.10), Extents: (0.08, 0.09, 0.12)
+  MESH Z_L_Forearm vertices=99 bounds=Center: (-0.46, 0.07, 1.23), Extents: (0.16, 0.09, 0.11)
+  MESH Z_L_LegCalf vertices=189 bounds=Center: (-0.17, 0.03, 0.29), Extents: (0.11, 0.14, 0.29)
+  MESH Z_L_LegThigh vertices=96 bounds=Center: (-0.11, 0.00, 0.66), Extents: (0.10, 0.11, 0.21)
+  MESH Z_L_Upperarm vertices=128 bounds=Center: (-0.26, 0.08, 1.37), Extents: (0.15, 0.08, 0.13)
+  MESH Z_R_ArmPalm vertices=232 bounds=Center: (0.64, -0.05, 1.10), Extents: (0.08, 0.09, 0.12)
+  MESH Z_R_Forearm vertices=99 bounds=Center: (0.46, 0.07, 1.23), Extents: (0.16, 0.09, 0.11)
+  MESH Z_R_LegCalf vertices=189 bounds=Center: (0.17, 0.03, 0.29), Extents: (0.11, 0.14, 0.29)
+  MESH Z_R_LegThigh vertices=96 bounds=Center: (0.11, 0.00, 0.66), Extents: (0.10, 0.11, 0.21)
+  MESH Z_R_Upperarm vertices=128 bounds=Center: (0.26, 0.08, 1.37), Extents: (0.15, 0.08, 0.13)
+Assets/Enemy/Zombie/Animations/Zombie@Z_Walk1.FBX | rig=Human | root=(1.00, 1.00, 1.00)
+  CLIP Z_Walk1 seconds=2 rate=30 loop=True
+  TAKE Z_Walk1 0..60
+  MESH Z_Body vertices=260 bounds=Center: (0.00, 0.02, 1.16), Extents: (0.16, 0.14, 0.17)
+  MESH Z_BodyTop vertices=490 bounds=Center: (0.00, 0.04, 1.38), Extents: (0.22, 0.14, 0.20)
+  MESH Z_Head vertices=1074 bounds=Center: (0.00, -0.02, 1.65), Extents: (0.09, 0.11, 0.14)
+  MESH Z_Hip vertices=154 bounds=Center: (0.00, 0.00, 0.91), Extents: (0.18, 0.12, 0.14)
+  MESH Z_L_ArmPalm vertices=232 bounds=Center: (-0.64, -0.05, 1.10), Extents: (0.08, 0.09, 0.12)
+  MESH Z_L_Forearm vertices=99 bounds=Center: (-0.46, 0.07, 1.23), Extents: (0.16, 0.09, 0.11)
+  MESH Z_L_LegCalf vertices=211 bounds=Center: (-0.17, 0.03, 0.29), Extents: (0.11, 0.14, 0.29)
+  MESH Z_L_LegThigh vertices=96 bounds=Center: (-0.11, 0.00, 0.67), Extents: (0.10, 0.11, 0.20)
+  MESH Z_L_Upperarm vertices=128 bounds=Center: (-0.26, 0.08, 1.37), Extents: (0.15, 0.08, 0.13)
+  MESH Z_R_ArmPalm vertices=232 bounds=Center: (0.64, -0.05, 1.10), Extents: (0.08, 0.09, 0.12)
+  MESH Z_R_Forearm vertices=99 bounds=Center: (0.46, 0.07, 1.23), Extents: (0.16, 0.09, 0.11)
+  MESH Z_R_LegCalf vertices=209 bounds=Center: (0.17, 0.03, 0.29), Extents: (0.11, 0.14, 0.29)
+  MESH Z_R_LegThigh vertices=96 bounds=Center: (0.11, 0.00, 0.67), Extents: (0.10, 0.11, 0.20)
+  MESH Z_R_Upperarm vertices=128 bounds=Center: (0.26, 0.08, 1.37), Extents: (0.15, 0.08, 0.13)
+Assets/Enemy/Zombie/Animations/Zombie@Z_Walk1_InPlace.FBX | rig=Human | root=(1.00, 1.00, 1.00)
+  CLIP Z_Walk1_InPlace seconds=2 rate=30 loop=True
+  TAKE Z_Walk1_InPlace 0..60
+  MESH Z_Body vertices=260 bounds=Center: (0.00, 0.02, 1.16), Extents: (0.16, 0.14, 0.17)
+  MESH Z_BodyTop vertices=490 bounds=Center: (0.00, 0.04, 1.38), Extents: (0.22, 0.14, 0.20)
+  MESH Z_Head vertices=1074 bounds=Center: (0.00, -0.02, 1.65), Extents: (0.09, 0.11, 0.14)
+  MESH Z_Hip vertices=154 bounds=Center: (0.00, 0.00, 0.91), Extents: (0.18, 0.12, 0.14)
+  MESH Z_L_ArmPalm vertices=232 bounds=Center: (-0.64, -0.05, 1.10), Extents: (0.08, 0.09, 0.12)
+  MESH Z_L_Forearm vertices=99 bounds=Center: (-0.46, 0.07, 1.23), Extents: (0.16, 0.09, 0.11)
+  MESH Z_L_LegCalf vertices=211 bounds=Center: (-0.17, 0.03, 0.29), Extents: (0.11, 0.14, 0.29)
+  MESH Z_L_LegThigh vertices=96 bounds=Center: (-0.11, 0.00, 0.67), Extents: (0.10, 0.11, 0.20)
+  MESH Z_L_Upperarm vertices=128 bounds=Center: (-0.26, 0.08, 1.37), Extents: (0.15, 0.08, 0.13)
+  MESH Z_R_ArmPalm vertices=232 bounds=Center: (0.64, -0.05, 1.10), Extents: (0.08, 0.09, 0.12)
+  MESH Z_R_Forearm vertices=99 bounds=Center: (0.46, 0.07, 1.23), Extents: (0.16, 0.09, 0.11)
+  MESH Z_R_LegCalf vertices=209 bounds=Center: (0.17, 0.03, 0.29), Extents: (0.11, 0.14, 0.29)
+  MESH Z_R_LegThigh vertices=96 bounds=Center: (0.11, 0.00, 0.67), Extents: (0.10, 0.11, 0.20)
+  MESH Z_R_Upperarm vertices=128 bounds=Center: (0.26, 0.08, 1.37), Extents: (0.15, 0.08, 0.13)
+Assets/Enemy/Zombie/Animations/Zombie@Z_Walk_InPlace.FBX | rig=Human | root=(1.00, 1.00, 1.00)
+  CLIP Z_Walk_InPlace seconds=2 rate=30 loop=True
+  TAKE Z_Walk_InPlace 0..60
+  MESH Z_Body vertices=260 bounds=Center: (0.00, 0.02, 1.16), Extents: (0.16, 0.14, 0.17)
+  MESH Z_BodyTop vertices=490 bounds=Center: (0.00, 0.04, 1.38), Extents: (0.22, 0.14, 0.20)
+  MESH Z_Head vertices=1074 bounds=Center: (0.00, -0.02, 1.65), Extents: (0.09, 0.11, 0.14)
+  MESH Z_Hip vertices=154 bounds=Center: (0.00, 0.00, 0.91), Extents: (0.18, 0.12, 0.14)
+  MESH Z_L_ArmPalm vertices=232 bounds=Center: (-0.64, -0.05, 1.10), Extents: (0.08, 0.09, 0.12)
+  MESH Z_L_Forearm vertices=99 bounds=Center: (-0.46, 0.07, 1.23), Extents: (0.16, 0.09, 0.11)
+  MESH Z_L_LegCalf vertices=189 bounds=Center: (-0.17, 0.03, 0.29), Extents: (0.11, 0.14, 0.29)
+  MESH Z_L_LegThigh vertices=96 bounds=Center: (-0.11, 0.00, 0.66), Extents: (0.10, 0.11, 0.21)
+  MESH Z_L_Upperarm vertices=128 bounds=Center: (-0.26, 0.08, 1.37), Extents: (0.15, 0.08, 0.13)
+  MESH Z_R_ArmPalm vertices=232 bounds=Center: (0.64, -0.05, 1.10), Extents: (0.08, 0.09, 0.12)
+  MESH Z_R_Forearm vertices=99 bounds=Center: (0.46, 0.07, 1.23), Extents: (0.16, 0.09, 0.11)
+  MESH Z_R_LegCalf vertices=189 bounds=Center: (0.17, 0.03, 0.29), Extents: (0.11, 0.14, 0.29)
+  MESH Z_R_LegThigh vertices=96 bounds=Center: (0.11, 0.00, 0.66), Extents: (0.10, 0.11, 0.21)
+  MESH Z_R_Upperarm vertices=128 bounds=Center: (0.26, 0.08, 1.37), Extents: (0.15, 0.08, 0.13)
+Assets/Enemy/Zombie/FBXs/Zombie1.FBX | rig=Human | root=(1.00, 1.00, 1.00)
+  CLIP ZombieFree@animation seconds=2 rate=30 loop=True
+  TAKE ZombieFree@animation 0..60
+  MESH Z_L_Forearm vertices=99 bounds=Center: (-0.46, 0.07, 1.23), Extents: (0.16, 0.09, 0.11)
+  MESH Z_L_LegCalf vertices=211 bounds=Center: (-0.17, 0.03, 0.29), Extents: (0.11, 0.14, 0.29)
+  MESH Z_L_ArmPalm vertices=232 bounds=Center: (-0.64, -0.05, 1.10), Extents: (0.08, 0.09, 0.12)
+  MESH Z_L_LegThigh vertices=96 bounds=Center: (-0.11, 0.00, 0.67), Extents: (0.10, 0.11, 0.20)
+  MESH Z_Hip vertices=154 bounds=Center: (0.00, 0.00, 0.91), Extents: (0.18, 0.12, 0.14)
+  MESH Z_BodyTop vertices=490 bounds=Center: (0.00, 0.04, 1.38), Extents: (0.22, 0.14, 0.20)
+  MESH Z_R_LegThigh vertices=96 bounds=Center: (0.11, 0.00, 0.67), Extents: (0.10, 0.11, 0.20)
+  MESH Z_Body vertices=260 bounds=Center: (0.00, 0.02, 1.16), Extents: (0.16, 0.14, 0.17)
+  MESH Z_R_Upperarm vertices=128 bounds=Center: (0.26, 0.08, 1.37), Extents: (0.15, 0.08, 0.13)
+  MESH Z_Head vertices=1074 bounds=Center: (0.00, -0.02, 1.65), Extents: (0.09, 0.11, 0.14)
+  MESH Z_L_Upperarm vertices=128 bounds=Center: (-0.26, 0.08, 1.37), Extents: (0.15, 0.08, 0.13)
+  MESH Z_R_LegCalf vertices=209 bounds=Center: (0.17, 0.03, 0.29), Extents: (0.11, 0.14, 0.29)
+  MESH Z_R_Forearm vertices=99 bounds=Center: (0.46, 0.07, 1.23), Extents: (0.16, 0.09, 0.11)
+  MESH Z_R_ArmPalm vertices=232 bounds=Center: (0.64, -0.05, 1.10), Extents: (0.08, 0.09, 0.12)
+  AVATAR Zombie1Avatar valid=True human=True
+Assets/Enemy/Zombie/FBXs/Zombie2.FBX | rig=Human | root=(1.00, 1.00, 1.00)
+  CLIP ZombieFreeHead seconds=0,5 rate=30 loop=False
+  TAKE ZombieFreeHead 0..80
+  MESH Z_Body vertices=1724 bounds=Center: (0.00, 0.03, 0.79), Extents: (0.71, 0.16, 0.79)
+  MESH Z_Head vertices=1074 bounds=Center: (0.00, -0.02, 1.65), Extents: (0.09, 0.11, 0.14)
+Assets/Enemy/Zombie/FBXs/Zombie3.FBX | rig=Human | root=(1.00, 1.00, 1.00)
+  CLIP ZombieFree@animation — копия seconds=0,6 rate=30 loop=False
+  TAKE ZombieFree@animation — копия 0..18
+  MESH Zombie1 vertices=2672 bounds=Center: (0.00, 0.02, 0.90), Extents: (0.71, 0.16, 0.90)
+Assets/GameArt/tactical_operator_rig_biped/tactical_operator_rig_biped_Animation_all_frame_rate_60.fbx | rig=Generic | root=(1.00, 1.00, 1.00)
+  CLIP Armature|Armature|dying_backwards seconds=0,8833334 rate=60 loop=False
+  CLIP Armature|Armature|Running seconds=0,6166667 rate=60 loop=False
+  CLIP Armature|Armature|Short_Breathe_and_Look_Around seconds=3,133333 rate=60 loop=False
+  CLIP Armature|Armature|Walking seconds=0,4 rate=60 loop=False
+  TAKE Armature|Armature|dying_backwards 0..53
+  TAKE Armature|Armature|Running 0..38
+  TAKE Armature|Armature|Short_Breathe_and_Look_Around 0..188
+  TAKE Armature|Armature|Walking 0..24
+  MESH char1 vertices=17170 bounds=Center: (0.00, 0.00, 0.83), Extents: (0.47, 0.24, 0.83)
+Assets/GameArt/tactical_operator_rig_biped/tactical_operator_rig_biped_Character_output.fbx | rig=Generic | root=(1.00, 1.00, 1.00)
+  CLIP Armature|Armature|clip0|baselayer seconds=1 rate=30 loop=False
+  TAKE Armature|Armature|clip0|baselayer 0..0
+  MESH char1 vertices=17178 bounds=Center: (0.00, 0.83, 0.00), Extents: (0.47, 0.83, 0.24)
+Assets/GameArt/comandpunktforoperator/comandpunktforoperator.fbx | rig=Generic | root=(100.00, 100.00, 100.00)
+  MESH Mesh_0 vertices=1563183 bounds=Center: (0.00, 0.00, 0.00), Extents: (0.01, 0.01, 0.00)

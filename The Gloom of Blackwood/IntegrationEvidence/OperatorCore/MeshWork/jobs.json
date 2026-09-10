@@ -1,0 +1,12 @@
+{
+    "meshes": [
+        {
+            "id": "OperatorCore",
+            "name": "Existing command platform",
+            "vertices": 1563183,
+            "triangles": 1968376,
+            "target": 14000,
+            "skinned": false
+        }
+    ]
+}

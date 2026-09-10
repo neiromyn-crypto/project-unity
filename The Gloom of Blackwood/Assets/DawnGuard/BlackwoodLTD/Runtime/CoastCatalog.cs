@@ -8,6 +8,8 @@ namespace DawnGuard.BlackwoodLTD
         public CoastRules rules=CoastRules.Create();
         public GameCatalog source;
         public CoastForestProfile forest;
+        public GameObject operatorPlatform,operatorPrefab;
+        public CoastEnemyVisual[] enemyVisuals;
         public GameObject pine,rock,pad,worker,guardian,dock,lantern,basalt,ore,fern;
         public Material ground,water,sand,path,ink,mint,orange;
         public Sprite[] defenseIcons;
@@ -19,8 +21,11 @@ namespace DawnGuard.BlackwoodLTD
         }
         public GameObject Enemy(string id)
         {
+            if(enemyVisuals!=null)foreach(var binding in enemyVisuals)if(binding.id==id)return binding.prefab;
             string key=id=="sapper"||id=="armored"||id=="boss"?"brute":id;
             if(source!=null)foreach(var binding in source.enemies)if(binding.definitionId==key)return binding.prefab;return null;
         }
     }
+    [System.Serializable] public sealed class CoastEnemyVisual
+    {public string id;public GameObject prefab;public float deathSeconds=3.5f;}
 }

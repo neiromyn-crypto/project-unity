@@ -11,6 +11,7 @@ namespace DawnGuard.BlackwoodLTD
     {
         CoastRoot root;CoastCatalog catalog;Transform terrain,units,menuActors;
         public Camera Camera {get;private set;}
+        public CoastOperatorCore OperatorCore {get;private set;}
         Light sun;float nightBlend;
         public CoastCameraRig CameraRig {get;private set;}
         Material ink,mint,orange,cyan,soil,pebble,grass;
@@ -113,7 +114,9 @@ namespace DawnGuard.BlackwoodLTD
             int first=terrain.childCount;
             Place(catalog.Defense("camp"),terrain,new Vector3(4.7f,0,5),3.5f,2.7f);Label(terrain,"КАЗАРМА",new Vector3(4.7f,.12f,3.6f),.13f,Color.white);
             Place(catalog.Defense("camp"),terrain,new Vector3(9,0,4.6f),2.9f,2.2f);Label(terrain,"ОРУЖЕЙНАЯ",new Vector3(9,.12f,3.4f),.12f,Color.white);
-            Place(catalog.Defense("shelter"),terrain,new Vector3(14,0,5.2f),4.5f,3.0f);Label(terrain,"ЛАГЕРЬ",new Vector3(14,.12f,3.5f),.14f,Color.white);
+            if(catalog.operatorPlatform==null)Place(catalog.Defense("shelter"),terrain,new Vector3(14,0,5.2f),4.5f,3.0f);
+            else BuildOperatorCore();
+            Label(terrain,"КОМАНДНЫЙ УЗЕЛ",new Vector3(14,.12f,3.5f),.12f,Color.white);
             Place(catalog.Defense("lab"),terrain,new Vector3(20,0,5),3.3f,2.8f);Label(terrain,"ЛАБОРАТОРИЯ",new Vector3(20,.12f,3.5f),.115f,Color.white);
             Place(catalog.Defense("generator"),terrain,new Vector3(25,0,5),2.8f,2.7f);Label(terrain,"ЭНЕРГИЯ",new Vector3(25,.12f,3.4f),.12f,Color.white);
             Place(catalog.pad,terrain,new Vector3(17.5f,0,1),2,.4f);
@@ -125,6 +128,18 @@ namespace DawnGuard.BlackwoodLTD
             }
             for(int i=first;i<terrain.childCount;i++)terrain.GetChild(i).position+=Vector3.right*root.Game.Map.CampOffsetX;
         }
+        void BuildOperatorCore()
+        {
+            var core=new GameObject("OperatorCoreRoot");core.transform.SetParent(terrain,false);core.transform.position=new Vector3(14,0,5.2f);
+            var visual=Place(catalog.operatorPlatform,core.transform,core.transform.position,4.4f,1.3f);visual.name="Visual";
+            var zone=new GameObject("DamageZone");zone.transform.SetParent(core.transform,false);zone.transform.localPosition=new Vector3(0,0,1.9f);
+            var anchor=new GameObject("OperatorAnchor");anchor.transform.SetParent(core.transform,false);anchor.transform.localPosition=new Vector3(0,.25f,0);
+            var op=Actor(catalog.operatorPrefab,"operator",anchor.transform.position,.98f,anchor.transform);
+            new GameObject("HitPoints").transform.SetParent(core.transform,false);
+            OperatorCore=core.AddComponent<CoastOperatorCore>();OperatorCore.Initialize(root,op.animator,visual.GetComponentsInChildren<Renderer>());
+            var outline=Line("OptionalEffects — command perimeter",cyan,.04f,core.transform);outline.useWorldSpace=false;outline.positionCount=49;
+            for(int i=0;i<49;i++){float a=i*Mathf.PI/24;outline.SetPosition(i,new Vector3(Mathf.Cos(a)*2.1f,.06f,Mathf.Sin(a)*1.3f));}
+        }
         public static void Label(Transform parent,string text,Vector3 position,float size,Color color)
         {
             var go=new GameObject(text);go.transform.SetParent(parent);go.transform.position=position;go.transform.rotation=Quaternion.Euler(50,0,0);
@@ -132,13 +147,9 @@ namespace DawnGuard.BlackwoodLTD
         }
         Unit Actor(GameObject prefab,string kind,Vector3 at,float size,Transform parent)
         {
-            var go=Place(prefab,parent,at,size*.95f,size*1.6f);var a=go.GetComponentInChildren<Animator>();
-            if(a!=null){a.applyRootMotion=false;a.cullingMode=AnimatorCullingMode.AlwaysAnimate;a.Rebind();a.Update(0);
-                // Imported animation bounds include every clip; normalize the actual current pose.
-                Bounds actual=new Bounds();bool first=true;
-                foreach(var skinned in go.GetComponentsInChildren<SkinnedMeshRenderer>())
-                {var baked=new Mesh();skinned.BakeMesh(baked);foreach(var v in baked.vertices){Vector3 p=skinned.transform.TransformPoint(v);if(first){actual=new Bounds(p,Vector3.zero);first=false;}else actual.Encapsulate(p);}if(Application.isPlaying)Destroy(baked);else DestroyImmediate(baked);}
-                if(!first&&actual.size.y>.01f){float factor=size*1.6f/actual.size.y;go.transform.localScale*=factor;Vector3 offset=(actual.center-at)*factor;offset.y=(actual.min.y-at.y)*factor;go.transform.GetChild(0).position-=offset;}}
+            var go=Instantiate(prefab,parent);go.transform.position=at;go.transform.localScale=Vector3.one*size;
+            var a=go.GetComponentInChildren<Animator>();
+            if(a!=null){a.applyRootMotion=false;a.cullingMode=AnimatorCullingMode.AlwaysAnimate;a.Rebind();a.Update(0);}
             return new Unit{go=go,animator=a,kind=kind,previous=at};
         }
         void BuildMenuActors()
@@ -177,7 +188,7 @@ namespace DawnGuard.BlackwoodLTD
             Camera.transform.position=Vector3.Lerp(Camera.transform.position,desired,cameraBlend);
             Camera.transform.rotation=Quaternion.Slerp(Camera.transform.rotation,Quaternion.Euler(elevation,0,0),cameraBlend);
             if(menu){for(int i=0;i<menuZombies.Count;i++){var u=menuZombies[i];float t=Time.unscaledTime*.16f+i*1.7f;Vector3 pos=new Vector3(117+i*1.8f+Mathf.Sin(t)*1.1f,0,9+Mathf.Cos(t)*1.5f+i%2);Vector3 delta=pos-u.go.transform.position;u.go.transform.position=pos;if(delta.sqrMagnitude>.00001f)u.go.transform.rotation=Quaternion.LookRotation(delta);Animate(u,true,false,false,.7f);}return;}
-            SyncBuildings();SyncEnemies(dt);SyncWorkers(dt);
+            SyncBuildings();SyncEnemies(dt);SyncWorkers(dt);if(OperatorCore!=null)OperatorCore.Refresh(dt);
             Vector3 droneTarget=new Vector3(g.S.droneX,2.2f,g.S.droneZ);
             if(constructionTime>0){constructionTime-=root.Paused?0:dt;droneTarget=constructionTarget+Vector3.up*2.2f;construction.positionCount=2;construction.SetPosition(0,drone.transform.position);construction.SetPosition(1,constructionTarget+Vector3.up*.3f);}else construction.positionCount=0;
             drone.transform.position=Vector3.Lerp(drone.transform.position,droneTarget,dt*5);if(!root.Paused&&droneRotors!=null)foreach(var rotor in droneRotors)if(rotor!=null)rotor.Rotate(0,850*dt,0,Space.Self);
@@ -205,18 +216,18 @@ namespace DawnGuard.BlackwoodLTD
         void SyncEnemies(float dt)
         {
             var g=root.Game;remove.Clear();foreach(var kv in enemies)if(!g.S.enemies.Exists(e=>e.id==kv.Key))remove.Add(kv.Key);
-            foreach(int id in remove){var u=enemies[id];enemies.Remove(id);u.dying=true;u.deathTime=3.5f;if(u.animator!=null)u.animator.SetTrigger("Die");corpses.Add(u);}
+            foreach(int id in remove){var u=enemies[id];enemies.Remove(id);u.dying=true;u.deathTime=3.5f;if(catalog.enemyVisuals!=null)foreach(var binding in catalog.enemyVisuals)if(binding.id==u.kind)u.deathTime=binding.deathSeconds;if(u.animator!=null)u.animator.SetTrigger("Die");if(u.health!=null){u.health.positionCount=0;u.healthBack.positionCount=0;}corpses.Add(u);}
             foreach(var e in g.S.enemies)
             {
                 Unit u;if(!enemies.TryGetValue(e.id,out u)){Stack<Unit> stack;if(pool.TryGetValue(e.kind,out stack)&&stack.Count>0){u=stack.Pop();u.go.SetActive(true);u.dying=false;if(u.animator!=null){u.animator.Rebind();u.animator.Update(0);}}
-                    else{float size=e.kind=="boss"?1.6f:e.kind=="brute"||e.kind=="armored"?1.0f:.72f;u=Actor(catalog.Enemy(e.kind),e.kind,new Vector3(e.x,0,e.z),size,units);}
+                    else{float size=g.Rules.Enemy(e.kind).visualScale;u=Actor(catalog.Enemy(e.kind),e.kind,new Vector3(e.x,0,e.z),size,units);}
                     enemies[e.id]=u;}
                 if(u.health==null){u.healthBack=Line("Health background",ink,.09f,u.go.transform);u.health=Line("Health",e.kind=="boss"||e.kind=="sapper"?orange:e.kind=="armored"?cyan:mint,.045f,u.go.transform);}
                 Vector3 pos=new Vector3(e.x+(e.id%3-1)*.18f,0,e.z+((e.id/3)%3-1)*.13f);Vector3 direction=pos-u.go.transform.position;
                 u.go.transform.position=pos;if(e.attacking){var b=g.Building(e.wallTarget);direction=(b==null?new Vector3(g.Map.CampX,0,5):new Vector3(b.x+.5f,0,b.z+.5f))-pos;}
                 if(direction.sqrMagnitude>.0001f&&!root.Paused)u.go.transform.rotation=Quaternion.Slerp(u.go.transform.rotation,Quaternion.LookRotation(direction),dt*12);
                 Animate(u,e.moving,e.attacking,root.Paused,e.moving?g.Rules.Enemy(e.kind).speed:0);
-                float barHeight=e.kind=="boss"?2.9f:e.kind=="brute"||e.kind=="armored"?1.9f:1.45f;Vector3 bar=pos+Vector3.up*barHeight;
+                float barHeight=g.Rules.Enemy(e.kind).visualScale*1.6f+.25f;Vector3 bar=pos+Vector3.up*barHeight;
                 u.healthBack.positionCount=u.health.positionCount=2;u.healthBack.SetPosition(0,bar-Vector3.right*.35f);u.healthBack.SetPosition(1,bar+Vector3.right*.35f);
                 u.health.SetPosition(0,bar-Vector3.right*.34f-Vector3.forward*.012f);u.health.SetPosition(1,bar+Vector3.right*(-.34f+.68f*Mathf.Clamp01(e.hp/g.Rules.Enemy(e.kind).hp))-Vector3.forward*.012f);
             }

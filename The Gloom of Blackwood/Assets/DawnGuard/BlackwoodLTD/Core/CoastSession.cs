@@ -22,7 +22,7 @@ namespace DawnGuard.BlackwoodLTD
         public CoastSession(CoastRules rules,CoastState saved=null)
         {
             Rules=rules;Map=new CoastMap(rules.width,rules.depth);
-            S=saved==null?new CoastState {rulesVersion=rules.version,droneX=Map.CampX,credits=rules.startingCredits,stone=rules.startingStone,campHP=rules.campHP,remaining=rules.firstDay}:saved.Copy();
+            S=saved==null?new CoastState {rulesVersion=rules.version,droneX=Map.CampX,credits=rules.startingCredits,stone=rules.startingStone,campHP=rules.campHP,operatorHP=rules.operatorHP,remaining=rules.firstDay}:saved.Copy();
             if(saved==null){AddWorker();AddWorker();}else ValidateSave();
             Map.Rebuild(S.buildings);int blocked;if(!Map.AllOpen(out blocked))throw new ArgumentException("Saved map blocks a front");
             BuildSchedule();if(S.spawnCursor<0||S.spawnCursor>schedule.Count)throw new ArgumentException("Invalid saved wave cursor");RefreshPower();
@@ -30,12 +30,13 @@ namespace DawnGuard.BlackwoodLTD
         void ValidateSave()
         {
             if(S.schemaVersion!=1||S.rulesVersion!=Rules.version||S.day<1||S.day>Rules.waves.Length||S.credits<0||S.stone<0||S.workers.Count>6||S.workers.Count<2||
-                !Finite(S.campHP)||S.campHP<0||S.campHP>Rules.campHP||!Finite(S.remaining)||S.remaining<0||S.remaining>Rules.firstDay||!Finite(S.elapsed)||S.elapsed<0||
+                !Finite(S.campHP)||S.campHP<0||S.campHP>Rules.campHP||!Finite(S.operatorHP)||S.operatorHP<0||S.operatorHP>Rules.operatorHP||!Finite(S.remaining)||S.remaining<0||S.remaining>Rules.firstDay||!Finite(S.elapsed)||S.elapsed<0||
                 S.tech<0||S.tech>7||S.generatorLevel<0||S.generatorLevel>2||S.harvestLevel<0||S.harvestLevel>1||S.weaponLevels==null||S.weaponLevels.Length!=4||S.leaks==null||S.leaks.Length!=3||
                 S.queuedWeapon < -1||S.queuedWeapon>3||S.supportCharges<0||S.supportCharges>2||!Enum.IsDefined(typeof(CoastPhase),S.phase))throw new ArgumentException("Invalid coast save");
             if(S.nextId<1||S.queuedWorker<0||S.queuedWorker>1||(S.queuedTech!=0&&S.queuedTech!=1&&S.queuedTech!=2&&S.queuedTech!=4)||
                 !Finite(S.hireRemaining)||S.hireRemaining<0||S.hireRemaining>20||!Finite(S.labRemaining)||S.labRemaining<0||S.labRemaining>20||!Finite(S.armoryRemaining)||S.armoryRemaining<0||S.armoryRemaining>15||
                 !Finite(S.supportCooldown)||S.supportCooldown<0||!Finite(S.droneX)||!Finite(S.droneZ)||!Finite(S.repairRemaining)||S.repairRemaining<0||S.repairRemaining>4)throw new ArgumentException("Invalid saved timers");
+            if((S.operatorHP<=0)!=(S.phase==CoastPhase.Defeat))throw new ArgumentException("Operator HP and defeat state disagree");
             var ids=new HashSet<int>();var occupied=new HashSet<Cell>();
             foreach(var b in S.buildings)
             {

@@ -1,3 +1,14 @@
+Актуальный этап: STEP 4 — OPERATOR CORE + ENEMY INTEGRATION, 10.09.2026 — PASS.
+Ветка codex/blackwood-integration-v2; сцена BlackwoodCoast. Рабочий узел (22,0,5.2): ядро 300 HP → оператор 100 HP → Death/Defeat. При открытом пути враги идут к узлу; при блокировке атакуют восстанавливающий путь барьер.
+4 роли подключены к существующим моделям/анимациям через CoastRules и CoastCatalog. Три тестовые ночи: 8 / 12 / 13 врагов; Special только зарегистрирован. Новые saves: blackwood-operator-core-v1.json, rulesVersion 3.
+Оператор breathing idle, смерть только при поражении; двойной HP HUD, vulnerable status и дешёвый hit/damaged tint. Платформа — упрощённая копия имеющегося mesh, исходник сохранён. Нормализация персонажей выполняется в редакторе.
+13 Core + 19 Play checks PASS; 0 compile errors, 0 runtime exceptions. 6 старых obsolete warnings вне изменённого кода остаются.
+Scene View: median 7.087 → 6.198 ms, P95 8.517 → 7.046 ms; тот же протокол, не standalone FPS. Лес и карта сохранены.
+Подробности, соответствие ассетов/клипов, ограничения: OperatorCore/REPORT_RU.md. Доказательства: OperatorCore/* и Performance/step4-*.
+NEXT: остановиться; следующий этап только по отдельному запросу. Нужны чистая/damaged платформа, безоружные attack clips, лёгкий hit/death VFX. Текущий набор волн — foundation, не финальный баланс.
+
+## История предыдущих этапов (следующие указания ниже исторические)
+
 Актуальный этап: STEP 3A — Drone Readability + Camera Focus, 10.09.2026 — PASS.
 Visual дрона увеличен на 30%, локально поднят на 0.25; root/скорость/логика/коллизии не менялись.
 Дрон: source.dronePrefab → BlackwoodV2/Generated/UserMap/User_drone.prefab → CoastWorld.Place → CoastDronePresentation.

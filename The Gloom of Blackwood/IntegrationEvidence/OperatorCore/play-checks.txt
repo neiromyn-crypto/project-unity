@@ -1,0 +1,19 @@
+PASS Play starts
+PASS Command node exists in running scene
+PASS Operator anchor exists
+PASS Operator animator connected
+PASS Operator calm idle, no constant spin
+PASS Four enemy roles rendered through catalog bindings
+PASS Every actor has controller
+PASS Normal hit consumes only core integrity
+PASS Breaking hit leaves operator alive; core absorbs overflow
+PASS Next hit reaches operator
+PASS Operator zero HP means defeat
+PASS Death animation plays only after defeat
+PASS New game restores live operator and core
+PASS Affordable initial defense placement
+PASS Night 1 finishes with test defense; core=300, operator=100, kills=8
+PASS Third defender affordable on second day
+PASS Night 2 finishes with test defense; core=300, operator=100, kills=12
+PASS Night 3 finishes with test defense; core=300, operator=100, kills=13
+PASS Zero runtime errors and repeating exceptions

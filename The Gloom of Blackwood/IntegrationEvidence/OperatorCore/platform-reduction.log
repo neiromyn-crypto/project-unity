@@ -1,0 +1,6 @@
+OPTIMIZING Existing command platform 1968376 -> 14000
+DONE {'id': 'OperatorCore', 'name': 'Existing command platform', 'before': 1968376, 'after': 31856, 'vertices': 52735, 'seconds': 28.94, 'skinned': False}
+ALL_OPTIMIZED 1
+Blender 5.2.1 LTS (hash 9e2066aef7ef built 2026-08-25 02:38:20)
+
+Blender quit
