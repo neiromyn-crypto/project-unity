@@ -1,0 +1,3 @@
+Facades: shelter/camp/generator/lab +180 degrees in wrapper pivot; gun +270 degrees faces northern approach.
+Scene-local Forward URP: HDR, 2x MSAA, 2 shadow cascades, 2048 atlas, Low soft shadows, max 4 additional lights/object; no local-light shadows.
+Color Adjustments neutral white filter, ACES, Bloom 0.22, Vignette 0.16. No global fog.

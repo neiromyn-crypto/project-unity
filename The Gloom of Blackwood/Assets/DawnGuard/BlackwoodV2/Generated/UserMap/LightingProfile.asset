@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a219c9789bac7404a99511b1beb6a3f0, type: 3}
+  m_Name: LightingProfile
+  m_EditorClassIdentifier: Assembly-CSharp::DawnGuard.BlackwoodV2.BlackwoodLightingProfile
+  pipeline: {fileID: 11400000, guid: ef3f01a79fe3eea43831a5d282f91d91, type: 2}
+  postProcessing: {fileID: 11400000, guid: 92d31ecd1fc50204aaae8c3d788a2848, type: 2}
+  daySun: {r: 1, g: 0.97, b: 0.9, a: 1}
+  eveningSun: {r: 1, g: 0.78, b: 0.56, a: 1}
+  moon: {r: 0.8, g: 0.87, b: 0.96, a: 1}
+  dayIntensity: 1.35
+  eveningIntensity: 0.9
+  moonIntensity: 0.45
+  daySky: {r: 0.42, g: 0.49, b: 0.53, a: 1}
+  nightSky: {r: 0.16, g: 0.2, b: 0.25, a: 1}
+  dayEquator: {r: 0.28, g: 0.31, b: 0.29, a: 1}
+  nightEquator: {r: 0.11, g: 0.14, b: 0.17, a: 1}
+  dayGround: {r: 0.16, g: 0.18, b: 0.14, a: 1}
+  nightGround: {r: 0.065, g: 0.08, b: 0.09, a: 1}
+  warmLamp: {r: 1, g: 0.77, b: 0.48, a: 1}
+  powerLamp: {r: 0.42, g: 0.85, b: 1, a: 1}
+  warmIntensity: 4.2
+  powerIntensity: 3.1
+  lampRange: 4.8
+  maximumLocalLights: 6
+  transitionSeconds: 6
+  eveningLeadSeconds: 20

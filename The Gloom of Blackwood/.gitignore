@@ -1,4 +1,4 @@
-# Unity project at repository root. Keep all source .meta files.
+# Unity project directory. Keep all source .meta files.
 /[Ll]ibrary/
 /[Tt]emp/
 /[Oo]bj/
@@ -45,3 +45,14 @@ Thumbs.db
 /IntegrationEvidence/command*.txt
 /IntegrationEvidence/editor-status.txt
 /IntegrationEvidence/refresh-only.txt
+
+# Current editor command/status channels and generated test runs.
+/IntegrationEvidence/Coast/command*.txt
+/IntegrationEvidence/Coast/status.txt
+/IntegrationEvidence/Coast/compile-errors.txt
+/IntegrationEvidence/Coast/compilation-result.txt
+/IntegrationEvidence/Coast/play-*/
+/IntegrationEvidence/play-*/
+/Exports/
+__pycache__/
+*.pyc

@@ -1,0 +1,1 @@
+Rows: shelter, camp, generator, lab, gun, tesla. Columns: current orientation + 0 / 90 / 180 / 270 degrees.

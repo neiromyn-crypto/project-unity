@@ -1,0 +1,100 @@
+{
+    "meshes": [
+        {
+            "id": "6b94df44e6badb941a5e754d984893a6_5461320835613783329",
+            "name": "Mesh_0",
+            "vertices": 1008134,
+            "triangles": 1946099,
+            "target": 3500,
+            "skinned": false
+        },
+        {
+            "id": "9829c69654933644ea590131e886e1a7_5461320835613783329",
+            "name": "Mesh_0",
+            "vertices": 998607,
+            "triangles": 1934223,
+            "target": 4500,
+            "skinned": false
+        },
+        {
+            "id": "9e47c59f22c162a4ebdaaa664740bc5e_5461320835613783329",
+            "name": "Mesh_0",
+            "vertices": 1259785,
+            "triangles": 1938282,
+            "target": 6000,
+            "skinned": false
+        },
+        {
+            "id": "7b95b94ce0c69ea40a23aad6da7de041_5461320835613783329",
+            "name": "Mesh_0",
+            "vertices": 1018949,
+            "triangles": 1957102,
+            "target": 14000,
+            "skinned": false
+        },
+        {
+            "id": "9db93a1df4ff3164d9dd9d99e444587e_5461320835613783329",
+            "name": "Mesh_0",
+            "vertices": 1009282,
+            "triangles": 1947354,
+            "target": 26000,
+            "skinned": false
+        },
+        {
+            "id": "e54399a8625de1644a353e7a9fedebf9_5461320835613783329",
+            "name": "Mesh_0",
+            "vertices": 1011864,
+            "triangles": 1946007,
+            "target": 26000,
+            "skinned": false
+        },
+        {
+            "id": "3d430f1641f44c84984bdfd5b105443a_5461320835613783329",
+            "name": "Mesh_0",
+            "vertices": 1031003,
+            "triangles": 1954900,
+            "target": 26000,
+            "skinned": false
+        },
+        {
+            "id": "7d9c1a7b3d40ece4480367086687ef1b_5461320835613783329",
+            "name": "Mesh_0",
+            "vertices": 1017318,
+            "triangles": 1951912,
+            "target": 2500,
+            "skinned": false
+        },
+        {
+            "id": "aecb5165267c63b47994c2c251840bc7_5461320835613783329",
+            "name": "Mesh_0",
+            "vertices": 1017257,
+            "triangles": 1943029,
+            "target": 18000,
+            "skinned": false
+        },
+        {
+            "id": "ca936eb73c5f7e9478023a6ca75182d0_5461320835613783329",
+            "name": "Mesh_0",
+            "vertices": 1016159,
+            "triangles": 1945836,
+            "target": 26000,
+            "skinned": false
+        },
+        {
+            "id": "ab5d789ce3e8f9149ad96d26d4c358d3_5461320835613783329",
+            "name": "Mesh_0",
+            "vertices": 1011283,
+            "triangles": 1948112,
+            "target": 18000,
+            "skinned": false
+        },
+        {
+            "id": "f1e820aa2ee58644e98745bacf691df4_-6734620852318575487",
+            "name": "char1",
+            "vertices": 87961,
+            "triangles": 99343,
+            "target": 14000,
+            "skinned": true
+        }
+    ]
+}

@@ -1,0 +1,7 @@
+{
+  "name": "Blackwood.Coast.Core",
+  "rootNamespace": "DawnGuard.BlackwoodLTD",
+  "references": ["DawnGuard.Core"],
+  "noEngineReferences": true,
+  "autoReferenced": true
+}

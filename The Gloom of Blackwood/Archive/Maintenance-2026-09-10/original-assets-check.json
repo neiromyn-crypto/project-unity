@@ -1,0 +1,198 @@
+{
+  "Checked": 156,
+  "Differences": 48,
+  "Files": [
+    {
+      "Path": "D:\\project unity\\The Gloom of Blackwood\\Assets\\GameArt\\AutoTurret\\AutoTurret.fbx.meta",
+      "Reason": "Different from original inventory"
+    },
+    {
+      "Path": "D:\\project unity\\The Gloom of Blackwood\\Assets\\GameArt\\AutoTurret\\AutoTurret2.fbx.meta",
+      "Reason": "Different from original inventory"
+    },
+    {
+      "Path": "D:\\project unity\\The Gloom of Blackwood\\Assets\\GameArt\\AutoTurret\\Meshy_AI_Turret_Sentry_Gun_0909090032_image-to-3d-texture_metallic.png.meta",
+      "Reason": "Different from original inventory"
+    },
+    {
+      "Path": "D:\\project unity\\The Gloom of Blackwood\\Assets\\GameArt\\AutoTurret\\Meshy_AI_Turret_Sentry_Gun_0909090032_image-to-3d-texture_normal.png.meta",
+      "Reason": "Different from original inventory"
+    },
+    {
+      "Path": "D:\\project unity\\The Gloom of Blackwood\\Assets\\GameArt\\AutoTurret\\Meshy_AI_Turret_Sentry_Gun_0909090032_image-to-3d-texture_roughness.png.meta",
+      "Reason": "Different from original inventory"
+    },
+    {
+      "Path": "D:\\project unity\\The Gloom of Blackwood\\Assets\\GameArt\\Barrier\\Barrier.fbx.meta",
+      "Reason": "Different from original inventory"
+    },
+    {
+      "Path": "D:\\project unity\\The Gloom of Blackwood\\Assets\\GameArt\\Barrier\\Meshy_AI_SciFi_Barrier_0909071432_image-to-3d-texture_normal.png.meta",
+      "Reason": "Different from original inventory"
+    },
+    {
+      "Path": "D:\\project unity\\The Gloom of Blackwood\\Assets\\GameArt\\Drone\\Drone.fbx.meta",
+      "Reason": "Different from original inventory"
+    },
+    {
+      "Path": "D:\\project unity\\The Gloom of Blackwood\\Assets\\GameArt\\Drone\\Drone2.fbx.meta",
+      "Reason": "Different from original inventory"
+    },
+    {
+      "Path": "D:\\project unity\\The Gloom of Blackwood\\Assets\\GameArt\\Drone\\Meshy_AI_Drone_Quadcopter_0909093819_image-to-3d-texture_metallic.png.meta",
+      "Reason": "Different from original inventory"
+    },
+    {
+      "Path": "D:\\project unity\\The Gloom of Blackwood\\Assets\\GameArt\\Drone\\Meshy_AI_Drone_Quadcopter_0909093819_image-to-3d-texture_normal.png.meta",
+      "Reason": "Different from original inventory"
+    },
+    {
+      "Path": "D:\\project unity\\The Gloom of Blackwood\\Assets\\GameArt\\Drone\\Meshy_AI_Drone_Quadcopter_0909093819_image-to-3d-texture_roughness.png.meta",
+      "Reason": "Different from original inventory"
+    },
+    {
+      "Path": "D:\\project unity\\The Gloom of Blackwood\\Assets\\GameArt\\ElectricTurret\\ElectricTurret.fbx.meta",
+      "Reason": "Different from original inventory"
+    },
+    {
+      "Path": "D:\\project unity\\The Gloom of Blackwood\\Assets\\GameArt\\ElectricTurret\\Meshy_AI_SciFi_Tower_Base_Coil_0909092456_part-segmentation.fbx.meta",
+      "Reason": "Different from original inventory"
+    },
+    {
+      "Path": "D:\\project unity\\The Gloom of Blackwood\\Assets\\GameArt\\ElectricTurret\\Meshy_AI_SciFi_Tower_Turret_0909092313_image-to-3d-texture_metallic.png.meta",
+      "Reason": "Different from original inventory"
+    },
+    {
+      "Path": "D:\\project unity\\The Gloom of Blackwood\\Assets\\GameArt\\ElectricTurret\\Meshy_AI_SciFi_Tower_Turret_0909092313_image-to-3d-texture_normal.png.meta",
+      "Reason": "Different from original inventory"
+    },
+    {
+      "Path": "D:\\project unity\\The Gloom of Blackwood\\Assets\\GameArt\\ElectricTurret\\Meshy_AI_SciFi_Tower_Turret_0909092313_image-to-3d-texture_roughness.png.meta",
+      "Reason": "Different from original inventory"
+    },
+    {
+      "Path": "D:\\project unity\\The Gloom of Blackwood\\Assets\\GameArt\\GroundTile_01\\GroundTile_01.fbx.meta",
+      "Reason": "Different from original inventory"
+    },
+    {
+      "Path": "D:\\project unity\\The Gloom of Blackwood\\Assets\\GameArt\\GroundTile_01\\Meshy_AI_Grass_Tile_0909065349_image-to-3d-texture_metallic.png.meta",
+      "Reason": "Different from original inventory"
+    },
+    {
+      "Path": "D:\\project unity\\The Gloom of Blackwood\\Assets\\GameArt\\GroundTile_01\\Meshy_AI_Grass_Tile_0909065349_image-to-3d-texture_normal.png.meta",
+      "Reason": "Different from original inventory"
+    },
+    {
+      "Path": "D:\\project unity\\The Gloom of Blackwood\\Assets\\GameArt\\GroundTile_01\\Meshy_AI_Grass_Tile_0909065349_image-to-3d-texture_roughness.png.meta",
+      "Reason": "Different from original inventory"
+    },
+    {
+      "Path": "D:\\project unity\\The Gloom of Blackwood\\Assets\\GameArt\\Landing_Platfor\\Landing_Platfor.fbx.meta",
+      "Reason": "Different from original inventory"
+    },
+    {
+      "Path": "D:\\project unity\\The Gloom of Blackwood\\Assets\\GameArt\\Landing_Platfor\\Meshy_AI_SciFi_Landing_Platfor_0909094537_image-to-3d-texture_metallic.png.meta",
+      "Reason": "Different from original inventory"
+    },
+    {
+      "Path": "D:\\project unity\\The Gloom of Blackwood\\Assets\\GameArt\\Landing_Platfor\\Meshy_AI_SciFi_Landing_Platfor_0909094537_image-to-3d-texture_normal.png.meta",
+      "Reason": "Different from original inventory"
+    },
+    {
+      "Path": "D:\\project unity\\The Gloom of Blackwood\\Assets\\GameArt\\Landing_Platfor\\Meshy_AI_SciFi_Landing_Platfor_0909094537_image-to-3d-texture_roughness.png.meta",
+      "Reason": "Different from original inventory"
+    },
+    {
+      "Path": "D:\\project unity\\The Gloom of Blackwood\\Assets\\GameArt\\MainShelter\\MainShelter.fbx.meta",
+      "Reason": "Different from original inventory"
+    },
+    {
+      "Path": "D:\\project unity\\The Gloom of Blackwood\\Assets\\GameArt\\MainShelter\\Meshy_AI_Sci_fi_Cargo_Containe_0909063735_image-to-3d-texture_normal.png.meta",
+      "Reason": "Different from original inventory"
+    },
+    {
+      "Path": "D:\\project unity\\The Gloom of Blackwood\\Assets\\GameArt\\pine_tree\\Meshy_AI_Low_poly_pine_tree_0909100035_image-to-3d-texture_metallic.png.meta",
+      "Reason": "Different from original inventory"
+    },
+    {
+      "Path": "D:\\project unity\\The Gloom of Blackwood\\Assets\\GameArt\\pine_tree\\Meshy_AI_Low_poly_pine_tree_0909100035_image-to-3d-texture_normal.png.meta",
+      "Reason": "Different from original inventory"
+    },
+    {
+      "Path": "D:\\project unity\\The Gloom of Blackwood\\Assets\\GameArt\\pine_tree\\Meshy_AI_Low_poly_pine_tree_0909100035_image-to-3d-texture_roughness.png.meta",
+      "Reason": "Different from original inventory"
+    },
+    {
+      "Path": "D:\\project unity\\The Gloom of Blackwood\\Assets\\GameArt\\pine_tree\\pine_tree.fbx.meta",
+      "Reason": "Different from original inventory"
+    },
+    {
+      "Path": "D:\\project unity\\The Gloom of Blackwood\\Assets\\GameArt\\PowerStation\\Meshy_AI_SciFi_Industrial_Stru_0909070205_image-to-3d-texture_metallic.png.meta",
+      "Reason": "Different from original inventory"
+    },
+    {
+      "Path": "D:\\project unity\\The Gloom of Blackwood\\Assets\\GameArt\\PowerStation\\Meshy_AI_SciFi_Industrial_Stru_0909070205_image-to-3d-texture_normal.png.meta",
+      "Reason": "Different from original inventory"
+    },
+    {
+      "Path": "D:\\project unity\\The Gloom of Blackwood\\Assets\\GameArt\\PowerStation\\Meshy_AI_SciFi_Industrial_Stru_0909070205_image-to-3d-texture_roughness.png.meta",
+      "Reason": "Different from original inventory"
+    },
+    {
+      "Path": "D:\\project unity\\The Gloom of Blackwood\\Assets\\GameArt\\PowerStation\\PowerStation.fbx.meta",
+      "Reason": "Different from original inventory"
+    },
+    {
+      "Path": "D:\\project unity\\The Gloom of Blackwood\\Assets\\GameArt\\ResearchLab\\Meshy_AI_Sci_fi_Container_Bunk_0909091142_image-to-3d-texture_metallic.png.meta",
+      "Reason": "Different from original inventory"
+    },
+    {
+      "Path": "D:\\project unity\\The Gloom of Blackwood\\Assets\\GameArt\\ResearchLab\\Meshy_AI_Sci_fi_Container_Bunk_0909091142_image-to-3d-texture_normal.png.meta",
+      "Reason": "Different from original inventory"
+    },
+    {
+      "Path": "D:\\project unity\\The Gloom of Blackwood\\Assets\\GameArt\\ResearchLab\\Meshy_AI_Sci_fi_Container_Bunk_0909091142_image-to-3d-texture_roughness.png.meta",
+      "Reason": "Different from original inventory"
+    },
+    {
+      "Path": "D:\\project unity\\The Gloom of Blackwood\\Assets\\GameArt\\ResearchLab\\ResearchLab.fbx.meta",
+      "Reason": "Different from original inventory"
+    },
+    {
+      "Path": "D:\\project unity\\The Gloom of Blackwood\\Assets\\GameArt\\RockPile_01\\RockPile_01\\Meshy_AI_Stylized_Ore_Rock_0909063057_image-to-3d-texture_metallic.png.meta",
+      "Reason": "Different from original inventory"
+    },
+    {
+      "Path": "D:\\project unity\\The Gloom of Blackwood\\Assets\\GameArt\\RockPile_01\\RockPile_01\\Meshy_AI_Stylized_Ore_Rock_0909063057_image-to-3d-texture_normal.png.meta",
+      "Reason": "Different from original inventory"
+    },
+    {
+      "Path": "D:\\project unity\\The Gloom of Blackwood\\Assets\\GameArt\\RockPile_01\\RockPile_01\\Meshy_AI_Stylized_Ore_Rock_0909063057_image-to-3d-texture_roughness.png.meta",
+      "Reason": "Different from original inventory"
+    },
+    {
+      "Path": "D:\\project unity\\The Gloom of Blackwood\\Assets\\GameArt\\RockPile_01\\RockPile_01\\RockPile_01.fbx.meta",
+      "Reason": "Different from original inventory"
+    },
+    {
+      "Path": "D:\\project unity\\The Gloom of Blackwood\\Assets\\GameArt\\scifi_bunker\\Meshy_AI_scifi_bunker_module_0909100714_image-to-3d-texture_metallic.png.meta",
+      "Reason": "Different from original inventory"
+    },
+    {
+      "Path": "D:\\project unity\\The Gloom of Blackwood\\Assets\\GameArt\\scifi_bunker\\Meshy_AI_scifi_bunker_module_0909100714_image-to-3d-texture_normal.png.meta",
+      "Reason": "Different from original inventory"
+    },
+    {
+      "Path": "D:\\project unity\\The Gloom of Blackwood\\Assets\\GameArt\\scifi_bunker\\Meshy_AI_scifi_bunker_module_0909100714_image-to-3d-texture_roughness.png.meta",
+      "Reason": "Different from original inventory"
+    },
+    {
+      "Path": "D:\\project unity\\The Gloom of Blackwood\\Assets\\GameArt\\scifi_bunker\\scifi_bunker.fbx.meta",
+      "Reason": "Different from original inventory"
+    },
+    {
+      "Path": "D:\\project unity\\The Gloom of Blackwood\\Assets\\Enemy\\TOLSTYAK\\Material_1.mat",
+      "Reason": "Different from original inventory"
+    }
+  ]
+}

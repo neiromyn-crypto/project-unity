@@ -1,0 +1,24 @@
+DAY 1 credits=220 stone=100
+  Debrief hp=600 killed=14 remaining=0 power=2/8 credits=198
+DAY 2 credits=198 stone=100
+  build gun 10,12
+  Debrief hp=600 killed=22 remaining=0 power=4/8 credits=200
+DAY 3 credits=200 stone=180
+  build gun 22,13
+  Debrief hp=600 killed=26 remaining=0 power=6/8 credits=178
+DAY 4 credits=178 stone=233
+  cannot build arcane
+  Debrief hp=600 killed=36 remaining=0 power=6/8 credits=280
+DAY 5 credits=280 stone=311
+  build arcane 15,17
+  Debrief hp=600 killed=35 remaining=0 power=8/8 credits=387
+DAY 6 credits=387 stone=409
+  build tesla 17,9
+  Debrief hp=450 killed=42 remaining=0 power=11/12 credits=413
+DAY 7 credits=413 stone=412
+  build arcane 13,18
+  Debrief hp=600 killed=46 remaining=0 power=13/16 credits=528
+DAY 8 credits=528 stone=431
+  build tesla 12,11
+  Defeat hp=0 killed=54 remaining=1 power=16/16 credits=652
+

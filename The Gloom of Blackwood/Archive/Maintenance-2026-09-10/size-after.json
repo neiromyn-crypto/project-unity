@@ -1,0 +1,27 @@
+{
+  "totalBytes": 5464810307,
+  "fileCount": 40481,
+  "folders": {
+    ".gitattributes": 479,
+    ".gitignore": 1110,
+    ".vsconfig": 96,
+    "Assembly-CSharp-Editor.csproj": 97247,
+    "Assembly-CSharp.csproj": 92417,
+    "Blackwood.Coast.Core.csproj": 46321,
+    "DawnGuard.Core.csproj": 46385,
+    "README_RU.md": 4590,
+    "The Gloom of Blackwood.slnx": 219,
+    "Archive": 31852980,
+    "Assets": 1681879404,
+    "Design": 9025245,
+    "IntegrationEvidence": 101472366,
+    "Library": 3638598262,
+    "Logs": 564301,
+    "Packages": 14515,
+    "ProjectSettings": 59262,
+    "Temp": 8,
+    "Tools": 8176,
+    "UserSettings": 52739,
+    ".vs": 994185
+  }
+}

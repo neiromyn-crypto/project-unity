@@ -1,0 +1,286 @@
+{
+  "Timestamp": "2026-09-10T10:14:31.2565200+07:00",
+  "TotalBytes": 10372156118.0,
+  "TotalFiles": 71370,
+  "Folders": [
+    {
+      "Folder": "IntegrationEvidence",
+      "Bytes": 5016212067.0,
+      "Files": 31274
+    },
+    {
+      "Folder": "Library",
+      "Bytes": 3638351754.0,
+      "Files": 39330
+    },
+    {
+      "Folder": "Assets",
+      "Bytes": 1681875996.0,
+      "Files": 636
+    },
+    {
+      "Folder": "Blackwood_Unity_Integration_v2",
+      "Bytes": 24963534.0,
+      "Files": 39
+    },
+    {
+      "Folder": "Design",
+      "Bytes": 8980371.0,
+      "Files": 25
+    },
+    {
+      "Folder": ".vs",
+      "Bytes": 994185.0,
+      "Files": 13
+    },
+    {
+      "Folder": "Logs",
+      "Bytes": 367746.0,
+      "Files": 10
+    },
+    {
+      "Folder": "Assembly-CSharp-Editor.csproj",
+      "Bytes": 97247.0,
+      "Files": 1
+    },
+    {
+      "Folder": "Assembly-CSharp.csproj",
+      "Bytes": 92417.0,
+      "Files": 1
+    },
+    {
+      "Folder": "ProjectSettings",
+      "Bytes": 59262.0,
+      "Files": 26
+    },
+    {
+      "Folder": "UserSettings",
+      "Bytes": 52739.0,
+      "Files": 4
+    },
+    {
+      "Folder": "DawnGuard.Core.csproj",
+      "Bytes": 46385.0,
+      "Files": 1
+    },
+    {
+      "Folder": "Blackwood.Coast.Core.csproj",
+      "Bytes": 46321.0,
+      "Files": 1
+    },
+    {
+      "Folder": "Packages",
+      "Bytes": 14515.0,
+      "Files": 2
+    },
+    {
+      "Folder": ".gitignore",
+      "Bytes": 785.0,
+      "Files": 1
+    },
+    {
+      "Folder": ".gitattributes",
+      "Bytes": 479.0,
+      "Files": 1
+    },
+    {
+      "Folder": "The Gloom of Blackwood.slnx",
+      "Bytes": 219.0,
+      "Files": 1
+    },
+    {
+      "Folder": ".vsconfig",
+      "Bytes": 96.0,
+      "Files": 1
+    },
+    {
+      "Folder": "Temp",
+      "Bytes": 0.0,
+      "Files": 3
+    }
+  ],
+  "Assets": [
+    {
+      "Folder": "GameArt",
+      "Bytes": 1618618393.0,
+      "Files": 232
+    },
+    {
+      "Folder": "Enemy",
+      "Bytes": 56533395.0,
+      "Files": 17
+    },
+    {
+      "Folder": "DawnGuard",
+      "Bytes": 6547446.0,
+      "Files": 350
+    },
+    {
+      "Folder": "Settings",
+      "Bytes": 70436.0,
+      "Files": 14
+    },
+    {
+      "Folder": "TutorialInfo",
+      "Bytes": 51019.0,
+      "Files": 11
+    },
+    {
+      "Folder": "InputSystem_Actions.inputactions",
+      "Bytes": 41005.0,
+      "Files": 1
+    },
+    {
+      "Folder": "Scenes",
+      "Bytes": 11568.0,
+      "Files": 2
+    },
+    {
+      "Folder": "Readme.asset",
+      "Bytes": 1144.0,
+      "Files": 1
+    },
+    {
+      "Folder": "InputSystem_Actions.inputactions.meta",
+      "Bytes": 376.0,
+      "Files": 1
+    },
+    {
+      "Folder": "Readme.asset.meta",
+      "Bytes": 182.0,
+      "Files": 1
+    },
+    {
+      "Folder": "DawnGuard.meta",
+      "Bytes": 172.0,
+      "Files": 1
+    },
+    {
+      "Folder": "Enemy.meta",
+      "Bytes": 172.0,
+      "Files": 1
+    },
+    {
+      "Folder": "GameArt.meta",
+      "Bytes": 172.0,
+      "Files": 1
+    },
+    {
+      "Folder": "Scenes.meta",
+      "Bytes": 172.0,
+      "Files": 1
+    },
+    {
+      "Folder": "Settings.meta",
+      "Bytes": 172.0,
+      "Files": 1
+    },
+    {
+      "Folder": "TutorialInfo.meta",
+      "Bytes": 172.0,
+      "Files": 1
+    }
+  ],
+  "LargestFiles": [
+    {
+      "Path": "Library\\Artifacts\\3d\\3dfb041aa999b6ed5bd365f52e6187fb",
+      "Length": 190752229
+    },
+    {
+      "Path": "IntegrationEvidence\\UnityValidationProject\\Library\\Artifacts\\17\\17b5e7455cfef55d7b8e8a1d4d38f47a",
+      "Length": 190752133
+    },
+    {
+      "Path": "Library\\PackageCache\\com.unity.burst@6bb9aca3ef38\\.Runtime\\libburst-llvm-19.dylib",
+      "Length": 133826272
+    },
+    {
+      "Path": "IntegrationEvidence\\UnityValidationProject\\Library\\PackageCache\\com.unity.burst@6bb9aca3ef38\\.Runtime\\libburst-llvm-19.dylib",
+      "Length": 133826272
+    },
+    {
+      "Path": "Library\\Artifacts\\79\\79aba30baecc180e057a22387bd604da",
+      "Length": 98925077
+    },
+    {
+      "Path": "IntegrationEvidence\\UnityValidationProject\\Library\\Artifacts\\7a\\7af1d104a51da06ef573c7aec1c568ee",
+      "Length": 98924981
+    },
+    {
+      "Path": "Assets\\GameArt\\PowerStation\\PowerStation.fbx",
+      "Length": 88400876
+    },
+    {
+      "Path": "IntegrationEvidence\\UnityValidationProject\\Assets\\GameArt\\PowerStation\\PowerStation.fbx",
+      "Length": 88400876
+    },
+    {
+      "Path": "Assets\\GameArt\\ElectricTurret\\ElectricTurret.fbx",
+      "Length": 88003660
+    },
+    {
+      "Path": "IntegrationEvidence\\UnityValidationProject\\Assets\\GameArt\\ElectricTurret\\ElectricTurret.fbx",
+      "Length": 88003660
+    },
+    {
+      "Path": "IntegrationEvidence\\UnityValidationProject\\Assets\\GameArt\\AutoTurret\\AutoTurret.fbx",
+      "Length": 87523292
+    },
+    {
+      "Path": "Assets\\GameArt\\AutoTurret\\AutoTurret.fbx",
+      "Length": 87523292
+    },
+    {
+      "Path": "Assets\\GameArt\\Landing_Platfor\\Landing_Platfor.fbx",
+      "Length": 87453116
+    },
+    {
+      "Path": "IntegrationEvidence\\UnityValidationProject\\Assets\\GameArt\\Landing_Platfor\\Landing_Platfor.fbx",
+      "Length": 87453116
+    },
+    {
+      "Path": "IntegrationEvidence\\UnityValidationProject\\Assets\\GameArt\\scifi_bunker\\scifi_bunker.fbx",
+      "Length": 86983244
+    },
+    {
+      "Path": "Assets\\GameArt\\scifi_bunker\\scifi_bunker.fbx",
+      "Length": 86983244
+    },
+    {
+      "Path": "IntegrationEvidence\\UnityValidationProject\\Assets\\GameArt\\ResearchLab\\ResearchLab.fbx",
+      "Length": 86555004
+    },
+    {
+      "Path": "Assets\\GameArt\\ResearchLab\\ResearchLab.fbx",
+      "Length": 86555004
+    },
+    {
+      "Path": "Assets\\GameArt\\Drone\\Drone.fbx",
+      "Length": 86129596
+    },
+    {
+      "Path": "IntegrationEvidence\\UnityValidationProject\\Assets\\GameArt\\Drone\\Drone.fbx",
+      "Length": 86129596
+    },
+    {
+      "Path": "IntegrationEvidence\\UnityValidationProject\\Library\\PackageCache\\com.unity.burst@6bb9aca3ef38\\.Runtime\\hostmac\\dsymutil",
+      "Length": 85812032
+    },
+    {
+      "Path": "Library\\PackageCache\\com.unity.burst@6bb9aca3ef38\\.Runtime\\hostmac\\dsymutil",
+      "Length": 85812032
+    },
+    {
+      "Path": "IntegrationEvidence\\UnityValidationProject\\Assets\\GameArt\\Barrier\\Barrier.fbx",
+      "Length": 85682924
+    },
+    {
+      "Path": "Assets\\GameArt\\Barrier\\Barrier.fbx",
+      "Length": 85682924
+    },
+    {
+      "Path": "Assets\\GameArt\\MainShelter\\MainShelter.fbx",
+      "Length": 85266092
+    }
+  ]
+}

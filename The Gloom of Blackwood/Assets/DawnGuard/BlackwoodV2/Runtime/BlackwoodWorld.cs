@@ -22,6 +22,7 @@ namespace DawnGuard.BlackwoodV2
         private Transform world;
         private Camera cameraView;
         private Light sun;
+        private BlackwoodLighting lighting;
         private GameObject drone,grid,preview,selection;
         private readonly LineRenderer[] shots=new LineRenderer[48];
         private readonly float[] shotLife=new float[48];
@@ -46,8 +47,8 @@ namespace DawnGuard.BlackwoodV2
             sun=new GameObject("Sun").AddComponent<Light>(); sun.transform.SetParent(world);
             sun.type=LightType.Directional; sun.transform.rotation=Quaternion.Euler(50,-25,0);
             sun.shadows=LightShadows.Soft;
-            RenderSettings.ambientMode=UnityEngine.Rendering.AmbientMode.Flat;
-            RenderSettings.ambientLight=new Color(.5f,.55f,.65f);
+            if(root.lightingProfile!=null) {lighting=world.gameObject.AddComponent<BlackwoodLighting>(); lighting.Initialize(root,cameraView,sun);}
+            else {RenderSettings.ambientMode=UnityEngine.Rendering.AmbientMode.Flat; RenderSettings.ambientLight=new Color(.5f,.55f,.65f);}
             if(root.sceneEnvironment==null)
             {
             factory.Part(world,"Forest floor",new Vector3(8,-.48f,8),new Vector3(42,.2f,42),new Color(.18f,.25f,.23f));
@@ -98,9 +99,13 @@ namespace DawnGuard.BlackwoodV2
             cameraView.orthographicSize=Mathf.Max(root.cameraSize,10f/Mathf.Max(.4f,cameraView.aspect));
             cameraView.clearFlags=CameraClearFlags.SolidColor;
             bool night=game.Phase==GamePhase.Night || game.Phase==GamePhase.Defeat;
+            if(lighting!=null) lighting.Refresh();
+            else
+            {
             sun.intensity=Mathf.Lerp(sun.intensity,night ? .62f : 1.1f,blend*.25f);
             sun.color=night ? new Color(.49f,.68f,1) : new Color(1,.88f,.7f);
             RenderSettings.ambientLight=Color.Lerp(RenderSettings.ambientLight,night ? new Color(.27f,.35f,.48f) : new Color(.56f,.59f,.53f),blend*.3f);
+            }
             grid.SetActive(game.Phase==GamePhase.Day && !root.Completed && !root.Paused);
             foreach(var b in game.Buildings)
             {

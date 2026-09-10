@@ -1,0 +1,218 @@
+[
+  {
+    "file": "Assets\\GameArt\\PowerStation\\PowerStation.fbx",
+    "bytes": 88400876,
+    "embeddedBytes": 19905028,
+    "vertices": 977247,
+    "polygonIndices": 5864700,
+    "triangles": 1954900,
+    "videos": 4
+  },
+  {
+    "file": "Assets\\GameArt\\ElectricTurret\\ElectricTurret.fbx",
+    "bytes": 88003660,
+    "embeddedBytes": 17929733,
+    "vertices": 974023,
+    "polygonIndices": 5844336,
+    "triangles": 1948112,
+    "videos": 4
+  },
+  {
+    "file": "Assets\\GameArt\\AutoTurret\\AutoTurret.fbx",
+    "bytes": 87523292,
+    "embeddedBytes": 19176009,
+    "vertices": 971392,
+    "polygonIndices": 5829087,
+    "triangles": 1943029,
+    "videos": 4
+  },
+  {
+    "file": "Assets\\GameArt\\Landing_Platfor\\Landing_Platfor.fbx",
+    "bytes": 87453116,
+    "embeddedBytes": 17861033,
+    "vertices": 969052,
+    "polygonIndices": 5814846,
+    "triangles": 1938282,
+    "videos": 4
+  },
+  {
+    "file": "Assets\\GameArt\\scifi_bunker\\scifi_bunker.fbx",
+    "bytes": 86983244,
+    "embeddedBytes": 18858284,
+    "vertices": 972959,
+    "polygonIndices": 5838021,
+    "triangles": 1946007,
+    "videos": 4
+  },
+  {
+    "file": "Assets\\GameArt\\ResearchLab\\ResearchLab.fbx",
+    "bytes": 86555004,
+    "embeddedBytes": 18829672,
+    "vertices": 972824,
+    "polygonIndices": 5837508,
+    "triangles": 1945836,
+    "videos": 4
+  },
+  {
+    "file": "Assets\\GameArt\\Drone\\Drone.fbx",
+    "bytes": 86129596,
+    "embeddedBytes": 16755466,
+    "vertices": 978491,
+    "polygonIndices": 5871306,
+    "triangles": 1957102,
+    "videos": 4
+  },
+  {
+    "file": "Assets\\GameArt\\Barrier\\Barrier.fbx",
+    "bytes": 85682924,
+    "embeddedBytes": 17113531,
+    "vertices": 975875,
+    "polygonIndices": 5855736,
+    "triangles": 1951912,
+    "videos": 4
+  },
+  {
+    "file": "Assets\\GameArt\\MainShelter\\MainShelter.fbx",
+    "bytes": 85266092,
+    "embeddedBytes": 17281483,
+    "vertices": 973670,
+    "polygonIndices": 5842062,
+    "triangles": 1947354,
+    "videos": 4
+  },
+  {
+    "file": "Assets\\GameArt\\RockPile_01\\RockPile_01\\RockPile_01.fbx",
+    "bytes": 84872572,
+    "embeddedBytes": 16867300,
+    "vertices": 967065,
+    "polygonIndices": 5802669,
+    "triangles": 1934223,
+    "videos": 4
+  },
+  {
+    "file": "Assets\\GameArt\\GroundTile_01\\GroundTile_01.fbx",
+    "bytes": 81744732,
+    "embeddedBytes": 14745004,
+    "vertices": 959070,
+    "polygonIndices": 5754534,
+    "triangles": 1918178,
+    "videos": 4
+  },
+  {
+    "file": "Assets\\GameArt\\pine_tree\\pine_tree.fbx",
+    "bytes": 81332396,
+    "embeddedBytes": 10559324,
+    "vertices": 973049,
+    "polygonIndices": 5838297,
+    "triangles": 1946099,
+    "videos": 4
+  },
+  {
+    "file": "Assets\\GameArt\\Drone\\Drone2.fbx",
+    "bytes": 60181868,
+    "embeddedBytes": 0,
+    "vertices": 985016,
+    "polygonIndices": 5910168,
+    "triangles": 1970056,
+    "videos": 0
+  },
+  {
+    "file": "Assets\\GameArt\\AutoTurret\\AutoTurret2.fbx",
+    "bytes": 32055068,
+    "embeddedBytes": 0,
+    "vertices": 517075,
+    "polygonIndices": 3102978,
+    "triangles": 1034326,
+    "videos": 0
+  },
+  {
+    "file": "Assets\\GameArt\\ElectricTurret\\Meshy_AI_SciFi_Tower_Base_Coil_0909092456_part-segmentation.fbx",
+    "bytes": 28231068,
+    "embeddedBytes": 0,
+    "vertices": 458755,
+    "polygonIndices": 2757606,
+    "triangles": 919202,
+    "videos": 0
+  },
+  {
+    "file": "Assets\\Enemy\\TOLSTYAK\\Meshy_AI_Mawbound_Behemoth_biped_Meshy_AI_Meshy_Merged_Animations.fbx",
+    "bytes": 14316236,
+    "embeddedBytes": 7428348,
+    "vertices": 49607,
+    "polygonIndices": 298029,
+    "triangles": 99343,
+    "videos": 2
+  },
+  {
+    "file": "Assets\\Enemy\\TOLSTYAK\\TOLSTYAK.fbx",
+    "bytes": 13992860,
+    "embeddedBytes": 7428348,
+    "vertices": 49607,
+    "polygonIndices": 298029,
+    "triangles": 99343,
+    "videos": 1
+  },
+  {
+    "file": "Assets\\DawnGuard\\BlackwoodLTD\\Art\\Models\\CoastWorker.fbx",
+    "bytes": 149580,
+    "embeddedBytes": 0,
+    "vertices": 1204,
+    "polygonIndices": 4644,
+    "triangles": 2308,
+    "videos": 0
+  },
+  {
+    "file": "Assets\\DawnGuard\\BlackwoodLTD\\Art\\Models\\CoastGuardian.fbx",
+    "bytes": 93820,
+    "embeddedBytes": 0,
+    "vertices": 708,
+    "polygonIndices": 2684,
+    "triangles": 1352,
+    "videos": 0
+  },
+  {
+    "file": "Assets\\DawnGuard\\BlackwoodLTD\\Art\\Models\\CoastDock.fbx",
+    "bytes": 91500,
+    "embeddedBytes": 0,
+    "vertices": 712,
+    "polygonIndices": 2664,
+    "triangles": 1356,
+    "videos": 0
+  },
+  {
+    "file": "Assets\\DawnGuard\\BlackwoodLTD\\Art\\Models\\CoastOre.fbx",
+    "bytes": 41100,
+    "embeddedBytes": 0,
+    "vertices": 108,
+    "polygonIndices": 540,
+    "triangles": 180,
+    "videos": 0
+  },
+  {
+    "file": "Assets\\DawnGuard\\BlackwoodLTD\\Art\\Models\\CoastLantern.fbx",
+    "bytes": 35948,
+    "embeddedBytes": 0,
+    "vertices": 160,
+    "polygonIndices": 576,
+    "triangles": 300,
+    "videos": 0
+  },
+  {
+    "file": "Assets\\DawnGuard\\BlackwoodLTD\\Art\\Models\\CoastFern.fbx",
+    "bytes": 27020,
+    "embeddedBytes": 0,
+    "vertices": 35,
+    "polygonIndices": 84,
+    "triangles": 28,
+    "videos": 0
+  },
+  {
+    "file": "Assets\\DawnGuard\\BlackwoodLTD\\Art\\Models\\CoastBasalt.fbx",
+    "bytes": 22764,
+    "embeddedBytes": 0,
+    "vertices": 36,
+    "polygonIndices": 180,
+    "triangles": 60,
+    "videos": 0
+  }
+]

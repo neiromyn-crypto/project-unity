@@ -1,0 +1,2409 @@
+{
+  "source": "D:\\project unity\\The Gloom of Blackwood\\IntegrationEvidence\\UnityValidationProject",
+  "generatedBytes": 3301458230,
+  "identicalSourceBytes": 1623798645,
+  "preservedBytes": 6773698,
+  "preservedFiles": 139,
+  "files": [
+    {
+      "path": ".vsconfig",
+      "bytes": 96,
+      "sha256": "f24445f4481f74f7653a375e2f618e50d608b14fdacee794fcab51b8d447351c",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/DawnGuard.meta",
+      "bytes": 172,
+      "sha256": "c3fbfc710651d5771d961af1ba4abae340b2af2c27051342e19d294803360b5c",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/Enemy.meta",
+      "bytes": 172,
+      "sha256": "428a10eb6fd25db3e5ca8aafc787a80e5b11c823f63baee153396a9e32b07c21",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt.meta",
+      "bytes": 172,
+      "sha256": "6c90ec9ccbd6472948a33c2d8f82f81444122d19ea9fc54bddd338f9fa0de166",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/InputSystem_Actions.inputactions",
+      "bytes": 41005,
+      "sha256": "1c6cbb519d65ecfe19a29231735b7f54741a20ac1a8ad4f46a18e1bfb28a3c39",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/InputSystem_Actions.inputactions.meta",
+      "bytes": 376,
+      "sha256": "3b4e424a80f5b4fa76b6abd774884a24285eaa61f22ff9bb20e5ad505fd8b569",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/Readme.asset",
+      "bytes": 1144,
+      "sha256": "6d098604e909b6a0e64fe5910c2719704864d49678bcf5413bd47b67e5490107",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/Readme.asset.meta",
+      "bytes": 182,
+      "sha256": "46c6b89ac1d47bd0c0d1a8b141ae3e32cd95d3e74c49381f0d9f942488c254ce",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/Scenes.meta",
+      "bytes": 172,
+      "sha256": "b7d8c23fc06cb612fbc7252b79fdb162dc03b714511ad63d930594031fbe69d8",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/Settings.meta",
+      "bytes": 172,
+      "sha256": "73c8e19843240273facb0af6bdbf430d719e397aded705629594060ce25ce7ad",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/TutorialInfo.meta",
+      "bytes": 172,
+      "sha256": "07f022e5932c833d026e020b27d73452ebd781993b616d76003494af1e140946",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "IntegrationEvidence/asset-inventory.txt",
+      "bytes": 8476,
+      "sha256": "244a5df45d011b2a9939409a3d5ce178b46c865ddacea9b0c6b74e42c28cef36",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "IntegrationEvidence/batch-result.txt",
+      "bytes": 45,
+      "sha256": "fcde3449af210f15541f171775f3a4ca5d3681f5054e240a81be74d7e720d72c",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "IntegrationEvidence/built-scene.txt",
+      "bytes": 69,
+      "sha256": "b5b4e85ef102547827cd52bf1f2401ce988f56500a946871dcf701ce57cb34a0",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "IntegrationEvidence/editor-status.txt",
+      "bytes": 114,
+      "sha256": "3a6a67f2a983a8934d73e1b46bcf529f51fb0ca8a730dc2a53627b0cf227e0b8",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "IntegrationEvidence/play-result.txt",
+      "bytes": 45,
+      "sha256": "fcde3449af210f15541f171775f3a4ca5d3681f5054e240a81be74d7e720d72c",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "IntegrationEvidence/unity-integration-checks.txt",
+      "bytes": 1023,
+      "sha256": "b25ad9ca3d0879ff7e7120061340dd007b20dd6b457e4e47ae5a675305453edc",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Packages/manifest.json",
+      "bytes": 2032,
+      "sha256": "30f32a1468492e4ff5135c0fc97d42ec64aa0826b0ac7649459dd06d65536bc2",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Packages/packages-lock.json",
+      "bytes": 12483,
+      "sha256": "f1d18c95ac8758c406113cdfe497afce296e475bac362327015fd7f4e77afc0e",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "ProjectSettings/AudioManager.asset",
+      "bytes": 413,
+      "sha256": "aeedeb3243f07b61dbbe854aa08b5ef6f0b5274dd9852ad9f6129dde3e105a31",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "ProjectSettings/ClusterInputManager.asset",
+      "bytes": 114,
+      "sha256": "40e65dd214bf254955d2c8829ca8ce2130fd3510485560ce012e9a1ddd93e623",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "ProjectSettings/DynamicsManager.asset",
+      "bytes": 1254,
+      "sha256": "b7c9a9dc08b98990109d4346f68745e15e238de400f96c583e53e1c83c743a78",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "ProjectSettings/EditorBuildSettings.asset",
+      "bytes": 371,
+      "sha256": "8d1712535531522f729d34e843ea20772c01d002227338f8f802f472d7e8d78e",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "ProjectSettings/EditorSettings.asset",
+      "bytes": 1687,
+      "sha256": "20e7399984b858ef7485c4e58f26a42345169749cf0d3a63efaaa82b33f8a883",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "ProjectSettings/GraphicsSettings.asset",
+      "bytes": 2957,
+      "sha256": "4ac0d402c463fc830a46a1ddfab132e617bb2ee00dbc9834784d6df415014768",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "ProjectSettings/InputManager.asset",
+      "bytes": 9731,
+      "sha256": "7a1bb836a1008d26d0860d143e9d9df7ca41731d30a72901b518063819c62df2",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "ProjectSettings/MemorySettings.asset",
+      "bytes": 1192,
+      "sha256": "1e8379a461b10ae09f3f696911088c16875d63e87ed5f2d95df9e1892703f9fd",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "ProjectSettings/MultiplayerManager.asset",
+      "bytes": 157,
+      "sha256": "aba89fd1a1ddad182727ad82727e536d27372e90328a8196da2a4560398983dd",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "ProjectSettings/NavMeshAreas.asset",
+      "bytes": 1308,
+      "sha256": "80106cfa7e6181a1928b142c075f3e510d527441e3d79bc83590e4ac91e7cd66",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "ProjectSettings/PackageManagerSettings.asset",
+      "bytes": 1157,
+      "sha256": "bd1bf3bc0a23b06888202f7a141bb58ab75b013672339ccbdc2addb78220d7ea",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "ProjectSettings/Physics2DSettings.asset",
+      "bytes": 2028,
+      "sha256": "e3cbdbf0be15244b7b67d2f07bdb8e8981911c11a8c7fe8035f5261272fec658",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "ProjectSettings/PhysicsCoreProjectSettings2D.asset",
+      "bytes": 151,
+      "sha256": "bedc5339a832c60dc3f11b84abc4f4384dbfa20b0cd9ad6c444b907e751fc35e",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "ProjectSettings/PresetManager.asset",
+      "bytes": 146,
+      "sha256": "29c125923fe6e29f90190d4fce1c82d660e7051546e2c9d02908d18c9cf2436c",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "ProjectSettings/ProjectSettings.asset",
+      "bytes": 25536,
+      "sha256": "49254562b4ffaea275c2d03e829bec5643158c574404f3cca7c46afb6318c57a",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "ProjectSettings/ProjectVersion.txt",
+      "bytes": 83,
+      "sha256": "dc39b76877cad51588645e7b18e8c1c90e462ddcec948e3d9e60214dee3c09fc",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "ProjectSettings/QualitySettings.asset",
+      "bytes": 3662,
+      "sha256": "6814d6cc3eb850dd7d2a069a8b17ba9f7591deba8b1758a855978bd9c8627643",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "ProjectSettings/SceneTemplateSettings.json",
+      "bytes": 3535,
+      "sha256": "bb9098b3bfcde78d93e264b96f7b77b5430e64e8c57a7aad7f5a5d9c3945e16a",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "ProjectSettings/ShaderGraphSettings.asset",
+      "bytes": 556,
+      "sha256": "cdba1e5d65bcf6e3269d76ed3e60b6c21f98322002996642c9d74f1eb89f6b91",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "ProjectSettings/TagManager.asset",
+      "bytes": 657,
+      "sha256": "23fc56b484aa3d7edf5914cd3591f7a823ccef5e3f3496f8a51f30388ead63dc",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "ProjectSettings/TimeManager.asset",
+      "bytes": 202,
+      "sha256": "1a83e54adbbda7c9f4851103a0c6ab7f6448a3343d4ea5b7620452fa08416ecd",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "ProjectSettings/UnityConnectSettings.asset",
+      "bytes": 1063,
+      "sha256": "b7dd1e8290598f5ce86919ba1c98b42b766c8c42191a30fa2c4d12195c4ecd00",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "ProjectSettings/URPProjectSettings.asset",
+      "bytes": 461,
+      "sha256": "c317fe22b9488785c0611f0642429922e5d324430d929bffb41648130f30c218",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "ProjectSettings/VersionControlSettings.asset",
+      "bytes": 188,
+      "sha256": "e7bda45bf7a394745fee1316e6c71fa676004d591ad1f3aa247fd3e4ceb86071",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "ProjectSettings/VFXManager.asset",
+      "bytes": 308,
+      "sha256": "f066c6483919961332415ee64204f74fe52f38c02e82892eb02b7a5b2e381f0e",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "ProjectSettings/XRSettings.asset",
+      "bytes": 158,
+      "sha256": "edd2beb4a2e388312b4b7da241aa51070434005d82c59363f1237dd2e567585f",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "UserSettings/EditorUserSettings.asset",
+      "bytes": 1011,
+      "sha256": "eb289cacae175c5f4e0b7260e41bb56d53025db7026b0e9f390897fd6de88d87",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "UserSettings/Search.settings",
+      "bytes": 2,
+      "sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "IntegrationEvidence/play-20260909-104103/attack-fixture.png",
+      "bytes": 605029,
+      "sha256": "2a6b2b73c95b987ea55695fe3e91561ced6cea736f8084d3c789a356d9e3dd00",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "IntegrationEvidence/play-20260909-104103/checks.txt",
+      "bytes": 1648,
+      "sha256": "f920dad5ea9a2967706ae5bb1b2686a653edb3653c2aa4c421e2a1e12b32df33",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "IntegrationEvidence/play-20260909-104103/day-16x9.png",
+      "bytes": 811977,
+      "sha256": "6c02d36abeb30e0cc19cafcead40117ccf8b2070b71651ea942743bbd5ada113",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "IntegrationEvidence/play-20260909-104103/day-19_5x9.png",
+      "bytes": 832741,
+      "sha256": "abf2a6a7475a068438e54709924fcaa3bd19a357382cc11e2e8fe5d72017369b",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "IntegrationEvidence/play-20260909-104103/menu-16x9.png",
+      "bytes": 1238079,
+      "sha256": "3bcb7f8eeea9ec0c97eed840c4c718f30ad6898fcc8be2acb4e33bd49284e548",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "IntegrationEvidence/play-20260909-104103/menu-19_5x9.png",
+      "bytes": 1444929,
+      "sha256": "d393844ba2daae66b50077d0a44c28a3c2d01805babd697d4dc6ee68fb4794b1",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "IntegrationEvidence/play-20260909-104103/night-16x9.png",
+      "bytes": 600938,
+      "sha256": "487005722b943a48d2419c150f2f50848d7967bc3998d44df640ba6ac9505749",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "IntegrationEvidence/play-20260909-104103/night-19_5x9.png",
+      "bytes": 631963,
+      "sha256": "28fb71a0fc661a420e6724bbc2ffee5684ccf7a7372c46152e87f4cf6c8f7de3",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "IntegrationEvidence/play-20260909-104103/runtime-log.txt",
+      "bytes": 965,
+      "sha256": "5c2542370b2694d3ff23f091c35f6c1e460ac1e4f8f5011a1c0332fe1c7bf737",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "IntegrationEvidence/play-20260909-104103/test-profile.json",
+      "bytes": 2671,
+      "sha256": "6d47ba62b573699754bd22bc13f0515a24c0b711616fb5a6c28f7358de7bedf9",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "IntegrationEvidence/play-20260909-104103/test-profile.json.bak",
+      "bytes": 2658,
+      "sha256": "04c352dba9609c6bab588b8a042440de5af80b73a82f45df79d0c9a3f8122b72",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "IntegrationEvidence/play-20260909-104103/test-profile.json.bak.old-20260909104113232",
+      "bytes": 2658,
+      "sha256": "7b3a27ff1cb67951634c326ffb1d1077e4104ddce006bf451569f89330908c27",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "IntegrationEvidence/play-20260909-104103/test-profile.json.bak.old-20260909104114385",
+      "bytes": 2658,
+      "sha256": "7b3a27ff1cb67951634c326ffb1d1077e4104ddce006bf451569f89330908c27",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "IntegrationEvidence/play-20260909-104103/test-profile.json.old-20260909104113232",
+      "bytes": 4866,
+      "sha256": "637c1c054a208b996e97925b880f312b742410b70543d6f7ea26cc4c848474ad",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "IntegrationEvidence/play-20260909-104103/test-profile.json.old-20260909104114385",
+      "bytes": 3394,
+      "sha256": "d5df184bc4056a0b7231d9689c1fc7c0a57007bc3d16297313bc91f714db14a6",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "IntegrationEvidence/save-check-20260909-104100187/profile.json.bak.old-20260909104100216",
+      "bytes": 3024,
+      "sha256": "9f1fa5f4b7b16d1fb29c812ea14dc06dadbce119d6d807838af58fecbc8c7e90",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "IntegrationEvidence/save-check-20260909-104100187/profile.json.old-20260909104100216",
+      "bytes": 2658,
+      "sha256": "7b3a27ff1cb67951634c326ffb1d1077e4104ddce006bf451569f89330908c27",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2.meta",
+      "bytes": 172,
+      "sha256": "7080e58a836cb3a5f431be07be80f919ae3fdeaeca50b2dc4b527a347fc7de53",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/DawnGuard/Core.meta",
+      "bytes": 172,
+      "sha256": "1e81d2d746d4f74ac302a1d322e0f45bba12db873a17de1ad7bec04eebc0b74a",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/DawnGuard/Editor.meta",
+      "bytes": 172,
+      "sha256": "6d251985b370def149234085f0081afa2061803f31f4e43deb2e04d2a6351277",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/DawnGuard/Generated.meta",
+      "bytes": 172,
+      "sha256": "43fbef53ee301a04db3b611cafa2431724cd543b8cb4694116ef79017cf9d810",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/DawnGuard/Runtime.meta",
+      "bytes": 172,
+      "sha256": "5de865965719360193f4210833cd1712dc9b1de2e9e6d8768ee954361a34854b",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/Enemy/TOLSTYAK.meta",
+      "bytes": 172,
+      "sha256": "e406b62a11cf7c81f5f78a1f33e2f572143f146ae535bf2c0a54959040f8da3f",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/AutoTurret.meta",
+      "bytes": 172,
+      "sha256": "0b14101b4fed8459760ee08d4ce176492a990dbe43faab13fe8a94d5d4309922",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/Barrier.meta",
+      "bytes": 172,
+      "sha256": "6a9acea30af359bd9c345472bec55fc66482fd54d3a61b5ad353a8d03be26330",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/Drone.meta",
+      "bytes": 172,
+      "sha256": "8a2d798ae85dc30c0a4376034aab45677e46411aec668b6a2aa465085d4a0c4e",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/ElectricTurret.meta",
+      "bytes": 172,
+      "sha256": "d6214cea5387bbe2ac8cb65ba77ad44646961e48672fa8f3347a82790f358b67",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/GroundTile_01.meta",
+      "bytes": 172,
+      "sha256": "b282a1d41c9bde4c1f36fb0c4bbe49e3bd1bdba02fbfc9ffa280d6e7b383f26e",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/Landing_Platfor.meta",
+      "bytes": 172,
+      "sha256": "df8dd7e847aef56be0e1f1218a08a94d1fd6c2c13690271d63c57e06141f5f29",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/MainShelter.meta",
+      "bytes": 172,
+      "sha256": "0c72d38262506906810af0387d561a99a3a704a9c612a1fd69ff2d34c6a28d17",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/pine_tree.meta",
+      "bytes": 172,
+      "sha256": "d5ae1528924b5e685b791b76eaf3cbede48c2d92ad4317b87647eb16e21413e2",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/PowerStation.meta",
+      "bytes": 172,
+      "sha256": "24e361bbe9eec8f209f8e26a270b26631b625c8a0620aedbc2c3f811ce6ed782",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/ResearchLab.meta",
+      "bytes": 172,
+      "sha256": "c85b9ec0076ff033e4f81bcd6e7223bb296a6b670b14f3cb464f3aa850bc2a3d",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/RockPile_01.meta",
+      "bytes": 172,
+      "sha256": "46afea5e68cd224c497ed2c14590e1d4f619818cd032dd365de41267ac69731b",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/scifi_bunker.meta",
+      "bytes": 172,
+      "sha256": "01eabec7c94e2e2b3ed077389a83258c57ec2b4ff2f4098bf027840a81ac0694",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/Scenes/SampleScene.unity",
+      "bytes": 11413,
+      "sha256": "07fce8b04804ddccb3026db5b43d8dc41ba138e49d50d36a5c24877081eacdca",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/Scenes/SampleScene.unity.meta",
+      "bytes": 155,
+      "sha256": "b5815a6b12afaf810577bc89041c4ce46516c7cd6609693f8db616f8e5584d80",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/Settings/DefaultVolumeProfile.asset",
+      "bytes": 24035,
+      "sha256": "463776c51ae49d4fef980e8fd268081b2f505610d79315003faae1acff8f4115",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/Settings/DefaultVolumeProfile.asset.meta",
+      "bytes": 189,
+      "sha256": "efbcb026cee6b8e32fdf27018c06b0515296a6ccbb43969e792fea270310700a",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/Settings/Mobile_Renderer.asset",
+      "bytes": 1713,
+      "sha256": "aa93274c9521fa941170becec9e87c5fa36b8587eefd5eeb5c0eed0d1d4b1dbe",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/Settings/Mobile_Renderer.asset.meta",
+      "bytes": 189,
+      "sha256": "a148ee2b4987b05b8ff7ae5f9bf84916184f77aefddc821dceb551f5a69f8179",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/Settings/Mobile_RPAsset.asset",
+      "bytes": 4672,
+      "sha256": "ba642b95fe751d42a081a346b4dee94ced67b3e7c8ed8c4f2929f6eb51d55b18",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/Settings/Mobile_RPAsset.asset.meta",
+      "bytes": 189,
+      "sha256": "53ea46647712c615fd1a3f2e0dddfa8559eeedc649e9a1dbf93ff913de28544c",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/Settings/PC_Renderer.asset",
+      "bytes": 3439,
+      "sha256": "3d0b01d8ded3327263b6690be128a3de58d17c514943ae42fe743a3e084a9c79",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/Settings/PC_Renderer.asset.meta",
+      "bytes": 189,
+      "sha256": "b5df8ddb2708c6ed4c133a5ff9ee95a75cc20e4ee3ed6181366a61aedbaf31ec",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/Settings/PC_RPAsset.asset",
+      "bytes": 4691,
+      "sha256": "7cfa894e760f2aa087d24b2fa260e2efa497b58b89d52e4c2b28371cf6336aaf",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/Settings/PC_RPAsset.asset.meta",
+      "bytes": 189,
+      "sha256": "bb469b9b6f318e9e9bed29c3b2e73e79371c04743c6f95dd6603941f1cd3e53e",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/Settings/SampleSceneProfile.asset",
+      "bytes": 3703,
+      "sha256": "a8677d4bac051d24caa11cd622e39f968155ee277bfce132274f1de225692fe9",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/Settings/SampleSceneProfile.asset.meta",
+      "bytes": 182,
+      "sha256": "2e23abc214069f0adbf2b2207f1db54be7876629ec2a3681d0f4aa5b61622ef0",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/Settings/UniversalRenderPipelineGlobalSettings.asset",
+      "bytes": 26867,
+      "sha256": "fe8ff2dd44aa00dd076931b15abf7603f343b6231a9bc583cc3b1c05000b9135",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/Settings/UniversalRenderPipelineGlobalSettings.asset.meta",
+      "bytes": 189,
+      "sha256": "f61661d8bc8dbe531daf09f6211ef978c7ba145c9207c8e76524396ae0722d7c",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/TutorialInfo/Icons.meta",
+      "bytes": 193,
+      "sha256": "546e7d7af6b4d5e17d284c8f1188d05472e681911b8359905ee9b9e20769a106",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/TutorialInfo/Layout.wlt",
+      "bytes": 15479,
+      "sha256": "0a18bf035aa7ce914f19f7ce6b60a5a2d33e2371af6f492a8ea7a1bc78755b8b",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/TutorialInfo/Layout.wlt.meta",
+      "bytes": 176,
+      "sha256": "b8745a251df078ffa75dbaac0c4c6debecb61ab306b5b119a490ce6c635a11d8",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/TutorialInfo/Scripts.meta",
+      "bytes": 193,
+      "sha256": "930d0c8276cea1559a3e315f8500ea6ca8b58d980eee3b44aaa1d461742c47e0",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/TutorialInfo/Icons/URP.png",
+      "bytes": 24069,
+      "sha256": "1d17a9ff3537859abe2c008603d29d90cf43191ae77aa386167cc65e53ba03d9",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/TutorialInfo/Icons/URP.png.meta",
+      "bytes": 3156,
+      "sha256": "b330f1fcfc4e6ceccc95fc34a38434141603469b135633e1c4e8a03c19f9fdbc",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/TutorialInfo/Scripts/Editor.meta",
+      "bytes": 193,
+      "sha256": "7036bdbc8af05799b5fd508484343b35c28a68b390198da4673d34357d7d667f",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/TutorialInfo/Scripts/Readme.cs",
+      "bytes": 302,
+      "sha256": "c09c93844f93eb252a6fb39c222d169c63a63e96008fd040b9e7628c3e7ccc2e",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/TutorialInfo/Scripts/Readme.cs.meta",
+      "bytes": 317,
+      "sha256": "80a3df9969fab6e656583ee9bbca884d0507e2b7de3417f6ea3118fba901cd60",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/TutorialInfo/Scripts/Editor/ReadmeEditor.cs",
+      "bytes": 6677,
+      "sha256": "d2023934bc2be23af69cd930ade85eff41c5db0a6f6666b05324b975befdb5b5",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/TutorialInfo/Scripts/Editor/ReadmeEditor.cs.meta",
+      "bytes": 264,
+      "sha256": "f59080b424c16fa13edd105bf006fdbad98c11fce0c921043e63c8877f144cd9",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/AutoTurret/AutoTurret.fbx",
+      "bytes": 87523292,
+      "sha256": "e6d96c812243fcc4114a860bc807226ea22dabe57337fff1c254e534b76da9ff",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/AutoTurret/AutoTurret.fbx.meta",
+      "bytes": 2993,
+      "sha256": "ada3ee75ae9f0c72bb3a60eca038579b6cac163765c4ef5fc68ae71caa515f49",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/GameArt/AutoTurret/AutoTurret2.fbx",
+      "bytes": 32055068,
+      "sha256": "ddce1b063ed0cad5312e960b7039ca8f6e693b5a0d9a1ba61b6b7a1ad6617e45",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/AutoTurret/AutoTurret2.fbx.meta",
+      "bytes": 2993,
+      "sha256": "1056d782d1d2c114ff2390e75e3f3498035921e17826241921799c77fdce1e4f",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/GameArt/AutoTurret/Meshy_AI_Turret_Sentry_Gun_0909090032_image-to-3d-texture.png",
+      "bytes": 20698738,
+      "sha256": "1ab2ff36f9e2a067086953007b430cf9fdd5472f28f36e9981a3019d94490219",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/AutoTurret/Meshy_AI_Turret_Sentry_Gun_0909090032_image-to-3d-texture.png.meta",
+      "bytes": 3364,
+      "sha256": "deb61b0221b79a9fb4da6ab8339c38ed4f96364aea8be67da8c04e7b9c33742b",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/AutoTurret/Meshy_AI_Turret_Sentry_Gun_0909090032_image-to-3d-texture_metallic.png",
+      "bytes": 54398,
+      "sha256": "11e787bfa2702a1a024e370c177c94df48335d345518540ba624e0759611c289",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/AutoTurret/Meshy_AI_Turret_Sentry_Gun_0909090032_image-to-3d-texture_metallic.png.meta",
+      "bytes": 3364,
+      "sha256": "f26322a97c36ce1b950705277b0d6f9ae255063a7ded4a8ffca91a45cba72aa3",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/GameArt/AutoTurret/Meshy_AI_Turret_Sentry_Gun_0909090032_image-to-3d-texture_normal.png",
+      "bytes": 14402002,
+      "sha256": "96fcb0cb9946c03ded9ecc3ed3c6697c48b4a27abfcb3bbd15a1b88267d44dec",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/AutoTurret/Meshy_AI_Turret_Sentry_Gun_0909090032_image-to-3d-texture_normal.png.meta",
+      "bytes": 3364,
+      "sha256": "aa108880570bf4fef4beea9e0175c18f1b4b1e0637b5d7a46c46e35b8babe85c",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/GameArt/AutoTurret/Meshy_AI_Turret_Sentry_Gun_0909090032_image-to-3d-texture_roughness.png",
+      "bytes": 1523300,
+      "sha256": "aaa24c691f5695d9d10f10c3e8dbb47555f2160e268f6e46d5fe73eae7c6b6d4",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/AutoTurret/Meshy_AI_Turret_Sentry_Gun_0909090032_image-to-3d-texture_roughness.png.meta",
+      "bytes": 3364,
+      "sha256": "eec8907a7417a7454fa2fbbd1d3e3539b497506e1a80cec79aec80de0f82abc7",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/GameArt/Barrier/Barrier.fbx",
+      "bytes": 85682924,
+      "sha256": "1d69487710f6a73277349e076dd354b08e9fe0b37ef973adaf2b941e66a05594",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/Barrier/Barrier.fbx.meta",
+      "bytes": 2993,
+      "sha256": "d927cc8e4c551265efbc69774f145240c5f726d52220f84275aa003801fe6b98",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/GameArt/Barrier/Meshy_AI_SciFi_Barrier_0909071432_image-to-3d-texture.png",
+      "bytes": 18096282,
+      "sha256": "d0f123f6a2ff53c2d2c84c26cc517300661469dc6e98f485e6dccf36deb4c241",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/Barrier/Meshy_AI_SciFi_Barrier_0909071432_image-to-3d-texture.png.meta",
+      "bytes": 3364,
+      "sha256": "83b40802c7279880e3ccf011e0097f23199cb8ef472ca01c6483ffd40041c835",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/Barrier/Meshy_AI_SciFi_Barrier_0909071432_image-to-3d-texture_metallic.png",
+      "bytes": 28263,
+      "sha256": "3b89a81acb25c1d58266a5bc8297826f79ad31488bffc6f248d48e5ef97593e9",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/Barrier/Meshy_AI_SciFi_Barrier_0909071432_image-to-3d-texture_metallic.png.meta",
+      "bytes": 3364,
+      "sha256": "7223e26cbc1ed8fb145e38e5026166c76423064e3125ade66330ebbf6f564cef",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/Barrier/Meshy_AI_SciFi_Barrier_0909071432_image-to-3d-texture_normal.png",
+      "bytes": 13362966,
+      "sha256": "52a0cd412aed080a6f5fbdce7a7c6b1cba6dfc79c8027ffb16c64fb7ad110d07",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/Barrier/Meshy_AI_SciFi_Barrier_0909071432_image-to-3d-texture_normal.png.meta",
+      "bytes": 3364,
+      "sha256": "245ac42c4ed2f3673a8f5a0947b2c078e9355b2c7bf74f7270d28dde0e850e6f",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/GameArt/Barrier/Meshy_AI_SciFi_Barrier_0909071432_image-to-3d-texture_roughness.png",
+      "bytes": 1345288,
+      "sha256": "5ac2b0d10735d205ce214dd77a160121e6025129b1bd3b3fef1e771d379fdc51",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/Barrier/Meshy_AI_SciFi_Barrier_0909071432_image-to-3d-texture_roughness.png.meta",
+      "bytes": 3364,
+      "sha256": "df11ecc9a89399360bbc7e7de44a20c91069baa13e017ac3bd1b56c680eedecc",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/Drone/Drone.fbx",
+      "bytes": 86129596,
+      "sha256": "62f7098b7eb7fb9ccb97bf4b5d83060fd88f7f7d4b6e3a1f31885d4c969e43ee",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/Drone/Drone.fbx.meta",
+      "bytes": 2993,
+      "sha256": "d39702e663430705ed8816f32927e28aebd2dce84316dbeadacb213cd84a6308",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/GameArt/Drone/Drone2.fbx",
+      "bytes": 60181868,
+      "sha256": "1a41aa5b50bba3f765d9fb871ec7be9aa68f1c7816b1fcb1ef0037ede61db544",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/Drone/Drone2.fbx.meta",
+      "bytes": 2993,
+      "sha256": "3e6cbdf28fcf2760a2ca0cf1199e8c81745ecaa6968ad5c29e7785f69286a6c9",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/GameArt/Drone/Meshy_AI_Drone_Quadcopter_0909093819_image-to-3d-texture.png",
+      "bytes": 20024162,
+      "sha256": "0c905a7b6fc2665a3e0ffe889a1a774be151c2ef3f4f931b9df09f96d20e1157",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/Drone/Meshy_AI_Drone_Quadcopter_0909093819_image-to-3d-texture.png.meta",
+      "bytes": 3364,
+      "sha256": "695435f3094bcffa117153e6c1baf7f18818d931b203d34926b286a2ebc0a47d",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/Drone/Meshy_AI_Drone_Quadcopter_0909093819_image-to-3d-texture_metallic.png",
+      "bytes": 58322,
+      "sha256": "3de6f4d584949433f6fea9d91743b537448ac72abe1a9750ca40cfe4dcd3dc71",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/Drone/Meshy_AI_Drone_Quadcopter_0909093819_image-to-3d-texture_metallic.png.meta",
+      "bytes": 3364,
+      "sha256": "4592e59da164a77d27469516bbd85f73c8a52cfac48bca6d382cfc97f7167815",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/GameArt/Drone/Meshy_AI_Drone_Quadcopter_0909093819_image-to-3d-texture_normal.png",
+      "bytes": 13062353,
+      "sha256": "6dd47e725da8dfc4d5b41aed8fd06e75a3a18bde5c7faeb2529767d4027e49ff",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/Drone/Meshy_AI_Drone_Quadcopter_0909093819_image-to-3d-texture_normal.png.meta",
+      "bytes": 3364,
+      "sha256": "e029d82b9b7055b297f0c17713fb958de1ee7186f3767aea88904d8868a57529",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/GameArt/Drone/Meshy_AI_Drone_Quadcopter_0909093819_image-to-3d-texture_roughness.png",
+      "bytes": 1361860,
+      "sha256": "830f81c2dd00af62688c74ae6883e69c22d6e97fd65a133619250be0e559a2bd",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/Drone/Meshy_AI_Drone_Quadcopter_0909093819_image-to-3d-texture_roughness.png.meta",
+      "bytes": 3364,
+      "sha256": "7f0e840e6a28378412565f06dcf8dc299e16641e890bc3c4e1363f0ecfd68dfd",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/GameArt/ElectricTurret/ElectricTurret.fbx",
+      "bytes": 88003660,
+      "sha256": "6bffb24ca6cc63f2e9cf7e9555aa6682b5b498d45f1f4d313bc6a24b948bd2e2",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/ElectricTurret/ElectricTurret.fbx.meta",
+      "bytes": 2993,
+      "sha256": "4156fdef854e6f5a092ea732346591a45c22f3bf4f6b7dae9d5130a5c93e454c",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/GameArt/ElectricTurret/Meshy_AI_SciFi_Tower_Base_Coil_0909092456_part-segmentation.fbx",
+      "bytes": 28231068,
+      "sha256": "31da0c7431c770fb4ed0c002678e689b34c73cdde6e4ee6ba6c7bb024c033c39",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/ElectricTurret/Meshy_AI_SciFi_Tower_Base_Coil_0909092456_part-segmentation.fbx.meta",
+      "bytes": 2993,
+      "sha256": "1b12870f6e04a07a2b1cb5617dede7b2eff2cdc6e6b6e3f3b31c1d5a6a835f21",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/GameArt/ElectricTurret/Meshy_AI_SciFi_Tower_Turret_0909092313_image-to-3d-texture.png",
+      "bytes": 21500964,
+      "sha256": "a0f0c48005818ded2fc0bd60cb915a04dec76df7c1437a6892fd5a2f5a7e41d2",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/ElectricTurret/Meshy_AI_SciFi_Tower_Turret_0909092313_image-to-3d-texture.png.meta",
+      "bytes": 3364,
+      "sha256": "84d9dd2003e20530f10a5bba104851970e259ad9a0e01ad0261d87fafdf0d400",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/ElectricTurret/Meshy_AI_SciFi_Tower_Turret_0909092313_image-to-3d-texture_metallic.png",
+      "bytes": 25753,
+      "sha256": "cf59c49de3874b4af75148b90e59f93760a2aec411aa68697bcfb73fb4f97240",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/ElectricTurret/Meshy_AI_SciFi_Tower_Turret_0909092313_image-to-3d-texture_metallic.png.meta",
+      "bytes": 3364,
+      "sha256": "5fa111463faed69db0d4b950b3f45e27142605ad4144883e994fc8450ced1aa2",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/GameArt/ElectricTurret/Meshy_AI_SciFi_Tower_Turret_0909092313_image-to-3d-texture_normal.png",
+      "bytes": 13048949,
+      "sha256": "09e29356459cbf4583f37a003d0cc67c6e3f9b4f3a679f45bd509a8eb6dad3d9",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/ElectricTurret/Meshy_AI_SciFi_Tower_Turret_0909092313_image-to-3d-texture_normal.png.meta",
+      "bytes": 3364,
+      "sha256": "2b94c304ff9f52dc2ef1a3ef91e6b93162074ca5c376547327a68ee1ad05e546",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/GameArt/ElectricTurret/Meshy_AI_SciFi_Tower_Turret_0909092313_image-to-3d-texture_roughness.png",
+      "bytes": 1445603,
+      "sha256": "91a28966a92908e65da4495d4b4dc854f07cfea0f0701db75bff384b8db9eabe",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/ElectricTurret/Meshy_AI_SciFi_Tower_Turret_0909092313_image-to-3d-texture_roughness.png.meta",
+      "bytes": 3364,
+      "sha256": "e8e16461390539a7a52ed3dd1b1ee19a6a932e5fdeaeabb44fb1323c62846c91",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/GameArt/GroundTile_01/GroundTile_01.fbx",
+      "bytes": 81744732,
+      "sha256": "e742d267ba52704a0985744f86b309a6b09780ee114990909dd074b2fe80fbe1",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/GroundTile_01/GroundTile_01.fbx.meta",
+      "bytes": 2993,
+      "sha256": "9c93aafe0a772285376cd9d86ca8bb2cbf01dd58b8bbd635c23ee03ab7f2ccaa",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/GameArt/GroundTile_01/Meshy_AI_Grass_Tile_0909065349_image-to-3d-texture.png",
+      "bytes": 18970137,
+      "sha256": "7486721828b31270b034a78dc590130c3173bc0947d479338b9d514d99c051ea",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/GroundTile_01/Meshy_AI_Grass_Tile_0909065349_image-to-3d-texture.png.meta",
+      "bytes": 3364,
+      "sha256": "cc094b438e60bbee2982b2c6b1d0ef8adad11302c25c553a43b13ef9ad0f5f77",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/GroundTile_01/Meshy_AI_Grass_Tile_0909065349_image-to-3d-texture_metallic.png",
+      "bytes": 18625,
+      "sha256": "4633677c9be92e238db8718b9a33eb57bc7a785e53407d936f6cac169d6ab809",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/GroundTile_01/Meshy_AI_Grass_Tile_0909065349_image-to-3d-texture_metallic.png.meta",
+      "bytes": 3364,
+      "sha256": "0cf40ceec0d9c7a16f85ca026f940ec76af360f7c9d779a9823b06babba4fdfb",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/GameArt/GroundTile_01/Meshy_AI_Grass_Tile_0909065349_image-to-3d-texture_normal.png",
+      "bytes": 12072652,
+      "sha256": "fd63872245b0f5a5742687bbc43f0001904412ca33e1bd7bd37362f5e2165f7a",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/GroundTile_01/Meshy_AI_Grass_Tile_0909065349_image-to-3d-texture_normal.png.meta",
+      "bytes": 3364,
+      "sha256": "d605cf4c98b00e1cc540b187c248e6e8edb1ce438e1334a25b8273d5e136149b",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/GameArt/GroundTile_01/Meshy_AI_Grass_Tile_0909065349_image-to-3d-texture_roughness.png",
+      "bytes": 1125684,
+      "sha256": "0e407149de97a80a5a342358880a65eb9ed8f169ab34d13e43d3f7cfdeb63c91",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/GroundTile_01/Meshy_AI_Grass_Tile_0909065349_image-to-3d-texture_roughness.png.meta",
+      "bytes": 3364,
+      "sha256": "501d9d42d9fa60eb03a0c9d78bbe5b4300b23362d08eb2a6d783fd3a23be8d60",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/GameArt/Landing_Platfor/Landing_Platfor.fbx",
+      "bytes": 87453116,
+      "sha256": "ea4dddaf95a9a735c83ada3ecbd72531218637734bff5ef93f4d9d9cbb6275e4",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/Landing_Platfor/Landing_Platfor.fbx.meta",
+      "bytes": 2993,
+      "sha256": "f02309eec88c7132c856905546f96ef68f8e27180840c866951285bdadfdb73b",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/GameArt/Landing_Platfor/Meshy_AI_SciFi_Landing_Platfor_0909094537_image-to-3d-texture.png",
+      "bytes": 17506945,
+      "sha256": "d57488b3fee4d6c5d013d6b0c4521f0e16846598575db44e7aa798afaa70a199",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/Landing_Platfor/Meshy_AI_SciFi_Landing_Platfor_0909094537_image-to-3d-texture.png.meta",
+      "bytes": 3364,
+      "sha256": "8a06af33a483a3c8fae8b128654c4ad7529ef70a5931ec10cf562802dd50ed02",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/Landing_Platfor/Meshy_AI_SciFi_Landing_Platfor_0909094537_image-to-3d-texture_metallic.png",
+      "bytes": 18661,
+      "sha256": "18d0639d247da2a7e98b90e06df88b4f390b3c47ba694f3320a0e66951ca5fe1",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/Landing_Platfor/Meshy_AI_SciFi_Landing_Platfor_0909094537_image-to-3d-texture_metallic.png.meta",
+      "bytes": 3364,
+      "sha256": "569d0e82d9ab7134a8bf1fd1fb54b035fe8642b47e633798d0c985cf397fb0c2",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/GameArt/Landing_Platfor/Meshy_AI_SciFi_Landing_Platfor_0909094537_image-to-3d-texture_normal.png",
+      "bytes": 13019705,
+      "sha256": "a0bd7034e1acd03881037d62527dcc6be1ab0822a6455b1a4d5fd770e2f88b1e",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/Landing_Platfor/Meshy_AI_SciFi_Landing_Platfor_0909094537_image-to-3d-texture_normal.png.meta",
+      "bytes": 3364,
+      "sha256": "cf6a67c7109c16cfc1c6f9693040dad11c6bd8dd7de9cd69d73442573cd7d264",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/GameArt/Landing_Platfor/Meshy_AI_SciFi_Landing_Platfor_0909094537_image-to-3d-texture_roughness.png",
+      "bytes": 1186722,
+      "sha256": "00a5642b709e1d2135c8923440ef3ac3d4a4199e3a7e9cffdd17199b80e50b2d",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/Landing_Platfor/Meshy_AI_SciFi_Landing_Platfor_0909094537_image-to-3d-texture_roughness.png.meta",
+      "bytes": 3364,
+      "sha256": "d86d5b009d1c59a758d4cfb41480a4c73d5df79b59275907e6f68b274430d614",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/GameArt/MainShelter/MainShelter.fbx",
+      "bytes": 85266092,
+      "sha256": "ebaa7fce7e230149d580e195163c82be6954095bf5939548e57d3765228f48b4",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/MainShelter/MainShelter.fbx.meta",
+      "bytes": 2993,
+      "sha256": "5dc3b331c03e095613707473699312022546eb54f71c56d67907b64f0e5b8a30",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/GameArt/MainShelter/Meshy_AI_Sci_fi_Cargo_Containe_0909063735_image-to-3d-texture.png",
+      "bytes": 20036527,
+      "sha256": "78a25cfbb2f2e86ee6b598f5336018cf9f264c7754cc3b32c1795a957c24eed8",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/MainShelter/Meshy_AI_Sci_fi_Cargo_Containe_0909063735_image-to-3d-texture.png.meta",
+      "bytes": 3364,
+      "sha256": "a070b5b13179700e43fc0f0e5879f6aefbc08561d0fd2b63c6ff6eed7f4ccf69",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/MainShelter/Meshy_AI_Sci_fi_Cargo_Containe_0909063735_image-to-3d-texture_metallic.png",
+      "bytes": 33617,
+      "sha256": "2b190a00c9465c8b03abf1c7ebea1fd870e03aa926defdf225efdac5c3051cb7",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/MainShelter/Meshy_AI_Sci_fi_Cargo_Containe_0909063735_image-to-3d-texture_metallic.png.meta",
+      "bytes": 3364,
+      "sha256": "885362bd55c43711d0423d80e2a9d9f00ce647ac71d9113b404601ab8a06ef57",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/MainShelter/Meshy_AI_Sci_fi_Cargo_Containe_0909063735_image-to-3d-texture_normal.png",
+      "bytes": 12947823,
+      "sha256": "bbcdcea12a554d27fcb40e8f8a9fbb6c7f9e735546765ace16565b4dd43f626f",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/MainShelter/Meshy_AI_Sci_fi_Cargo_Containe_0909063735_image-to-3d-texture_normal.png.meta",
+      "bytes": 3364,
+      "sha256": "921774debd68e16798cd919854545eef38ac2f549c2e6f2e5715e48ccc7f08ab",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/GameArt/MainShelter/Meshy_AI_Sci_fi_Cargo_Containe_0909063735_image-to-3d-texture_roughness.png",
+      "bytes": 1461024,
+      "sha256": "329728d4b1de45b2f4c60eb31e5bca98331bcb271dede02956470f508f04e5d3",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/MainShelter/Meshy_AI_Sci_fi_Cargo_Containe_0909063735_image-to-3d-texture_roughness.png.meta",
+      "bytes": 3364,
+      "sha256": "50be86e7fd154818820f3c312d9cc164422593d4d3ea33f8775d16b741dcf1f9",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/pine_tree/Meshy_AI_Low_poly_pine_tree_0909100035_image-to-3d-texture.png",
+      "bytes": 15727547,
+      "sha256": "a001b3a21ad6530e0dfbb267f325411e248f8de8ff20c768fee56521f1e2a61e",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/pine_tree/Meshy_AI_Low_poly_pine_tree_0909100035_image-to-3d-texture.png.meta",
+      "bytes": 3364,
+      "sha256": "4a3df6b4eaa2dd5163e7f927009bccbb0bbc0a817db72a4eb71f4dde7b2d0c81",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/pine_tree/Meshy_AI_Low_poly_pine_tree_0909100035_image-to-3d-texture_metallic.png",
+      "bytes": 18440,
+      "sha256": "d19339d68c739cdf14c70f0687c0333774ca6ff59cd5b6ee50757b6a6ec232e2",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/pine_tree/Meshy_AI_Low_poly_pine_tree_0909100035_image-to-3d-texture_metallic.png.meta",
+      "bytes": 3364,
+      "sha256": "7d3cb8f0ad2da628afdc13aaefaff5ca829eb3ef3098473ea40366e716146335",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/GameArt/pine_tree/Meshy_AI_Low_poly_pine_tree_0909100035_image-to-3d-texture_normal.png",
+      "bytes": 8165405,
+      "sha256": "2117c3dc9f8f2bbaf7f18e630b0a13286a09b237c9f7f4da065836eab717de40",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/pine_tree/Meshy_AI_Low_poly_pine_tree_0909100035_image-to-3d-texture_normal.png.meta",
+      "bytes": 3364,
+      "sha256": "d61699d68f76bc71b97913109af023f208609cfcc13be274fc954ec843071747",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/GameArt/pine_tree/Meshy_AI_Low_poly_pine_tree_0909100035_image-to-3d-texture_roughness.png",
+      "bytes": 1025932,
+      "sha256": "385f593946053d36bc57b17a048c28ab47ad1b0c69e61919261081ee5a0e4311",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/pine_tree/Meshy_AI_Low_poly_pine_tree_0909100035_image-to-3d-texture_roughness.png.meta",
+      "bytes": 3364,
+      "sha256": "e04b38ff73fd12549cece624644f0598246bed29bd57d6b0a1efc35fe7c27476",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/GameArt/pine_tree/pine_tree.fbx",
+      "bytes": 81332396,
+      "sha256": "6d58c066f2a4e3d4438cce04c81a6b14c2c9243372e71cd3021abef765156104",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/pine_tree/pine_tree.fbx.meta",
+      "bytes": 2993,
+      "sha256": "cf7168ea44d5544e67a38971111ea49e392826aaa90dde9c679bde1a009f7471",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/GameArt/PowerStation/Meshy_AI_SciFi_Industrial_Stru_0909070205_image-to-3d-texture.png",
+      "bytes": 20923611,
+      "sha256": "b7a1ce3f49a8f446ffc5bcb0d3e5ff406f5070db4851953c3df4fed29631dd60",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/PowerStation/Meshy_AI_SciFi_Industrial_Stru_0909070205_image-to-3d-texture.png.meta",
+      "bytes": 3364,
+      "sha256": "64def2e61a6c4bcb8d8f31ca14e7d7ee4ade2930c02b2fd400b491aadb07eefa",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/PowerStation/Meshy_AI_SciFi_Industrial_Stru_0909070205_image-to-3d-texture_metallic.png",
+      "bytes": 41175,
+      "sha256": "2d50693c2016c61f8d362edb6be570ad8baa91b1939a42a5dd1029b2d57edac5",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/PowerStation/Meshy_AI_SciFi_Industrial_Stru_0909070205_image-to-3d-texture_metallic.png.meta",
+      "bytes": 3364,
+      "sha256": "7b7d815e0d1a2f925f884f28198e9b332b393424cb4140147aed9fe094087389",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/GameArt/PowerStation/Meshy_AI_SciFi_Industrial_Stru_0909070205_image-to-3d-texture_normal.png",
+      "bytes": 15016714,
+      "sha256": "d70470bf340187b0e4c94b3e566fb4a1ffc6118957ed71ec3927b4e4c3777290",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/PowerStation/Meshy_AI_SciFi_Industrial_Stru_0909070205_image-to-3d-texture_normal.png.meta",
+      "bytes": 3364,
+      "sha256": "4a990362fe53d4d2cfbf4cd113a57de9d1e9846fd338c898873b4a4a41e0dff2",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/GameArt/PowerStation/Meshy_AI_SciFi_Industrial_Stru_0909070205_image-to-3d-texture_roughness.png",
+      "bytes": 1575653,
+      "sha256": "9ff1a3b4da65f8ec139912d79bea538abe0461654b2abbd5c2781270e3e39072",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/PowerStation/Meshy_AI_SciFi_Industrial_Stru_0909070205_image-to-3d-texture_roughness.png.meta",
+      "bytes": 3364,
+      "sha256": "061ab3c37b921f6160853005392788d7c68551cfb262e3477d0184459f923181",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/GameArt/PowerStation/PowerStation.fbx",
+      "bytes": 88400876,
+      "sha256": "a070e434f01babdf4406351bfa15adc1e89f2a2982dc0cf477b48996d3163b72",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/PowerStation/PowerStation.fbx.meta",
+      "bytes": 2993,
+      "sha256": "f56b725abb2e8ffba25a6049983acb605fc783b360c6fc46c2cf588a597b5471",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/GameArt/ResearchLab/Meshy_AI_Sci_fi_Container_Bunk_0909091142_image-to-3d-texture.png",
+      "bytes": 21030827,
+      "sha256": "ec611a8a9e9266d74ab9f183ce512368b8bf01e09ffc797c6689b6d75a761405",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/ResearchLab/Meshy_AI_Sci_fi_Container_Bunk_0909091142_image-to-3d-texture.png.meta",
+      "bytes": 3364,
+      "sha256": "88c8ff63bb909edfddff0efbdefc72d80078a8687ff604eda0d16a92268161c9",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/ResearchLab/Meshy_AI_Sci_fi_Container_Bunk_0909091142_image-to-3d-texture_metallic.png",
+      "bytes": 19603,
+      "sha256": "2932fc18a27fec1551d220c3ac834ad217b030af450788598c4231e2324ffb55",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/ResearchLab/Meshy_AI_Sci_fi_Container_Bunk_0909091142_image-to-3d-texture_metallic.png.meta",
+      "bytes": 3364,
+      "sha256": "039d3f140a9467c1a6f81a8ec6c607220a59ffed3491e514e592ed4e773561fa",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/GameArt/ResearchLab/Meshy_AI_Sci_fi_Container_Bunk_0909091142_image-to-3d-texture_normal.png",
+      "bytes": 14161081,
+      "sha256": "7da2f4826b2863bb594fab232053d3e639adcbad988fd60978586a0106270939",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/ResearchLab/Meshy_AI_Sci_fi_Container_Bunk_0909091142_image-to-3d-texture_normal.png.meta",
+      "bytes": 3364,
+      "sha256": "e03b81ab031434a04b29f4f10744152e4aa7480b128a42d8c6b21880930f0dc4",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/GameArt/ResearchLab/Meshy_AI_Sci_fi_Container_Bunk_0909091142_image-to-3d-texture_roughness.png",
+      "bytes": 1518786,
+      "sha256": "dc05123c4830363b56e537dbeef57eb266c409f542db36793abea09f4bc6b41b",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/ResearchLab/Meshy_AI_Sci_fi_Container_Bunk_0909091142_image-to-3d-texture_roughness.png.meta",
+      "bytes": 3364,
+      "sha256": "65e9455d2570d93cf3f5fe95647d27cbcbb13d8b8e4fb665000ec9883e8d690d",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/GameArt/ResearchLab/ResearchLab.fbx",
+      "bytes": 86555004,
+      "sha256": "12d00a26e4b366d6d7e3d42eda78f6788c75dd24868a7371d9bd2857cb0186d9",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/ResearchLab/ResearchLab.fbx.meta",
+      "bytes": 2993,
+      "sha256": "4e7400f1a92c80f296506d993dfcf611740a992bab15a0a416f4d3eaf9828a42",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/GameArt/RockPile_01/RockPile_01.meta",
+      "bytes": 172,
+      "sha256": "7381f7a8b96e8a7c0de3d742859668f87ad99a4b3811c737216ab905af37aece",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/scifi_bunker/Meshy_AI_scifi_bunker_module_0909100714_image-to-3d-texture.png",
+      "bytes": 21048311,
+      "sha256": "69fbbaf3100132b3f455356d5311b1ce3947a4ef18e2f2b69d80cf5caa2ca1ce",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/scifi_bunker/Meshy_AI_scifi_bunker_module_0909100714_image-to-3d-texture.png.meta",
+      "bytes": 3364,
+      "sha256": "9c7e5c6a7629d4155389eca1bd8c43767faf063066175d383f53035951007285",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/scifi_bunker/Meshy_AI_scifi_bunker_module_0909100714_image-to-3d-texture_metallic.png",
+      "bytes": 235675,
+      "sha256": "accb636764638bf995cae615054e2fd4b4a26da2d763e333e1892e86c2245427",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/scifi_bunker/Meshy_AI_scifi_bunker_module_0909100714_image-to-3d-texture_metallic.png.meta",
+      "bytes": 3364,
+      "sha256": "5a28b97d4b9e10126af6b77a4ab7198c5540828bdbb58da48dbfefa74d0697e7",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/GameArt/scifi_bunker/Meshy_AI_scifi_bunker_module_0909100714_image-to-3d-texture_normal.png",
+      "bytes": 14767398,
+      "sha256": "59364860762948cce0d965eb635bc48cdd92dc2c7fabe84089c89d4100595a99",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/scifi_bunker/Meshy_AI_scifi_bunker_module_0909100714_image-to-3d-texture_normal.png.meta",
+      "bytes": 3364,
+      "sha256": "79ddc01fe5c3903633d193ac2ac3462472cdcce0e487e70927d8ad84d5e2e901",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/GameArt/scifi_bunker/Meshy_AI_scifi_bunker_module_0909100714_image-to-3d-texture_roughness.png",
+      "bytes": 1467958,
+      "sha256": "5268c1d8789185510b0d722f2cd5c0eca24fd29abe7e6a3b4398469b5fb90df0",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/scifi_bunker/Meshy_AI_scifi_bunker_module_0909100714_image-to-3d-texture_roughness.png.meta",
+      "bytes": 3364,
+      "sha256": "f850fb33c68fc14113d493307e50abc6fe7cd9863bd1897f8fb69a1456280546",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/GameArt/scifi_bunker/scifi_bunker.fbx",
+      "bytes": 86983244,
+      "sha256": "bf66e9ac361385fd66aeb8956c19d2421d795e32f619de6f77278fca61cc7c98",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/scifi_bunker/scifi_bunker.fbx.meta",
+      "bytes": 2993,
+      "sha256": "b1844f73498b264cebc1d941049c09d0de43e3b64c23ffb2ce5f4b4e3985defe",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/GameArt/RockPile_01/RockPile_01/Meshy_AI_Stylized_Ore_Rock_0909063057_image-to-3d-texture.png",
+      "bytes": 20867415,
+      "sha256": "0adf550d6d81190342dbb9679453a6d10f0488a506a0075108a998bd1d2c5d2e",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/RockPile_01/RockPile_01/Meshy_AI_Stylized_Ore_Rock_0909063057_image-to-3d-texture.png.meta",
+      "bytes": 3364,
+      "sha256": "e11799f2f45635b2ee82fd7166e0e6f4ea5a039295e5700d881f02d6fa3c93ff",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/RockPile_01/RockPile_01/Meshy_AI_Stylized_Ore_Rock_0909063057_image-to-3d-texture_metallic.png",
+      "bytes": 164507,
+      "sha256": "dcb981de285723d4431f8912051d68b761d01cfcc4add6b9635eaff502775682",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/RockPile_01/RockPile_01/Meshy_AI_Stylized_Ore_Rock_0909063057_image-to-3d-texture_metallic.png.meta",
+      "bytes": 3364,
+      "sha256": "5fba42cbb6b713f2353de5eb203fe367bb3391fc50c9ae4de6829b5ba0a58d75",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/GameArt/RockPile_01/RockPile_01/Meshy_AI_Stylized_Ore_Rock_0909063057_image-to-3d-texture_normal.png",
+      "bytes": 14169490,
+      "sha256": "4ed3cd27664f95ab0364342b9a893923b8c7a4b08147945f5b198703373e9fa3",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/RockPile_01/RockPile_01/Meshy_AI_Stylized_Ore_Rock_0909063057_image-to-3d-texture_normal.png.meta",
+      "bytes": 3364,
+      "sha256": "7870fcb961fda0b54c2a610064886c8a570436530619eb12544c5f70816e3b95",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/GameArt/RockPile_01/RockPile_01/Meshy_AI_Stylized_Ore_Rock_0909063057_image-to-3d-texture_roughness.png",
+      "bytes": 1240205,
+      "sha256": "45c71ad32b4efc6ea3162f459f6466975157002131cebb9767ac196a91dd1a42",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/RockPile_01/RockPile_01/Meshy_AI_Stylized_Ore_Rock_0909063057_image-to-3d-texture_roughness.png.meta",
+      "bytes": 3364,
+      "sha256": "8f453270fc11371f07a5cc40401704cd3d9d99ab012ebbc402268a2619e1598d",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/GameArt/RockPile_01/RockPile_01/RockPile_01.fbx",
+      "bytes": 84872572,
+      "sha256": "26e3fc2d99052e09b7c0c030029fe38dfda646404d97c35dbccea79b00b58383",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/GameArt/RockPile_01/RockPile_01/RockPile_01.fbx.meta",
+      "bytes": 2993,
+      "sha256": "dfc0ff955c11e8440a622c6504a2dab60ee8bfd37f01cc523c1f8d8623122e47",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/Enemy/TOLSTYAK/Material_1.mat",
+      "bytes": 4008,
+      "sha256": "1cf1524fb4e5f43c3b748c5f6b97b6e5b5777acd880b9bea00357a14adc5bf4c",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/Enemy/TOLSTYAK/Material_1.mat.meta",
+      "bytes": 188,
+      "sha256": "d84b2245485032ce81631a20f4c7828a2b00b05d71d70cd4a4d4239e2d3a4efb",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/Enemy/TOLSTYAK/Meshy_AI_Mawbound_Behemoth_biped_Meshy_AI_Meshy_Merged_Animations.fbx",
+      "bytes": 14316236,
+      "sha256": "af1393122c1fac7d93fb551cb2fb08921856006e5a0816a3c8d1414ecb2b2540",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/Enemy/TOLSTYAK/Meshy_AI_Mawbound_Behemoth_biped_Meshy_AI_Meshy_Merged_Animations.fbx.meta",
+      "bytes": 20786,
+      "sha256": "f50260fd7fe8c89c5004aa7c2bdc492c75b0fc003b5cc117d572f72fc5f66ebc",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/Enemy/TOLSTYAK/Meshy_AI_Mawbound_Behemoth_biped_texture_0.png",
+      "bytes": 7428348,
+      "sha256": "badd8a51439ca3ce94c7585e7605b490492d8eefc7b41620795dd3eb1b99bb5a",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/Enemy/TOLSTYAK/Meshy_AI_Mawbound_Behemoth_biped_texture_0.png.meta",
+      "bytes": 3364,
+      "sha256": "b8174e897e0a8189a67e24f3fca8c1a293f2875be013af5ff740f0c52099142a",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/Enemy/TOLSTYAK/Meshy_AI_Mawbound_Behemoth_biped_texture_0_metallic.png",
+      "bytes": 2361152,
+      "sha256": "fd5538bfeb868b0b34ac2aee89ba4eab0c972dd2f77a2aecd6e9c8423b1b1e08",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/Enemy/TOLSTYAK/Meshy_AI_Mawbound_Behemoth_biped_texture_0_metallic.png.meta",
+      "bytes": 3364,
+      "sha256": "fa33e7737971b1eb1f39b71a5faf5fc75cf79f04d65104beb2b75e42c0563758",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/Enemy/TOLSTYAK/Meshy_AI_Mawbound_Behemoth_biped_texture_0_normal.png",
+      "bytes": 6634871,
+      "sha256": "db612015e42dc66ab115c9c7b74be4f0e039487b65039597ab8e91bc4570adea",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/Enemy/TOLSTYAK/Meshy_AI_Mawbound_Behemoth_biped_texture_0_normal.png.meta",
+      "bytes": 3364,
+      "sha256": "3e97a6cb75a9e043fe9cc6730a4c42472ef395aa3abab6c4990410fe9db182ad",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/Enemy/TOLSTYAK/Meshy_AI_Mawbound_Behemoth_biped_texture_0_roughness.png",
+      "bytes": 4326009,
+      "sha256": "969f79c98ef2a16491c7d69cd8d78851901bfc9f92827fdc314aad6b809074bb",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/Enemy/TOLSTYAK/Meshy_AI_Mawbound_Behemoth_biped_texture_0_roughness.png.meta",
+      "bytes": 3364,
+      "sha256": "44e5144863b3939195060b518dfc1bdb87671798749de9fcd617e95514449e69",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/Enemy/TOLSTYAK/texture_0.png",
+      "bytes": 7428348,
+      "sha256": "badd8a51439ca3ce94c7585e7605b490492d8eefc7b41620795dd3eb1b99bb5a",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/Enemy/TOLSTYAK/texture_0.png.meta",
+      "bytes": 3364,
+      "sha256": "a2a062bea75d8ca1e602f00651f5a4896811fa3aaacd924ae1d8fdd7327d7e48",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/Enemy/TOLSTYAK/TOLSTYAK.fbx",
+      "bytes": 13992860,
+      "sha256": "19e1a5fb4df1efe92e3c413a3f53fcd80bec46f106bc53293fcb4adfa0cefb53",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/Enemy/TOLSTYAK/TOLSTYAK.fbx.meta",
+      "bytes": 3360,
+      "sha256": "da59577f5a8738a9363f6aedf725d8119a805a4e44a73274fe415d5e04598918",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Art.meta",
+      "bytes": 172,
+      "sha256": "04b2eca2a1edb78d3c3d7eee03afebc05777658bcdb0071ef91c640c4c72772e",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Editor.meta",
+      "bytes": 172,
+      "sha256": "c6e52f2cad83a4f11afa6598253af33a7de2424aa075a9324a6b63d086392772",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Generated.meta",
+      "bytes": 172,
+      "sha256": "05f56fee96d56520bc8102e829cbcc2bd0623aa69ed686b1bbb1c3288c91dc67",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Runtime.meta",
+      "bytes": 172,
+      "sha256": "5cfd41c066df560021522f587db55c5d216885da7b8b0321d6461678ebda826b",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/UserAssets.asset",
+      "bytes": 1828,
+      "sha256": "df2cf62b1c6e2b56651bacfb3930f7b4e0c5b374f705eee53e31cb9f440f108a",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/UserAssets.asset.meta",
+      "bytes": 189,
+      "sha256": "4e455e59e5f860a28e6ae39a8f902ee3bada2dd889b5891ce8e5df053cc21bac",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/DawnGuard/Core/BuildingService.cs",
+      "bytes": 5714,
+      "sha256": "b30c61e148ede1f91280d257280599a7b558bae1b3a4cf232b9ca687c5852bf8",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/DawnGuard/Core/BuildingService.cs.meta",
+      "bytes": 59,
+      "sha256": "f3ac132413e68abda538903e3cd066bf5e1ccca5e587099ceb47d508e87aa524",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/DawnGuard/Core/CombatSystem.cs",
+      "bytes": 6642,
+      "sha256": "31344447d5fb5e614026b92acaf0932cab3f17f9b2dc671c830c915b193f8cfd",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/DawnGuard/Core/CombatSystem.cs.meta",
+      "bytes": 59,
+      "sha256": "30cf3ee0ac10e55a41df2fe64341f990fd9311ce64995b6e2b0bdab75c1c9ec2",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/DawnGuard/Core/DawnGuard.Core.asmdef",
+      "bytes": 124,
+      "sha256": "d7df558808ffc4953b737c40c2f5825650f26d4c84d437bc30401c08c92d6b91",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/DawnGuard/Core/DawnGuard.Core.asmdef.meta",
+      "bytes": 166,
+      "sha256": "1810ef7be475440c9e41ec0fb57be77ce4a4bb9793007340dc1b79f053a9016d",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/DawnGuard/Core/Definitions.cs",
+      "bytes": 5019,
+      "sha256": "06f7fa87d431630bf8a5ceab6fa138193a23d109a27627623f4dc9f5fabd41ef",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/DawnGuard/Core/Definitions.cs.meta",
+      "bytes": 59,
+      "sha256": "599f05897881c6d359e691a1f00b6cec93e2cf0f0bbaabb4b852076a42c3154f",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/DawnGuard/Core/DemoRules.cs",
+      "bytes": 3676,
+      "sha256": "fa3f512ee69858843def2d4a5e150d723ca01f3b2cc509e4e539dd016092538c",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/DawnGuard/Core/DemoRules.cs.meta",
+      "bytes": 59,
+      "sha256": "0ced0ecb6f70f4753de0f1897a862e2b470776de1a2e5ecaed49a82ba805e039",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/DawnGuard/Core/Diagnostics.meta",
+      "bytes": 172,
+      "sha256": "21bcb9ae36eb42ff5c3c5bd173b14533c5c9ec8673d0fbb0300ce7abd8801dbb",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/DawnGuard/Core/GameSession.cs",
+      "bytes": 10705,
+      "sha256": "1fc90e1f574407900b8f7c2e1a983ac627af4920962ede65b05a74e424f49e76",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/DawnGuard/Core/GameSession.cs.meta",
+      "bytes": 59,
+      "sha256": "594ae10387b608a8c072ad0dcf6134c660f665643dc1e7972f08b28034b5165d",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/DawnGuard/Core/GridBoard.cs",
+      "bytes": 2136,
+      "sha256": "f39d3298c0327777aa350f53af9ad9d593b534a8a758a722ff67f5ab8010fcc3",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/DawnGuard/Core/GridBoard.cs.meta",
+      "bytes": 59,
+      "sha256": "6108f9f5f26c4116e438351ee50daa51107723b87d8c9ab31174a547693ff310",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/DawnGuard/Core/Pathfinder.cs",
+      "bytes": 2872,
+      "sha256": "46670c532e3eb4589822031b08315d27a1dba525db940cf35386d7ab5e5d46ff",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/DawnGuard/Core/Pathfinder.cs.meta",
+      "bytes": 59,
+      "sha256": "314095dcbd4bb7f2555cfe2b8ac99ffbf2fdfe2795f2416c49f400c997e47821",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/DawnGuard/Core/State.cs",
+      "bytes": 1887,
+      "sha256": "31a38340bf0b1c205d04487091ddf188daaa4b330335bf56ecb2fd983b1d248d",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/DawnGuard/Core/State.cs.meta",
+      "bytes": 59,
+      "sha256": "9cfb3cbef512d8f9bf83978daddbcae3fa695aa51296c9b0a0e6d0a3720ac591",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/DawnGuard/Core/WaveDirector.cs",
+      "bytes": 1237,
+      "sha256": "bd6a24ab441405cb8d5736e97756c0e3d2111ca42b25ae384d6fd2a38194c4b9",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/DawnGuard/Core/WaveDirector.cs.meta",
+      "bytes": 59,
+      "sha256": "4c6245c0ae900b61fce782107c9df51985249953601b148755d9f8297ccfd647",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/DawnGuard/Editor/RunSimulationChecks.cs",
+      "bytes": 288,
+      "sha256": "f2cb4c9aed8d85d0d33b9ed4bd856c60183972e32366bf4532db791edca8259d",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/DawnGuard/Editor/RunSimulationChecks.cs.meta",
+      "bytes": 59,
+      "sha256": "0db25f1577689fff913dab5ce1ba5ba5c5385cdefc9075729a9062216a915aa4",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/DawnGuard/Editor/StarterSceneBuilder.cs",
+      "bytes": 2434,
+      "sha256": "3b71c6720f54141de6e253ac66f0d2fb658f0f22e27f94d79a687f0be2ab97bd",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/DawnGuard/Editor/StarterSceneBuilder.cs.meta",
+      "bytes": 59,
+      "sha256": "6c79b9f0c8cb07b2124b3db06efac9d52f17a80f111d05c44367893372dfc7ee",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/DawnGuard/Generated/DawnGuardDemo.unity",
+      "bytes": 4906,
+      "sha256": "c5c3b7bbd5303bc02316c0270c1566d9a11db062da3fcefbfe7fde241dda38d9",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/DawnGuard/Generated/DawnGuardDemo.unity.meta",
+      "bytes": 155,
+      "sha256": "1a5903a5aaf1f1792160126c194c5ed6458859b597cf5b40dbe56629d65ba4da",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/DawnGuard/Generated/DemoCatalog.asset",
+      "bytes": 5813,
+      "sha256": "9324345747c3f7c8da0586f56fa64ba5c301886bee57a9f02b35eb66d1fae6bc",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/DawnGuard/Generated/DemoCatalog.asset.meta",
+      "bytes": 189,
+      "sha256": "2b9cab0dac37cb3543cd6ed48874fdcc22ae4cf1e55f45b4c20c50c363fef150",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/DawnGuard/Generated/Surface.mat",
+      "bytes": 3800,
+      "sha256": "cdad04780868967263faa99204d124d854a888f1f7bf58361ce57c178bdb1d6e",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/DawnGuard/Generated/Surface.mat.meta",
+      "bytes": 188,
+      "sha256": "a635bc60f58b7336b9d53268f991e40ed704e2f2bb6b98008d6d818f8b23c7e7",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/DawnGuard/Generated/Tracer.mat",
+      "bytes": 2525,
+      "sha256": "2b7e281b3ef4ce5d15648511fb6ffaf2d9e5787c318932a51e0598019e3b5ab8",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/DawnGuard/Generated/Tracer.mat.meta",
+      "bytes": 188,
+      "sha256": "92c932082b089791fd84b261b95272bf89ad58965d0f7146308d6ec621fe35aa",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/DawnGuard/Runtime/BoardPointer.cs",
+      "bytes": 458,
+      "sha256": "5f44f80161ebe96b8b94e0efcde1ab8308129ea42414dea1600f2330018e6ed6",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/DawnGuard/Runtime/BoardPointer.cs.meta",
+      "bytes": 59,
+      "sha256": "2ba839ab9297bbdb2f003dfe9281fe616b7c1970672169f667e66fb959885451",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/DawnGuard/Runtime/GameCatalog.cs",
+      "bytes": 578,
+      "sha256": "d532b7909252cd185f2e3adf6b1c727dace980f69bc37cc5ca37968d167ca143",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/DawnGuard/Runtime/GameCatalog.cs.meta",
+      "bytes": 59,
+      "sha256": "9fb40b526760c7a126c568a66576eae8de3da0cb89dee6ea721ab4fd6d58ece6",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/DawnGuard/Runtime/GameRoot.cs",
+      "bytes": 9400,
+      "sha256": "e58d3fe7c3cac8d7fd1c4f110ea827653796fe796f7d33f951234a33da375d45",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/DawnGuard/Runtime/GameRoot.cs.meta",
+      "bytes": 59,
+      "sha256": "75cf000e774b7d12c33db2e86124399277b70abfb9a0a4413ef1c56d443037d3",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/DawnGuard/Runtime/HudView.cs",
+      "bytes": 11242,
+      "sha256": "3bcb593b818d8454616f9dfcbfe245f07735be7f508e4d797aa8a11ddf48d469",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/DawnGuard/Runtime/HudView.cs.meta",
+      "bytes": 59,
+      "sha256": "edaf3e93158c9a32f6932c46642b839f13fd052f95566f32435cae57ebca0a2b",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/DawnGuard/Runtime/ModelFactory.cs",
+      "bytes": 5564,
+      "sha256": "bbd6b034c6abfa95b102471750d30af7e5a6b4b1a4c945feda610ccf735b009a",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/DawnGuard/Runtime/ModelFactory.cs.meta",
+      "bytes": 59,
+      "sha256": "c226d4d376466fd13343e4a7397600b69b0fb224b36d606b3b64a0c9717763e3",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/DawnGuard/Runtime/SafeAreaPanel.cs",
+      "bytes": 722,
+      "sha256": "3e91548537640a8700bbd5f6e5de1a05d4c6bdaa27252b2d7812962c87ddf821",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/DawnGuard/Runtime/SafeAreaPanel.cs.meta",
+      "bytes": 59,
+      "sha256": "4864f19dbe14f06b98b119506bc3d86fc93b38383b80c3f69cf9fc8cfc9cc951",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/DawnGuard/Runtime/SaveService.cs",
+      "bytes": 3773,
+      "sha256": "91201bbd647f4adfe492c5560477f27bbd998197e53502b709072ccd4d1befd9",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/DawnGuard/Runtime/SaveService.cs.meta",
+      "bytes": 59,
+      "sha256": "65e01eb6097547915ad9df8d38d7b6a9dfc66f20ee37c0ea878fbfa352eea4fe",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/DawnGuard/Runtime/VirtualStick.cs",
+      "bytes": 1348,
+      "sha256": "1079280caf19e9638f06eca30f2d5cf7eb6bce87debf43ba534b868a48e3f62f",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/DawnGuard/Runtime/VirtualStick.cs.meta",
+      "bytes": 59,
+      "sha256": "b0b7c8340cbad7f772806133e825969f0e1b53b25fbd1938434488abf7bd726b",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/DawnGuard/Runtime/WorldView.cs",
+      "bytes": 10677,
+      "sha256": "1742f6f0de2d7a6aed893d23166445b6d6ec7cc56dfa29cc246db2f6e4ccc2c4",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/DawnGuard/Runtime/WorldView.cs.meta",
+      "bytes": 59,
+      "sha256": "5e89ca0d9f21b01f7f6511f7815350175de685d2d792172ad743f96981e83837",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/DawnGuard/Core/Diagnostics/SimulationChecks.cs",
+      "bytes": 7200,
+      "sha256": "f7f7166cbde2861ab2776b7d3734aebb180df7ec4c90c33d95f50c114b17b92d",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/DawnGuard/Core/Diagnostics/SimulationChecks.cs.meta",
+      "bytes": 59,
+      "sha256": "9d65b16d3fa1cf27fcfe4c080478606f2a341b8f1348c8ad846f29df7d527bbc",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Art/MenuBackdrop.png",
+      "bytes": 1606518,
+      "sha256": "120e932e26947b061edd1ee0ec915ed924ff14ecb7b3c1e9b4ca9df130da8733",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Art/MenuBackdrop.png.meta",
+      "bytes": 3364,
+      "sha256": "1f20c14cb8648096f65e2bd74bede6a5c5b1f17d4fabe1150aa5eca0e37caef7",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Editor/BlackwoodBatchValidation.cs",
+      "bytes": 2185,
+      "sha256": "87d261b52122fd1beb7f181e1fe55cb7384fc30039ec8116a2ed6a54899df973",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Editor/BlackwoodBatchValidation.cs.meta",
+      "bytes": 59,
+      "sha256": "15c63eb4c5e99016c032876f5c7e94f50592b252c9d2663daa7eeeb4034d1b57",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Editor/BlackwoodChecks.cs",
+      "bytes": 3055,
+      "sha256": "1eb7e482ec3be39ef7a6b2c478f66d587433ffdaf33c6f9c4cefe5d541fe8f35",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Editor/BlackwoodChecks.cs.meta",
+      "bytes": 59,
+      "sha256": "76959fb2526ed6b5220ec442cf2810385676c29860774df7b03ed219227ff9ec",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Editor/BlackwoodIntegrationChecks.cs",
+      "bytes": 5549,
+      "sha256": "4e0cc2eca4d695be0d41777971cdd112255a80cc11990659af20f82e38a39da7",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Editor/BlackwoodIntegrationChecks.cs.meta",
+      "bytes": 59,
+      "sha256": "958ff12486fcaf1dd51c2b3ed6d1d6c6ae813710cb964987d461105fa12dc629",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Editor/BlackwoodLocalAutomation.cs",
+      "bytes": 4510,
+      "sha256": "c8833a186dd9bfdfe360ba0b93f54cbbbb431a75eb7d4ca4c39662e98b2dcd2d",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Editor/BlackwoodLocalAutomation.cs.meta",
+      "bytes": 59,
+      "sha256": "19851cbf8c304bfe62a876c5081786d697417494d0f8cbac1442e02b65617d6a",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Editor/BlackwoodSceneBuilder.cs",
+      "bytes": 20752,
+      "sha256": "e84fad06fe5e033272b6dc8544c7f6f9cd3495082f650fd52662a79e3ce256e3",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Editor/BlackwoodSceneBuilder.cs.meta",
+      "bytes": 59,
+      "sha256": "e1897a111fc1f79db8375586dd1ddf1ff1c33665f28b596ec53d33cb0bcd7fd9",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Editor/BlackwoodUserAssetsBuilder.cs",
+      "bytes": 17196,
+      "sha256": "e03c25e8d1872cd1b67a5ba860c7d6f489b6b8709c8df5f45d0da50266b2bc8a",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Editor/BlackwoodUserAssetsBuilder.cs.meta",
+      "bytes": 59,
+      "sha256": "779fad356546ce6c8608db92571775565693425fcfc5209b928bf01955b1a4ba",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Editor/BlackwoodUserAssetSetup.cs",
+      "bytes": 7072,
+      "sha256": "760c9e506c65b9979a316c407452480921841c34cae60494a536c5f949e20498",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Editor/BlackwoodUserAssetSetup.cs.meta",
+      "bytes": 59,
+      "sha256": "15d10d02cb4fd17d3d871e03664597816307112a2a2ef4deff9ecfb36ce507d2",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Generated/UserMap.meta",
+      "bytes": 172,
+      "sha256": "aeb0299b43821a6a37aa219e1fbfe17b3da375a610a40e457773e55a77e18002",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Runtime/BlackwoodAssetSet.cs",
+      "bytes": 855,
+      "sha256": "5fdd433da6b2157721fea03a6263a22fcb87c2050e2714c88842880e7cc663a6",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Runtime/BlackwoodAssetSet.cs.meta",
+      "bytes": 59,
+      "sha256": "9185218e183043014fb889ca6102d2dc74a04a4e7fb4d35267b28c0ddbe788df",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Runtime/BlackwoodBalance.cs",
+      "bytes": 2062,
+      "sha256": "93af9c4500b006a4809d5b3b60c85c605cd9921f4f0586180e1d20d9b30edc49",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Runtime/BlackwoodBalance.cs.meta",
+      "bytes": 59,
+      "sha256": "253b5765b44be03f46f40598224c8b6a2c826837eb0bf9acdaa3bb58ba8e1077",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Runtime/BlackwoodEnemyView.cs",
+      "bytes": 3309,
+      "sha256": "1902883bb413b81e62280e17e15cb2c785d2463ff2c184cbc89aeef6e3dab38d",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Runtime/BlackwoodEnemyView.cs.meta",
+      "bytes": 59,
+      "sha256": "7bd2a8268fc658914a0346ad49ae869057d29b95dbffffea75824f1a5d5e7f10",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Runtime/BlackwoodHud.cs",
+      "bytes": 22753,
+      "sha256": "d069c48d70e821e7cd4dd1f4545a329cd0338712cb8e91caf012ee42b3458bc7",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Runtime/BlackwoodHud.cs.meta",
+      "bytes": 59,
+      "sha256": "9c773a3b07001ac4dc8dde65c279086f0b292f67267fbb0d6f85842d8fcc8487",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Runtime/BlackwoodModel.cs",
+      "bytes": 1500,
+      "sha256": "28edf9e52dcc580206977f792d0b53fd35a39eedd71a9e5bcb93ed347cf5f604",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Runtime/BlackwoodModel.cs.meta",
+      "bytes": 59,
+      "sha256": "a12e03a41d125dda5d25ef0d049c076ab2f3dde0aad1fb1dee47c38163d988c5",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Runtime/BlackwoodPanel.cs",
+      "bytes": 978,
+      "sha256": "0841e1ed5fb86ae9f00799adde958baf52ac39cec679fd4d80ca1bf68a79589a",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Runtime/BlackwoodPanel.cs.meta",
+      "bytes": 59,
+      "sha256": "8bad6df1b884dc0e25a124e1ead05e9933d465c97c9e65466eade0cc66b37051",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Runtime/BlackwoodPlayVerification.cs",
+      "bytes": 12624,
+      "sha256": "124b5aa80b18ba25efba71b3c2cad2639d6ac74b09d9d2427cd673e50a63b2c7",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Runtime/BlackwoodPlayVerification.cs.meta",
+      "bytes": 59,
+      "sha256": "70ec877543927b02304439c06fbeea9b3889d7f412d7fee319e1bf218883fd78",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Runtime/BlackwoodPointer.cs",
+      "bytes": 445,
+      "sha256": "b8081535bbc1e0dad7c1f0f0a9381dec4d06c9568bc49c4a115b59dd103eefa1",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Runtime/BlackwoodPointer.cs.meta",
+      "bytes": 59,
+      "sha256": "24682a3438bea734da034432e3bfe4850039f75eb27062c5459b5464296c8857",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Runtime/BlackwoodRoot.cs",
+      "bytes": 10635,
+      "sha256": "769247beda66b9743cad806eba5762339f63ebb7e7ba0c7cf6d3b551a28b3a78",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Runtime/BlackwoodRoot.cs.meta",
+      "bytes": 59,
+      "sha256": "f856c947ddf4877aba46ad2bb3edb61545d891bb9ea822f4596b84e443b10925",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Runtime/BlackwoodWorld.cs",
+      "bytes": 14271,
+      "sha256": "105652d2cf53cdd2d52dd1294495a68cdcface8d97317a9e350bdee9e4e2fa26",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Runtime/BlackwoodWorld.cs.meta",
+      "bytes": 59,
+      "sha256": "787ae88a31a8026de8b9a70c193b7e3504829b5f4c92f0725c6f1fee61add142",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Generated/UserMap/BlackwoodCatalog.asset",
+      "bytes": 8131,
+      "sha256": "95c0afa0fca17f8d7ee75545894659146ab8af142c789ce973ab2b633859c53b",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Generated/UserMap/BlackwoodCatalog.asset.meta",
+      "bytes": 189,
+      "sha256": "972b25b39ecc4e124a144bff24c2e3c9a2556c4896c98f32add56be5a84fd7a2",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Generated/UserMap/BlackwoodUserMap.unity",
+      "bytes": 109896,
+      "sha256": "312c10ee8695e47ef20b899a55f89f80cebca38431d99f46926db3a0cbb5e02d",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Generated/UserMap/BlackwoodUserMap.unity.meta",
+      "bytes": 155,
+      "sha256": "cd58e78a9fb642633026acbe7ca10f77230a73d0e0f5e64724255ce1be273fb3",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Generated/UserMap/brute.controller",
+      "bytes": 8872,
+      "sha256": "0d8932e2f365b06e80866d4623f89762fee647fbc4b78b3dc973032010d69240",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Generated/UserMap/brute.controller.meta",
+      "bytes": 188,
+      "sha256": "dac93c6eb53cd07ed8da6234196a17476fbc589a21f247973e82158e9ad38f94",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Generated/UserMap/Fall_Dead_from_Abdominal_Injury.anim",
+      "bytes": 1240547,
+      "sha256": "10b764332b6e126ccf65c66de06bce153e7ec5a2ac2c9946c42eed16eb1e3bd2",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Generated/UserMap/Fall_Dead_from_Abdominal_Injury.anim.meta",
+      "bytes": 188,
+      "sha256": "055ddadf1e855bfa7efc6158bfcebb4fc192314d25b7cbc4d2d8756e82bc6bc8",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Generated/UserMap/Idle_9.anim",
+      "bytes": 323664,
+      "sha256": "1e5e106defa8a5b1f6b52f4ad373dde73bdf571fbe341189320aeec9e48ded3e",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Generated/UserMap/Idle_9.anim.meta",
+      "bytes": 188,
+      "sha256": "64bb000a80f17e53ce4f02a9c013175ec46514519b6e9f4b67c4613fe192667c",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Generated/UserMap/MapGround.mat",
+      "bytes": 3882,
+      "sha256": "c596d3a14ed2ba9ff393616ddbc16a5c42b8b0ad793adb86dcd9fb2edb00bbe8",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Generated/UserMap/MapGround.mat.meta",
+      "bytes": 188,
+      "sha256": "e2aeeeaa0ddb4f09197adad84b721f7f908caa915523dd76ad27e376b25588a2",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Generated/UserMap/runner.controller",
+      "bytes": 8884,
+      "sha256": "531eeca3355a37d5550a8d47a0080c97f0741ba35620c789fa69a18be1c6d226",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Generated/UserMap/runner.controller.meta",
+      "bytes": 188,
+      "sha256": "f69f9126e790805bf57dc4fabde5c1876d7cccfca7275ae67bd367617b7e608d",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Generated/UserMap/Running.anim",
+      "bytes": 442768,
+      "sha256": "838f3c7015c715491e2e5f72d71b958f60e076d6ff955bff807aff62b302165d",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Generated/UserMap/Running.anim.meta",
+      "bytes": 188,
+      "sha256": "1191a02a5527f0cf608db7ed13d090c8cf809a66fba6dca3607c3a7eb19f8f7a",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Generated/UserMap/Step_in_High_Kick.anim",
+      "bytes": 640320,
+      "sha256": "b1f2c488b62ea81e1d9c6b278ec5df590034d96dfb7a914e8209ff537af9c18d",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Generated/UserMap/Step_in_High_Kick.anim.meta",
+      "bytes": 188,
+      "sha256": "a440f03415c0c3a43b6065812f1bfbb98bb134a0d1a13fbb26d587bccf6404a3",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Generated/UserMap/Surface.mat",
+      "bytes": 3800,
+      "sha256": "a94d8f6d4ccef9a7ee188d24f88529b9389dcf8b6bf1697f94e15e5533ad3af5",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Generated/UserMap/Surface.mat.meta",
+      "bytes": 188,
+      "sha256": "5e0126ea9eef324ced18e681060013286ed5c6fd6de2dac6190cc2bc186d9aee",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Generated/UserMap/User_brute.prefab",
+      "bytes": 34396,
+      "sha256": "5b697c93d6aeb3a03daaa0010d23639b3ef0b0a2bab93c216de7a7f4ddb27509",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Generated/UserMap/User_brute.prefab.meta",
+      "bytes": 154,
+      "sha256": "a4a485ad754241d214f76c853ba450bbcb37a04ea5dd3a10850fea5dc6449fcd",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Generated/UserMap/User_camp.prefab",
+      "bytes": 4207,
+      "sha256": "9c3d67496e2212c57b570892cf6e9a94ec9ab251ead46a36953431069ce1f43f",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Generated/UserMap/User_camp.prefab.meta",
+      "bytes": 154,
+      "sha256": "5f9e06bcc5a47e9b5e4fa8585c3cb970121df25984addffddb380ba738c4d4b2",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Generated/UserMap/User_drone.prefab",
+      "bytes": 4735,
+      "sha256": "f58461fef43cf76b6e5f3677b432491ba1a87429b04cd27d61041c544ca3ebbe",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Generated/UserMap/User_drone.prefab.meta",
+      "bytes": 154,
+      "sha256": "9e43fc08c1921ae24d133830fa801b7339a0bf09068fbc509814b12e4a2fbc24",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Generated/UserMap/User_generator.prefab",
+      "bytes": 4210,
+      "sha256": "38e08471113a1c34226295ad5ec678f4520472077188ca025e45057b070d16c5",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Generated/UserMap/User_generator.prefab.meta",
+      "bytes": 154,
+      "sha256": "566955e2b26d348ee09313883e892b067e78e3da044511839c454179602dabfb",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Generated/UserMap/User_gun.prefab",
+      "bytes": 4733,
+      "sha256": "df72c07c820ce72ac745547dccbf9cec31f5f1d8275b87470c866542f17ff3fc",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Generated/UserMap/User_gun.prefab.meta",
+      "bytes": 154,
+      "sha256": "27c095dc1f2063ede0d3ccec6bfe3bef1055441955a19afba2bed28cb31fab68",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Generated/UserMap/User_lab.prefab",
+      "bytes": 4210,
+      "sha256": "621c27011d3107b5db1626bf8aa30fbd07d7ccd500c2061e5fe452e4ed458b8b",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Generated/UserMap/User_lab.prefab.meta",
+      "bytes": 154,
+      "sha256": "573772a9205ebfc2c469fbe788a4e9753b462507c6e22b0b9af2e14e5e526643",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Generated/UserMap/User_pad.prefab",
+      "bytes": 4209,
+      "sha256": "d2aa9c27ea3b3412d6cd24780d4e3eea0679638d55dbb59a7814b0904c4b602d",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Generated/UserMap/User_pad.prefab.meta",
+      "bytes": 154,
+      "sha256": "b073c1fb4d747bbd21e8da047782ac4ee7d6fc54770b676c9d89aad356668b52",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Generated/UserMap/User_pine.prefab",
+      "bytes": 4208,
+      "sha256": "fbac460f5cb1703864e06de496701a534821301263aced81da85df4351ea5591",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Generated/UserMap/User_pine.prefab.meta",
+      "bytes": 154,
+      "sha256": "b342b637fb4f0d5b95977e3f647ba415b82776195c07332e31a7233c81218b2d",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Generated/UserMap/User_rubble.prefab",
+      "bytes": 4216,
+      "sha256": "80bd8a23ef4a0223717a3ba12c4230bf5c46514ad1b8f4a83917578aba0c1c74",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Generated/UserMap/User_rubble.prefab.meta",
+      "bytes": 154,
+      "sha256": "03cfeb0c96857a05353c6d4505de0f28d551fa4852b9b922d1309b79440afbd9",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Generated/UserMap/User_runner.prefab",
+      "bytes": 34390,
+      "sha256": "297373c288d1d0892a106f87735486b07bd2ce442a51316d1614d436757ac770",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Generated/UserMap/User_runner.prefab.meta",
+      "bytes": 154,
+      "sha256": "dcd6716298b3dafdcc73a2cb3ac26a8f70f0b07ca94589cbe8e83b0a33015e11",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Generated/UserMap/User_shelter.prefab",
+      "bytes": 4210,
+      "sha256": "ef20f6522bad0bc61f65611c963b3f14e2863b613fe8f480aa66e930b30f1ba5",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Generated/UserMap/User_shelter.prefab.meta",
+      "bytes": 154,
+      "sha256": "da728bb8d49025f39f48fe00a663110db5dc1504e3fc907e0417534951f6dbe0",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Generated/UserMap/User_tesla.prefab",
+      "bytes": 4211,
+      "sha256": "522593b9b53feae3fac4c7446360cd0bf1445e188a2317954531c2f78dc1e6ff",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Generated/UserMap/User_tesla.prefab.meta",
+      "bytes": 154,
+      "sha256": "10c5d6c65620f9bb14cf9442ceba1bbd1d5b308b5734851ee3f0aead714c515c",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Generated/UserMap/User_walker.prefab",
+      "bytes": 34392,
+      "sha256": "04e22159fc6b17347d6a34e5b213d85b4d86a1b2e748ad7587296c8783296f5b",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Generated/UserMap/User_walker.prefab.meta",
+      "bytes": 154,
+      "sha256": "f5cfcc4d24339a809136c1cab608ac302158f138bab71724d0043f859fba840a",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Generated/UserMap/User_wall.prefab",
+      "bytes": 4212,
+      "sha256": "c6c50801a245acfa2d0dba35975b8ce810aa62d39a6dba865d61599104c8558a",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Generated/UserMap/User_wall.prefab.meta",
+      "bytes": 154,
+      "sha256": "9267a744f6c8bbcdf0f1a8ffc4f39249b1dfff18816cd3f50fc7ddf0797dd518",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Generated/UserMap/walker.controller",
+      "bytes": 8876,
+      "sha256": "384d3c46a4ddbed87ee1d5edf774a6078404d72f65e3832bcc66d19d228cb3bd",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Generated/UserMap/walker.controller.meta",
+      "bytes": 188,
+      "sha256": "675b52d17b1125584fa9bde6b4d6828cd7dd1434fcd210b6caecb244735a5a76",
+      "action": "preserved_in_archive"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Generated/UserMap/Walking.anim",
+      "bytes": 525958,
+      "sha256": "8c5dfdb069bc928e613afa6adf397db7d6c191fc2df372122ff66fd1ec485dda",
+      "action": "identical_to_working_project"
+    },
+    {
+      "path": "Assets/DawnGuard/BlackwoodV2/Generated/UserMap/Walking.anim.meta",
+      "bytes": 188,
+      "sha256": "634e2d24ee76fcc96f5357d40d770d0898a93f0e84b265a5b947940c4b2e5234",
+      "action": "preserved_in_archive"
+    }
+  ]
+}

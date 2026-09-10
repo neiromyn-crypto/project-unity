@@ -1,0 +1,2 @@
+New coastal scene, original models reused, four Blender additions, independent catalog/save, generated UI icons.
+Assets/DawnGuard/BlackwoodLTD/Scenes/BlackwoodCoast.unity

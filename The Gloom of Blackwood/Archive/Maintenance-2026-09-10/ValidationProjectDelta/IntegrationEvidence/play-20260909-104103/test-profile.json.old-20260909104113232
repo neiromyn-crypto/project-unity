@@ -1,0 +1,180 @@
+{
+    "version": 1,
+    "completed": false,
+    "resume": {
+        "schemaVersion": 1,
+        "day": 2,
+        "credits": 136,
+        "tech": 0,
+        "droneLevel": 1,
+        "dayRemaining": 75.0,
+        "buildings": [
+            {
+                "instanceId": 1,
+                "definitionId": "shelter",
+                "cell": {
+                    "x": 7,
+                    "z": 5
+                },
+                "level": 1,
+                "paidCredits": 0,
+                "purchasedDay": 1,
+                "health": 600.0,
+                "permanent": true
+            },
+            {
+                "instanceId": 2,
+                "definitionId": "camp",
+                "cell": {
+                    "x": 3,
+                    "z": 4
+                },
+                "level": 1,
+                "paidCredits": 0,
+                "purchasedDay": 1,
+                "health": 180.0,
+                "permanent": true
+            },
+            {
+                "instanceId": 3,
+                "definitionId": "generator",
+                "cell": {
+                    "x": 11,
+                    "z": 4
+                },
+                "level": 1,
+                "paidCredits": 0,
+                "purchasedDay": 1,
+                "health": 220.0,
+                "permanent": true
+            },
+            {
+                "instanceId": 4,
+                "definitionId": "wall",
+                "cell": {
+                    "x": 6,
+                    "z": 9
+                },
+                "level": 1,
+                "paidCredits": 40,
+                "purchasedDay": 1,
+                "health": 180.0,
+                "permanent": false
+            },
+            {
+                "instanceId": 5,
+                "definitionId": "wall",
+                "cell": {
+                    "x": 7,
+                    "z": 9
+                },
+                "level": 1,
+                "paidCredits": 40,
+                "purchasedDay": 1,
+                "health": 152.0,
+                "permanent": false
+            },
+            {
+                "instanceId": 6,
+                "definitionId": "wall",
+                "cell": {
+                    "x": 8,
+                    "z": 9
+                },
+                "level": 1,
+                "paidCredits": 40,
+                "purchasedDay": 1,
+                "health": 163.5,
+                "permanent": false
+            }
+        ]
+    },
+    "dayStart": {
+        "schemaVersion": 1,
+        "day": 2,
+        "credits": 136,
+        "tech": 0,
+        "droneLevel": 1,
+        "dayRemaining": 75.0,
+        "buildings": [
+            {
+                "instanceId": 1,
+                "definitionId": "shelter",
+                "cell": {
+                    "x": 7,
+                    "z": 5
+                },
+                "level": 1,
+                "paidCredits": 0,
+                "purchasedDay": 1,
+                "health": 600.0,
+                "permanent": true
+            },
+            {
+                "instanceId": 2,
+                "definitionId": "camp",
+                "cell": {
+                    "x": 3,
+                    "z": 4
+                },
+                "level": 1,
+                "paidCredits": 0,
+                "purchasedDay": 1,
+                "health": 180.0,
+                "permanent": true
+            },
+            {
+                "instanceId": 3,
+                "definitionId": "generator",
+                "cell": {
+                    "x": 11,
+                    "z": 4
+                },
+                "level": 1,
+                "paidCredits": 0,
+                "purchasedDay": 1,
+                "health": 220.0,
+                "permanent": true
+            },
+            {
+                "instanceId": 4,
+                "definitionId": "wall",
+                "cell": {
+                    "x": 6,
+                    "z": 9
+                },
+                "level": 1,
+                "paidCredits": 40,
+                "purchasedDay": 1,
+                "health": 180.0,
+                "permanent": false
+            },
+            {
+                "instanceId": 5,
+                "definitionId": "wall",
+                "cell": {
+                    "x": 7,
+                    "z": 9
+                },
+                "level": 1,
+                "paidCredits": 40,
+                "purchasedDay": 1,
+                "health": 152.0,
+                "permanent": false
+            },
+            {
+                "instanceId": 6,
+                "definitionId": "wall",
+                "cell": {
+                    "x": 8,
+                    "z": 9
+                },
+                "level": 1,
+                "paidCredits": 40,
+                "purchasedDay": 1,
+                "health": 163.5,
+                "permanent": false
+            }
+        ]
+    }
+}

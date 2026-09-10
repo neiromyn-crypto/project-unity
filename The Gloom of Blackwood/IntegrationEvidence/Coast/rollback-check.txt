@@ -1,0 +1,1 @@
+PASS: failed generation preserves loaded scene, unsaved object and dirty state.

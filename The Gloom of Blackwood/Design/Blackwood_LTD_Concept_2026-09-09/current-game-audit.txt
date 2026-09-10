@@ -1,0 +1,4 @@
+no_build: phase=Day, day=2, shelterHP=600, elapsed=19,9, alive_before_final_tick=1, alive_after=0, credits=256
+three_walls: phase=Day, day=2, shelterHP=600, elapsed=19,9, alive_before_final_tick=1, alive_after=0, credits=136
+one_gun: phase=Day, day=2, shelterHP=600, elapsed=17,2, alive_before_final_tick=1, alive_after=0, credits=136
+no_build_no_drone: phase=Defeat, day=1, shelterHP=0, elapsed=24,15, alive_before_final_tick=8, alive_after=8, credits=120

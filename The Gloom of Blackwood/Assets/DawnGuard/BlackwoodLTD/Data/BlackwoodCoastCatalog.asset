@@ -1,0 +1,356 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d63e2d4b1dd91f4a846534786f6c29a, type: 3}
+  m_Name: BlackwoodCoastCatalog
+  m_EditorClassIdentifier: Assembly-CSharp::DawnGuard.BlackwoodLTD.CoastCatalog
+  rules:
+    version: 1
+    width: 28
+    depth: 24
+    startingCredits: 220
+    startingStone: 100
+    dawnCredits: 100
+    firstDay: 120
+    daySeconds: 90
+    campHP: 600
+    defenses:
+    - id: wall
+      title: "\u0411\u0410\u0420\u042C\u0415\u0420"
+      description: "\u041D\u0430\u043F\u0440\u0430\u0432\u043B\u044F\u0435\u0442
+        \u043F\u043E\u0442\u043E\u043A. \u041F\u0440\u043E\u0445\u043E\u0434 \u0434\u043E\u043B\u0436\u0435\u043D
+        \u043E\u0441\u0442\u0430\u0432\u0430\u0442\u044C\u0441\u044F \u043E\u0442\u043A\u0440\u044B\u0442\u044B\u043C."
+      credits: 0
+      stone: 12
+      power: 0
+      unlock: 0
+      hp: 180
+      damage: 0
+      cooldown: 1
+      range: 4.5
+    - id: gun
+      title: "\u041F\u0423\u041B\u0415\u041C\u0401\u0422"
+      description: "\u041E\u0434\u0438\u043D\u043E\u0447\u043D\u044B\u0439 \u0444\u0438\u0437\u0438\u0447\u0435\u0441\u043A\u0438\u0439
+        \u0443\u0440\u043E\u043D. \u041F\u043E\u0441\u0442\u0430\u0432\u044C\u0442\u0435
+        \u0443 \u043F\u043E\u0432\u043E\u0440\u043E\u0442\u0430."
+      credits: 90
+      stone: 20
+      power: 2
+      unlock: 0
+      hp: 160
+      damage: 10
+      cooldown: 0.5
+      range: 5
+    - id: arcane
+      title: "\u0410\u0420\u041A\u0410\u041D\u041D\u042B\u0419 \u0421\u0422\u0420\u0410\u0416"
+      description: "\u041C\u0430\u0433\u0438\u0447\u0435\u0441\u043A\u0438\u0439
+        \u0443\u0434\u0430\u0440 \u043F\u0440\u043E\u0431\u0438\u0432\u0430\u0435\u0442
+        \u0431\u0440\u043E\u043D\u044E."
+      credits: 115
+      stone: 30
+      power: 2
+      unlock: 1
+      hp: 170
+      damage: 36
+      cooldown: 1.8
+      range: 4.5
+    - id: tesla
+      title: "\u0422\u0415\u0421\u041B\u0410"
+      description: "\u0426\u0435\u043F\u044C \u043F\u043E\u0440\u0430\u0436\u0430\u0435\u0442
+        \u0434\u043E \u0442\u0440\u0451\u0445 \u0432\u0440\u0430\u0433\u043E\u0432:
+        18 / 12 / 8."
+      credits: 130
+      stone: 35
+      power: 3
+      unlock: 4
+      hp: 160
+      damage: 18
+      cooldown: 1.2
+      range: 4
+    - id: cryo
+      title: "\u041A\u0420\u0418\u041E-\u0421\u0422\u0420\u0410\u0416"
+      description: "\u0417\u0430\u043C\u0435\u0434\u043B\u044F\u0435\u0442 \u0433\u0440\u0443\u043F\u043F\u0443
+        \u043D\u0430 25%. \u041D\u0443\u0436\u0435\u043D \u0441\u043E\u0441\u0435\u0434\u043D\u0438\u0439
+        \u0438\u0441\u0442\u043E\u0447\u043D\u0438\u043A \u0443\u0440\u043E\u043D\u0430."
+      credits: 100
+      stone: 25
+      power: 2
+      unlock: 2
+      hp: 160
+      damage: 6
+      cooldown: 1.5
+      range: 4
+    enemies:
+    - id: walker
+      title: "\u0417\u041E\u041C\u0411\u0418"
+      hp: 48
+      speed: 0.85
+      dps: 10
+      physical: 1
+      reward: 2
+    - id: runner
+      title: "\u0411\u0415\u0413\u0423\u041D"
+      hp: 32
+      speed: 1.45
+      dps: 8
+      physical: 1
+      reward: 3
+    - id: brute
+      title: "\u0413\u0420\u041E\u041C\u0418\u041B\u0410"
+      hp: 260
+      speed: 0.6
+      dps: 24
+      physical: 1
+      reward: 12
+    - id: sapper
+      title: "\u0421\u0410\u041F\u0401\u0420"
+      hp: 160
+      speed: 0.8
+      dps: 10
+      physical: 1
+      reward: 8
+    - id: armored
+      title: "\u0411\u0420\u041E\u041D\u0418\u0420\u041E\u0412\u0410\u041D\u041D\u042B\u0419"
+      hp: 300
+      speed: 0.6
+      dps: 24
+      physical: 0.6
+      reward: 14
+    - id: boss
+      title: "\u0421\u0415\u0420\u0414\u0426\u0415 \u0422\u042C\u041C\u042B"
+      hp: 2400
+      speed: 0.45
+      dps: 40
+      physical: 0.75
+      reward: 80
+    waves:
+    - title: "\u041F\u0435\u0440\u0432\u044B\u0439 \u0440\u0443\u0431\u0435\u0436"
+      advice: "\u0421\u0435\u0432\u0435\u0440: \u0441\u043E\u0435\u0434\u0438\u043D\u0438\u0442\u0435
+        \u0441\u043A\u0430\u043B\u044C\u043D\u044B\u0435 \u043E\u043F\u043E\u0440\u044B
+        \u0431\u0430\u0440\u044C\u0435\u0440\u0430\u043C\u0438 \u0438 \u043F\u0440\u0438\u043A\u0440\u043E\u0439\u0442\u0435
+        \u043F\u043E\u0432\u043E\u0440\u043E\u0442."
+      groups:
+      - kind: walker
+        front: 0
+        count: 14
+        start: 1
+        interval: 1.3
+    - title: "\u0428\u043E\u0440\u043E\u0445 \u043D\u0430 \u0437\u0430\u043F\u0430\u0434\u0435"
+      advice: "\u041D\u043E\u0432\u044B\u0439 \u0432\u0445\u043E\u0434 \u043D\u0430
+        \u0437\u0430\u043F\u0430\u0434\u0435. \u0411\u0435\u0433\u0443\u043D\u044B
+        \u0431\u044B\u0441\u0442\u0440\u043E \u043F\u0440\u043E\u0445\u043E\u0434\u044F\u0442
+        \u043F\u0440\u044F\u043C\u043E\u0439 \u0443\u0447\u0430\u0441\u0442\u043E\u043A."
+      groups:
+      - kind: walker
+        front: 0
+        count: 14
+        start: 1
+        interval: 1.3
+      - kind: runner
+        front: 1
+        count: 8
+        start: 9
+        interval: 1.8
+    - title: "\u0422\u044F\u0436\u0451\u043B\u044B\u0435 \u0448\u0430\u0433\u0438"
+      advice: "\u0413\u0440\u043E\u043C\u0438\u043B\u044B \u0438\u0434\u0443\u0442
+        \u0441 \u0432\u043E\u0441\u0442\u043E\u043A\u0430. \u041F\u043E\u0434\u0433\u043E\u0442\u043E\u0432\u044C\u0442\u0435
+        \u0441\u0438\u043B\u044C\u043D\u044B\u0439 \u043E\u0434\u0438\u043D\u043E\u0447\u043D\u044B\u0439
+        \u0443\u0440\u043E\u043D."
+      groups:
+      - kind: walker
+        front: 0
+        count: 18
+        start: 1
+        interval: 1.3
+      - kind: runner
+        front: 2
+        count: 6
+        start: 8
+        interval: 1.3
+      - kind: brute
+        front: 2
+        count: 2
+        start: 20
+        interval: 9
+    - title: "\u0422\u0440\u0438 \u043D\u0430\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u0438\u044F"
+      advice: "\u0412\u0441\u0435 \u0432\u0445\u043E\u0434\u044B \u0430\u043A\u0442\u0438\u0432\u043D\u044B.
+        \u041E\u0431\u0449\u0438\u0439 \u0440\u0443\u0431\u0435\u0436 \u0434\u043E\u043B\u0436\u0435\u043D
+        \u043F\u0440\u0438\u043A\u0440\u044B\u0432\u0430\u0442\u044C \u0431\u043E\u043A\u043E\u0432\u044B\u0435
+        \u043F\u043E\u0442\u043E\u043A\u0438."
+      groups:
+      - kind: walker
+        front: 0
+        count: 12
+        start: 1
+        interval: 1.3
+      - kind: walker
+        front: 1
+        count: 12
+        start: 3
+        interval: 1.3
+      - kind: runner
+        front: 2
+        count: 10
+        start: 12
+        interval: 1.3
+      - kind: brute
+        front: 1
+        count: 2
+        start: 28
+        interval: 8
+    - title: "\u0422\u0440\u0435\u0449\u0438\u043D\u0430 \u0432 \u0441\u0442\u0435\u043D\u0435"
+      advice: "\u0421\u0430\u043F\u0451\u0440\u044B \u0441 \u0432\u043E\u0441\u0442\u043E\u043A\u0430
+        \u043C\u0435\u0442\u044F\u0442 \u0431\u0430\u0440\u044C\u0435\u0440\u044B.
+        \u0421\u043E\u0445\u0440\u0430\u043D\u0438\u0442\u0435 \u0437\u0430\u0440\u044F\u0434
+        \u0440\u0435\u043C\u043E\u043D\u0442\u0430."
+      groups:
+      - kind: walker
+        front: 0
+        count: 10
+        start: 1
+        interval: 1.3
+      - kind: walker
+        front: 1
+        count: 10
+        start: 3
+        interval: 1.3
+      - kind: runner
+        front: 2
+        count: 10
+        start: 12
+        interval: 1.3
+      - kind: brute
+        front: 0
+        count: 3
+        start: 22
+        interval: 6
+      - kind: sapper
+        front: 2
+        count: 2
+        start: 28
+        interval: 12
+    - title: "\u0416\u0435\u043B\u0435\u0437\u043D\u0430\u044F \u043A\u043E\u0436\u0430"
+      advice: "\u0411\u0440\u043E\u043D\u044F \u043E\u0441\u043B\u0430\u0431\u043B\u044F\u0435\u0442
+        \u0444\u0438\u0437\u0438\u0447\u0435\u0441\u043A\u0438\u0435 \u0430\u0442\u0430\u043A\u0438.
+        \u041D\u0443\u0436\u043D\u0430 \u043C\u0430\u0433\u0438\u0447\u0435\u0441\u043A\u0430\u044F
+        \u0437\u0430\u0449\u0438\u0442\u0430."
+      groups:
+      - kind: walker
+        front: 1
+        count: 18
+        start: 1
+        interval: 1.3
+      - kind: runner
+        front: 2
+        count: 16
+        start: 7
+        interval: 1.3
+      - kind: brute
+        front: 0
+        count: 5
+        start: 20
+        interval: 5
+      - kind: armored
+        front: 2
+        count: 3
+        start: 35
+        interval: 8
+    - title: "\u041F\u0435\u0440\u0435\u0434 \u0431\u0443\u0440\u0435\u0439"
+      advice: "\u041F\u043E\u0441\u043B\u0435\u0434\u043D\u044F\u044F \u0432\u043E\u0437\u043C\u043E\u0436\u043D\u043E\u0441\u0442\u044C
+        \u0443\u0441\u0438\u043B\u0438\u0442\u044C \u043E\u0431\u043E\u0440\u043E\u043D\u0443
+        \u043F\u0435\u0440\u0435\u0434 \u0444\u0438\u043D\u0430\u043B\u043E\u043C."
+      groups:
+      - kind: walker
+        front: 0
+        count: 18
+        start: 1
+        interval: 1.3
+      - kind: runner
+        front: 1
+        count: 18
+        start: 7
+        interval: 1.3
+      - kind: brute
+        front: 2
+        count: 4
+        start: 20
+        interval: 5
+      - kind: sapper
+        front: 1
+        count: 2
+        start: 32
+        interval: 8
+      - kind: armored
+        front: 0
+        count: 4
+        start: 40
+        interval: 8
+    - title: "\u041F\u043E\u0441\u043B\u0435\u0434\u043D\u044F\u044F \u043D\u043E\u0447\u044C"
+      advice: "\u0423\u0431\u0435\u0439\u0442\u0435 \u0421\u0435\u0440\u0434\u0446\u0435
+        \u0442\u044C\u043C\u044B \u0438 \u0437\u0430\u0447\u0438\u0441\u0442\u0438\u0442\u0435
+        \u0432\u0441\u0435 \u0442\u0440\u0438 \u043D\u0430\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u0438\u044F."
+      groups:
+      - kind: walker
+        front: 0
+        count: 22
+        start: 1
+        interval: 1.3
+      - kind: runner
+        front: 1
+        count: 20
+        start: 6
+        interval: 1.3
+      - kind: brute
+        front: 2
+        count: 6
+        start: 20
+        interval: 5
+      - kind: sapper
+        front: 2
+        count: 2
+        start: 32
+        interval: 9
+      - kind: armored
+        front: 1
+        count: 4
+        start: 42
+        interval: 9
+      - kind: boss
+        front: 0
+        count: 1
+        start: 48
+        interval: 1.3
+  source: {fileID: 11400000, guid: 46667721bbd1e0246af0c3c742f8bb5d, type: 2}
+  pine: {fileID: 2018792666090497579, guid: ddaa59def7263a04987b37955a1a1c3d, type: 3}
+  rock: {fileID: 9020043254310012895, guid: dd96346739b91754ca782652dc2011fd, type: 3}
+  pad: {fileID: 5285935082350558300, guid: d3ceaeb4faa14554681749dae620b320, type: 3}
+  worker: {fileID: 8126366944759818913, guid: 8b27ade7c1c6b044fa405566b669000e, type: 3}
+  guardian: {fileID: 4567957035145334496, guid: 7508b26c36b5e444eb31558d32a5af72, type: 3}
+  dock: {fileID: 5058708403760463668, guid: c79c98283f4de5640a645854cc085693, type: 3}
+  lantern: {fileID: 4414374099592075017, guid: 5a50c4bdbb7719249809a68023a85fc8, type: 3}
+  basalt: {fileID: 8928474188664716220, guid: c810573e59b3c76438be2b4632283a2f, type: 3}
+  ore: {fileID: 8855156591496607341, guid: ad35d87b05004294abc45b1e7cac7120, type: 3}
+  fern: {fileID: 3583444261186960339, guid: dd7f8697ae0ec744d9940dc011718514, type: 3}
+  ground: {fileID: 2100000, guid: ccb94ed8ab7ed644c90b3c15518aed6c, type: 2}
+  water: {fileID: 2100000, guid: 6a049e91e4d126040a8e9a11a93e1e59, type: 2}
+  sand: {fileID: 2100000, guid: b199a87284a871745bc125aed88cd03f, type: 2}
+  path: {fileID: 2100000, guid: 9200610b1701e934294cb51a25172f02, type: 2}
+  ink: {fileID: 2100000, guid: 04496cdaeeb988049be9594e44b1a33e, type: 2}
+  mint: {fileID: 2100000, guid: 5b0270bc1da11f74eaafe7e0a728ca30, type: 2}
+  orange: {fileID: 2100000, guid: 82d3bfc9a3bd86c4b94508441534751b, type: 2}
+  defenseIcons:
+  - {fileID: 21300000, guid: 19af912def5873b4a85877ede0ce3ac0, type: 3}
+  - {fileID: 21300000, guid: f002e4e41e684424a81b3ed02325af0f, type: 3}
+  - {fileID: 21300000, guid: d6ec186622599804ea923f40ea3e223f, type: 3}
+  - {fileID: 21300000, guid: 2284b4a4781962449b5af872389b6c7b, type: 3}
+  - {fileID: 21300000, guid: bf2f7c0e50e675d4cb9ed61da575b749, type: 3}
+  workerIcon: {fileID: 21300000, guid: 256fdb86e44cf0b4e838bf0e06786d94, type: 3}
+  enemyIcon: {fileID: 21300000, guid: 31f844975d26af3408a0d3b1397c1721, type: 3}

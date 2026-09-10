@@ -1,0 +1,2 @@
+Assets\DawnGuard\BlackwoodLTD\Editor\CoastScenePreview.cs(21,31): error CS0619: 'SceneHandle.implicit operator SceneHandle(int)' is obsolete: 'Implicit conversion from int to SceneHandle is deprecated. Use SceneHandle.FromRawData(ulong) instead'
+Assets\DawnGuard\BlackwoodLTD\Editor\CoastScenePreview.cs(24,136): error CS0619: 'SceneHandle.implicit operator int(SceneHandle)' is obsolete: 'Implicit conversion from SceneHandle to int is deprecated. Use SceneHandle.GetRawData() instead'

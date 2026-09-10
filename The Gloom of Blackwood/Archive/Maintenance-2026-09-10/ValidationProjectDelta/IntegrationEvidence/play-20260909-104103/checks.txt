@@ -1,0 +1,39 @@
+PASS BlackwoodRoot initialized in Play Mode
+PASS Editor starting preview removed; no duplicate starting buildings
+PASS No old GameRoot in integration scene
+PASS Fresh isolated test profile
+PASS Main menu pauses simulation
+PASS Visible buttons inside 1600x900 at menu-16x9
+PASS Visible buttons inside 1950x900 at menu-19_5x9
+PASS Button enabled: НАСТРОЙКИ
+PASS Settings opens
+PASS Menu enters the campaign
+PASS Visible buttons inside 1600x900 at day-16x9
+PASS Visible buttons inside 1950x900 at day-19_5x9
+PASS Wall placement 6: 
+PASS Wall placement 7: 
+PASS Wall placement 8: 
+PASS Three-wall strategy costs 120
+PASS Visible buttons inside 1600x900 at night-16x9
+PASS Visible buttons inside 1950x900 at night-19_5x9
+PASS Three-wall first night reaches day two
+PASS New expedition resets only test profile
+PASS Gun start
+PASS Gun first night reaches day two
+PASS Existing humanoid Avatar is valid in Play
+PASS Root motion is disabled
+PASS Animator uses exact core attack target
+PASS Actual Attack Animator state plays
+PASS Visible buttons inside 1600x900 at attack-fixture
+PASS Pause freezes simulation and Animator
+PASS Destroyed wall clears core and Animator target
+PASS Logical death awards one reward
+PASS Death body remains visible until clip ends
+PASS Real death clip plays
+PASS Death returns the body to pool
+PASS Visual death adds no duplicate reward
+PASS Next spawn reuses pooled zombie
+PASS Pooled Animator resets out of death and attack
+PASS Real Walking clip plays after respawn
+PASS Live dawn retreat skips death animation
+Capture method: Unity URP SingleCameraRequest in Play Mode, actual scene and UI, 1600x900 and 1950x900.

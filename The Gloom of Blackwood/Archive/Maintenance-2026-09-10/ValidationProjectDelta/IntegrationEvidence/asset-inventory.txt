@@ -1,0 +1,103 @@
+SCENES
+ dirty=False
+
+MODEL Assets/GameArt/AutoTurret/AutoTurret.fbx
+  renderer AutoTurret bounds=Center: (0.00, -0.01, 0.00), Extents: (0.95, 0.77, 0.70) materials=Material.001 [Universal Render Pipeline/Lit]
+  hierarchy AutoTurret
+
+MODEL Assets/GameArt/AutoTurret/AutoTurret2.fbx
+  renderer model_part0 bounds=Center: (0.05, 0.09, 0.01), Extents: (0.02, 0.01, 0.01) materials=Lit [Universal Render Pipeline/Lit]
+  renderer model_part1 bounds=Center: (0.05, 0.09, -0.02), Extents: (0.03, 0.01, 0.01) materials=Lit [Universal Render Pipeline/Lit]
+  renderer model_part2 bounds=Center: (-0.02, 0.02, 0.00), Extents: (0.06, 0.02, 0.05) materials=Lit [Universal Render Pipeline/Lit]
+  renderer model_part3 bounds=Center: (-0.04, 0.01, 0.04), Extents: (0.00, 0.00, 0.00) materials=Lit [Universal Render Pipeline/Lit]
+  renderer model_part4 bounds=Center: (-0.05, 0.02, 0.04), Extents: (0.00, 0.01, 0.00) materials=Lit [Universal Render Pipeline/Lit]
+  renderer model_part5 bounds=Center: (-0.06, 0.09, -0.05), Extents: (0.00, 0.01, 0.01) materials=Lit [Universal Render Pipeline/Lit]
+  renderer model_part6 bounds=Center: (-0.06, 0.09, 0.05), Extents: (0.00, 0.01, 0.01) materials=Lit [Universal Render Pipeline/Lit]
+  renderer model_part7 bounds=Center: (-0.02, 0.05, 0.00), Extents: (0.03, 0.02, 0.03) materials=Lit [Universal Render Pipeline/Lit]
+  renderer model_part8 bounds=Center: (-0.02, 0.10, 0.00), Extents: (0.05, 0.02, 0.05) materials=Lit [Universal Render Pipeline/Lit]
+  hierarchy AutoTurret2 / model_part0 / model_part1 / model_part2 / model_part3 / model_part4 / model_part5 / model_part6 / model_part7 / model_part8
+
+MODEL Assets/GameArt/Barrier/Barrier.fbx
+  renderer Barrier bounds=Center: (0.00, 0.00, 0.00), Extents: (0.95, 0.51, 0.23) materials=Material.001 [Universal Render Pipeline/Lit]
+  hierarchy Barrier
+
+MODEL Assets/GameArt/Drone/Drone.fbx
+  renderer Drone bounds=Center: (0.00, 0.00, 0.00), Extents: (0.67, 0.26, 0.95) materials=Material.001 [Universal Render Pipeline/Lit]
+  hierarchy Drone
+
+MODEL Assets/GameArt/Drone/Drone2.fbx
+  renderer model_part0 bounds=Center: (-0.09, 0.09, 0.15), Extents: (0.06, 0.02, 0.07) materials=Lit [Universal Render Pipeline/Lit]
+  renderer model_part1 bounds=Center: (-0.09, 0.09, -0.16), Extents: (0.06, 0.02, 0.06) materials=Lit [Universal Render Pipeline/Lit]
+  renderer model_part2 bounds=Center: (0.13, 0.09, -0.17), Extents: (0.02, 0.01, 0.02) materials=Lit [Universal Render Pipeline/Lit]
+  renderer model_part3 bounds=Center: (0.10, 0.09, -0.19), Extents: (0.02, 0.01, 0.01) materials=Lit [Universal Render Pipeline/Lit]
+  renderer model_part4 bounds=Center: (0.09, 0.09, 0.17), Extents: (0.06, 0.02, 0.05) materials=Lit [Universal Render Pipeline/Lit]
+  renderer model_part5 bounds=Center: (0.09, 0.09, 0.14), Extents: (0.06, 0.02, 0.06) materials=Lit [Universal Render Pipeline/Lit]
+  renderer model_part6 bounds=Center: (0.10, 0.09, -0.13), Extents: (0.06, 0.02, 0.06) materials=Lit [Universal Render Pipeline/Lit]
+  renderer model_part7 bounds=Center: (-0.04, 0.06, 0.01), Extents: (0.11, 0.06, 0.12) materials=Lit [Universal Render Pipeline/Lit]
+  hierarchy Drone2 / model_part0 / model_part1 / model_part2 / model_part3 / model_part4 / model_part5 / model_part6 / model_part7
+
+MODEL Assets/GameArt/ElectricTurret/ElectricTurret.fbx
+  renderer ElectricTurret bounds=Center: (0.00, 0.00, 0.00), Extents: (0.47, 0.95, 0.47) materials=Material.001 [Universal Render Pipeline/Lit]
+  hierarchy ElectricTurret
+
+MODEL Assets/GameArt/ElectricTurret/Meshy_AI_SciFi_Tower_Base_Coil_0909092456_part-segmentation.fbx
+  renderer model_part0 bounds=Center: (0.00, 0.01, 0.00), Extents: (0.03, 0.01, 0.03) materials=Lit [Universal Render Pipeline/Lit]
+  renderer model_part1 bounds=Center: (0.00, 0.05, 0.00), Extents: (0.02, 0.03, 0.02) materials=Lit [Universal Render Pipeline/Lit]
+  renderer model_part2 bounds=Center: (0.00, 0.09, 0.00), Extents: (0.02, 0.00, 0.02) materials=Lit [Universal Render Pipeline/Lit]
+  renderer model_part3 bounds=Center: (0.00, 0.10, 0.00), Extents: (0.02, 0.00, 0.02) materials=Lit [Universal Render Pipeline/Lit]
+  renderer model_part4 bounds=Center: (0.00, 0.04, -0.01), Extents: (0.02, 0.02, 0.01) materials=Lit [Universal Render Pipeline/Lit]
+  renderer model_part5 bounds=Center: (0.00, 0.08, 0.00), Extents: (0.01, 0.00, 0.01) materials=Lit [Universal Render Pipeline/Lit]
+  renderer model_part6 bounds=Center: (0.00, 0.09, 0.00), Extents: (0.01, 0.00, 0.01) materials=Lit [Universal Render Pipeline/Lit]
+  renderer model_part7 bounds=Center: (0.00, 0.11, 0.00), Extents: (0.01, 0.01, 0.01) materials=Lit [Universal Render Pipeline/Lit]
+  hierarchy Meshy_AI_SciFi_Tower_Base_Coil_0909092456_part-segmentation / model_part0 / model_part1 / model_part2 / model_part3 / model_part4 / model_part5 / model_part6 / model_part7
+
+MODEL Assets/GameArt/GroundTile_01/GroundTile_01.fbx
+  renderer GroundTile_01 bounds=Center: (0.00, 0.00, 0.00), Extents: (0.95, 0.10, 0.95) materials=Material.001 [Universal Render Pipeline/Lit]
+  hierarchy GroundTile_01
+
+MODEL Assets/GameArt/Landing_Platfor/Landing_Platfor.fbx
+  renderer Landing_Platfor bounds=Center: (0.00, 0.00, 0.00), Extents: (0.88, 0.17, 0.95) materials=Material.001 [Universal Render Pipeline/Lit]
+  hierarchy Landing_Platfor
+
+MODEL Assets/GameArt/MainShelter/MainShelter.fbx
+  renderer MainShelter bounds=Center: (0.00, 0.00, 0.00), Extents: (0.95, 0.43, 0.50) materials=Material.001 [Universal Render Pipeline/Lit]
+  hierarchy MainShelter
+
+MODEL Assets/GameArt/pine_tree/pine_tree.fbx
+  renderer pine_tree bounds=Center: (0.00, 0.00, -0.01), Extents: (0.56, 0.95, 0.49) materials=Material.001 [Universal Render Pipeline/Lit]
+  hierarchy pine_tree
+
+MODEL Assets/GameArt/PowerStation/PowerStation.fbx
+  renderer PowerStation bounds=Center: (0.00, 0.00, 0.00), Extents: (0.83, 0.95, 0.74) materials=Material.001 [Universal Render Pipeline/Lit]
+  hierarchy PowerStation
+
+MODEL Assets/GameArt/ResearchLab/ResearchLab.fbx
+  renderer ResearchLab bounds=Center: (0.00, 0.00, 0.00), Extents: (0.95, 0.62, 0.66) materials=Material.001 [Universal Render Pipeline/Lit]
+  hierarchy ResearchLab
+
+MODEL Assets/GameArt/RockPile_01/RockPile_01/RockPile_01.fbx
+  renderer RockPile_01 bounds=Center: (0.00, 0.00, 0.00), Extents: (0.95, 0.39, 0.74) materials=Material.001 [Universal Render Pipeline/Lit]
+  hierarchy RockPile_01
+
+MODEL Assets/GameArt/scifi_bunker/scifi_bunker.fbx
+  renderer scifi_bunker bounds=Center: (0.00, -0.01, 0.00), Extents: (0.95, 0.71, 0.62) materials=Material.001 [Universal Render Pipeline/Lit]
+  hierarchy scifi_bunker
+
+MODEL Assets/Enemy/TOLSTYAK/Meshy_AI_Mawbound_Behemoth_biped_Meshy_AI_Meshy_Merged_Animations.fbx
+  renderer char1 bounds=Center: (-0.02, 0.91, 0.01), Extents: (1.48, 1.18, 1.45) materials=Material_1 [Universal Render Pipeline/Lit]
+  animator avatar=Meshy_AI_Mawbound_Behemoth_biped_Meshy_AI_Meshy_Merged_AnimationsAvatar valid=True human=True controller=
+  clip Character_output.fbx length=0,03333334 human=True events=0
+  clip Face_Punch_Reaction length=2,833333 human=True events=0
+  clip Fall_Dead_from_Abdominal_Injury length=3,5 human=True events=0
+  clip Idle_9 length=2 human=True events=0
+  clip Running length=0,6333334 human=True events=0
+  clip Step_in_High_Kick length=1,3 human=True events=0
+  clip Sweep_Kick length=4,066667 human=True events=0
+  clip Walking length=1,033333 human=True events=0
+  hierarchy Meshy_AI_Mawbound_Behemoth_biped_Meshy_AI_Meshy_Merged_Animations / Armature / Hips / LeftUpLeg / LeftLeg / LeftFoot / LeftToeBase / RightUpLeg / RightLeg / RightFoot / RightToeBase / Spine02 / Spine01 / Spine / LeftShoulder / LeftArm / LeftForeArm / LeftHand / neck / Head / head_end / headfront / RightShoulder / RightArm / RightForeArm / RightHand / char1
+
+MODEL Assets/Enemy/TOLSTYAK/TOLSTYAK.fbx
+  renderer char1 bounds=Center: (-0.05, 0.78, -0.12), Extents: (1.37, 1.22, 1.30) materials=Material_1 [Universal Render Pipeline/Lit]
+  animator avatar=TOLSTYAKAvatar valid=True human=True controller=
+  clip Armature|Armature|clip0|baselayer length=1 human=False events=0
+  hierarchy TOLSTYAK / Armature / Hips / LeftUpLeg / LeftLeg / LeftFoot / LeftToeBase / RightUpLeg / RightLeg / RightFoot / RightToeBase / Spine02 / Spine01 / Spine / LeftShoulder / LeftArm / LeftForeArm / LeftHand / neck / Head / head_end / headfront / RightShoulder / RightArm / RightForeArm / RightHand / char1

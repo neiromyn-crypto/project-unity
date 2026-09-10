@@ -18,6 +18,7 @@ Shader "Blackwood/Clearing Ground"
             #pragma fragment Frag
             #pragma multi_compile _ _MAIN_LIGHT_SHADOWS _MAIN_LIGHT_SHADOWS_CASCADE _MAIN_LIGHT_SHADOWS_SCREEN
             #pragma multi_compile_fragment _ _SHADOWS_SOFT _SHADOWS_SOFT_LOW _SHADOWS_SOFT_MEDIUM _SHADOWS_SOFT_HIGH
+            #pragma multi_compile _ _ADDITIONAL_LIGHTS
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"
             TEXTURE2D(_BaseMap); SAMPLER(sampler_BaseMap);
             CBUFFER_START(UnityPerMaterial)
@@ -51,6 +52,14 @@ Shader "Blackwood/Clearing Ground"
                 Light sun=GetMainLight(TransformWorldToShadowCoord(input.positionWS));
                 half diffuse=saturate(dot(normalize(input.normalWS),sun.direction));
                 half3 light=SampleSH(normalize(input.normalWS))+sun.color*diffuse*sun.shadowAttenuation;
+                #ifdef _ADDITIONAL_LIGHTS
+                uint count=GetAdditionalLightsCount();
+                for(uint i=0;i<count;i++)
+                {
+                    Light lamp=GetAdditionalLight(i,input.positionWS);
+                    light+=lamp.color*saturate(dot(normalize(input.normalWS),lamp.direction))*lamp.distanceAttenuation;
+                }
+                #endif
                 return half4(albedo*light,1);
             }
             ENDHLSL

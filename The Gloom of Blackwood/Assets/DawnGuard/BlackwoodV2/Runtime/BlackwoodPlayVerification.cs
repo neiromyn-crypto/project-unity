@@ -84,6 +84,7 @@ namespace DawnGuard.BlackwoodV2
             Check(root.Hud.GetComponentsInChildren<Graphic>(true).All(g=>g.GetComponent<CanvasRenderer>()!=null),"Every UI graphic has its required CanvasRenderer");
             Check(root.Paused,"Main menu pauses simulation");
             Capture("menu-16x9",1600,900); Capture("menu-19_5x9",1950,900);
+            yield return new WaitForEndOfFrame(); CaptureGameView("menu");
             Click("НАСТРОЙКИ"); yield return new WaitForSecondsRealtime(.15f);
             Check(root.Hud.GetComponentsInChildren<Text>().Any(t=>t.text.Contains("ЧАСТОТА КАДРОВ")),"Settings opens");
             var settings=root.Hud.GetComponentsInChildren<Transform>(true).Single(t=>t.name=="Settings");
@@ -92,6 +93,7 @@ namespace DawnGuard.BlackwoodV2
             enter.onClick.Invoke(); yield return new WaitForSecondsRealtime(.15f); Refresh();
             Check(!root.Paused,"Menu enters the campaign");
             Capture("day-16x9",1600,900); Capture("day-19_5x9",1950,900);
+            yield return new WaitForEndOfFrame(); CaptureGameView("day");
             string error;
             for(int x=6;x<=8;x++) Check(root.Game.Construction.TryBuild("wall",new Cell(x,9),out error),"Wall placement "+x+": "+error);
             Check(root.Game.Wallet.Credits==0,"Three-wall strategy costs 120");
@@ -99,10 +101,38 @@ namespace DawnGuard.BlackwoodV2
             for(int i=0;i<1600 && root.Game.Phase==GamePhase.Night;i++)
             {
                 root.Game.Tick(.05f); Refresh();
-                if(i==140) { Capture("night-16x9",1600,900); Capture("night-19_5x9",1950,900); }
+                if(i==140)
+                {
+                    var lighting=root.GetComponentInChildren<BlackwoodLighting>();
+                    if(lighting!=null)
+                    {
+                        while(lighting.NightBlend<.5f) {Refresh(); yield return null;}
+                        Capture("evening-16x9",1600,900);
+                        yield return new WaitForEndOfFrame(); CaptureGameView("evening");
+                        while(lighting.NightBlend<.999f) {Refresh(); yield return null;}
+                        Check(lighting.LocalLightCount==3,"Night base uses three bounded local lights");
+                        Check(root.GetComponentsInChildren<Light>().Count(l=>l.shadows!=LightShadows.None)==1,"Only the key light casts dynamic shadows");
+                    }
+                    Capture("night-16x9",1600,900); Capture("night-19_5x9",1950,900);
+                    yield return new WaitForEndOfFrame(); CaptureGameView("night");
+                }
                 if(i%5==0) yield return null;
             }
             Check(root.Game.Day==2 && root.Game.Shelter.health>0,"Three-wall first night reaches day two");
+            var lightRig=root.GetComponentInChildren<BlackwoodLighting>();
+            if(lightRig!=null)
+            {
+                while(lightRig.NightBlend>0) {Refresh(); yield return null;}
+                Check(lightRig.NightBlend==0,"Dawn returns to the day lighting profile");
+                var pipeline=root.lightingProfile.pipeline;
+                Check(pipeline.maxAdditionalLightsCount<=4 && !pipeline.supportsAdditionalLightShadows && pipeline.shadowCascadeCount<=2,"Bounded Forward lighting and shadow budget");
+                Check(root.GetComponentInChildren<Camera>().GetUniversalAdditionalCameraData().renderPostProcessing,"URP post-processing enabled on game camera");
+                foreach(string id in new[]{"shelter","camp","generator","lab"})
+                {
+                    var prefab=root.catalog.buildings.Single(b=>b.definitionId==id).prefab;
+                    Check(Quaternion.Angle(prefab.transform.Find("Facade facing").localRotation,Quaternion.Euler(0,180,0))<.01f,"Front-facing wrapper: "+id);
+                }
+            }
             root.NewGame(); Check(root.Game.Wallet.Credits==120,"New expedition resets only test profile");
             Check(root.Game.Construction.TryBuild("gun",new Cell(7,9),out error),"Gun start");
             root.StartNight();
@@ -155,6 +185,13 @@ namespace DawnGuard.BlackwoodV2
             Refresh(); Check(retreat.Day==2 && !liveGo.activeSelf,"Live dawn retreat skips death animation");
             File.AppendAllText(folder+"/checks.txt","Capture method: Unity URP SingleCameraRequest in Play Mode, actual scene and UI, 1600x900 and 1950x900.\n");
             Check(runtimeErrors==0,"No runtime errors or exceptions during verification");
+        }
+        void CaptureGameView(string name)
+        {
+            var shot=ScreenCapture.CaptureScreenshotAsTexture();
+            File.WriteAllBytes(folder+"/"+name+"-game-view.png",shot.EncodeToPNG());
+            File.AppendAllText(folder+"/checks.txt","Native Game View "+name+": "+shot.width+"x"+shot.height+", ScreenCapture, overlay UI after post-processing.\n");
+            Destroy(shot);
         }
         void Capture(string name,int width,int height)
         {

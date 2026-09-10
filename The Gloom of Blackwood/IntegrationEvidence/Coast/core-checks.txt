@@ -1,0 +1,31 @@
+PASS: All 3 fronts have clearance
+PASS: Maze lengthens northern route
+PASS: Sealing two-cell gap rejected
+PASS: Rejected placement spends nothing
+PASS: Protected worker road rejects building
+PASS: Two complete cargo deliveries credit exactly 16
+PASS: Worker training starts
+PASS: Night cannot accelerate training
+PASS: Lab commissioning
+PASS: Research starts
+PASS: Research unlocks defense
+PASS: Save restore isolates mutable state
+PASS: Support unavailable in day
+PASS: Drone causes no kills
+PASS: No-defense first night loses
+PASS: Mid-wave restore produces same battle outcome
+PASS: Invalid saved entity id rejected
+empty: Defeat hp=0.0 killed=0 seconds=32.2
+gun_straight: Defeat hp=0.0 killed=10 seconds=51.3
+gun_maze: Debrief hp=600.0 killed=14 seconds=36.1
+two_guns_maze: Debrief hp=600.0 killed=14 seconds=31.1
+FULL CAMPAIGN — no injected resources, physical daytime deliveries:
+Night 1: Debrief; HP=600; kills=14; credits=198; stone=100; workers=3
+Night 2: Debrief; HP=600; kills=22; credits=200; stone=180; workers=4
+Night 3: Debrief; HP=600; kills=26; credits=178; stone=233; workers=4
+Night 4: Debrief; HP=600; kills=36; credits=280; stone=311; workers=4
+Night 5: Debrief; HP=600; kills=35; credits=387; stone=409; workers=4
+Night 6: Debrief; HP=576; kills=42; credits=303; stone=352; workers=4
+Night 7: Debrief; HP=600; kills=46; credits=418; stone=386; workers=4
+Night 8: Victory; HP=344; kills=55; credits=556; stone=449; workers=4
+

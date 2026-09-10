@@ -36,12 +36,15 @@ namespace DawnGuard.BlackwoodV2.Editor
                 if(command=="refresh") { AssetDatabase.Refresh(); return; }
                 if(command=="inventory") Inventory();
                 else if(command=="compose") BlackwoodCompositionPass.Apply();
+                else if(command=="facades") BlackwoodLightingPass.InspectFacades();
+                else if(command=="lighting") BlackwoodLightingPass.Apply();
                 else if(command=="integrate") BlackwoodUserAssetSetup.Integrate();
                 else if(command=="validate") BlackwoodIntegrationChecks.Run();
                 else if(command=="verify-play")
                 {
                     if(!EditorSceneManager.GetActiveScene().path.Contains("/UserMap")) throw new InvalidOperationException("Open the generated user map first.");
                     SessionState.SetBool("Blackwood.VerifyPlay",true);
+                    EditorApplication.ExecuteMenuItem("Window/General/Game");
                     EditorApplication.isPlaying=true;
                 }
                 else if(command=="checks") BlackwoodChecks.Run();

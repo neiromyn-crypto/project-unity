@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d8023233e387a04facf2d4065392b9e, type: 3}
+  m_Name: UserAssets
+  m_EditorClassIdentifier: Assembly-CSharp::DawnGuard.BlackwoodV2.BlackwoodAssetSet
+  shelter: {fileID: 919132149155446097, guid: 9db93a1df4ff3164d9dd9d99e444587e, type: 3}
+  camp: {fileID: 919132149155446097, guid: e54399a8625de1644a353e7a9fedebf9, type: 3}
+  generator: {fileID: 919132149155446097, guid: 3d430f1641f44c84984bdfd5b105443a, type: 3}
+  wall: {fileID: 919132149155446097, guid: 7d9c1a7b3d40ece4480367086687ef1b, type: 3}
+  gun: {fileID: 919132149155446097, guid: aecb5165267c63b47994c2c251840bc7, type: 3}
+  lab: {fileID: 919132149155446097, guid: ca936eb73c5f7e9478023a6ca75182d0, type: 3}
+  tesla: {fileID: 919132149155446097, guid: ab5d789ce3e8f9149ad96d26d4c358d3, type: 3}
+  drone: {fileID: 919132149155446097, guid: 7b95b94ce0c69ea40a23aad6da7de041, type: 3}
+  zombie: {fileID: 919132149155446097, guid: f1e820aa2ee58644e98745bacf691df4, type: 3}
+  runner: {fileID: 0}
+  brute: {fileID: 0}
+  pine: {fileID: 919132149155446097, guid: 6b94df44e6badb941a5e754d984893a6, type: 3}
+  rubble: {fileID: 919132149155446097, guid: 9829c69654933644ea590131e886e1a7, type: 3}
+  pad: {fileID: 919132149155446097, guid: 9e47c59f22c162a4ebdaaa664740bc5e, type: 3}
+  groundMaterial: {fileID: -6478536213147159724, guid: 748cd4ca46cc87047ac655e2dce817d6, type: 3}
+  menuBackdrop: {fileID: 2800000, guid: 7e555d786aa26bc4cbcbf6dd50e4e0e4, type: 3}
+  sourceCatalog: {fileID: 11400000, guid: 7f7f3b3df5189404e9dc37242a74866a, type: 2}
+  fitModelsToGrid: 1

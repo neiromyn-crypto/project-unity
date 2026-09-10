@@ -1665,7 +1665,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b58b7f01c61af3f49b008e61fedf591f, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DawnGuard.BlackwoodV2.BlackwoodRoot
   catalog: {fileID: 11400000, guid: 46667721bbd1e0246af0c3c742f8bb5d, type: 2}
   menuBackdrop: {fileID: 2800000, guid: 7e555d786aa26bc4cbcbf6dd50e4e0e4, type: 3}
@@ -1674,6 +1674,7 @@ MonoBehaviour:
   pinePrefab: {fileID: 2018792666090497579, guid: ddaa59def7263a04987b37955a1a1c3d, type: 3}
   rubblePrefab: {fileID: 9020043254310012895, guid: dd96346739b91754ca782652dc2011fd, type: 3}
   padPrefab: {fileID: 5285935082350558300, guid: d3ceaeb4faa14554681749dae620b320, type: 3}
+  lightingProfile: {fileID: 11400000, guid: 260f7ff8ac6c0b04193d4d5290fe4320, type: 2}
   cameraFocus: {x: 8, y: 0, z: 7.8}
   cameraSize: 7.6
   cameraElevation: 38
@@ -3471,7 +3472,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1507570873}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.41260055, y: -0.19616093, z: 0.091471344, w: 0.8848247}
+  m_LocalRotation: {x: 0.38457704, y: -0.2974213, z: 0.1324205, w: 0.86377424}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3488,8 +3489,8 @@ Light:
   m_Enabled: 1
   serializedVersion: 13
   m_Type: 1
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1.1
+  m_Color: {r: 1, g: 0.97, b: 0.9, a: 1}
+  m_Intensity: 1.35
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208

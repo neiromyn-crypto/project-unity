@@ -1,0 +1,132 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8855156591496607341
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8788907344954758629}
+  m_Layer: 0
+  m_Name: CoastOre
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8788907344954758629
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8855156591496607341}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5242385774163437246}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &5713391633243816277
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8788907344954758629}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: ea4c36b4be8cb5d498a9280943fe1f19, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ea4c36b4be8cb5d498a9280943fe1f19, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ea4c36b4be8cb5d498a9280943fe1f19, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ea4c36b4be8cb5d498a9280943fe1f19, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071067
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ea4c36b4be8cb5d498a9280943fe1f19, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ea4c36b4be8cb5d498a9280943fe1f19, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ea4c36b4be8cb5d498a9280943fe1f19, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ea4c36b4be8cb5d498a9280943fe1f19, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ea4c36b4be8cb5d498a9280943fe1f19, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ea4c36b4be8cb5d498a9280943fe1f19, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7923584943524700711, guid: ea4c36b4be8cb5d498a9280943fe1f19, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 0bb4c963ff8c06e4fa1afb542e9fd497, type: 2}
+    - target: {fileID: -4731129446982926282, guid: ea4c36b4be8cb5d498a9280943fe1f19, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: dfb11a4e91e9af345883bbdf3b725a58, type: 2}
+    - target: {fileID: -3088219718390619446, guid: ea4c36b4be8cb5d498a9280943fe1f19, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 53669394190112249abe036e99431a50, type: 2}
+    - target: {fileID: -2073062076637119536, guid: ea4c36b4be8cb5d498a9280943fe1f19, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d5db46ce0fd560542987a93da3831091, type: 2}
+    - target: {fileID: -2028166214128297154, guid: ea4c36b4be8cb5d498a9280943fe1f19, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 5921a1660174fce40a56347f872656f2, type: 2}
+    - target: {fileID: -1285471873419668453, guid: ea4c36b4be8cb5d498a9280943fe1f19, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 72dd89f710f439346815b03ed1746b05, type: 2}
+    - target: {fileID: 919132149155446097, guid: ea4c36b4be8cb5d498a9280943fe1f19, type: 3}
+      propertyPath: m_Name
+      value: CoastOre
+      objectReference: {fileID: 0}
+    - target: {fileID: 3170372447316697170, guid: ea4c36b4be8cb5d498a9280943fe1f19, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: f0fd8b2f0ffe6f84d9d652712aa1d950, type: 2}
+    - target: {fileID: 4177499532342847306, guid: ea4c36b4be8cb5d498a9280943fe1f19, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 0eab20fd7f4c61e478ec16973b4e0f6b, type: 2}
+    - target: {fileID: 8306997835666529435, guid: ea4c36b4be8cb5d498a9280943fe1f19, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 917108bdc6758b445b189c9cbf46ae78, type: 2}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ea4c36b4be8cb5d498a9280943fe1f19, type: 3}
+--- !u!4 &5242385774163437246 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ea4c36b4be8cb5d498a9280943fe1f19, type: 3}
+  m_PrefabInstance: {fileID: 5713391633243816277}
+  m_PrefabAsset: {fileID: 0}
