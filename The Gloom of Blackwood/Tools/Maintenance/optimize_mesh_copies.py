@@ -2,15 +2,16 @@
 Run with Blender --background --factory-startup --python this_file.
 UVs, material slots and skeletal weights are retained in the interchange.
 """
-import bpy, numpy as np, pathlib, json, struct, time
+import bpy, numpy as np, pathlib, json, struct, time, sys
 ROOT=pathlib.Path(__file__).resolve().parents[2]
 WORK=ROOT/'IntegrationEvidence/Optimization'
+if '--work' in sys.argv: WORK=pathlib.Path(sys.argv[sys.argv.index('--work')+1]).resolve()
 jobs=json.loads((WORK/'jobs.json').read_text(encoding='utf-8-sig'))['meshes']
 report=[]
 for job in jobs:
     start=time.time();name=job['id'];print('OPTIMIZING',job['name'],job['triangles'],'->',job['target'],flush=True)
     bpy.ops.object.select_all(action='SELECT');bpy.ops.object.delete(use_global=False)
-    with (WORK/'Input'/f'{name}.bwm').open('rb') as stream:
+    with pathlib.Path(job.get('input',str(WORK/'Input'/f'{name}.bwm'))).open('rb') as stream:
         count,subs,skin=struct.unpack('<iii',stream.read(12))
         data=np.fromfile(stream,dtype='<f4',count=count*8).reshape(count,8)
         weights=np.fromfile(stream,dtype=np.dtype([('bones','<i4',(4,)),('weights','<f4',(4,))]),count=count) if skin else None

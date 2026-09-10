@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b63acff7c66d26e4c9c8ac57ca163ab5, type: 3}
+  m_Name: CoastForestProfile
+  m_EditorClassIdentifier: Assembly-CSharp::DawnGuard.BlackwoodLTD.CoastForestProfile
+  near: {fileID: 4300000, guid: cacf64a55007d08428550d07a0a0a6a1, type: 2}
+  middle: {fileID: 4300000, guid: ff5c2933f0540024fa9a4e6b68888a7a, type: 2}
+  far: {fileID: 4300000, guid: d58d73a3b946fb546b6d28149c88598d, type: 2}
+  materials:
+  - {fileID: 2100000, guid: fc3086b48ed008d468254c84d0fe84c0, type: 2}

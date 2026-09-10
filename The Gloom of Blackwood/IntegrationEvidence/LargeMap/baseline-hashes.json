@@ -1,0 +1,34 @@
+[
+  {
+    "Path": "D:\\project unity\\The Gloom of Blackwood\\Assets\\DawnGuard\\BlackwoodLTD\\Core\\CoastMap.cs",
+    "Hash": "748C313E0902AF74F9D0F13BDE5005A62DD1AA12ECE04DAE47A6024DCF733575"
+  },
+  {
+    "Path": "D:\\project unity\\The Gloom of Blackwood\\Assets\\DawnGuard\\BlackwoodLTD\\Core\\CoastData.cs",
+    "Hash": "AA3DA06B3B9E56226E575CF1317B426F06702BB6760C94A799016B184DD7F1C6"
+  },
+  {
+    "Path": "D:\\project unity\\The Gloom of Blackwood\\Assets\\DawnGuard\\BlackwoodLTD\\Core\\CoastSession.cs",
+    "Hash": "B217CB32ECAB6EA7C565AE80589B92CD9F6C4A836CA981DA7B0493D52FD51F2D"
+  },
+  {
+    "Path": "D:\\project unity\\The Gloom of Blackwood\\Assets\\DawnGuard\\BlackwoodLTD\\Core\\CoastCombat.cs",
+    "Hash": "EAC4397FB64E6ED4C5A75382B1A4F58E98676C7D8141CC22AEEAB09CF610BA9A"
+  },
+  {
+    "Path": "D:\\project unity\\The Gloom of Blackwood\\Assets\\DawnGuard\\BlackwoodLTD\\Runtime\\CoastWorld.cs",
+    "Hash": "61BA432F8B1AFA57D925C55F49D19882E78027553646ADEE4295F0E8263AF4E4"
+  },
+  {
+    "Path": "D:\\project unity\\The Gloom of Blackwood\\Assets\\DawnGuard\\BlackwoodLTD\\Runtime\\CoastRoot.cs",
+    "Hash": "A606DF1B2E7C8D17639332B60A8A1BAE5BF6CB83055C2ACF30BBF8433449E92D"
+  },
+  {
+    "Path": "D:\\project unity\\The Gloom of Blackwood\\Assets\\DawnGuard\\BlackwoodLTD\\Runtime\\CoastForest.cs",
+    "Hash": "04E65A34024F6CDE481B07AC3FBD910A1C08FAA1FA2B4736F567736E799889E3"
+  },
+  {
+    "Path": "D:\\project unity\\The Gloom of Blackwood\\Assets\\DawnGuard\\BlackwoodLTD\\Data\\BlackwoodCoastCatalog.asset",
+    "Hash": "EA21356901683A8E12BA434561470E5C1A575EF5ED2FBED6314A54D7EA43DDDB"
+  }
+]

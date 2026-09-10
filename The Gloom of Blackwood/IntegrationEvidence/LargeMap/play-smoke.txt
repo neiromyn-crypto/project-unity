@@ -1,0 +1,1 @@
+PASS — 10 second paused runtime camera sweep; frames=595; errors/exceptions=0

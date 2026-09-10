@@ -1,0 +1,22 @@
+PASS Grid 44 x 36, unchanged cell scale
+PASS All three 2x2-clearance routes reach shelter
+PASS Natural ridge cells: 278; remaining space supports player maze decisions
+PASS Front 0 route length 41
+PASS Front 0 natural direction changes: 8
+PASS Front 0 alternative path survives 32 tested local closures
+PASS Front 1 route length 40
+PASS Front 1 natural direction changes: 9
+PASS Front 1 alternative path survives 31 tested local closures
+PASS Front 2 route length 35
+PASS Front 2 natural direction changes: 3
+PASS Front 2 alternative path survives 26 tested local closures
+PASS Candidate kill zones remain buildable (18,18), (25,26), (21,12)
+PASS Front 0 whole shortcut can be closed; another corridor remains, length=53
+PASS Front 1 whole shortcut can be closed; another corridor remains, length=52
+PASS Front 2 whole shortcut can be closed; another corridor remains, length=35
+PASS Camera clamps northwest request
+PASS Camera clamps southeast request
+PASS Readable minimum zoom
+PASS Maximum zoom cannot expose the whole 36-cell depth
+PASS Forest pass invariants retained
+PASS No errors/exceptions during scene generation and camera checks

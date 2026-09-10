@@ -1,0 +1,18 @@
+{
+  "meshes": [
+    {
+      "target": 12000,
+      "id": "Pine_LOD0",
+      "name": "Coast pine near",
+      "input": "D:\\project unity\\The Gloom of Blackwood\\IntegrationEvidence\\Optimization\\Input\\6b94df44e6badb941a5e754d984893a6_5461320835613783329.bwm",
+      "triangles": 1946099
+    },
+    {
+      "target": 1200,
+      "id": "Pine_LOD2",
+      "name": "Coast pine far",
+      "input": "D:\\project unity\\The Gloom of Blackwood\\IntegrationEvidence\\Optimization\\Input\\6b94df44e6badb941a5e754d984893a6_5461320835613783329.bwm",
+      "triangles": 1946099
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+PASS — catalog changes limited to version and map dimensions; waves, enemies, towers, economy and asset references unchanged.

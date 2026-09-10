@@ -35,7 +35,7 @@ namespace DawnGuard.BlackwoodLTD
         void Start()
         {
             Application.targetFrameRate=60;Application.runInBackground=true;Screen.sleepTimeout=SleepTimeout.NeverSleep;
-            savePath=string.IsNullOrEmpty(TestSavePath)?Path.Combine(Application.persistentDataPath,"blackwood-coast-v1.json"):TestSavePath;
+            savePath=string.IsNullOrEmpty(TestSavePath)?Path.Combine(Application.persistentDataPath,"blackwood-coast-map2-v1.json"):TestSavePath;
             CoastState saved=null;
             try{if(File.Exists(savePath)){saved=JsonUtility.FromJson<CoastState>(File.ReadAllText(savePath));Game=new CoastSession(catalog.rules,saved);HasSave=true;}}
             catch(Exception e){Debug.LogWarning("Coast save not loaded: "+e.Message);Notice="Сохранение повреждено. Можно начать новую экспедицию.";}
@@ -45,12 +45,18 @@ namespace DawnGuard.BlackwoodLTD
             Hud=gameObject.AddComponent<CoastHud>();Hud.Initialize(this);
             Game.Event+=HandleEvent;
         }
-        void HandleEvent(CoastEvent e){World.OnEvent(e);Audio.OnEvent(e);if(e.kind=="delivery"&&Hud!=null)Hud.Float(e);}
+        void HandleEvent(CoastEvent e){if(e.kind=="delivery")e.x+=Game.Map.CampOffsetX;World.OnEvent(e);Audio.OnEvent(e);if(e.kind=="delivery"&&Hud!=null)Hud.Float(e);}
         void Update()
         {
             if(Game==null)return;float dt=Mathf.Min(Time.unscaledDeltaTime,.15f);
 #if ENABLE_INPUT_SYSTEM
             if(Keyboard.current!=null&&Keyboard.current.escapeKey.wasPressedThisFrame){if(Hud.ServiceOpen)Hud.CloseService();else if(SelectedTool!=null||Moving)ClearSelection();else if(MenuOpen)EnterGame();else TogglePause();}
+            if(Keyboard.current!=null&&!MenuOpen&&!Hud.ServiceOpen)
+            {
+                var k=Keyboard.current;Vector2 move=new Vector2((k.dKey.isPressed||k.rightArrowKey.isPressed?1:0)-(k.aKey.isPressed||k.leftArrowKey.isPressed?1:0),(k.wKey.isPressed||k.upArrowKey.isPressed?1:0)-(k.sKey.isPressed||k.downArrowKey.isPressed?1:0));
+                World.CameraRig.Move(Vector2.ClampMagnitude(move,1),dt);
+                if(k.homeKey.wasPressedThisFrame)World.CameraRig.SetFocus(new Vector3(Game.Map.CampX,0,10.5f));
+            }
             if(Mouse.current!=null&&!MenuOpen){World.Preview(Mouse.current.position.ReadValue());if(Mouse.current.rightButton.wasPressedThisFrame)ClearSelection();float scroll=Mouse.current.scroll.ReadValue().y;if(Mathf.Abs(scroll)>.01f)World.Zoom(-Mathf.Sign(scroll)*.6f);}
 #endif
             if(!Paused)
@@ -72,7 +78,7 @@ namespace DawnGuard.BlackwoodLTD
             if(SelectedTool!=null&&Game.S.phase==CoastPhase.Day){string kind=SelectedTool;Act(()=>Game.Build(kind,x,z));return;}
             if(Moving&&SelectedBuilding>0){int id=SelectedBuilding;Act(()=>Game.Move(id,x,z));Moving=false;return;}
             if(Game.Map.InBounds(x,z)&&Game.Map.Occupancy[x,z]>0){SelectedBuilding=Game.Map.Occupancy[x,z];SelectedTool=null;Hud.ShowSelection();return;}
-            if(z<8&&z>1){Hud.OpenService(x<6?"barracks":x<11?"armory":x<17?"camp":x<23?"lab":"power");return;}
+            if(z<8&&z>1){float serviceX=p.x-Game.Map.CampOffsetX;Hud.OpenService(serviceX<6?"barracks":serviceX<11?"armory":serviceX<17?"camp":serviceX<23?"lab":"power");return;}
             SelectedBuilding=0;
         }
         public void MoveSelected(){if(Game.S.phase==CoastPhase.Day&&SelectedBuilding>0){Moving=true;Toast("Выберите новое место. Перенос использованной защиты стоит камень.");}}

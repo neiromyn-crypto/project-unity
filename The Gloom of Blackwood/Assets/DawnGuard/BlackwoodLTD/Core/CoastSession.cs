@@ -22,7 +22,7 @@ namespace DawnGuard.BlackwoodLTD
         public CoastSession(CoastRules rules,CoastState saved=null)
         {
             Rules=rules;Map=new CoastMap(rules.width,rules.depth);
-            S=saved==null?new CoastState {credits=rules.startingCredits,stone=rules.startingStone,campHP=rules.campHP,remaining=rules.firstDay}:saved.Copy();
+            S=saved==null?new CoastState {rulesVersion=rules.version,droneX=Map.CampX,credits=rules.startingCredits,stone=rules.startingStone,campHP=rules.campHP,remaining=rules.firstDay}:saved.Copy();
             if(saved==null){AddWorker();AddWorker();}else ValidateSave();
             Map.Rebuild(S.buildings);int blocked;if(!Map.AllOpen(out blocked))throw new ArgumentException("Saved map blocks a front");
             BuildSchedule();if(S.spawnCursor<0||S.spawnCursor>schedule.Count)throw new ArgumentException("Invalid saved wave cursor");RefreshPower();

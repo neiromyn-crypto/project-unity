@@ -9,8 +9,10 @@ namespace DawnGuard.BlackwoodLTD
     public sealed class CoastMap
     {
         public readonly int Width,Depth;
-        public readonly Cell[] Entrances={new Cell(13,22),new Cell(0,14),new Cell(26,14)};
-        public readonly Cell Goal=new Cell(13,7);
+        public readonly Cell[] Entrances;
+        public readonly Cell Goal;
+        public float CampX {get{return Goal.x+1;}}
+        public float CampOffsetX {get{return CampX-14;}}
         public readonly bool[,] Rocks;
         public int[,] Occupancy;
         public int[,] Distances {get;private set;}
@@ -18,6 +20,22 @@ namespace DawnGuard.BlackwoodLTD
         public CoastMap(int width,int depth)
         {
             Width=width;Depth=depth;Rocks=new bool[width,depth];Occupancy=new int[width,depth];
+            Goal=new Cell(width/2-1,7);
+            Entrances=width>=40&&depth>=34?new[]{new Cell(width/2-1,depth-2),new Cell(0,26),new Cell(width-2,21)}:new[]{new Cell(13,22),new Cell(0,14),new Cell(width-2,14)};
+            if(width>=40&&depth>=34)
+            {
+                // Staggered ridges, two or more wide exits per band. Rocks alone define
+                // the maze skeleton; all decorative forest remains outside this grid.
+                Ridge(0,30,13,31);Ridge(20,30,33,31);
+                Ridge(8,23,24,24);Ridge(31,23,width-1,24);
+                Ridge(0,16,15,17);Ridge(23,16,35,17);
+                Ridge(6,18,7,19);Ridge(6,23,7,27);Ridge(0,21,3,22);
+                Ridge(36,26,37,depth-2);Ridge(34,10,35,20);
+                Ridge(36,13,39,14);Ridge(42,13,width-1,14);
+                Ridge(12,10,17,11);Ridge(26,11,30,12);
+                Ridge(11,27,13,28);Ridge(26,19,28,20);
+                Rebuild(new List<CoastBuilding>());return;
+            }
             for(int z=14;z<depth;z++) {Rock(9,z);Rock(10,z);Rock(18,z);Rock(19,z);}
             for(int x=0;x<width;x++) {if(x<11 || x>17) {Rock(x,22);Rock(x,23);}}
             Rock(11,20);Rock(12,20);Rock(16,14);Rock(17,14);
@@ -28,10 +46,11 @@ namespace DawnGuard.BlackwoodLTD
             Rebuild(new List<CoastBuilding>());
         }
         void Rock(int x,int z) {if(x>=0&&z>=0&&x<Width&&z<Depth) Rocks[x,z]=true;}
+        void Ridge(int x0,int z0,int x1,int z1){for(int x=x0;x<=x1;x++)for(int z=z0;z<=z1;z++)Rock(x,z);}
         public bool InBounds(int x,int z) {return x>=0&&z>=0&&x<Width&&z<Depth;}
         public bool CanBuildCell(int x,int z,int ignored=0)
         {
-            if(!InBounds(x,z)||z<9||z>21||Rocks[x,z]||Occupancy[x,z]!=0&&Occupancy[x,z]!=ignored) return false;
+            if(!InBounds(x,z)||z<9||z>Depth-3||Rocks[x,z]||Occupancy[x,z]!=0&&Occupancy[x,z]!=ignored) return false;
             foreach(var e in Entrances) if(Math.Abs(x-e.x)<2&&Math.Abs(z-e.z)<2) return false;
             return true;
         }

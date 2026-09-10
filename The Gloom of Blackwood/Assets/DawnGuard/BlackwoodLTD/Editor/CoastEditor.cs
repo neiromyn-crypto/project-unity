@@ -23,8 +23,8 @@ namespace DawnGuard.BlackwoodLTD.Editor
         static CoastEditor()
         {
             EditorApplication.update+=Poll;
-            CompilationPipeline.compilationStarted+=_=>{Directory.CreateDirectory(Evidence);File.WriteAllText(Evidence+"/compile-errors.txt","");};
-            CompilationPipeline.assemblyCompilationFinished+=(path,messages)=>{Directory.CreateDirectory(Evidence);foreach(var m in messages)if(m.type==CompilerMessageType.Error)File.AppendAllText(Evidence+"/compile-errors.txt",m.message+"\n");};
+            CompilationPipeline.compilationStarted+=_=>{Directory.CreateDirectory(Evidence);File.WriteAllText(Evidence+"/compile-errors.txt","");File.WriteAllText(Evidence+"/compile-warnings.txt","");};
+            CompilationPipeline.assemblyCompilationFinished+=(path,messages)=>{Directory.CreateDirectory(Evidence);foreach(var m in messages)File.AppendAllText(Evidence+(m.type==CompilerMessageType.Error?"/compile-errors.txt":"/compile-warnings.txt"),m.message+"\n");};
             CompilationPipeline.compilationFinished+=_=>{string errors=File.Exists(Evidence+"/compile-errors.txt")?File.ReadAllText(Evidence+"/compile-errors.txt"):"";File.WriteAllText(Evidence+"/compilation-result.txt",(errors.Length==0?"PASS":"FAIL")+" "+DateTime.UtcNow.ToString("O"));};
         }
         static void Poll()
@@ -34,7 +34,15 @@ namespace DawnGuard.BlackwoodLTD.Editor
             string file=Evidence+"/command.txt";if(!File.Exists(file))return;string cmd=File.ReadAllText(file).Trim();File.Delete(file);
             try
             {
-                if(cmd=="optimize-export")CoastOptimization.Export();else if(cmd=="optimize-apply")CoastOptimization.Apply();else if(cmd=="setup")Setup();else if(cmd=="check-rollback")CheckRollback();else if(cmd=="checks")File.WriteAllText(Evidence+"/core-checks.txt",CoastChecks.Run());
+                if(cmd=="perf-before"||cmd=="perf-after")CoastForestPerformance.Begin(cmd.Substring(5));
+                else if(cmd=="perf-step2-before"||cmd=="perf-step2-after")CoastForestPerformance.Begin(cmd.Substring(5));
+                else if(cmd=="perf-step2-north")CoastForestPerformance.Begin("step2-north",new Vector3(22,0,28));
+                else if(cmd=="map-checks")CoastLargeMapChecks.Run();
+                else if(cmd=="map-play-check")CoastLargeMapChecks.PlayTest();
+                else if(cmd=="forest-build")CoastForestAssets.Build();
+                else if(cmd=="forest-validate")CoastForestAssets.Validate();
+                else if(cmd=="forest-inventory-before")CoastForestAssets.InventoryBaseline();
+                else if(cmd=="optimize-export")CoastOptimization.Export();else if(cmd=="optimize-apply")CoastOptimization.Apply();else if(cmd=="setup")Setup();else if(cmd=="check-rollback")CheckRollback();else if(cmd=="checks")File.WriteAllText(Evidence+"/core-checks.txt",CoastChecks.Run());
                 else if(cmd=="verify"){if(EditorApplication.isPlaying)throw new InvalidOperationException("Stop Play first");EditorSceneManager.OpenScene(ScenePath);SessionState.SetBool("Coast.Verify",true);EditorApplication.ExecuteMenuItem("Window/General/Game");EditorApplication.isPlaying=true;}
                 else if(cmd=="play"){EditorSceneManager.OpenScene(ScenePath);EditorApplication.ExecuteMenuItem("Window/General/Game");EditorApplication.isPlaying=true;}
                 else if(cmd=="stop")EditorApplication.isPlaying=false;

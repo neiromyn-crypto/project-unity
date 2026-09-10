@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: BlackwoodCoastCatalog
   m_EditorClassIdentifier: Assembly-CSharp::DawnGuard.BlackwoodLTD.CoastCatalog
   rules:
-    version: 1
-    width: 28
-    depth: 24
+    version: 2
+    width: 44
+    depth: 36
     startingCredits: 220
     startingStone: 100
     dawnCredits: 100
@@ -329,6 +329,7 @@ MonoBehaviour:
         start: 48
         interval: 1.3
   source: {fileID: 11400000, guid: 46667721bbd1e0246af0c3c742f8bb5d, type: 2}
+  forest: {fileID: 11400000, guid: d205cfbf1559d5245a28cb02dce3c4fe, type: 2}
   pine: {fileID: 2018792666090497579, guid: ddaa59def7263a04987b37955a1a1c3d, type: 3}
   rock: {fileID: 9020043254310012895, guid: dd96346739b91754ca782652dc2011fd, type: 3}
   pad: {fileID: 5285935082350558300, guid: d3ceaeb4faa14554681749dae620b320, type: 3}

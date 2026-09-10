@@ -1,0 +1,1 @@
+PASS — unchanged first NORTH wave reaches relocated shelter; simulated seconds=50.19952; campHP=599.5; campX=22; no wave edits

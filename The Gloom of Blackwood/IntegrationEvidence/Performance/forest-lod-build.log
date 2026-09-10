@@ -1,0 +1,8 @@
+OPTIMIZING Coast pine near 1946099 -> 12000
+DONE {'id': 'Pine_LOD0', 'name': 'Coast pine near', 'before': 1946099, 'after': 12000, 'vertices': 11767, 'seconds': 27.61, 'skinned': False}
+OPTIMIZING Coast pine far 1946099 -> 1200
+DONE {'id': 'Pine_LOD2', 'name': 'Coast pine far', 'before': 1946099, 'after': 1200, 'vertices': 1893, 'seconds': 28.05, 'skinned': False}
+ALL_OPTIMIZED 2
+Blender 5.2.1 LTS (hash 9e2066aef7ef built 2026-08-25 02:38:20)
+
+Blender quit

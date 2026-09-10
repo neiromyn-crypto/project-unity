@@ -13,6 +13,7 @@ namespace DawnGuard.BlackwoodLTD.Editor
         static CoastScenePreview()
         {EditorApplication.update+=Update;AssemblyReloadEvents.beforeAssemblyReload+=Clear;EditorApplication.playModeStateChanged+=s=>{if(s==PlayModeStateChange.ExitingEditMode)Clear();};EditorSceneManager.sceneSaving+=(s,p)=>Clear();}
         public static void Clear(){if(preview!=null)Object.DestroyImmediate(preview);preview=null;}
+        public static void Rebuild(){Clear();next=0;Update();}
         static void Update()
         {
             if(EditorApplication.timeSinceStartup<next)return;next=EditorApplication.timeSinceStartup+.5;
@@ -24,7 +25,7 @@ namespace DawnGuard.BlackwoodLTD.Editor
             preview=new GameObject("Coast preview — generated, Play starts campaign");preview.hideFlags=HideFlags.DontSave;previewScene=scene;
             var root=preview.AddComponent<CoastRoot>();root.InitializePreview(source.catalog);
             foreach(var t in preview.GetComponentsInChildren<Transform>(true))t.gameObject.hideFlags=HideFlags.DontSave;
-            if(SceneView.lastActiveSceneView!=null)SceneView.lastActiveSceneView.LookAt(new Vector3(14,0,12),Quaternion.Euler(50,0,0),21,false,true);
+            if(SceneView.lastActiveSceneView!=null)SceneView.lastActiveSceneView.LookAt(new Vector3(root.Game.Map.CampX,0,12),Quaternion.Euler(50,0,0),16,false,true);
         }
     }
 }

@@ -1,0 +1,11 @@
+PASS Gameplay and menu forests exist
+PASS 24 individual gameplay trees
+PASS 132 distant crowns in 6 spatial clusters
+PASS 40 menu crowns in 3 clusters
+PASS Decorative forest has zero colliders
+PASS All forest excluded from NavMesh generation, including child geometry
+PASS One shared material asset for every tree, LOD and cluster
+PASS GPU instancing enabled on compatible URP Lit material
+PASS Only 8 near LOD0 renderers cast shadows
+PASS 24 LODGroups with 3 levels each
+PASS No original million-triangle mesh in forest renderers

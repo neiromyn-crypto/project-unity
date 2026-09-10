@@ -1,0 +1,4 @@
+Source prefab preserved: Assets/DawnGuard/BlackwoodV2/Generated/UserMap/User_pine.prefab
+LOD triangles: 12000, 3499, 1200
+Shared material assets: 1
+Shader: Universal Render Pipeline/Lit; enableInstancing=true. SRP Batcher may take priority; actual batching is recorded in Stats.

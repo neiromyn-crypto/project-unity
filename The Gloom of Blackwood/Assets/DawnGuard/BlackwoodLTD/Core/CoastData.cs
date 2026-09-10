@@ -33,7 +33,7 @@ namespace DawnGuard.BlackwoodLTD
     }
     [Serializable] public sealed class CoastRules
     {
-        public int version=1, width=28, depth=24, startingCredits=220, startingStone=100, dawnCredits=100;
+        public int version=2, width=44, depth=36, startingCredits=220, startingStone=100, dawnCredits=100;
         public float firstDay=120, daySeconds=90, campHP=600;
         public DefenseSpec[] defenses;
         public EnemySpec[] enemies;

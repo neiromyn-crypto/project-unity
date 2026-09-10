@@ -11,7 +11,8 @@ namespace DawnGuard.BlackwoodLTD
     {
         CoastRoot root;CoastCatalog catalog;Transform terrain,units,menuActors;
         public Camera Camera {get;private set;}
-        Light sun;float nightBlend,zoom=13.5f;Vector3 pan;
+        Light sun;float nightBlend;
+        public CoastCameraRig CameraRig {get;private set;}
         Material ink,mint,orange,cyan,soil,pebble,grass;
         GameObject drone,preview;Transform[] droneRotors;
         LineRenderer range,selection,grid,construction;
@@ -28,7 +29,7 @@ namespace DawnGuard.BlackwoodLTD
         static Material Mat(string name,Color c,bool lit=true){var m=new Material(Shader.Find(lit?"Universal Render Pipeline/Lit":"Universal Render Pipeline/Unlit"));m.name=name;m.color=c;if(lit){m.SetFloat("_Smoothness",.22f);m.SetFloat("_Metallic",.15f);}return m;}
         public void Initialize(CoastRoot owner,CoastCatalog assets)
         {
-            root=owner;catalog=assets;terrain=new GameObject("Coast environment").transform;terrain.SetParent(transform);
+            root=owner;catalog=assets;CameraRig=new CoastCameraRig(root.Game.Map);terrain=new GameObject("Coast environment").transform;terrain.SetParent(transform);
             units=new GameObject("Campaign entities").transform;units.SetParent(transform);menuActors=new GameObject("Living menu").transform;menuActors.SetParent(transform);
             ink=Mat("Coal",Hex("#1B3038"));mint=Mat("Mint",Hex("#6AE1C9"),false);orange=Mat("Amber",Hex("#F2A04C"),false);cyan=Mat("Arcane",Hex("#73CFFE"),false);
             soil=Mat("Sand rocks",Hex("#76634B"));pebble=Mat("Slate",Hex("#647074"));grass=Mat("Undergrowth",Hex("#445B32"));
@@ -37,7 +38,7 @@ namespace DawnGuard.BlackwoodLTD
             sun=new GameObject("Coastal sun").AddComponent<Light>();sun.transform.SetParent(transform);sun.type=LightType.Directional;sun.shadows=LightShadows.Soft;sun.shadowStrength=.8f;sun.transform.rotation=Quaternion.Euler(52,-28,0);
             RenderSettings.ambientMode=AmbientMode.Trilight;RenderSettings.fog=false;
             BuildTerrain();BuildCamp();BuildMenuActors();
-            drone=Place(catalog.source.dronePrefab,units,new Vector3(14,2.2f,6),1.15f,.65f);var legacy=drone.GetComponentInChildren<BlackwoodModel>();droneRotors=legacy!=null?legacy.rotors:new Transform[0];
+            drone=Place(catalog.source.dronePrefab,units,new Vector3(root.Game.Map.CampX,2.2f,6),1.15f,.65f);var legacy=drone.GetComponentInChildren<BlackwoodModel>();droneRotors=legacy!=null?legacy.rotors:new Transform[0];
             preview=Part("Placement ghost",units,Vector3.zero,new Vector3(.97f,.08f,.97f),mint);preview.SetActive(false);
             range=Line("Range",mint,.028f,units);selection=Line("Selection",orange,.05f,units);grid=Line("Local grid",mint,.014f,units);construction=Line("Construction beam",cyan,.035f,units);
             for(int i=0;i<3;i++)routes[i]=Line("Route "+i,orange,.065f,terrain);
@@ -69,51 +70,58 @@ namespace DawnGuard.BlackwoodLTD
         }
         void BuildTerrain()
         {
+            var map=root.Game.Map;float campOffset=map.CampOffsetX;
             var ground=new GameObject("Shaped shore",typeof(MeshFilter),typeof(MeshRenderer));ground.transform.SetParent(terrain);
-            const int columns=64,rows=40;var vertices=new Vector3[(columns+1)*(rows+1)];var indices=new List<int>();
-            for(int x=0;x<=columns;x++)for(int z=0;z<=rows;z++){float xx=-16+x,shore=-1.4f+Mathf.Sin(xx*.27f)*.43f+Mathf.Sin(xx*.81f)*.15f;vertices[x*(rows+1)+z]=new Vector3(xx,0,Mathf.Lerp(shore,40,z/(float)rows));if(x<columns&&z<rows){int n=x*(rows+1)+z;indices.AddRange(new[]{n,n+1,n+rows+1,n+1,n+rows+2,n+rows+1});}}
+            int columns=map.Width+32,rows=map.Depth+16;var vertices=new Vector3[(columns+1)*(rows+1)];var indices=new List<int>();
+            for(int x=0;x<=columns;x++)for(int z=0;z<=rows;z++){float xx=-16+x,shore=-1.4f+Mathf.Sin(xx*.27f)*.43f+Mathf.Sin(xx*.81f)*.15f;vertices[x*(rows+1)+z]=new Vector3(xx,0,Mathf.Lerp(shore,map.Depth+16,z/(float)rows));if(x<columns&&z<rows){int n=x*(rows+1)+z;indices.AddRange(new[]{n,n+1,n+rows+1,n+1,n+rows+2,n+rows+1});}}
             var mesh=new Mesh{name="Coastline mesh"};mesh.vertices=vertices;mesh.triangles=indices.ToArray();mesh.RecalculateNormals();ground.GetComponent<MeshFilter>().sharedMesh=mesh;ground.GetComponent<MeshRenderer>().sharedMaterial=catalog.ground;
-            Part("Sea",terrain,new Vector3(14,-.14f,-13),new Vector3(90,.12f,30),catalog.water);
+            Part("Sea",terrain,new Vector3(map.CampX,-.14f,-13),new Vector3(map.Width+62,.12f,30),catalog.water);
             var random=new System.Random(7341);
+            var trees=new List<CoastForest.Tree>();
             for(int i=0;i<110;i++)
             {
-                float x,z;if(i<70){bool left=i%2==0;x=left?-2-(float)random.NextDouble()*9:30+(float)random.NextDouble()*9;z=5+(float)random.NextDouble()*25;}
-                else{x=-7+(float)random.NextDouble()*42;z=26+(float)random.NextDouble()*12;}
-                var tree=Place(catalog.pine,terrain,new Vector3(x,0,z),2.5f,3.8f+(float)random.NextDouble()*1.8f);tree.transform.Rotate(0,random.Next(360),0);
+                float x,z;if(i<70){bool left=i%2==0;x=left?-2-(float)random.NextDouble()*9:map.Width+2+(float)random.NextDouble()*9;z=5+(float)random.NextDouble()*(map.Depth+1);}
+                else{x=-7+(float)random.NextDouble()*(map.Width+14);z=map.Depth+2+(float)random.NextDouble()*12;}
+                trees.Add(new CoastForest.Tree(new Vector3(x,0,z),2.5f,3.8f+(float)random.NextDouble()*1.8f,random.Next(360)));
             }
-            for(int x=0;x<root.Game.Map.Width;x++)for(int z=0;z<root.Game.Map.Depth;z++)if(root.Game.Map.Rocks[x,z])
-            {var rock=Place(catalog.basalt??catalog.rock,terrain,new Vector3(x+.5f,0,z+.5f),1.30f,1.2f);rock.transform.Rotate(0,random.Next(360),0);
-                if(z>=22||((x==9||x==19)&&z>16&&z%3==0))Place(catalog.pine,terrain,new Vector3(x+.5f,.35f,z+.5f),1.6f,2.5f+(float)random.NextDouble());}
+            var ridgeCells=new List<Vector3>();
+            for(int x=0;x<map.Width;x++)for(int z=0;z<map.Depth;z++)if(map.Rocks[x,z])
+            {var rock=Place(catalog.basalt??catalog.rock,terrain,new Vector3(x+.5f,0,z+.5f),1.08f,.8f+(float)random.NextDouble()*.6f);rock.transform.Rotate(0,random.Next(360),0);ridgeCells.Add(new Vector3(x+.5f,.25f,z+.5f));}
+            // Fixed budget: distribute the existing 46 ridge crowns, never one tree per cell.
+            for(int i=0;i<46&&ridgeCells.Count>0;i++)trees.Add(new CoastForest.Tree(ridgeCells[i*ridgeCells.Count/46],1.6f,2.5f+(float)random.NextDouble(),random.Next(360)));
+            CoastForest.Build(terrain,catalog,trees,false,map.CampX,map.Depth);
             for(int i=0;i<75;i++)
             {
-                float x=-4+(float)random.NextDouble()*36,z=-2+(float)random.NextDouble()*28;
-                if(x>1&&x<27&&z>4&&z<24)continue;
+                float x=-4+(float)random.NextDouble()*(map.Width+8),z=-2+(float)random.NextDouble()*(map.Depth+4);
+                if(x>1&&x<map.Width-1&&z>4&&z<map.Depth)continue;
                 float size=.15f+(float)random.NextDouble()*.55f;var rock=Place(catalog.basalt??catalog.rock,terrain,new Vector3(x,0,z),size,size*.6f);rock.transform.Rotate(0,random.Next(360),0);
             }
-            foreach(float x in new[]{1.5f,26.5f})
+            foreach(float x in new[]{1.5f+campOffset,26.5f+campOffset})
             {Place(catalog.ore??catalog.rock,terrain,new Vector3(x,0,1.3f),2.8f,1.4f);Place(catalog.basalt??catalog.rock,terrain,new Vector3(x+.8f,0,.1f),1.8f,.95f);}
-            Place(catalog.dock,terrain,new Vector3(11,-.15f,-1.7f),2.9f,1.3f);Place(catalog.dock,terrain,new Vector3(18,-.15f,-1.9f),2.9f,1.3f);
+            Place(catalog.dock,terrain,new Vector3(11+campOffset,-.15f,-1.7f),2.9f,1.3f);Place(catalog.dock,terrain,new Vector3(18+campOffset,-.15f,-1.9f),2.9f,1.3f);
             if(catalog.fern!=null)for(int i=0;i<260;i++)
-            {float x=-3+(float)random.NextDouble()*34,z=3+(float)random.NextDouble()*24;int xx=Mathf.Clamp((int)x,0,27),zz=Mathf.Clamp((int)z,0,23);
-                if(x>1&&x<27&&z<22&&!root.Game.Map.Rocks[xx,zz]&&i%5!=0)continue;
+            {float x=-3+(float)random.NextDouble()*(map.Width+6),z=3+(float)random.NextDouble()*map.Depth;int xx=Mathf.Clamp((int)x,0,map.Width-1),zz=Mathf.Clamp((int)z,0,map.Depth-1);
+                if(x>1&&x<map.Width-1&&z<map.Depth-2&&!map.Rocks[xx,zz]&&i%5!=0)continue;
                 var fern=Place(catalog.fern,terrain,new Vector3(x,.01f,z),.6f+(float)random.NextDouble()*.55f,.4f);fern.transform.Rotate(0,random.Next(360),0);}
-            for(int x=3;x<=25;x+=2)Part("Service track marker",terrain,new Vector3(x,.015f,2),new Vector3(.45f,.01f,.08f),soil);
+            for(int x=3;x<=25;x+=2)Part("Service track marker",terrain,new Vector3(x+campOffset,.015f,2),new Vector3(.45f,.01f,.08f),soil);
             for(int front=0;front<3;front++){var e=root.Game.Map.Entrances[front];Label(terrain,CoastSession.FrontName(front),new Vector3(e.x+1,.09f,e.z+1.5f),.15f,Hex("#E2C8A2"));}
         }
         void BuildCamp()
         {
+            int first=terrain.childCount;
             Place(catalog.Defense("camp"),terrain,new Vector3(4.7f,0,5),3.5f,2.7f);Label(terrain,"КАЗАРМА",new Vector3(4.7f,.12f,3.6f),.13f,Color.white);
             Place(catalog.Defense("camp"),terrain,new Vector3(9,0,4.6f),2.9f,2.2f);Label(terrain,"ОРУЖЕЙНАЯ",new Vector3(9,.12f,3.4f),.12f,Color.white);
             Place(catalog.Defense("shelter"),terrain,new Vector3(14,0,5.2f),4.5f,3.0f);Label(terrain,"ЛАГЕРЬ",new Vector3(14,.12f,3.5f),.14f,Color.white);
             Place(catalog.Defense("lab"),terrain,new Vector3(20,0,5),3.3f,2.8f);Label(terrain,"ЛАБОРАТОРИЯ",new Vector3(20,.12f,3.5f),.115f,Color.white);
             Place(catalog.Defense("generator"),terrain,new Vector3(25,0,5),2.8f,2.7f);Label(terrain,"ЭНЕРГИЯ",new Vector3(25,.12f,3.4f),.12f,Color.white);
-            Place(catalog.pad,terrain,new Vector3(24,0,1),2,.4f);
+            Place(catalog.pad,terrain,new Vector3(17.5f,0,1),2,.4f);
             Part("Supply depot",terrain,new Vector3(14,.28f,2),new Vector3(1.2f,.55f,.65f),ink);
             for(int i=0;i<4;i++)
             {
                 float x=6+i*5;Place(catalog.lantern,terrain,new Vector3(x,0,6.8f),.4f,1.6f);
                 var light=new GameObject("Camp light").AddComponent<Light>();light.transform.SetParent(terrain);light.transform.position=new Vector3(x,1.5f,5.8f);light.type=LightType.Point;light.range=4.3f;light.intensity=2.0f;light.color=Hex("#FFC277");light.shadows=LightShadows.None;
             }
+            for(int i=first;i<terrain.childCount;i++)terrain.GetChild(i).position+=Vector3.right*root.Game.Map.CampOffsetX;
         }
         public static void Label(Transform parent,string text,Vector3 position,float size,Color color)
         {
@@ -140,7 +148,9 @@ namespace DawnGuard.BlackwoodLTD
             Place(catalog.pad,menuActors,new Vector3(119,0,0),2.5f,.35f);
             Place(catalog.source.dronePrefab,menuActors,new Vector3(119,1.7f,0),1.6f,.9f);
             var random=new System.Random(539);
-            for(int i=0;i<40;i++){float x=91+(float)random.NextDouble()*45,z=14+(float)random.NextDouble()*7;Place(catalog.pine,menuActors,new Vector3(x,0,z),2.5f+(float)random.NextDouble()*2,5+i%4);}
+            var trees=new List<CoastForest.Tree>();
+            for(int i=0;i<40;i++){float x=91+(float)random.NextDouble()*45,z=14+(float)random.NextDouble()*7;trees.Add(new CoastForest.Tree(new Vector3(x,0,z),2.5f+(float)random.NextDouble()*2,5+i%4));}
+            CoastForest.Build(menuActors,catalog,trees,true);
             for(int i=0;i<18;i++){float x=99+(float)random.NextDouble()*31;var rock=Place(catalog.basalt??catalog.rock,menuActors,new Vector3(x,-.1f,-1.4f+Mathf.Sin(i)*.6f),1.7f+(float)random.NextDouble(),1.2f);rock.transform.Rotate(0,random.Next(360),0);}
             if(catalog.fern!=null)for(int i=0;i<40;i++)Place(catalog.fern,menuActors,new Vector3(100+(float)random.NextDouble()*30,0,2+(float)random.NextDouble()*10),.8f,.4f);
             for(int i=0;i<4;i++){var u=Actor(catalog.Enemy(i==0?"brute":"walker"),"menu",new Vector3(118+i*1.5f,0,9),i==0?2.0f:1.4f,menuActors);menuZombies.Add(u);}
@@ -158,8 +168,8 @@ namespace DawnGuard.BlackwoodLTD
             nightBlend=Mathf.MoveTowards(nightBlend,targetNight,dt*.5f);
             sun.color=Color.Lerp(Hex("#FFE9BC"),Hex("#ACC8EC"),nightBlend);sun.intensity=Mathf.Lerp(1.55f,.65f,nightBlend);
             RenderSettings.ambientSkyColor=Color.Lerp(Hex("#829AB0"),Hex("#485E80"),nightBlend);RenderSettings.ambientEquatorColor=Color.Lerp(Hex("#6D765B"),Hex("#314557"),nightBlend);RenderSettings.ambientGroundColor=Color.Lerp(Hex("#4A4937"),Hex("#223545"),nightBlend);
-            Vector3 focus=menu?new Vector3(110.5f,1.0f,5):new Vector3(14,0,10.5f)+pan;float elevation=menu?26:50;
-            float camSize=menu?7.3f:zoom;Camera.orthographicSize=Mathf.Lerp(Camera.orthographicSize,camSize,dt<=0?1:Mathf.Clamp01(dt*5));
+            Vector3 focus=menu?new Vector3(110.5f,1.0f,5):CameraRig.Focus;float elevation=menu?26:50;
+            float camSize=menu?7.3f:CameraRig.Size;Camera.orthographicSize=Mathf.Lerp(Camera.orthographicSize,camSize,dt<=0?1:Mathf.Clamp01(dt*5));
             Vector3 desired=focus+new Vector3(0,Mathf.Sin(elevation*Mathf.Deg2Rad),-Mathf.Cos(elevation*Mathf.Deg2Rad))*40;
             Camera.transform.position=Vector3.Lerp(Camera.transform.position,desired,dt<=0?1:Mathf.Clamp01(dt*5));Camera.transform.LookAt(focus);
             if(menu){for(int i=0;i<menuZombies.Count;i++){var u=menuZombies[i];float t=Time.unscaledTime*.16f+i*1.7f;Vector3 pos=new Vector3(117+i*1.8f+Mathf.Sin(t)*1.1f,0,9+Mathf.Cos(t)*1.5f+i%2);Vector3 delta=pos-u.go.transform.position;u.go.transform.position=pos;if(delta.sqrMagnitude>.00001f)u.go.transform.rotation=Quaternion.LookRotation(delta);Animate(u,true,false,false,.7f);}return;}
@@ -198,7 +208,7 @@ namespace DawnGuard.BlackwoodLTD
                     enemies[e.id]=u;}
                 if(u.health==null){u.healthBack=Line("Health background",ink,.09f,u.go.transform);u.health=Line("Health",e.kind=="boss"||e.kind=="sapper"?orange:e.kind=="armored"?cyan:mint,.045f,u.go.transform);}
                 Vector3 pos=new Vector3(e.x+(e.id%3-1)*.18f,0,e.z+((e.id/3)%3-1)*.13f);Vector3 direction=pos-u.go.transform.position;
-                u.go.transform.position=pos;if(e.attacking){var b=g.Building(e.wallTarget);direction=(b==null?new Vector3(14,0,5):new Vector3(b.x+.5f,0,b.z+.5f))-pos;}
+                u.go.transform.position=pos;if(e.attacking){var b=g.Building(e.wallTarget);direction=(b==null?new Vector3(g.Map.CampX,0,5):new Vector3(b.x+.5f,0,b.z+.5f))-pos;}
                 if(direction.sqrMagnitude>.0001f&&!root.Paused)u.go.transform.rotation=Quaternion.Slerp(u.go.transform.rotation,Quaternion.LookRotation(direction),dt*12);
                 Animate(u,e.moving,e.attacking,root.Paused,e.moving?g.Rules.Enemy(e.kind).speed:0);
                 float barHeight=e.kind=="boss"?2.9f:e.kind=="brute"||e.kind=="armored"?1.9f:1.45f;Vector3 bar=pos+Vector3.up*barHeight;
@@ -213,7 +223,7 @@ namespace DawnGuard.BlackwoodLTD
             {
                 Unit u;if(!workers.TryGetValue(w.id,out u)){var go=Place(catalog.worker,units,new Vector3(w.x,0,w.z),.75f,1.05f);var limbs=new List<Transform>();foreach(var t in go.GetComponentsInChildren<Transform>()){if(t.name=="LegLeft"||t.name=="LegRight")limbs.Add(t);}
                     u=new Unit{go=go,limbs=limbs.ToArray(),cargo=Array.Find(go.GetComponentsInChildren<Transform>(),t=>t.name=="Cargo")};workers[w.id]=u;}
-                u.go.SetActive(w.job!=WorkerJob.Sheltered);Vector3 pos=new Vector3(w.x,0,w.z+(w.id%3-1)*.25f);var direction=pos-u.go.transform.position;u.go.transform.position=pos;
+                u.go.SetActive(w.job!=WorkerJob.Sheltered);Vector3 pos=new Vector3(w.x+root.Game.Map.CampOffsetX,0,w.z+(w.id%3-1)*.25f);var direction=pos-u.go.transform.position;u.go.transform.position=pos;
                 if(direction.sqrMagnitude>.0001f&&!root.Paused)u.go.transform.rotation=Quaternion.Slerp(u.go.transform.rotation,Quaternion.LookRotation(direction),dt*12);
                 if(u.cargo!=null)u.cargo.gameObject.SetActive(w.cargo>0);
                 if(!root.Paused&&u.limbs!=null)for(int i=0;i<u.limbs.Length;i++)u.limbs[i].localRotation=Quaternion.Euler(Mathf.Sin(Time.time*12+i*Mathf.PI+w.id)*((w.job==WorkerJob.Outbound||w.job==WorkerJob.Inbound)?24:3),0,0);
@@ -243,8 +253,8 @@ namespace DawnGuard.BlackwoodLTD
         static void Square(LineRenderer l,float x,float z,float radius){l.positionCount=5;l.SetPositions(new[]{new Vector3(x-radius,.06f,z-radius),new Vector3(x-radius,.06f,z+radius),new Vector3(x+radius,.06f,z+radius),new Vector3(x+radius,.06f,z-radius),new Vector3(x-radius,.06f,z-radius)});}
         static void Circle(LineRenderer l,Vector3 c,float radius){if(radius<=0){l.positionCount=0;return;}l.positionCount=65;for(int i=0;i<=64;i++){float a=i*Mathf.PI/32;l.SetPosition(i,c+new Vector3(Mathf.Cos(a),0,Mathf.Sin(a))*radius);}}
         public void ClearPreview(){if(preview!=null)preview.SetActive(false);if(grid!=null)grid.positionCount=0;if(range!=null&&root.SelectedBuilding==0)range.positionCount=0;}
-        public void Zoom(float delta){zoom=Mathf.Clamp(zoom+delta,9,16);}
-        public void Pan(Vector2 delta){pan.x=Mathf.Clamp(pan.x-delta.x*.022f,-5,5);pan.z=Mathf.Clamp(pan.z-delta.y*.026f,-4,4);}
+        public void Zoom(float delta){CameraRig.Zoom(delta);}
+        public void Pan(Vector2 delta){CameraRig.PanPixels(delta,Camera.pixelHeight);}
         public void ResetUnits(){foreach(var d in new[]{buildings,enemies,workers}){foreach(var kv in d)Destroy(kv.Value.go);d.Clear();}foreach(var u in corpses)Destroy(u.go);corpses.Clear();foreach(var stack in pool.Values)foreach(var u in stack)Destroy(u.go);pool.Clear();lastRevision=-1;}
     }
 }

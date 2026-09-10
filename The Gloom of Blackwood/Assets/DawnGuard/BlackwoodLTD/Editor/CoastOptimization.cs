@@ -55,7 +55,7 @@ namespace DawnGuard.BlackwoodLTD.Editor
                 for(int sub=0;sub<m.subMeshCount;sub++){var t=m.GetTriangles(sub);w.Write(t.Length);foreach(int i in t)w.Write(i);}
             }
         }
-        static Mesh Read(string path,Mesh original)
+        internal static Mesh Read(string path,Mesh original)
         {
             using(var r=new BinaryReader(File.OpenRead(path)))
             {

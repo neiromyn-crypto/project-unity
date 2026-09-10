@@ -37,9 +37,9 @@ namespace DawnGuard.BlackwoodLTD
                 {
                     if(e.nx==Map.Goal.x&&e.nz==Map.Goal.z)
                     {
-                        e.attacking=true;int slot=attackers++;float spread=slot%6-2.5f;MovePoint(ref e.x,ref e.z,14+spread*1.1f,7.7f+(slot/6)*1.4f,spec.speed*dt);
+                        e.attacking=true;int slot=attackers++;float spread=slot%6-2.5f;MovePoint(ref e.x,ref e.z,Map.CampX+spread*1.1f,7.7f+(slot/6)*1.4f,spec.speed*dt);
                         if(slot<6){S.campHP=Math.Max(0,S.campHP-spec.dps*dt);if(e.attackTimer<=0){S.leaks[e.front]++;e.attackTimer=100000;Emit("camp_hit",e.id,0,e.x,e.z);}}
-                        if(S.campHP<=0){S.phase=CoastPhase.Defeat;Emit("defeat",0,0,14,5);return;}continue;
+                        if(S.campHP<=0){S.phase=CoastPhase.Defeat;Emit("defeat",0,0,Map.CampX,5);return;}continue;
                     }
                     Cell next;if(!Map.Next(new Cell(e.nx,e.nz),Map.Distances,out next)){e.stalled+=dt;continue;}
                     e.nx=next.x;e.nz=next.z;e.moving=true;

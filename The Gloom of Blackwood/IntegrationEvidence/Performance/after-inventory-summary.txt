@@ -1,0 +1,2 @@
+Mesh renderers including inactive menu and all LOD levels: 81
+Triangle instances including inactive/all LOD levels: 1002604

@@ -7,6 +7,7 @@ namespace DawnGuard.BlackwoodLTD
     {
         public CoastRules rules=CoastRules.Create();
         public GameCatalog source;
+        public CoastForestProfile forest;
         public GameObject pine,rock,pad,worker,guardian,dock,lantern,basalt,ore,fern;
         public Material ground,water,sand,path,ink,mint,orange;
         public Sprite[] defenseIcons;
