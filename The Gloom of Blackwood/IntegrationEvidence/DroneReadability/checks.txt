@@ -1,0 +1,95 @@
+PASS BlackwoodCoast Play Mode starts
+PASS Only Visual scales +30%; drone root scale stays 1
+PASS Logic altitude unchanged; visual offset +0.25
+PASS Ground marker has no physics components
+PASS Transparent unlit ground marker; no shadows or depth writes
+PASS Marker shader compiles
+PASS No active drone lights
+PASS Markers reuse the single existing HUD Canvas
+PASS Onscreen drone hides edge indicator
+PASS No error-material coverage: day
+PASS Button inside frame: МЕНЮ / day
+PASS Button inside frame:  / day
+PASS Button inside frame:  / day
+PASS Button inside frame:  / day
+PASS Button inside frame:  / day
+PASS Button inside frame:  / day
+PASS Button inside frame: КАЗАРМА / day
+PASS Button inside frame: ОРУЖЕЙНАЯ / day
+PASS Button inside frame: ЛАБОРАТОРИЯ / day
+PASS Button inside frame: ЭНЕРГИЯ / day
+PASS Button inside frame: НАЧАТЬ НОЧЬ / day
+PASS Ground marker follows X/Z at (6.00, 29.00)
+PASS Overhead marker faces camera at (6.00, 29.00)
+PASS Ground marker follows X/Z at (38.00, 30.00)
+PASS Overhead marker faces camera at (38.00, 30.00)
+PASS Ground marker follows X/Z at (40.00, 8.00)
+PASS Overhead marker faces camera at (40.00, 8.00)
+PASS Ground marker follows X/Z at (5.00, 9.00)
+PASS Overhead marker faces camera at (5.00, 9.00)
+PASS Offscreen northeast drone shows indicator
+PASS No error-material coverage: offscreen
+PASS Button inside frame: МЕНЮ / offscreen
+PASS Button inside frame:  / offscreen
+PASS Button inside frame:  / offscreen
+PASS Button inside frame:  / offscreen
+PASS Button inside frame:  / offscreen
+PASS Button inside frame:  / offscreen
+PASS Button inside frame: КАЗАРМА / offscreen
+PASS Button inside frame: ОРУЖЕЙНАЯ / offscreen
+PASS Button inside frame: ЛАБОРАТОРИЯ / offscreen
+PASS Button inside frame: ЭНЕРГИЯ / offscreen
+PASS Button inside frame: НАЧАТЬ НОЧЬ / offscreen
+PASS No error-material coverage: offscreen-wide
+PASS Button inside frame: МЕНЮ / offscreen-wide
+PASS Button inside frame:  / offscreen-wide
+PASS Button inside frame:  / offscreen-wide
+PASS Button inside frame:  / offscreen-wide
+PASS Button inside frame:  / offscreen-wide
+PASS Button inside frame:  / offscreen-wide
+PASS Button inside frame: КАЗАРМА / offscreen-wide
+PASS Button inside frame: ОРУЖЕЙНАЯ / offscreen-wide
+PASS Button inside frame: ЛАБОРАТОРИЯ / offscreen-wide
+PASS Button inside frame: ЭНЕРГИЯ / offscreen-wide
+PASS Button inside frame: НАЧАТЬ НОЧЬ / offscreen-wide
+PASS Space through Input System requests Focus Drone
+PASS Focus starts smoothly without a camera teleport or rotation snap
+PASS Focus settles near center and hides indicator
+PASS No error-material coverage: focused
+PASS Button inside frame: МЕНЮ / focused
+PASS Button inside frame:  / focused
+PASS Button inside frame:  / focused
+PASS Button inside frame:  / focused
+PASS Button inside frame:  / focused
+PASS Button inside frame:  / focused
+PASS Button inside frame: КАЗАРМА / focused
+PASS Button inside frame: ОРУЖЕЙНАЯ / focused
+PASS Button inside frame: ЛАБОРАТОРИЯ / focused
+PASS Button inside frame: ЭНЕРГИЯ / focused
+PASS Button inside frame: НАЧАТЬ НОЧЬ / focused
+PASS Manual move, drag and zoom remain available after focus
+PASS Large-map camera bounds retained
+PASS No error-material coverage: day-max-zoom
+PASS Button inside frame: МЕНЮ / day-max-zoom
+PASS Button inside frame:  / day-max-zoom
+PASS Button inside frame:  / day-max-zoom
+PASS Button inside frame:  / day-max-zoom
+PASS Button inside frame:  / day-max-zoom
+PASS Button inside frame:  / day-max-zoom
+PASS Button inside frame: КАЗАРМА / day-max-zoom
+PASS Button inside frame: ОРУЖЕЙНАЯ / day-max-zoom
+PASS Button inside frame: ЛАБОРАТОРИЯ / day-max-zoom
+PASS Button inside frame: ЭНЕРГИЯ / day-max-zoom
+PASS Button inside frame: НАЧАТЬ НОЧЬ / day-max-zoom
+PASS No error-material coverage: night-max-zoom
+PASS Button inside frame: МЕНЮ / night-max-zoom
+PASS Button inside frame: РЕМОНТ
+10 КАМ. / night-max-zoom
+PASS Button inside frame: ПЕРЕГРУЗКА
++25% СКОРОСТИ / night-max-zoom
+PASS Button inside frame: ПРИОРИТЕТ ЦЕЛИ / night-max-zoom
+PASS Same marker and material reused across movement and day/night
+PASS No accumulated objects or new Canvases after camera/movement checks
+PASS Menu hides edge indicator
+PASS All HUD graphics have CanvasRenderer
+PASS Console: zero errors/exceptions throughout drone Play Mode checks

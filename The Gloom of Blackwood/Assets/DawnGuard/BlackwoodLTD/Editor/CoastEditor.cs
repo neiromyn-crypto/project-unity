@@ -36,9 +36,11 @@ namespace DawnGuard.BlackwoodLTD.Editor
             {
                 if(cmd=="perf-before"||cmd=="perf-after")CoastForestPerformance.Begin(cmd.Substring(5));
                 else if(cmd=="perf-step2-before"||cmd=="perf-step2-after")CoastForestPerformance.Begin(cmd.Substring(5));
+                else if(cmd=="perf-step3-before"||cmd=="perf-step3-after")CoastForestPerformance.Begin(cmd.Substring(5));
                 else if(cmd=="perf-step2-north")CoastForestPerformance.Begin("step2-north",new Vector3(22,0,28));
                 else if(cmd=="map-checks")CoastLargeMapChecks.Run();
                 else if(cmd=="map-play-check")CoastLargeMapChecks.PlayTest();
+                else if(cmd=="drone-checks"){if(EditorApplication.isPlaying)throw new InvalidOperationException("Stop Play first");EditorSceneManager.OpenScene(ScenePath);SessionState.SetBool("Coast.VerifyDrone",true);EditorApplication.ExecuteMenuItem("Window/General/Game");EditorApplication.isPlaying=true;}
                 else if(cmd=="forest-build")CoastForestAssets.Build();
                 else if(cmd=="forest-validate")CoastForestAssets.Validate();
                 else if(cmd=="forest-inventory-before")CoastForestAssets.InventoryBaseline();

@@ -15,6 +15,7 @@ namespace DawnGuard.BlackwoodLTD
         public CoastCameraRig CameraRig {get;private set;}
         Material ink,mint,orange,cyan,soil,pebble,grass;
         GameObject drone,preview;Transform[] droneRotors;
+        public CoastDronePresentation Drone {get;private set;}
         LineRenderer range,selection,grid,construction;
         LineRenderer[] routes=new LineRenderer[3];
         sealed class Unit{public GameObject go;public Animator animator;public string kind;public Transform yaw;public Quaternion yawBase;public bool dying;public float deathTime;public Transform cargo;public Transform[] limbs;public Vector3 previous;public LineRenderer health,healthBack;}
@@ -39,6 +40,7 @@ namespace DawnGuard.BlackwoodLTD
             RenderSettings.ambientMode=AmbientMode.Trilight;RenderSettings.fog=false;
             BuildTerrain();BuildCamp();BuildMenuActors();
             drone=Place(catalog.source.dronePrefab,units,new Vector3(root.Game.Map.CampX,2.2f,6),1.15f,.65f);var legacy=drone.GetComponentInChildren<BlackwoodModel>();droneRotors=legacy!=null?legacy.rotors:new Transform[0];
+            Drone=drone.AddComponent<CoastDronePresentation>();Drone.Initialize(units,Camera,mint,orange);
             preview=Part("Placement ghost",units,Vector3.zero,new Vector3(.97f,.08f,.97f),mint);preview.SetActive(false);
             range=Line("Range",mint,.028f,units);selection=Line("Selection",orange,.05f,units);grid=Line("Local grid",mint,.014f,units);construction=Line("Construction beam",cyan,.035f,units);
             for(int i=0;i<3;i++)routes[i]=Line("Route "+i,orange,.065f,terrain);
@@ -171,12 +173,15 @@ namespace DawnGuard.BlackwoodLTD
             Vector3 focus=menu?new Vector3(110.5f,1.0f,5):CameraRig.Focus;float elevation=menu?26:50;
             float camSize=menu?7.3f:CameraRig.Size;Camera.orthographicSize=Mathf.Lerp(Camera.orthographicSize,camSize,dt<=0?1:Mathf.Clamp01(dt*5));
             Vector3 desired=focus+new Vector3(0,Mathf.Sin(elevation*Mathf.Deg2Rad),-Mathf.Cos(elevation*Mathf.Deg2Rad))*40;
-            Camera.transform.position=Vector3.Lerp(Camera.transform.position,desired,dt<=0?1:Mathf.Clamp01(dt*5));Camera.transform.LookAt(focus);
+            float cameraBlend=dt<=0?1:1-Mathf.Exp(-dt*5);
+            Camera.transform.position=Vector3.Lerp(Camera.transform.position,desired,cameraBlend);
+            Camera.transform.rotation=Quaternion.Slerp(Camera.transform.rotation,Quaternion.Euler(elevation,0,0),cameraBlend);
             if(menu){for(int i=0;i<menuZombies.Count;i++){var u=menuZombies[i];float t=Time.unscaledTime*.16f+i*1.7f;Vector3 pos=new Vector3(117+i*1.8f+Mathf.Sin(t)*1.1f,0,9+Mathf.Cos(t)*1.5f+i%2);Vector3 delta=pos-u.go.transform.position;u.go.transform.position=pos;if(delta.sqrMagnitude>.00001f)u.go.transform.rotation=Quaternion.LookRotation(delta);Animate(u,true,false,false,.7f);}return;}
             SyncBuildings();SyncEnemies(dt);SyncWorkers(dt);
             Vector3 droneTarget=new Vector3(g.S.droneX,2.2f,g.S.droneZ);
             if(constructionTime>0){constructionTime-=root.Paused?0:dt;droneTarget=constructionTarget+Vector3.up*2.2f;construction.positionCount=2;construction.SetPosition(0,drone.transform.position);construction.SetPosition(1,constructionTarget+Vector3.up*.3f);}else construction.positionCount=0;
             drone.transform.position=Vector3.Lerp(drone.transform.position,droneTarget,dt*5);if(!root.Paused&&droneRotors!=null)foreach(var rotor in droneRotors)if(rotor!=null)rotor.Rotate(0,850*dt,0,Space.Self);
+            Drone.Refresh();
             if(g.S.repairRemaining>0){var target=g.Building(g.S.repairTarget);if(target!=null){construction.positionCount=2;construction.SetPosition(0,drone.transform.position);construction.SetPosition(1,new Vector3(target.x+.5f,.5f,target.z+.5f));}}
             if(lastRevision!=g.Map.Revision){lastRevision=g.Map.Revision;for(int front=0;front<3;front++){var cells=g.Map.Route(front);routes[front].positionCount=cells.Count;for(int i=0;i<cells.Count;i++)routes[front].SetPosition(i,new Vector3(cells[i].x+1,.045f,cells[i].z+1));}}
             bool showRoutes=g.S.phase==CoastPhase.Day&&(root.SelectedTool!=null||root.Moving);for(int i=0;i<3;i++){routes[i].enabled=showRoutes;routes[i].startWidth=routes[i].endWidth=i==root.WatchedFront?.08f:.028f;}
@@ -254,6 +259,11 @@ namespace DawnGuard.BlackwoodLTD
         static void Circle(LineRenderer l,Vector3 c,float radius){if(radius<=0){l.positionCount=0;return;}l.positionCount=65;for(int i=0;i<=64;i++){float a=i*Mathf.PI/32;l.SetPosition(i,c+new Vector3(Mathf.Cos(a),0,Mathf.Sin(a))*radius);}}
         public void ClearPreview(){if(preview!=null)preview.SetActive(false);if(grid!=null)grid.positionCount=0;if(range!=null&&root.SelectedBuilding==0)range.positionCount=0;}
         public void Zoom(float delta){CameraRig.Zoom(delta);}
+        public void FocusDrone()
+        {
+            // Compensate for the visual flight height while preserving the rig's ground-plane bounds.
+            var p=Drone.Position;CameraRig.SetFocus(p+Vector3.forward*(p.y/Mathf.Tan(50*Mathf.Deg2Rad)));
+        }
         public void Pan(Vector2 delta){CameraRig.PanPixels(delta,Camera.pixelHeight);}
         public void ResetUnits(){foreach(var d in new[]{buildings,enemies,workers}){foreach(var kv in d)Destroy(kv.Value.go);d.Clear();}foreach(var u in corpses)Destroy(u.go);corpses.Clear();foreach(var stack in pool.Values)foreach(var u in stack)Destroy(u.go);pool.Clear();lastRevision=-1;}
     }

@@ -15,6 +15,8 @@ namespace DawnGuard.BlackwoodLTD
     {
         static readonly Color Ink=new Color(.035f,.085f,.11f,.96f),Panel=new Color(.075f,.16f,.20f,.97f),Cream=new Color(.92f,.92f,.84f),Mint=new Color(.40f,.89f,.78f),Orange=new Color(.98f,.59f,.23f),Muted=new Color(.56f,.68f,.68f);
         CoastRoot root;Font font;RectTransform safe;
+        RectTransform droneEdge,droneArrow;Camera droneCamera;CoastDronePresentation drone;
+        public bool DroneIndicatorVisible => droneEdge!=null&&droneEdge.gameObject.activeSelf;
         public Canvas Canvas {get;private set;}
         public bool ServiceOpen {get{return service!=null&&service.activeSelf;}}
         GameObject gameUi,menu,dayBar,nightBar,service,settings,pause,results,confirmation,selectionBox;
@@ -38,6 +40,7 @@ namespace DawnGuard.BlackwoodLTD
             safe=Full(go.transform,"Safe area",Color.clear,false).GetComponent<RectTransform>();safe.gameObject.AddComponent<SafeAreaPanel>();
             gameUi=Full(safe,"Gameplay",Color.clear,false);Full(gameUi.transform,"Board input",Color.clear,true).AddComponent<CoastPointer>().root=root;
             BuildTop();BuildBars();BuildService();BuildMenu();BuildSettings();BuildResults();
+            BuildDroneIndicator();
             pause=Full(safe,"Pause",new Color(0,.025f,.04f,.55f),true);var p=Box(pause.transform,"Pause panel",new Vector2(.5f,.5f),new Vector2(-230,170),new Vector2(460,340),Ink);
             Text(p.transform,"ПАУЗА",20,-24,420,55,38,Cream);Text(p.transform,"Время, добыча и бой остановлены",20,-83,420,45,20,Muted);
             Button(p.transform,"ПРОДОЛЖИТЬ",20,-145,420,68,()=>root.TogglePause(),Orange);
@@ -60,7 +63,39 @@ namespace DawnGuard.BlackwoodLTD
             var forecast=Box(gameUi.transform,"Wave forecast",new Vector2(1,1),new Vector2(-270,-111),new Vector2(250,153),Ink);
             Text(forecast.transform,"БЛИЖАЙШАЯ УГРОЗА",16,-14,220,27,18,Muted);threat=Text(forecast.transform,"",16,-47,220,91,20,Cream);
             notice=Text(gameUi.transform,"",0,0,990,46,20,Cream);var nr=notice.rectTransform;nr.anchorMin=nr.anchorMax=new Vector2(.5f,0);nr.anchoredPosition=new Vector2(-495,204);notice.alignment=TextAnchor.MiddleCenter;
-            var cameraHint=Text(gameUi.transform,"КАМЕРА: WASD / стрелки / перетаскивание · Колесо: масштаб · Home: лагерь",0,0,1050,24,14,Muted);var cr=cameraHint.rectTransform;cr.anchorMin=cr.anchorMax=new Vector2(.5f,0);cr.anchoredPosition=new Vector2(-525,197);cameraHint.alignment=TextAnchor.MiddleCenter;
+            var cameraHint=Text(gameUi.transform,"КАМЕРА: WASD / стрелки / перетаскивание · Колесо: масштаб · Home: лагерь · Space: дрон",0,0,1050,24,14,Muted);var cr=cameraHint.rectTransform;cr.anchorMin=cr.anchorMax=new Vector2(.5f,0);cr.anchoredPosition=new Vector2(-525,197);cameraHint.alignment=TextAnchor.MiddleCenter;
+        }
+        void BuildDroneIndicator()
+        {
+            droneCamera=root.World.Camera;drone=root.World.Drone;
+            var go=Box(gameUi.transform,"Offscreen drone",new Vector2(.5f,.5f),Vector2.zero,new Vector2(104,52),Ink);
+            go.GetComponent<BlackwoodPanel>().raycastTarget=false;
+            droneEdge=go.GetComponent<RectTransform>();droneEdge.pivot=new Vector2(.5f,.5f);
+            var label=Text(go.transform,"ДРОН\nSpace",29,-4,70,44,15,Mint);label.alignment=TextAnchor.MiddleCenter;
+            var arrow=Text(go.transform,"›",2,-11,28,30,30,Orange);arrow.alignment=TextAnchor.MiddleCenter;
+            droneArrow=arrow.rectTransform;droneArrow.pivot=new Vector2(.5f,.5f);droneArrow.anchoredPosition=new Vector2(16,-26);
+            go.SetActive(false);
+        }
+        void UpdateDroneIndicator()
+        {
+            Vector3 viewport=droneCamera.WorldToViewportPoint(drone.Position);
+            bool visible=!root.MenuOpen&&!root.ManualPause&&!ServiceOpen&&
+                (root.Game.S.phase==CoastPhase.Day||root.Game.S.phase==CoastPhase.Night)&&
+                (viewport.z<=0||viewport.x<0||viewport.x>1||viewport.y<0||viewport.y>1);
+            if(droneEdge.gameObject.activeSelf!=visible)droneEdge.gameObject.SetActive(visible);
+            if(!visible)return;
+            Vector2 local;Vector3 screen=droneCamera.ViewportToScreenPoint(viewport);
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(safe,screen,Canvas.renderMode==RenderMode.ScreenSpaceOverlay?null:Canvas.worldCamera,out local);
+            var rect=safe.rect;
+            // Leave the top status row and bottom construction/support bar clear.
+            var bounds=Rect.MinMaxRect(rect.xMin+62,rect.yMin+236,rect.xMax-62,rect.yMax-124);
+            Vector2 center=bounds.center,direction=local-center;
+            if(viewport.z<=0)direction=-direction;
+            if(direction.sqrMagnitude<.001f)direction=Vector2.up;
+            float t=1/Mathf.Max(Mathf.Abs(direction.x)/(bounds.width*.5f),Mathf.Abs(direction.y)/(bounds.height*.5f));
+            // Both safe and Gameplay stretch to the same rectangle; anchoredPosition uses its center.
+            droneEdge.anchoredPosition=center+direction*t-rect.center;
+            droneArrow.localRotation=Quaternion.Euler(0,0,Mathf.Atan2(direction.y,direction.x)*Mathf.Rad2Deg);
         }
         Text Resource(Transform parent,float x,string label,Color color){var t=Text(parent,"",x,-8,145,37,29,color);Text(parent,label,x,-47,145,22,14,Muted);return t;}
         void BuildBars()
@@ -159,7 +194,7 @@ namespace DawnGuard.BlackwoodLTD
         public void RefreshNow(){Refresh(true);}
         void Refresh(bool force)
         {
-            if(root.Game==null)return;UpdateFloats();if(!force&&Time.unscaledTime<refreshAt)return;refreshAt=Time.unscaledTime+.12f;
+            if(root.Game==null)return;UpdateFloats();UpdateDroneIndicator();if(!force&&Time.unscaledTime<refreshAt)return;refreshAt=Time.unscaledTime+.12f;
             var g=root.Game;var s=g.S;bool day=s.phase==CoastPhase.Day;
             gameUi.SetActive(!root.MenuOpen);menu.SetActive(root.MenuOpen);pause.SetActive(root.ManualPause&&!root.MenuOpen);continueText.text=root.HasSave?"ПРОДОЛЖИТЬ • ДЕНЬ "+s.day:"В ЛАГЕРЬ";
             credits.text=s.credits.ToString();stone.text=s.stone.ToString();power.text=g.PowerUsed+" / "+g.Capacity;workers.text=s.workers.Count+" / 6";camp.text=Mathf.CeilToInt(s.campHP)+" / 600";

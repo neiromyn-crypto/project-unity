@@ -56,6 +56,7 @@ namespace DawnGuard.BlackwoodLTD
                 var k=Keyboard.current;Vector2 move=new Vector2((k.dKey.isPressed||k.rightArrowKey.isPressed?1:0)-(k.aKey.isPressed||k.leftArrowKey.isPressed?1:0),(k.wKey.isPressed||k.upArrowKey.isPressed?1:0)-(k.sKey.isPressed||k.downArrowKey.isPressed?1:0));
                 World.CameraRig.Move(Vector2.ClampMagnitude(move,1),dt);
                 if(k.homeKey.wasPressedThisFrame)World.CameraRig.SetFocus(new Vector3(Game.Map.CampX,0,10.5f));
+                if(k.spaceKey.wasPressedThisFrame)FocusDrone();
             }
             if(Mouse.current!=null&&!MenuOpen){World.Preview(Mouse.current.position.ReadValue());if(Mouse.current.rightButton.wasPressedThisFrame)ClearSelection();float scroll=Mouse.current.scroll.ReadValue().y;if(Mathf.Abs(scroll)>.01f)World.Zoom(-Mathf.Sign(scroll)*.6f);}
 #endif
@@ -68,6 +69,7 @@ namespace DawnGuard.BlackwoodLTD
             if(noticeTime>0){noticeTime-=dt;if(noticeTime<=0)Notice="";}
         }
         public void Toast(string message){Notice=message;noticeTime=6;}
+        public void FocusDrone(){if(!MenuOpen&&!Hud.ServiceOpen)World.FocusDrone();}
         public void Act(Func<bool> action){if(Paused){Toast("Вернитесь в игру, чтобы выполнить действие");return;}bool ok=action();Toast(ok?"Готово":Game.LastError);if(ok){Save();Audio.Click();}Hud.Refresh();}
         public void ChooseTool(string kind){SelectedTool=kind;SelectedBuilding=0;Moving=false;Hud.CloseService();Toast(catalog.rules.Defense(kind).description);}
         public void ClearSelection(){SelectedTool=null;SelectedBuilding=0;Moving=false;World.ClearPreview();}

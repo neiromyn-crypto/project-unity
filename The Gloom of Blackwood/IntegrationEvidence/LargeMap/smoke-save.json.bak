@@ -1,0 +1,65 @@
+{
+    "schemaVersion": 1,
+    "rulesVersion": 2,
+    "nextId": 3,
+    "day": 1,
+    "credits": 220,
+    "stone": 100,
+    "tech": 0,
+    "generatorLevel": 0,
+    "harvestLevel": 0,
+    "lab": false,
+    "armory": false,
+    "weaponLevels": [
+        0,
+        0,
+        0,
+        0
+    ],
+    "leaks": [
+        0,
+        0,
+        0
+    ],
+    "phase": 0,
+    "remaining": 120.0,
+    "elapsed": 0.0,
+    "campHP": 600.0,
+    "hireRemaining": 0.0,
+    "labRemaining": 0.0,
+    "armoryRemaining": 0.0,
+    "queuedWorker": 0,
+    "queuedTech": 0,
+    "queuedWeapon": -1,
+    "spawnCursor": 0,
+    "delivered": 0,
+    "killed": 0,
+    "supportCharges": 2,
+    "supportCooldown": 0.0,
+    "droneX": 22.0,
+    "droneZ": 6.0,
+    "repairRemaining": 0.0,
+    "repairTarget": 0,
+    "buildings": [],
+    "enemies": [],
+    "workers": [
+        {
+            "id": 1,
+            "node": 0,
+            "cargo": 0,
+            "x": 14.0,
+            "z": 2.0,
+            "timer": 0.0,
+            "job": 0
+        },
+        {
+            "id": 2,
+            "node": 1,
+            "cargo": 0,
+            "x": 14.0,
+            "z": 2.0,
+            "timer": 0.0,
+            "job": 0
+        }
+    ]
+}
