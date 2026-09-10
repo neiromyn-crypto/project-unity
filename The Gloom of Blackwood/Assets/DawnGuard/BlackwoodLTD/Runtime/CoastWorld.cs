@@ -12,7 +12,7 @@ namespace DawnGuard.BlackwoodLTD
         CoastRoot root;CoastCatalog catalog;Transform terrain,units,menuActors;
         public Camera Camera {get;private set;}
         public CoastOperatorCore OperatorCore {get;private set;}
-        Light sun;float nightBlend;Mesh commandApronMesh;
+        Light sun;float nightBlend;
         public CoastCameraRig CameraRig {get;private set;}
         Material ink,mint,orange,cyan,soil,pebble,grass;
         GameObject drone,preview;Renderer previewRenderer;Transform[] droneRotors;float takeoff;
@@ -40,7 +40,7 @@ namespace DawnGuard.BlackwoodLTD
             sun=new GameObject("Coastal sun").AddComponent<Light>();sun.transform.SetParent(transform);sun.type=LightType.Directional;sun.shadows=LightShadows.Soft;sun.shadowStrength=.8f;sun.transform.rotation=Quaternion.Euler(52,-28,0);
             RenderSettings.ambientMode=AmbientMode.Trilight;RenderSettings.fog=false;
             BuildTerrain();BuildCamp();BuildMenuActors();
-            drone=Place(catalog.source.dronePrefab,units,new Vector3(root.Game.Map.DronePadX,.45f,root.Game.Map.DronePadZ),1.15f,.65f);var legacy=drone.GetComponentInChildren<BlackwoodModel>();droneRotors=legacy!=null?legacy.rotors:new Transform[0];
+            drone=Place(catalog.source.dronePrefab,units,new Vector3(root.Game.S.droneX,.45f,root.Game.S.droneZ),1.15f,.65f);var legacy=drone.GetComponentInChildren<BlackwoodModel>();droneRotors=legacy!=null?legacy.rotors:new Transform[0];
             Drone=drone.AddComponent<CoastDronePresentation>();Drone.Initialize(units,Camera,mint,orange);
             preview=Part("Placement ghost",units,Vector3.zero,new Vector3(.97f,.08f,.97f),mint);previewRenderer=preview.GetComponent<Renderer>();preview.SetActive(false);
             range=Line("Range",mint,.028f,units);selection=Line("Selection",orange,.05f,units);grid=Line("Local grid",mint,.014f,units);construction=Line("Construction beam",cyan,.035f,units);
@@ -119,7 +119,7 @@ namespace DawnGuard.BlackwoodLTD
             Label(terrain,"КОМАНДНЫЙ УЗЕЛ",new Vector3(14,.12f,2.6f),.12f,Color.white);
             Place(catalog.Defense("lab"),terrain,new Vector3(22,0,2.8f),3.3f,2.8f);Label(terrain,"ЛАБОРАТОРИЯ",new Vector3(22,.12f,1.1f),.115f,Color.white);
             Place(catalog.Defense("generator"),terrain,new Vector3(27,0,4.7f),2.8f,2.7f);Label(terrain,"ЭНЕРГИЯ",new Vector3(27,.12f,2.9f),.12f,Color.white);
-            Place(catalog.pad,terrain,new Vector3(18.8f,0,5.8f),2,.4f);
+            Place(catalog.pad,terrain,new Vector3(19.2f,0,1.2f),2,.4f);
             Part("Supply depot",terrain,new Vector3(10.8f,.28f,1.8f),new Vector3(1.2f,.55f,.65f),ink);
             for(int i=0;i<4;i++)
             {
@@ -128,31 +128,18 @@ namespace DawnGuard.BlackwoodLTD
             }
             for(int i=first;i<terrain.childCount;i++)terrain.GetChild(i).position+=Vector3.right*root.Game.Map.CampOffsetX;
         }
-        void CommandApron(Transform parent,Vector3 position,float width,float depth)
-        {
-            if(commandApronMesh==null)
-            {
-                var v=new Vector3[25];var side=new List<int>();var top=new List<int>();
-                for(int ring=0;ring<3;ring++)for(int i=0;i<8;i++){float a=(i+.5f)*Mathf.PI/4;float radius=ring==2?.93f:1;v[ring*8+i]=new Vector3(Mathf.Cos(a)*radius,ring==0?0:ring==1?.12f:.18f,Mathf.Sin(a)*radius);}
-                v[24]=Vector3.up*.18f;
-                for(int i=0;i<8;i++){int n=(i+1)%8;for(int ring=0;ring<2;ring++){int a=ring*8+i,b=ring*8+n,c=a+8,d=b+8;side.AddRange(new[]{a,c,b,b,c,d});}top.AddRange(new[]{24,16+n,16+i});}
-                commandApronMesh=new Mesh{name="Command apron shared 40 triangles"};commandApronMesh.vertices=v;commandApronMesh.subMeshCount=2;commandApronMesh.SetTriangles(top,0);commandApronMesh.SetTriangles(side,1);commandApronMesh.RecalculateNormals();commandApronMesh.RecalculateBounds();
-            }
-            var go=new GameObject("Command apron",typeof(MeshFilter),typeof(MeshRenderer));go.transform.SetParent(parent);go.transform.position=position;go.transform.localScale=new Vector3(width*.5f,1,depth*.5f);go.GetComponent<MeshFilter>().sharedMesh=commandApronMesh;var r=go.GetComponent<MeshRenderer>();r.sharedMaterials=new[]{ink,orange};r.shadowCastingMode=ShadowCastingMode.Off;
-        }
-        void OnDestroy(){if(commandApronMesh!=null){if(Application.isPlaying)Destroy(commandApronMesh);else DestroyImmediate(commandApronMesh);}}
         void BuildOperatorCore()
         {
-            var core=new GameObject("OperatorCoreRoot");core.transform.SetParent(terrain,false);core.transform.position=new Vector3(14,0,5.2f);
-            CommandApron(core.transform,core.transform.position,5.8f,4.4f);
-            var visual=Place(catalog.operatorPlatform,core.transform,core.transform.position+Vector3.up*.16f,5.8f,2.2f);visual.name="Visual";
-            var zone=new GameObject("DamageZone");zone.transform.SetParent(core.transform,false);zone.transform.localPosition=new Vector3(0,0,2.9f);
-            var anchor=new GameObject("OperatorAnchor");anchor.transform.SetParent(core.transform,false);anchor.transform.localPosition=new Vector3(0,.48f,0);
-            var op=Actor(catalog.operatorPrefab,"operator",anchor.transform.position,1.4f,anchor.transform);
-            new GameObject("HitPoints").transform.SetParent(core.transform,false);
-            OperatorCore=core.AddComponent<CoastOperatorCore>();OperatorCore.Initialize(root,op.animator,visual.GetComponentsInChildren<Renderer>());
-            var outline=Line("OptionalEffects — command perimeter",cyan,.04f,core.transform);outline.useWorldSpace=false;outline.positionCount=49;
-            for(int i=0;i<49;i++){float a=i*Mathf.PI/24;outline.SetPosition(i,new Vector3(Mathf.Cos(a)*3f,.19f,Mathf.Sin(a)*1.85f));}
+            var core=new GameObject("OperatorCoreRoot");core.transform.SetParent(terrain,false);core.transform.position=new Vector3(14,0,CoastMap.CoreZ);
+            var visual=Place(catalog.operatorPlatform,core.transform,core.transform.position,CoastMap.CoreWidth,100);visual.name="Visual";
+            var renderers=visual.GetComponentsInChildren<Renderer>();var bounds=renderers[0].bounds;foreach(var r in renderers)bounds.Encapsulate(r.bounds);
+            var zone=new GameObject("DamageCollider");zone.transform.SetParent(core.transform,false);var collider=zone.AddComponent<BoxCollider>();collider.isTrigger=true;collider.center=core.transform.InverseTransformPoint(bounds.center);collider.size=bounds.size;
+            var anchor=new GameObject("OperatorAnchor");anchor.transform.SetParent(core.transform,false);anchor.transform.localPosition=Vector3.up*catalog.operatorStandingHeight;
+            var op=Actor(catalog.operatorPrefab,"operator",anchor.transform.position,1.3f,anchor.transform);
+            var points=new GameObject("AttackPoints").transform;points.SetParent(core.transform,false);
+            for(int i=0;i<CoastMap.AttackPointCount;i++){var point=new GameObject("AttackPoint_"+i).transform;point.SetParent(points,false);point.localPosition=new Vector3(root.Game.Map.AttackX(i)-root.Game.Map.CampX,0,root.Game.Map.AttackZ(i)-CoastMap.CoreZ);}
+            new GameObject("Effects").transform.SetParent(core.transform,false);
+            OperatorCore=core.AddComponent<CoastOperatorCore>();OperatorCore.Initialize(root,op.animator);
         }
         public static void Label(Transform parent,string text,Vector3 position,float size,Color color)
         {
@@ -164,27 +151,26 @@ namespace DawnGuard.BlackwoodLTD
             var go=Instantiate(prefab,parent);go.transform.position=at;go.transform.localScale=Vector3.one*size;
             var a=go.GetComponentInChildren<Animator>();
             if(a!=null){a.applyRootMotion=false;a.cullingMode=AnimatorCullingMode.AlwaysAnimate;a.Rebind();a.Update(0);}
-            if(a!=null&&kind!="operator")go.AddComponent<CoastActorGrounding>().Initialize(a,a.transform.parent);
+            if(a!=null)go.AddComponent<CoastActorGrounding>().Initialize(a,a.transform.parent);
             return new Unit{go=go,animator=a,kind=kind,previous=at};
         }
         void BuildMenuActors()
         {
             Part("Menu headland",menuActors,new Vector3(112,-.18f,8),new Vector3(55,.35f,20),catalog.ground);
             Part("Menu sea",menuActors,new Vector3(112,-.32f,-12),new Vector3(70,.1f,23),catalog.water);
-            Place(catalog.Defense("camp"),menuActors,new Vector3(111,0,4),4f,3f);
+            Place(catalog.Defense("camp"),menuActors,new Vector3(112.5f,0,8),4f,3f);
             Place(catalog.Defense("lab"),menuActors,new Vector3(124.5f,0,4),3.7f,3.1f);
-            Place(catalog.pad,menuActors,new Vector3(119,0,0),2.5f,.35f);
-            Place(catalog.source.dronePrefab,menuActors,new Vector3(119,1.7f,0),1.6f,.9f);
-            var command=Place(catalog.operatorPlatform,menuActors,new Vector3(119,.16f,4.5f),6.7f,2.5f);command.name="Menu Command Core";
-            CommandApron(menuActors,new Vector3(119,0,4.5f),6.7f,4.8f);
-            var menuOperator=Actor(catalog.operatorPrefab,"operator",new Vector3(119,.52f,4.5f),1.65f,menuActors);menuOperator.go.name="Menu Operator";
+            Place(catalog.pad,menuActors,new Vector3(124,0,2),2.5f,.35f);
+            Place(catalog.source.dronePrefab,menuActors,new Vector3(124,1.7f,2),1.6f,.9f);
+            var command=Place(catalog.operatorPlatform,menuActors,new Vector3(119,0,4.5f),CoastMap.CoreWidth*1.25f,100);command.name="Menu Command Core";
+            var menuOperator=Actor(catalog.operatorPrefab,"operator",new Vector3(119,catalog.operatorStandingHeight*1.25f,4.5f),1.6f,menuActors);menuOperator.go.name="Menu Operator";
             var random=new System.Random(539);
             var trees=new List<CoastForest.Tree>();
             for(int i=0;i<40;i++){float x=91+(float)random.NextDouble()*45,z=14+(float)random.NextDouble()*7;trees.Add(new CoastForest.Tree(new Vector3(x,0,z),2.5f+(float)random.NextDouble()*2,5+i%4));}
             CoastForest.Build(menuActors,catalog,trees,true);
             for(int i=0;i<18;i++){float x=99+(float)random.NextDouble()*31;var rock=Place(catalog.basalt??catalog.rock,menuActors,new Vector3(x,-.1f,-1.4f+Mathf.Sin(i)*.6f),1.7f+(float)random.NextDouble(),1.2f);rock.transform.Rotate(0,random.Next(360),0);}
             if(catalog.fern!=null)for(int i=0;i<40;i++)Place(catalog.fern,menuActors,new Vector3(100+(float)random.NextDouble()*30,0,2+(float)random.NextDouble()*10),.8f,.4f);
-            for(int i=0;i<4;i++){var u=Actor(catalog.Enemy(i==0?"brute":"walker"),"menu",new Vector3(115+i*3.5f,.08f,11.2f),i==0?1.5f:1.05f,menuActors);menuZombies.Add(u);}
+            for(int i=0;i<3;i++){string role=i==0?"brute":i==1?"walker":"runner";var anchor=new GameObject("MenuEnemyAnchor_"+role).transform;anchor.SetParent(menuActors,false);anchor.position=new Vector3(114+i*5,.02f,i==1?13:11.8f);var u=Actor(catalog.Enemy(role),role,anchor.position,i==0?1.25f:1.05f,anchor);u.go.transform.rotation=Quaternion.Euler(0,180,0);menuZombies.Add(u);}
             var lamp=new GameObject("Menu amber light").AddComponent<Light>();lamp.transform.SetParent(menuActors);lamp.transform.position=new Vector3(115,3,1);lamp.type=LightType.Point;lamp.range=9;lamp.intensity=6;lamp.color=Hex("#FFC078");
         }
         static void Animate(Unit u,bool moving,bool attacking,bool paused,float speed)
@@ -205,7 +191,7 @@ namespace DawnGuard.BlackwoodLTD
             float cameraBlend=dt<=0?1:1-Mathf.Exp(-dt*5);
             Camera.transform.position=Vector3.Lerp(Camera.transform.position,desired,cameraBlend);
             Camera.transform.rotation=Quaternion.Slerp(Camera.transform.rotation,Quaternion.Euler(elevation,0,0),cameraBlend);
-            if(menu){for(int i=0;i<menuZombies.Count;i++){var u=menuZombies[i];float t=Time.unscaledTime*.16f+i*1.7f;Vector3 pos=new Vector3(114+i*3.5f+Mathf.Sin(t)*.55f,.08f,11.4f+Mathf.Cos(t)*.6f+i%2);Vector3 delta=pos-u.go.transform.position;u.go.transform.position=pos;if(delta.sqrMagnitude>.00001f)u.go.transform.rotation=Quaternion.LookRotation(delta);Animate(u,true,false,false,.7f);}return;}
+            if(menu){for(int i=0;i<menuZombies.Count;i++){var u=menuZombies[i];bool idle=u.kind=="brute";if(!idle){float t=Time.unscaledTime*.3f+i;var pos=new Vector3(Mathf.Sin(t)*.35f,0,Mathf.Cos(t)*.35f);var delta=pos-u.go.transform.localPosition;u.go.transform.localPosition=pos;if(delta.sqrMagnitude>.00001f)u.go.transform.localRotation=Quaternion.LookRotation(delta);}Animate(u,!idle,false,false,idle?0:.7f);}return;}
             SyncBuildings();SyncEnemies(dt);SyncWorkers(dt);if(OperatorCore!=null)OperatorCore.Refresh(dt);
             if(!root.Paused)takeoff=Mathf.Min(1,takeoff+dt/1.4f);
             Vector3 droneTarget=new Vector3(g.S.droneX,Mathf.Lerp(.45f,2.6f,Mathf.SmoothStep(0,1,takeoff)),g.S.droneZ);
@@ -242,8 +228,8 @@ namespace DawnGuard.BlackwoodLTD
                     else{float size=g.Rules.Enemy(e.kind).visualScale;u=Actor(catalog.Enemy(e.kind),e.kind,new Vector3(e.x,0,e.z),size,units);}
                     enemies[e.id]=u;}
                 if(u.health==null){u.healthBack=Line("Health background",ink,.09f,u.go.transform);u.health=Line("Health",e.kind=="boss"||e.kind=="sapper"?orange:e.kind=="armored"?cyan:mint,.045f,u.go.transform);}
-                Vector3 pos=new Vector3(e.x+(e.id%3-1)*.18f,0,e.z+((e.id/3)%3-1)*.13f);Vector3 direction=pos-u.go.transform.position;
-                u.go.transform.position=pos;if(e.attacking){var b=g.Building(e.wallTarget);direction=(b==null?new Vector3(g.Map.CampX,0,5):new Vector3(b.x+.5f,0,b.z+.5f))-pos;}
+                Vector3 pos=e.coreApproach?new Vector3(e.x,0,e.z):new Vector3(e.x+(e.id%3-1)*.18f,0,e.z+((e.id/3)%3-1)*.13f);Vector3 direction=pos-u.go.transform.position;
+                u.go.transform.position=pos;if(e.attacking){var b=g.Building(e.wallTarget);direction=(b==null?new Vector3(g.Map.CampX,0,CoastMap.CoreZ):new Vector3(b.x+.5f,0,b.z+.5f))-pos;}
                 if(direction.sqrMagnitude>.0001f&&!root.Paused)u.go.transform.rotation=Quaternion.Slerp(u.go.transform.rotation,Quaternion.LookRotation(direction),dt*12);
                 Animate(u,e.moving,e.attacking,root.Paused,e.moving?g.Rules.Enemy(e.kind).speed:0);
                 float barHeight=g.Rules.Enemy(e.kind).visualScale*1.6f+.25f;Vector3 bar=pos+Vector3.up*barHeight;

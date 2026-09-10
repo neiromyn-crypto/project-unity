@@ -1,0 +1,13 @@
+3 slot=0 attacking=True x=22 z=8
+4 slot=1 attacking=True x=23,82213 z=7,465247
+5 slot=9 attacking=True x=20,17787 z=7,465247
+6 slot=2 attacking=True x=24,94827 z=6,065248
+7 slot=8 attacking=True x=19,05173 z=6,065248
+8 slot=3 attacking=True x=24,94827 z=4,334752
+9 slot=7 attacking=True x=19,05173 z=4,334752
+10 slot=4 attacking=True x=23,82213 z=2,934752
+11 slot=6 attacking=True x=20,17787 z=2,934752
+12 slot=5 attacking=True x=22 z=2,4
+13 slot=-1 attacking=False x=17 z=8,5
+14 slot=-1 attacking=False x=27 z=8,5
+minimumSpacing=1,730495

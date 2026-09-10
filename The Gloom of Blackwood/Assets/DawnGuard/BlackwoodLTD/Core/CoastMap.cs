@@ -12,8 +12,12 @@ namespace DawnGuard.BlackwoodLTD
         public readonly Cell[] Entrances;
         public readonly Cell Goal;
         public float CampX {get{return Goal.x+1;}}
-        public float DronePadX {get{return CampX+4.8f;}}
-        public float DronePadZ {get{return 5.8f;}}
+        public const int AttackPointCount=10;
+        public const float CoreZ=5.2f,CoreWidth=4.4f,AttackRadius=3.1f,AttackRadiusZ=2.8f;
+        public float AttackX(int slot){return CampX+(float)Math.Sin(slot*Math.PI*2/AttackPointCount)*AttackRadius;}
+        public float AttackZ(int slot){return CoreZ+(float)Math.Cos(slot*Math.PI*2/AttackPointCount)*AttackRadiusZ;}
+        public float DronePadX {get{return CampX+5.2f;}}
+        public float DronePadZ {get{return 1.2f;}}
         public float CampOffsetX {get{return CampX-14;}}
         public readonly bool[,] Rocks;
         public int[,] Occupancy;

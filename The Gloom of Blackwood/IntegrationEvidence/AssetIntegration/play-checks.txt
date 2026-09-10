@@ -1,0 +1,52 @@
+PASS Menu contains real operator and core
+PASS Only three menu enemies
+PASS Menu Brute uses Idle_9
+PASS Brute feet sit on ground
+PASS Core uses original full geometry
+PASS Core opaque with real texture
+PASS Separate invisible DamageCollider
+PASS Ten invisible attack anchors created once
+PASS Drone has an enabled real mesh visual
+PASS Real drone takes off
+PASS Collider matches visual bounds
+PASS Operator has no zero-frame gameplay clips
+PASS Operator feet on measured platform surface
+PASS RMB commands real drone
+PASS Drone arrives at target
+PASS Camera focuses real visual
+PASS Drone returns to pad and idles airborne
+PASS Ten enemies occupy the perimeter; overflow waits
+PASS Attack slots exclusively reserved
+PASS No stacked final attackers
+PASS Attackers surround multiple sides
+PASS Attack intervals damage core only
+PASS Freed slot claimed by waiting enemy
+PASS Ring reservations survive save roundtrip
+PASS Core breaking hit absorbed
+PASS Operator death and defeat
+PASS Damage never mutates original visual or material
+PASS No empty gameplay clips: Walker(Clone)
+PASS Actual bones animate Walker(Clone) / Move
+PASS Actual bones animate Walker(Clone) / Attack
+PASS Actual bones animate Walker(Clone) / Death
+PASS Death never returns to Move: Walker(Clone)
+PASS No empty gameplay clips: Runner(Clone)
+PASS Actual bones animate Runner(Clone) / Move
+PASS Actual bones animate Runner(Clone) / Attack
+PASS Actual bones animate Runner(Clone) / Death
+PASS Death never returns to Move: Runner(Clone)
+PASS No empty gameplay clips: Brute(Clone)
+PASS Actual bones animate Brute(Clone) / Move
+PASS Actual bones animate Brute(Clone) / Attack
+PASS Actual bones animate Brute(Clone) / Death
+PASS Death never returns to Move: Brute(Clone)
+PASS No empty gameplay clips: Special(Clone)
+PASS Actual bones animate Special(Clone) / Move
+PASS Actual bones animate Special(Clone) / Attack
+PASS Actual bones animate Special(Clone) / Death
+PASS Death never returns to Move: Special(Clone)
+PASS Test defense placeable
+PASS Night 1 regression
+PASS Night 2 regression
+PASS Night 3 regression
+PASS No runtime errors or repeating exceptions

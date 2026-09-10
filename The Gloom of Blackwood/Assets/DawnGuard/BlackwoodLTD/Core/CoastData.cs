@@ -81,6 +81,7 @@ namespace DawnGuard.BlackwoodLTD
     }
     [Serializable] public sealed class CoastEnemy
     {
+        public int attackSlot=-1,ringWaypoint;public bool coreApproach;
         public int id,front,nx,nz,wallTarget;
         public string kind;
         public float x,z,hp,slow,attackTimer,stalled;

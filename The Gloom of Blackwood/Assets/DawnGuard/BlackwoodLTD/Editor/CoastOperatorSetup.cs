@@ -28,8 +28,7 @@ namespace DawnGuard.BlackwoodLTD.Editor
         {
             CoastScenePreview.Clear();Directory.CreateDirectory(Output);AssetDatabase.Refresh();
             var c=AssetDatabase.LoadAssetAtPath<CoastCatalog>(CoastEditor.Folder+"/Data/BlackwoodCoastCatalog.asset");
-            var platform=new GameObject("OperatorPlatform");UnityEngine.Object.Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>(PlatformPath),platform.transform);
-            try{var mf=platform.GetComponentInChildren<MeshFilter>();var reduced=CoastOptimization.Read(Evidence+"/MeshWork/Output/OperatorCore.bwm",mf.sharedMesh);reduced.name="OperatorCore_GameMesh";mf.sharedMesh=Save(reduced,"OperatorCore_GameMesh.asset");Materials(platform,"Core",PlatformPath);c.operatorPlatform=PrefabUtility.SaveAsPrefabAsset(platform,Output+"/OperatorPlatform.prefab");}finally{UnityEngine.Object.DestroyImmediate(platform);}
+            RestoreOriginalPlatform();
             c.operatorPrefab=Character("Operator",OperatorPath,"Short_Breathe_and_Look_Around","Walking",null,"dying_backwards");
             string zombie="Assets/Enemy/Zombie/FBXs/Zombie3.FBX";
             c.enemyVisuals=new[]{
@@ -39,6 +38,35 @@ namespace DawnGuard.BlackwoodLTD.Editor
                 new CoastEnemyVisual{id="special",prefab=Character("Special","Assets/Enemy/Skeletal_Witch_Rig_biped/Skeletal_Witch_Rig_biped_Meshy_AI_Meshy_Merged_Animations.fbx",null,"Walking","Right_Hand_Sword_Slash","Shot_and_Fall_Forward"),deathSeconds=2.4f}};
             c.rules=CoastRules.Create();EditorUtility.SetDirty(c);AssetDatabase.SaveAssets();CoastScenePreview.Clear();
             File.WriteAllText(Evidence+"/setup.txt","PASS — existing platform and operator, four enemy roles, controllers and three foundation nights installed.\n");
+        }
+        public static void RestoreOriginalPlatform()
+        {
+            CoastScenePreview.Clear();var c=AssetDatabase.LoadAssetAtPath<CoastCatalog>(CoastEditor.Folder+"/Data/BlackwoodCoastCatalog.asset");
+            var wrapper=new GameObject("OperatorPlatform");var model=UnityEngine.Object.Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>(PlatformPath),wrapper.transform);
+            try
+            {
+                // Retain every original vertex/index/UV and the imported coordinate conversion.
+                // The shared URP adapter is already a separate asset, never a source material.
+                var material=AssetDatabase.LoadAssetAtPath<Material>(Output+"/Core_0.mat");
+                material.SetFloat("_Surface",0);material.SetFloat("_AlphaClip",0);material.SetFloat("_ZWrite",1);material.SetFloat("_SrcBlend",1);material.SetFloat("_DstBlend",0);
+                material.DisableKeyword("_SURFACE_TYPE_TRANSPARENT");material.DisableKeyword("_ALPHATEST_ON");material.SetOverrideTag("RenderType","Opaque");material.renderQueue=2000;
+                var color=material.GetColor("_BaseColor");color.a=1;material.SetColor("_BaseColor",color);EditorUtility.SetDirty(material);
+                foreach(var r in model.GetComponentsInChildren<Renderer>()){r.sharedMaterial=material;r.shadowCastingMode=UnityEngine.Rendering.ShadowCastingMode.Off;}
+                c.operatorPlatform=PrefabUtility.SaveAsPrefabAsset(wrapper,Output+"/OperatorPlatform.prefab");EditorUtility.SetDirty(c);AssetDatabase.SaveAssets();
+                var filter=model.GetComponentInChildren<MeshFilter>();var mesh=filter.sharedMesh;
+                Bounds bounds=model.GetComponentInChildren<Renderer>().bounds;var vertices=mesh.vertices;var triangles=mesh.triangles;float surface=float.NegativeInfinity;
+                for(int i=0;i<triangles.Length;i+=3)
+                {
+                    var a=filter.transform.TransformPoint(vertices[triangles[i]]);var b=filter.transform.TransformPoint(vertices[triangles[i+1]]);var d=filter.transform.TransformPoint(vertices[triangles[i+2]]);
+                    float den=(b.z-d.z)*(a.x-d.x)+(d.x-b.x)*(a.z-d.z);if(Mathf.Abs(den)<1e-12f)continue;
+                    float u=((b.z-d.z)*(bounds.center.x-d.x)+(d.x-b.x)*(bounds.center.z-d.z))/den;
+                    float v=((d.z-a.z)*(bounds.center.x-d.x)+(a.x-d.x)*(bounds.center.z-d.z))/den;
+                    if(u>=0&&v>=0&&u+v<=1)surface=Mathf.Max(surface,u*a.y+v*b.y+(1-u-v)*d.y);
+                }
+                float scale=CoastMap.CoreWidth/Mathf.Max(bounds.size.x,bounds.size.z);
+                c.operatorStandingHeight=float.IsNegativeInfinity(surface)?.5f:(surface-bounds.min.y)*scale;EditorUtility.SetDirty(c);AssetDatabase.SaveAssets();
+                Directory.CreateDirectory("IntegrationEvidence/AssetIntegration");File.WriteAllText("IntegrationEvidence/AssetIntegration/core-source.txt",PlatformPath+"\nmesh="+AssetDatabase.GetAssetPath(mesh)+"\ntriangles="+mesh.triangles.Length/3+"\nsourceRoot="+model.transform.localScale+"\nworldBounds="+model.GetComponentInChildren<Renderer>().bounds+"\nstandingHeight="+c.operatorStandingHeight+"\nopaque="+material.GetFloat("_Surface"));
+            }finally{UnityEngine.Object.DestroyImmediate(wrapper);CoastScenePreview.Clear();}
         }
         static T Save<T>(T value,string name)where T:UnityEngine.Object
         {string path=Output+"/"+name;var existing=AssetDatabase.LoadAssetAtPath<T>(path);if(existing!=null){EditorUtility.CopySerialized(value,existing);UnityEngine.Object.DestroyImmediate(value);return existing;}AssetDatabase.CreateAsset(value,path);return value;}
@@ -51,7 +79,7 @@ namespace DawnGuard.BlackwoodLTD.Editor
         static GameObject Character(string role,string path,string idleName,string moveName,string attackName,string deathName,string clipsFolder=null)
         {
             var clips=clipsFolder==null?AssetDatabase.LoadAllAssetsAtPath(path).OfType<AnimationClip>().ToArray():AssetDatabase.FindAssets("t:Model",new[]{clipsFolder}).SelectMany(g=>AssetDatabase.LoadAllAssetsAtPath(AssetDatabase.GUIDToAssetPath(g)).OfType<AnimationClip>()).ToArray();
-            Func<string,bool,AnimationClip> clip=(name,loop)=>{var source=clips.FirstOrDefault(a=>!a.name.StartsWith("__preview__")&&(a.name==name||a.name.EndsWith("|"+name)));if(source==null)throw new Exception(role+" missing clip "+name);var copy=UnityEngine.Object.Instantiate(source);copy.name=role+"_"+name;var settings=AnimationUtility.GetAnimationClipSettings(copy);settings.loopTime=loop;settings.keepOriginalPositionXZ=false;settings.keepOriginalPositionY=false;AnimationUtility.SetAnimationClipSettings(copy,settings);return Save(copy,copy.name+".anim");};
+            Func<string,bool,AnimationClip> clip=(name,loop)=>{var source=clips.FirstOrDefault(a=>!a.name.StartsWith("__preview__")&&(a.name==name||a.name.EndsWith("|"+name)));if(source==null||source.length<=0||source.frameRate<=0)throw new Exception(role+" missing or empty clip "+name);var copy=UnityEngine.Object.Instantiate(source);copy.name=role+"_"+name;var settings=AnimationUtility.GetAnimationClipSettings(copy);settings.loopTime=loop;settings.keepOriginalPositionXZ=false;settings.keepOriginalPositionY=false;AnimationUtility.SetAnimationClipSettings(copy,settings);return Save(copy,copy.name+".anim");};
             var move=clip(moveName,true);var idle=idleName==null?move:clip(idleName,true);var death=clip(deathName,false);var attack=attackName==null?idle:clip(attackName,true);
             string controllerPath=Output+"/"+role+".controller";var controller=AssetDatabase.LoadAssetAtPath<AnimatorController>(controllerPath);
             if(controller==null)controller=AnimatorController.CreateAnimatorControllerAtPath(controllerPath);

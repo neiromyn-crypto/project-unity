@@ -16,7 +16,7 @@ namespace DawnGuard.BlackwoodLTD
             if(length<.00001f)return true;dx/=length;dz/=length;
             foreach(var other in S.enemies)
             {
-                if(other.id==e.id||other.hp<=0||other.attacking)continue;
+                if(other.id==e.id||other.hp<=0||other.attacking||other.coreApproach)continue;
                 int ours=Map.Distances[e.nx,e.nz],theirs=Map.Distances[other.nx,other.nz];
                 if(theirs>ours||theirs==ours&&other.id>e.id)continue;
                 float ox=other.x-e.x,oz=other.z-e.z,along=ox*dx+oz*dz;if(along<=0)continue;
@@ -29,10 +29,11 @@ namespace DawnGuard.BlackwoodLTD
         void TickEnemies(float dt)
         {
             if(sapperRevision!=Map.Revision){sapperFields.Clear();breachFields.Clear();sapperRevision=Map.Revision;}
-            int attackers=0;
+
             foreach(var e in S.enemies)
             {
                 if(e.hp<=0)continue;var spec=Rules.Enemy(e.kind);e.slow=Math.Max(0,e.slow-dt);e.attacking=false;
+                if(e.coreApproach){TickCoreRing(e,dt);if(S.phase==CoastPhase.Defeat)return;continue;}
                 // A clear route always wins. Only a barrier whose removal reconnects this
                 // enemy to the command node is eligible when the route is actually blocked.
                 if(Map.Distances[e.nx,e.nz]<0&&TickSapper(e,dt))continue;
@@ -41,15 +42,7 @@ namespace DawnGuard.BlackwoodLTD
                 {
                     if(e.nx==Map.Goal.x&&e.nz==Map.Goal.z)
                     {
-                        int slot=attackers++;float spread=slot%6-2.5f;
-                        bool reached=MovePoint(ref e.x,ref e.z,Map.CampX+spread*.8f,8.1f+(slot/6)*1.4f,spec.speed*dt);
-                        e.attacking=reached&&slot<6;
-                        if(e.attacking)
-                        {
-                            if(!e.breached){S.leaks[e.front]++;e.breached=true;}
-                            e.attackTimer-=dt;
-                            if(e.attackTimer<=0){DamageCommandNode(spec.damage);e.attackTimer=Math.Max(.1f,spec.attackInterval);}
-                        }
+                        e.coreApproach=true;e.attackSlot=-1;e.ringWaypoint=0;TickCoreRing(e,dt);
                         if(S.phase==CoastPhase.Defeat)return;continue;
                     }
                     Cell next;if(!Map.Next(new Cell(e.nx,e.nz),Map.Distances,out next)){e.stalled+=dt;continue;}
@@ -58,6 +51,36 @@ namespace DawnGuard.BlackwoodLTD
                 float slow=e.slow>0?(e.kind=="boss"?.875f:.75f):1;
                 if(AdvanceEnemy(e,spec.speed*slow*dt))e.moving=false;
             }
+        }
+        void TickCoreRing(CoastEnemy e,float dt)
+        {
+            var spec=Rules.Enemy(e.kind);
+            if(e.attackSlot<0)
+            {
+                float best=float.MaxValue;
+                for(int slot=0;slot<CoastMap.AttackPointCount;slot++)
+                {
+                    bool occupied=false;foreach(var other in S.enemies)if(other!=e&&other.hp>0&&other.coreApproach&&other.attackSlot==slot){occupied=true;break;}
+                    if(occupied)continue;
+                    float distance=Distance2(e.x,e.z,Map.AttackX(slot),Map.AttackZ(slot));
+                    if(distance<best){best=distance;e.attackSlot=slot;}
+                }
+                if(e.attackSlot<0)
+                {
+                    int queue=0;foreach(var other in S.enemies)if(other.hp>0&&other.coreApproach&&other.attackSlot<0&&other.id<e.id)queue++;
+                    float x=Map.CampX+(queue%2==0?-1:1)*(5+(queue/2)*1.7f);
+                    e.moving=!MovePoint(ref e.x,ref e.z,Math.Max(1,Math.Min(Map.Width-1,x)),8.5f,spec.speed*dt);return;
+                }
+                e.ringWaypoint=0;
+            }
+            // Walk around the outer ring in short chords; never cut through the platform.
+            float targetX=Map.AttackX(e.ringWaypoint),targetZ=Map.AttackZ(e.ringWaypoint);
+            bool reached=MovePoint(ref e.x,ref e.z,targetX,targetZ,spec.speed*dt);e.moving=!reached;
+            if(!reached)return;
+            if(e.ringWaypoint!=e.attackSlot){int direction=e.attackSlot<=CoastMap.AttackPointCount/2?1:-1;e.ringWaypoint=(e.ringWaypoint+direction+CoastMap.AttackPointCount)%CoastMap.AttackPointCount;e.moving=true;return;}
+            e.attacking=true;e.moving=false;
+            if(!e.breached){S.leaks[e.front]++;e.breached=true;}
+            e.attackTimer-=dt;if(e.attackTimer<=0){DamageCommandNode(spec.damage);e.attackTimer=Math.Max(.1f,spec.attackInterval);}
         }
         public void DamageCommandNode(float amount)
         {

@@ -178,6 +178,7 @@ MonoBehaviour:
   forest: {fileID: 11400000, guid: d205cfbf1559d5245a28cb02dce3c4fe, type: 2}
   operatorPlatform: {fileID: 7862071446494591847, guid: 4b0fa9e50a3ff97448a961a2f9c562c4, type: 3}
   operatorPrefab: {fileID: 2796052306037277749, guid: 870dc80f161607e49844c5c5759a1b05, type: 3}
+  operatorStandingHeight: 0.95555234
   enemyVisuals:
   - id: walker
     prefab: {fileID: 7853228128055279112, guid: 589272988595d5f4dac52d07b49cabed, type: 3}

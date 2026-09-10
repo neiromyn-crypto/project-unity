@@ -1,0 +1,12 @@
+Walker(Clone) Move boneDelta=20,31642
+Walker(Clone) Attack boneDelta=38,94406
+Walker(Clone) Death boneDelta=68,92298
+Runner(Clone) Move boneDelta=106,7532
+Runner(Clone) Attack boneDelta=30,24723
+Runner(Clone) Death boneDelta=107,6491
+Brute(Clone) Move boneDelta=37,44238
+Brute(Clone) Attack boneDelta=59,00697
+Brute(Clone) Death boneDelta=53,59847
+Special(Clone) Move boneDelta=50,31716
+Special(Clone) Attack boneDelta=30,86646
+Special(Clone) Death boneDelta=43,67735

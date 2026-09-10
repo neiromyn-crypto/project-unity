@@ -9,6 +9,7 @@ namespace DawnGuard.BlackwoodLTD
         public GameCatalog source;
         public CoastForestProfile forest;
         public GameObject operatorPlatform,operatorPrefab;
+        public float operatorStandingHeight=.5f;
         public CoastEnemyVisual[] enemyVisuals;
         public GameObject pine,rock,pad,worker,guardian,dock,lantern,basalt,ore,fern;
         public Material ground,water,sand,path,ink,mint,orange;
