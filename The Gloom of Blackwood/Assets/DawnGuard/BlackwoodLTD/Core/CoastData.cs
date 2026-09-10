@@ -33,7 +33,7 @@ namespace DawnGuard.BlackwoodLTD
     }
     [Serializable] public sealed class CoastRules
     {
-        public int version=3, width=44, depth=36, startingCredits=220, startingStone=100, dawnCredits=100;
+        public int version=4, width=44, depth=36, startingCredits=220, startingStone=100, dawnCredits=100;
         // campHP is retained as the existing serialized integrity field; it now protects the command node.
         public float firstDay=120, daySeconds=90, campHP=300, operatorHP=100;
         public DefenseSpec[] defenses;
@@ -103,6 +103,7 @@ namespace DawnGuard.BlackwoodLTD
         public float remaining,elapsed,campHP,operatorHP,hireRemaining,labRemaining,armoryRemaining;
         public int queuedWorker,queuedTech,queuedWeapon=-1,spawnCursor,delivered,killed,supportCharges=2;
         public float supportCooldown,droneX=14,droneZ=6,repairRemaining;
+        public float droneTargetX,droneTargetZ;public bool droneMoving;
         public int repairTarget;
         public List<CoastBuilding> buildings=new List<CoastBuilding>();
         public List<CoastEnemy> enemies=new List<CoastEnemy>();

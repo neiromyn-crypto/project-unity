@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BlackwoodCoastCatalog
   m_EditorClassIdentifier: Assembly-CSharp::DawnGuard.BlackwoodLTD.CoastCatalog
   rules:
-    version: 3
+    version: 4
     width: 44
     depth: 36
     startingCredits: 220

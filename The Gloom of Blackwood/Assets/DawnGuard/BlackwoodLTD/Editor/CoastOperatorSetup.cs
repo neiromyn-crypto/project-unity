@@ -70,7 +70,16 @@ namespace DawnGuard.BlackwoodLTD.Editor
                 // Merged Meshy generic clips use a Z-up skeleton. Preserve its hierarchy.
                 // Imported hierarchy owns its axis conversion; do not apply another rotation.
                 var animator=model.GetComponent<Animator>();if(animator==null)animator=model.AddComponent<Animator>();animator.runtimeAnimatorController=controller;animator.applyRootMotion=false;animator.cullingMode=AnimatorCullingMode.CullUpdateTransforms;
-                var avatar=AssetDatabase.LoadAllAssetsAtPath(path).OfType<Avatar>().FirstOrDefault();if(avatar!=null)animator.avatar=avatar;
+                var avatar=AssetDatabase.LoadAllAssetsAtPath(path).OfType<Avatar>().FirstOrDefault(v=>v.isValid&&(!move.isHumanMotion||v.isHuman));
+                if(move.isHumanMotion&&(avatar==null||!avatar.isHuman))
+                {
+                    // Some supplied FBXs contain an invalid embedded avatar despite Human import.
+                    // Their animation FBXs carry the matching valid rig description.
+                    var source=clipsFolder==null?null:AssetDatabase.FindAssets("t:Model",new[]{clipsFolder}).Select(g=>AssetDatabase.GUIDToAssetPath(g)).FirstOrDefault(f=>f.Contains("Z_Walk_InPlace"));
+                    if(source!=null){var importer=(ModelImporter)AssetImporter.GetAtPath(source);var built=AvatarBuilder.BuildHumanAvatar(model,importer.humanDescription);if(built.isValid&&built.isHuman)avatar=Save(built,role+"_Avatar.asset");else UnityEngine.Object.DestroyImmediate(built);}
+                }
+                if(avatar!=null)animator.avatar=avatar;
+                if(move.isHumanMotion&&(animator.avatar==null||!animator.avatar.isValid||!animator.avatar.isHuman))throw new Exception(role+" requires a valid humanoid avatar");
                 foreach(var collider in wrapper.GetComponentsInChildren<Collider>(true))UnityEngine.Object.DestroyImmediate(collider);
                 Materials(wrapper,role,path);
                 animator.Rebind();animator.Update(0);

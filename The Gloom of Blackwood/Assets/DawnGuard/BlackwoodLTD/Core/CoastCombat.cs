@@ -42,7 +42,7 @@ namespace DawnGuard.BlackwoodLTD
                     if(e.nx==Map.Goal.x&&e.nz==Map.Goal.z)
                     {
                         int slot=attackers++;float spread=slot%6-2.5f;
-                        bool reached=MovePoint(ref e.x,ref e.z,Map.CampX+spread*.8f,7.1f+(slot/6)*1.4f,spec.speed*dt);
+                        bool reached=MovePoint(ref e.x,ref e.z,Map.CampX+spread*.8f,8.1f+(slot/6)*1.4f,spec.speed*dt);
                         e.attacking=reached&&slot<6;
                         if(e.attacking)
                         {
@@ -160,10 +160,19 @@ namespace DawnGuard.BlackwoodLTD
         {
             if(S.phase!=CoastPhase.Night)return Fail("Поддержка доступна ночью");if(S.supportCharges<=0||S.supportCooldown>0)return Fail("Нет заряда или идёт перезарядка");
             var b=Building(id);if(b==null)return Fail("Выберите защиту на поле");
-            if(repair){if(b.hp>=Rules.Defense(b.kind).hp)return Fail("Ремонт не нужен");if(!Spend(0,10))return false;S.repairTarget=id;S.repairRemaining=4;}
+            if(repair){if(b.hp>=Rules.Defense(b.kind).hp)return Fail("Ремонт не нужен");if(!Spend(0,10))return false;S.repairTarget=id;S.repairRemaining=4;S.droneMoving=false;}
             else {if(Rules.Defense(b.kind).damage<=0||!b.powered)return Fail("Выберите работающего защитника");b.boost=6;}
             S.supportCharges--;S.supportCooldown=18;Emit("support",id,0,b.x+.5f,b.z+.5f);return true;
         }
+        public bool CommandDrone(float x,float z)
+        {
+            if(!Finite(x)||!Finite(z))return false;
+            if(S.phase!=CoastPhase.Day&&S.phase!=CoastPhase.Night)return false;
+            if(S.repairRemaining>0)return Fail("Дрон занят ремонтом");
+            S.droneTargetX=Math.Max(.8f,Math.Min(Map.Width-.8f,x));S.droneTargetZ=Math.Max(.8f,Math.Min(Map.Depth-.8f,z));S.droneMoving=true;return true;
+        }
+        void TickDrone(float dt)
+        {if(S.droneMoving&&S.repairRemaining<=0&&MovePoint(ref S.droneX,ref S.droneZ,S.droneTargetX,S.droneTargetZ,7*dt))S.droneMoving=false;}
         void TickSupport(float dt)
         {
             if(S.repairRemaining<=0)return;var b=Building(S.repairTarget);if(b==null){S.repairRemaining=0;return;}

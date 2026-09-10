@@ -12,6 +12,8 @@ namespace DawnGuard.BlackwoodLTD
         public readonly Cell[] Entrances;
         public readonly Cell Goal;
         public float CampX {get{return Goal.x+1;}}
+        public float DronePadX {get{return CampX+4.8f;}}
+        public float DronePadZ {get{return 5.8f;}}
         public float CampOffsetX {get{return CampX-14;}}
         public readonly bool[,] Rocks;
         public int[,] Occupancy;
@@ -32,7 +34,9 @@ namespace DawnGuard.BlackwoodLTD
                 Ridge(6,18,7,19);Ridge(6,23,7,27);Ridge(0,21,3,22);
                 Ridge(36,26,37,depth-2);Ridge(34,10,35,20);
                 Ridge(36,13,39,14);Ridge(42,13,width-1,14);
-                Ridge(12,10,17,11);Ridge(26,11,30,12);
+                Ridge(10,10,16,11);Ridge(28,11,32,12);
+                // A short central outcrop creates two approaches to the command apron.
+                Ridge(20,10,23,10);
                 Ridge(11,27,13,28);Ridge(26,19,28,20);
                 Rebuild(new List<CoastBuilding>());return;
             }

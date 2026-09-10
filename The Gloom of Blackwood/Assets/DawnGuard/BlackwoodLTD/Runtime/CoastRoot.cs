@@ -35,7 +35,7 @@ namespace DawnGuard.BlackwoodLTD
         void Start()
         {
             Application.targetFrameRate=60;Application.runInBackground=true;Screen.sleepTimeout=SleepTimeout.NeverSleep;
-            savePath=string.IsNullOrEmpty(TestSavePath)?Path.Combine(Application.persistentDataPath,"blackwood-operator-core-v1.json"):TestSavePath;
+            savePath=string.IsNullOrEmpty(TestSavePath)?Path.Combine(Application.persistentDataPath,"blackwood-layout-v1.json"):TestSavePath;
             CoastState saved=null;
             try{if(File.Exists(savePath)){saved=JsonUtility.FromJson<CoastState>(File.ReadAllText(savePath));Game=new CoastSession(catalog.rules,saved);HasSave=true;}}
             catch(Exception e){Debug.LogWarning("Coast save not loaded: "+e.Message);Notice="Сохранение повреждено. Можно начать новую экспедицию.";}
@@ -58,7 +58,7 @@ namespace DawnGuard.BlackwoodLTD
                 if(k.homeKey.wasPressedThisFrame)World.CameraRig.SetFocus(new Vector3(Game.Map.CampX,0,10.5f));
                 if(k.spaceKey.wasPressedThisFrame)FocusDrone();
             }
-            if(Mouse.current!=null&&!MenuOpen){World.Preview(Mouse.current.position.ReadValue());if(Mouse.current.rightButton.wasPressedThisFrame)ClearSelection();float scroll=Mouse.current.scroll.ReadValue().y;if(Mathf.Abs(scroll)>.01f)World.Zoom(-Mathf.Sign(scroll)*.6f);}
+            if(Mouse.current!=null&&!MenuOpen){World.Preview(Mouse.current.position.ReadValue());float scroll=Mouse.current.scroll.ReadValue().y;if(Mathf.Abs(scroll)>.01f)World.Zoom(-Mathf.Sign(scroll)*.6f);}
 #endif
             if(!Paused)
             {
@@ -80,9 +80,11 @@ namespace DawnGuard.BlackwoodLTD
             if(SelectedTool!=null&&Game.S.phase==CoastPhase.Day){string kind=SelectedTool;Act(()=>Game.Build(kind,x,z));return;}
             if(Moving&&SelectedBuilding>0){int id=SelectedBuilding;Act(()=>Game.Move(id,x,z));Moving=false;return;}
             if(Game.Map.InBounds(x,z)&&Game.Map.Occupancy[x,z]>0){SelectedBuilding=Game.Map.Occupancy[x,z];SelectedTool=null;Hud.ShowSelection();return;}
-            if(z<8&&z>1){float serviceX=p.x-Game.Map.CampOffsetX;Hud.OpenService(serviceX<6?"barracks":serviceX<11?"armory":serviceX<17?"camp":serviceX<23?"lab":"power");return;}
+            string service=World.ServiceAt(p);if(service!=null){Hud.OpenService(service);return;}
             SelectedBuilding=0;
         }
+        public void FlyDrone(Vector2 screen)
+        {if(Paused||Hud.ServiceOpen)return;Vector3 p;if(World.TryGround(screen,out p)){if(Game.CommandDrone(p.x,p.z))Toast("Дрон следует к точке · Space — найти дрон");else Toast(Game.LastError);}}
         public void MoveSelected(){if(Game.S.phase==CoastPhase.Day&&SelectedBuilding>0){Moving=true;Toast("Выберите новое место. Перенос использованной защиты стоит камень.");}}
         public void EnterGame(){MenuOpen=false;ManualPause=false;Hud.CloseService();World.ClearPreview();}
         public void OpenMenu(){MenuOpen=true;ManualPause=false;Save();Hud.CloseService();}
@@ -115,7 +117,7 @@ namespace DawnGuard.BlackwoodLTD
     public sealed class CoastPointer : MonoBehaviour,IPointerClickHandler,IPointerMoveHandler,IBeginDragHandler,IDragHandler,IEndDragHandler
     {
         public CoastRoot root;bool dragging;float released;
-        public void OnPointerClick(PointerEventData e){if(!dragging&&Time.unscaledTime-released>.1f)root.ClickBoard(e.position);}
+        public void OnPointerClick(PointerEventData e){if(!dragging&&Time.unscaledTime-released>.1f){if(e.button==PointerEventData.InputButton.Right){if(root.SelectedTool!=null||root.Moving)root.ClearSelection();else root.FlyDrone(e.position);}else if(e.button==PointerEventData.InputButton.Left)root.ClickBoard(e.position);}}
         public void OnPointerMove(PointerEventData e){if(!root.MenuOpen)root.World.Preview(e.position);}
         public void OnBeginDrag(PointerEventData e){dragging=true;}
         public void OnDrag(PointerEventData e){if(!root.MenuOpen&&!root.Hud.ServiceOpen)root.World.Pan(e.delta);}

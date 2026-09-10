@@ -1,0 +1,25 @@
+Operator(Clone) stateMove=False human=False maxBoneDelta=7,276715
+  Operator_Short_Breathe_and_Look_Around human=False
+  Operator_Walking human=False
+  Operator_Short_Breathe_and_Look_Around human=False
+  Operator_dying_backwards human=False
+Walker(Clone) stateMove=True human=True maxBoneDelta=18,68007
+  Walker_Z_Idle human=True
+  Walker_Z_Walk_InPlace human=True
+  Walker_Z_Attack human=True
+  Walker_Z_FallingBack human=True
+Runner(Clone) stateMove=True human=False maxBoneDelta=102,2381
+  Runner_Running human=False
+  Runner_Running human=False
+  Runner_Right_Hand_Sword_Slash human=False
+  Runner_Dead human=False
+Brute(Clone) stateMove=True human=True maxBoneDelta=54,74704
+  Brute_Idle_9 human=True
+  Brute_Walking human=True
+  Brute_Step_in_High_Kick human=True
+  Brute_Fall_Dead_from_Abdominal_Injury human=True
+Special(Clone) stateMove=True human=False maxBoneDelta=63,08956
+  Special_Walking human=False
+  Special_Walking human=False
+  Special_Right_Hand_Sword_Slash human=False
+  Special_Shot_and_Fall_Forward human=False

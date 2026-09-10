@@ -1,3 +1,16 @@
+Актуальный этап: STEP 5 — BASE LAYOUT + MENU FIX + ENEMY ANIMATION + DRONE RESTORE, 10.09.2026 — PASS.
+Ветка codex/blackwood-integration-v2; сцена BlackwoodCoast. Узел увеличен до визуальных габаритов 5.8×2.2, оператор scale1.4; лёгкое общее основание 40 tris. HP 300/100 и defeat сохранены. DamageZone/подход врагов согласованы по z8.1.
+База разнесена: казарма/оружейная слева, lab/power справа, Pad (26.8,5.8); сервисные клики обновлены. Карта 44×36: центральный выступ и два обхода, все три фронта доступны; пути 47/40/35 шагов. Оптимизация леса сохранена.
+Меню: оператор на узле, четыре ходящих врага у леса, стопы на земле. Walker Human Avatar восстановлен из имеющегося rig description; проверено реальное движение костей всех 4 ролей и Death. Grounding не вмешивается в смерть.
+Дрон: взлёт с .45 до2.6, ПКМ по полю — полёт, Space — фокус; WASD/drag — камера. Команда ограничена картой и сохраняется. Пауза останавливает полёт. Ремонт/строительство используют те же координаты дрона.
+Правила version4; save blackwood-layout-v1.json. Предыдущий operator-core-v1 сохранён без миграции из-за изменённых препятствий.
+36 Play checks + 13 Core regression PASS; 0 compile errors, 0 runtime exceptions. Прежний CS0618 в CoastVerification.cs не относится к изменённому коду.
+Scene View median 6.180 → 6.187 ms; P95 7.075 → 7.277 ms. Промежуточное утяжеление от копий pad выявлено и устранено; детали LayoutPass/PERFORMANCE_RU.md, raw/CSV Performance/step5-*.
+Отчёт, скриншоты, проверки: LayoutPass/REPORT_RU.md. Нужны clean/damaged платформа, безоружные attack clips, лёгкий core hit VFX — пакеты не скачивались.
+NEXT: ОСТАНОВЛЕНО после STEP5. Следующий этап только по отдельному запросу; гранаты/экономика/FoW/новые враги/рабочие не начинались.
+
+## История предыдущих этапов
+
 Актуальный этап: STEP 4 — OPERATOR CORE + ENEMY INTEGRATION, 10.09.2026 — PASS.
 Ветка codex/blackwood-integration-v2; сцена BlackwoodCoast. Рабочий узел (22,0,5.2): ядро 300 HP → оператор 100 HP → Death/Defeat. При открытом пути враги идут к узлу; при блокировке атакуют восстанавливающий путь барьер.
 4 роли подключены к существующим моделям/анимациям через CoastRules и CoastCatalog. Три тестовые ночи: 8 / 12 / 13 врагов; Special только зарегистрирован. Новые saves: blackwood-operator-core-v1.json, rulesVersion 3.

@@ -38,6 +38,8 @@ namespace DawnGuard.BlackwoodLTD.Editor
                 else if(cmd=="perf-step2-before"||cmd=="perf-step2-after")CoastForestPerformance.Begin(cmd.Substring(5));
                 else if(cmd=="perf-step3-before"||cmd=="perf-step3-after")CoastForestPerformance.Begin(cmd.Substring(5));
                 else if(cmd=="perf-step4-before"||cmd=="perf-step4-after")CoastForestPerformance.Begin(cmd.Substring(5));
+                else if(cmd=="perf-step5-before"||cmd=="perf-step5-after")CoastForestPerformance.Begin(cmd.Substring(5));
+                else if(cmd=="layout-checks"){SessionState.SetBool("Coast.LayoutTest",true);EditorApplication.ExecuteMenuItem("Window/General/Game");EditorApplication.isPlaying=true;}
                 else if(cmd=="operator-inventory")CoastOperatorSetup.Inventory();
                 else if(cmd=="operator-export")CoastOperatorSetup.ExportPlatform();
                 else if(cmd=="operator-build")CoastOperatorSetup.Build();

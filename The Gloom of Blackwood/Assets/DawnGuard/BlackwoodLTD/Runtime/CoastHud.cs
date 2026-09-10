@@ -65,7 +65,7 @@ namespace DawnGuard.BlackwoodLTD
             var forecast=Box(gameUi.transform,"Wave forecast",new Vector2(1,1),new Vector2(-270,-111),new Vector2(250,153),Ink);
             Text(forecast.transform,"БЛИЖАЙШАЯ УГРОЗА",16,-14,220,27,18,Muted);threat=Text(forecast.transform,"",16,-47,220,91,20,Cream);
             notice=Text(gameUi.transform,"",0,0,990,46,20,Cream);var nr=notice.rectTransform;nr.anchorMin=nr.anchorMax=new Vector2(.5f,0);nr.anchoredPosition=new Vector2(-495,254);notice.alignment=TextAnchor.MiddleCenter;
-            var cameraHint=Text(gameUi.transform,"КАМЕРА: WASD / стрелки / перетаскивание · Колесо: масштаб · Home: лагерь · Space: дрон",0,0,1050,24,14,Muted);var cr=cameraHint.rectTransform;cr.anchorMin=cr.anchorMax=new Vector2(.5f,0);cr.anchoredPosition=new Vector2(-525,203);cameraHint.alignment=TextAnchor.MiddleCenter;
+            var cameraHint=Text(gameUi.transform,"WASD / перетаскивание: камера · Колесо: масштаб · ПКМ: полёт дрона · Space: найти · Home: лагерь",0,0,1050,24,14,Muted);var cr=cameraHint.rectTransform;cr.anchorMin=cr.anchorMax=new Vector2(.5f,0);cr.anchoredPosition=new Vector2(-525,203);cameraHint.alignment=TextAnchor.MiddleCenter;
         }
         void BuildDroneIndicator()
         {

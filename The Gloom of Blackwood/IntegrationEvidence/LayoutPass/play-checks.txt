@@ -1,0 +1,36 @@
+PASS Menu contains operator on command platform
+PASS Four menu enemies active
+PASS Menu feet on ground: Brute(Clone)
+PASS Menu feet on ground: Walker(Clone)
+PASS Menu feet on ground: Walker(Clone)
+PASS Menu feet on ground: Walker(Clone)
+PASS Drone starts on pad
+PASS Drone takes off
+PASS NORTH WEST EAST remain connected
+PASS Left and right approaches to core remain open
+PASS Service clicks match moved buildings
+PASS Board right click issues drone flight command
+PASS Drone reaches commanded point
+PASS Rendered drone follows simulation
+PASS Focus keeps flying drone visible
+PASS Drone stays still while paused
+PASS Flight target clamped to map
+PASS Drone command survives save roundtrip
+PASS Animated bones actually move: Operator(Clone)
+PASS Animated bones actually move: Walker(Clone)
+PASS Animated bones actually move: Runner(Clone)
+PASS Animated bones actually move: Brute(Clone)
+PASS Animated bones actually move: Special(Clone)
+PASS Death transition: Operator(Clone)
+PASS Death transition: Walker(Clone)
+PASS Death transition: Runner(Clone)
+PASS Death transition: Brute(Clone)
+PASS Death transition: Special(Clone)
+PASS Core still absorbs breaking hit
+PASS Operator death still causes defeat
+PASS Test defense remains placeable
+PASS Night 1 completes on adjusted map
+PASS Third test defender remains placeable
+PASS Night 2 completes on adjusted map
+PASS Night 3 completes on adjusted map
+PASS No runtime errors or repeating exceptions
