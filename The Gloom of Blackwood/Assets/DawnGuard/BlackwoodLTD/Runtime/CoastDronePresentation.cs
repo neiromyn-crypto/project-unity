@@ -54,7 +54,7 @@ namespace DawnGuard.BlackwoodLTD
             float top=transform.position.y+.9f;
             foreach(var r in Visual.GetComponentsInChildren<Renderer>())top=Mathf.Max(top,r.bounds.max.y);
             OverheadMarker=new GameObject("Drone overhead diamond").transform;OverheadMarker.SetParent(transform,false);
-            OverheadMarker.position=new Vector3(transform.position.x,top+.35f,transform.position.z);
+            OverheadMarker.position=new Vector3(transform.position.x,top+.8f,transform.position.z);
             var diamond=Stroke(OverheadMarker,"Teal diamond",teal,.038f);
             diamond.loop=true;diamond.positionCount=4;
             diamond.SetPositions(new[]{new Vector3(0,.23f,0),new Vector3(.17f,0,0),new Vector3(0,-.23f,0),new Vector3(-.17f,0,0)});

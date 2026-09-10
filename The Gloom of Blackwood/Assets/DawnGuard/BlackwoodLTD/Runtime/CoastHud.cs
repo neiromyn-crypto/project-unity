@@ -62,8 +62,8 @@ namespace DawnGuard.BlackwoodLTD
             Button(top.transform,"МЕНЮ",1395,-13,151,52,()=>root.OpenMenu());
             var forecast=Box(gameUi.transform,"Wave forecast",new Vector2(1,1),new Vector2(-270,-111),new Vector2(250,153),Ink);
             Text(forecast.transform,"БЛИЖАЙШАЯ УГРОЗА",16,-14,220,27,18,Muted);threat=Text(forecast.transform,"",16,-47,220,91,20,Cream);
-            notice=Text(gameUi.transform,"",0,0,990,46,20,Cream);var nr=notice.rectTransform;nr.anchorMin=nr.anchorMax=new Vector2(.5f,0);nr.anchoredPosition=new Vector2(-495,204);notice.alignment=TextAnchor.MiddleCenter;
-            var cameraHint=Text(gameUi.transform,"КАМЕРА: WASD / стрелки / перетаскивание · Колесо: масштаб · Home: лагерь · Space: дрон",0,0,1050,24,14,Muted);var cr=cameraHint.rectTransform;cr.anchorMin=cr.anchorMax=new Vector2(.5f,0);cr.anchoredPosition=new Vector2(-525,197);cameraHint.alignment=TextAnchor.MiddleCenter;
+            notice=Text(gameUi.transform,"",0,0,990,46,20,Cream);var nr=notice.rectTransform;nr.anchorMin=nr.anchorMax=new Vector2(.5f,0);nr.anchoredPosition=new Vector2(-495,254);notice.alignment=TextAnchor.MiddleCenter;
+            var cameraHint=Text(gameUi.transform,"КАМЕРА: WASD / стрелки / перетаскивание · Колесо: масштаб · Home: лагерь · Space: дрон",0,0,1050,24,14,Muted);var cr=cameraHint.rectTransform;cr.anchorMin=cr.anchorMax=new Vector2(.5f,0);cr.anchoredPosition=new Vector2(-525,203);cameraHint.alignment=TextAnchor.MiddleCenter;
         }
         void BuildDroneIndicator()
         {
@@ -72,8 +72,9 @@ namespace DawnGuard.BlackwoodLTD
             go.GetComponent<BlackwoodPanel>().raycastTarget=false;
             droneEdge=go.GetComponent<RectTransform>();droneEdge.pivot=new Vector2(.5f,.5f);
             var label=Text(go.transform,"ДРОН\nSpace",29,-4,70,44,15,Mint);label.alignment=TextAnchor.MiddleCenter;
-            var arrow=Text(go.transform,"›",2,-11,28,30,30,Orange);arrow.alignment=TextAnchor.MiddleCenter;
-            droneArrow=arrow.rectTransform;droneArrow.pivot=new Vector2(.5f,.5f);droneArrow.anchoredPosition=new Vector2(16,-26);
+            var arrow=new GameObject("Direction arrow",typeof(RectTransform),typeof(CanvasRenderer),typeof(CoastDroneArrow));arrow.transform.SetParent(go.transform,false);
+            var graphic=arrow.GetComponent<CoastDroneArrow>();graphic.color=Orange;graphic.raycastTarget=false;
+            droneArrow=graphic.rectTransform;droneArrow.anchorMin=droneArrow.anchorMax=new Vector2(0,1);droneArrow.sizeDelta=new Vector2(26,26);droneArrow.anchoredPosition=new Vector2(16,-26);
             go.SetActive(false);
         }
         void UpdateDroneIndicator()
@@ -235,5 +236,17 @@ namespace DawnGuard.BlackwoodLTD
         {var bg=color??Panel;var go=Box(parent,label,new Vector2(0,1),new Vector2(x,y),new Vector2(width,height),bg);var b=go.AddComponent<Button>();b.targetGraphic=go.GetComponent<BlackwoodPanel>();var colors=b.colors;colors.normalColor=Color.white;colors.highlightedColor=new Color(1.15f,1.15f,1.15f);colors.pressedColor=new Color(.75f,.9f,.9f);colors.disabledColor=new Color(.4f,.45f,.45f);b.colors=colors;b.onClick.AddListener(()=>{if(root.Audio!=null)root.Audio.Click();callback();});var t=Text(go.transform,label,8,-4,width-16,height-8,19,color.HasValue?Ink:Cream);t.alignment=TextAnchor.MiddleCenter;return b;}
         void Icon(Transform parent,Sprite sprite,float x,float y,float width,float height)
         {var go=new GameObject("Icon",typeof(RectTransform),typeof(CanvasRenderer),typeof(Image));go.transform.SetParent(parent,false);var r=go.GetComponent<RectTransform>();r.anchorMin=r.anchorMax=new Vector2(0,1);r.pivot=new Vector2(0,1);r.anchoredPosition=new Vector2(x,y);r.sizeDelta=new Vector2(width,height);var image=go.GetComponent<Image>();image.sprite=sprite;image.preserveAspect=true;image.raycastTarget=false;}
+    }
+    public sealed class CoastDroneArrow : Graphic
+    {
+        protected override void OnPopulateMesh(VertexHelper mesh)
+        {
+            mesh.Clear();var r=rectTransform.rect;
+            mesh.AddVert(new Vector3(r.width*-.35f,r.height*-.4f),color,Vector2.zero);
+            mesh.AddVert(new Vector3(r.width*.4f,0),color,Vector2.zero);
+            mesh.AddVert(new Vector3(r.width*-.35f,r.height*.4f),color,Vector2.zero);
+            mesh.AddVert(new Vector3(r.width*-.1f,0),color,Vector2.zero);
+            mesh.AddTriangle(0,1,3);mesh.AddTriangle(1,2,3);
+        }
     }
 }

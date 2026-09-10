@@ -1,3 +1,14 @@
+Актуальный этап: STEP 3A — Drone Readability + Camera Focus, 10.09.2026 — PASS.
+Visual дрона увеличен на 30%, локально поднят на 0.25; root/скорость/логика/коллизии не менялись.
+Дрон: source.dronePrefab → BlackwoodV2/Generated/UserMap/User_drone.prefab → CoastWorld.Place → CoastDronePresentation.
+Кольцо: 96 треугольников, один прозрачный URP Unlit material, y=0.035; overhead — billboard diamond + amber accent.
+Space (Input System) плавно фокусирует существующую камеру; WASD/drag/zoom/Home и bounds сохранены.
+Offscreen-стрелка создаётся один раз в существующем Canvas; меню/пауза/service скрывают её. Подсказки HUD разнесены.
+Unity Compile PASS, Play Mode PASS: X/Z на четырёх участках, Space через Input System, bounds, день/ночь/max zoom, UI CanvasRenderer, 0 exceptions.
+Scene View: медиана 6.995 → 7.116 мс, P95 8.089 → 8.121 мс; без заметного ухудшения, не standalone FPS.
+Доказательства: DroneReadability/*; Performance/step3-*-summary.txt и samples.csv.
+Recon scaffold пропущен как необязательный. Fog of War/гранаты/экономика/лес не менялись.
+Пользователь во время завершения сменил следующую задачу на STEP 4 — OPERATOR CORE + ENEMY INTEGRATION.
 Актуальная версия: BlackwoodLTD / береговой рубеж, функциональная альфа.
 Последний этап: ШАГ 2 — LARGE MAP / MAZE GREYBOX / CAMERA, 10.09.2026 — PASS.
 Логическое поле 44×36, единичный масштаб клеток сохранён. SOUTH — берег, Main Shelter x=22/z=5.2, цель пути (21,7), Drone Pad рядом (25.5,1).
@@ -25,3 +36,18 @@ Profiler, полная инвентаризация, ограничения Unit
 Фактическое состояние и план: ../Design/Blackwood_LTD_Concept_2026-09-09/STATUS_AND_ROADMAP_RU_2026-09-10.md.
 Текущие отчёты новой версии: Coast/core-checks.txt, Coast/play-result.txt, Coast/rollback-check.txt.
 Отчёты в корне IntegrationEvidence относятся к предыдущей V2, если в них явно не указано иное.
+
+
+## NEXT THREAD
+1. Сцена: Assets/DawnGuard/BlackwoodLTD/Scenes/BlackwoodCoast.unity; ветка codex/blackwood-integration-v2.
+2. Работают меню, день/ночь, строительство, турели, враги, пути и большая береговая карта.
+3. Forest pass: 24 ближних дерева с LOD, 132 кроны/6 кластеров карты, 40 крон/3 кластера меню; instancing; тени лишь у 8 LOD0; без Collider/NavMesh.
+4. Карта 44×36; SOUTH берег; camp x22/z5.2, goal (21,7); камера size8–13, focus x4..40/z5..33.
+5. Дрон: Visual ×1.3 и +0.25y; кольцо у земли; overhead diamond; Space focus; HUD offscreen arrow.
+6. Код: Runtime/CoastDronePresentation.cs, CoastWorld.cs, CoastCameraRig.cs, CoastRoot.cs, CoastHud.cs (всё в BlackwoodLTD).
+7. Проверки: CoastVerification.cs, команда drone-checks через IntegrationEvidence/Coast/command.txt; тестовые сохранения в Temp.
+8. Не сделаны: Recon/Fog of War/scaffold, граната, новые workers, экономика, старт MainShelter+DronePad.
+9. Новый запрос пользователя: сначала STEP 4 — Operator Core, Operator HP, новые враги и foundation Night 1–3.
+10. После STEP 4 прежняя очередь: DRONE RECON + LIGHTWEIGHT FOG OF WAR.
+11. После Recon: START PROGRESSION — только MainShelter + DronePad.
+12. После этого: DRONE GRENADE SYSTEM.

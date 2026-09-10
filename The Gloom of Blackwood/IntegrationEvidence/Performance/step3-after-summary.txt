@@ -1,0 +1,7 @@
+UTC: 2026-09-10T13:27:45.8123010Z
+Scene View repaint sweep, forest enabled; 15 warmup + 80 samples
+Window: 1370 x 659; graphics: Direct3D12; GPU: NVIDIA GeForce RTX 4050 Laptop GPU
+Median repaint interval: 7.116 ms
+P95 repaint interval: 8.121 ms
+Mean repaint interval: 7.168 ms
+Stats are Editor global rendering counters sampled from the Scene View repaint. Repaint interval includes editor overhead and scheduling; it is not standalone player FPS.
