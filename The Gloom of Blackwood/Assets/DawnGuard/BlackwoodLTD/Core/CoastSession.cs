@@ -21,7 +21,9 @@ namespace DawnGuard.BlackwoodLTD
         public CoastWave Wave {get{return Rules.waves[S.day-1];}}
         public CoastSession(CoastRules rules,CoastState saved=null)
         {
-            Rules=rules;Map=new CoastMap(rules.width,rules.depth);
+            Rules=rules;
+            var grenade=Rules.grenade;if(grenade==null||grenade.charges<1||!Finite(grenade.radius)||grenade.radius<=0||!Finite(grenade.maxDamage)||!Finite(grenade.minDamage)||grenade.minDamage<0||grenade.maxDamage<grenade.minDamage||!Finite(grenade.loadSeconds)||grenade.loadSeconds<=0||!Finite(grenade.fallSeconds)||grenade.fallSeconds<=0||!Finite(grenade.knockSeconds)||grenade.knockSeconds<=0||!Finite(grenade.knockDistance)||grenade.knockDistance<0)throw new ArgumentException("Invalid grenade config");
+            Map=new CoastMap(rules.width,rules.depth);
             S=saved==null?new CoastState {rulesVersion=rules.version,droneX=Map.DronePadX,droneZ=Map.DronePadZ,credits=rules.startingCredits,stone=rules.startingStone,campHP=rules.campHP,operatorHP=rules.operatorHP,remaining=rules.firstDay}:saved.Copy();
             if(saved==null){AddWorker();AddWorker();}else ValidateSave();
             Map.Rebuild(S.buildings);int blocked;if(!Map.AllOpen(out blocked))throw new ArgumentException("Saved map blocks a front");
@@ -29,6 +31,8 @@ namespace DawnGuard.BlackwoodLTD
         }
         void ValidateSave()
         {
+            if(!Enum.IsDefined(typeof(GrenadeState),S.grenadeState)||S.grenadeCharges<0||S.grenadeCharges>Rules.grenade.charges||!Finite(S.grenadeTimer)||S.grenadeTimer<0||!Finite(S.grenadeX)||!Finite(S.grenadeZ))throw new ArgumentException("Invalid saved grenade");
+            foreach(var enemy in S.enemies)if(!Finite(enemy.laneX)||!Finite(enemy.laneZ)||!Finite(enemy.knockX)||!Finite(enemy.knockZ)||!Finite(enemy.knockRemaining)||enemy.knockRemaining<0)throw new ArgumentException("Invalid saved displacement");
             if(S.schemaVersion!=1||S.rulesVersion!=Rules.version||S.day<1||S.day>Rules.waves.Length||S.credits<0||S.stone<0||S.workers.Count>6||S.workers.Count<2||
                 !Finite(S.campHP)||S.campHP<0||S.campHP>Rules.campHP||!Finite(S.operatorHP)||S.operatorHP<0||S.operatorHP>Rules.operatorHP||!Finite(S.remaining)||S.remaining<0||S.remaining>Rules.firstDay||!Finite(S.elapsed)||S.elapsed<0||
                 S.tech<0||S.tech>7||S.generatorLevel<0||S.generatorLevel>2||S.harvestLevel<0||S.harvestLevel>1||S.weaponLevels==null||S.weaponLevels.Length!=4||S.leaks==null||S.leaks.Length!=3||
@@ -131,6 +135,7 @@ namespace DawnGuard.BlackwoodLTD
         public bool StartNight()
         {
             if(!Day())return false;int blocked;if(!Map.AllOpen(out blocked))return Fail("Перекрыт путь");
+            S.grenadeCharges=Rules.grenade.charges;S.grenadeState=GrenadeState.AVAILABLE;S.grenadeMission=false;S.grenadeTimer=0;
             S.phase=CoastPhase.Night;S.elapsed=0;S.spawnCursor=0;S.supportCharges=2;S.supportCooldown=0;S.repairRemaining=0;BuildSchedule();
             foreach(var b in S.buildings){b.cooldown=0;b.damageDone=0;b.activeSeconds=0;}
             foreach(var w in S.workers)if(w.job!=WorkerJob.Sheltered&&w.job!=WorkerJob.Unloading)w.job=WorkerJob.Inbound;
@@ -145,7 +150,7 @@ namespace DawnGuard.BlackwoodLTD
         {
             if(!Finite(dt)||dt<0||dt>.25f)throw new ArgumentOutOfRangeException("dt");
             if(S.phase!=CoastPhase.Day&&S.phase!=CoastPhase.Night)return;
-            TickDrone(dt);TickWorkers(dt);S.supportCooldown=Math.Max(0,S.supportCooldown-dt);
+            TickDrone(dt);TickGrenade(dt);TickWorkers(dt);S.supportCooldown=Math.Max(0,S.supportCooldown-dt);
             if(S.phase==CoastPhase.Day)
             {
                 if(S.queuedWorker!=0&&(S.hireRemaining-=dt)<=0){S.queuedWorker=0;S.hireRemaining=0;AddWorker();Emit("hire",0,0,5,4);}
@@ -155,7 +160,9 @@ namespace DawnGuard.BlackwoodLTD
             }
             S.elapsed+=dt;while(S.spawnCursor<schedule.Count&&schedule[S.spawnCursor].time<=S.elapsed)
             {
-                var entry=schedule[S.spawnCursor++];var cell=Map.Entrances[entry.front];
+                var entry=schedule[S.spawnCursor];var cell=Map.Entrances[entry.front];
+                bool crowded=false;foreach(var nearby in S.enemies)if(nearby.hp>0&&Distance2(nearby.x,nearby.z,cell.x+1,cell.z+1)<PersonalSpace(nearby.kind)*PersonalSpace(nearby.kind)){crowded=true;break;}
+                if(crowded)break;S.spawnCursor++;
                 S.enemies.Add(new CoastEnemy{id=S.nextId++,kind=entry.kind,front=entry.front,x=cell.x+1,z=cell.z+1,nx=cell.x,nz=cell.z,hp=Rules.Enemy(entry.kind).hp});
             }
             TickSupport(dt);TickEnemies(dt);if(S.phase!=CoastPhase.Night)return;TickTowers(dt);RemoveDead();
@@ -163,6 +170,7 @@ namespace DawnGuard.BlackwoodLTD
             {
                 if(S.day==Rules.waves.Length)S.phase=CoastPhase.Victory;
                 else{S.credits+=Rules.dawnCredits;S.day++;S.phase=CoastPhase.Debrief;}
+                if(GrenadeBusy)S.droneMoving=false;S.grenadeMission=false;S.grenadeState=GrenadeState.AVAILABLE;S.grenadeTimer=0;
                 Emit("dawn",0,0,14,5);
             }
         }

@@ -1,0 +1,13 @@
+PASS New session has 300 integrity and 100 operator HP
+PASS Integrity protects operator
+PASS Breaking hit is absorbed by core
+PASS Operator vulnerable only after breach
+PASS Broken core and live operator survive save roundtrip
+PASS Operator death causes defeat
+PASS Defeated state is valid on load
+PASS Ordinary walker attacks only reconnecting barrier when path is blocked
+PASS Reopened path leads to command node, not unrelated building
+PASS Four configured roles and three foundation waves
+PASS Night 1 basic only
+PASS Night 2 introduces fast role
+PASS Night 3 introduces heavy role

@@ -23,6 +23,15 @@ MonoBehaviour:
     daySeconds: 90
     campHP: 300
     operatorHP: 100
+    grenade:
+      charges: 2
+      radius: 3.5
+      maxDamage: 100
+      minDamage: 35
+      loadSeconds: 1.2
+      fallSeconds: 0.75
+      knockDistance: 2.2
+      knockSeconds: 0.8
     defenses:
     - id: wall
       title: "\u0411\u0410\u0420\u042C\u0415\u0420"
@@ -99,6 +108,7 @@ MonoBehaviour:
       attackInterval: 1.25
       visualScale: 0.82
       physical: 1
+      knockbackMultiplier: 1
       reward: 2
     - id: runner
       title: "\u041A\u0418\u0411\u0415\u0420-\u0414\u0415\u041C\u041E\u041D"
@@ -107,8 +117,9 @@ MonoBehaviour:
       speed: 1.45
       damage: 6
       attackInterval: 0.8
-      visualScale: 0.9
+      visualScale: 0.75
       physical: 1
+      knockbackMultiplier: 1
       reward: 3
     - id: brute
       title: "\u0422\u041E\u041B\u0421\u0422\u042F\u041A"
@@ -119,6 +130,7 @@ MonoBehaviour:
       attackInterval: 2
       visualScale: 1.15
       physical: 1
+      knockbackMultiplier: 0.35
       reward: 12
     - id: special
       title: "\u041A\u041E\u0421\u0422\u042F\u041D\u0410\u042F \u0412\u0415\u0414\u042C\u041C\u0410"
@@ -129,6 +141,7 @@ MonoBehaviour:
       attackInterval: 1.5
       visualScale: 0.9
       physical: 1
+      knockbackMultiplier: 0.65
       reward: 8
     waves:
     - title: "\u0417\u0430\u0449\u0438\u0442\u0438\u0442\u044C \u043E\u043F\u0435\u0440\u0430\u0442\u043E\u0440\u0430"
@@ -176,6 +189,7 @@ MonoBehaviour:
         interval: 1.3
   source: {fileID: 11400000, guid: 46667721bbd1e0246af0c3c742f8bb5d, type: 2}
   forest: {fileID: 11400000, guid: d205cfbf1559d5245a28cb02dce3c4fe, type: 2}
+  grenadePrefab: {fileID: 1633956276631421004, guid: 1b8a856305d6cef4db8e5a396bdff36f, type: 3}
   operatorPlatform: {fileID: 7862071446494591847, guid: 4b0fa9e50a3ff97448a961a2f9c562c4, type: 3}
   operatorPrefab: {fileID: 2796052306037277749, guid: 870dc80f161607e49844c5c5759a1b05, type: 3}
   operatorStandingHeight: 0.95555234

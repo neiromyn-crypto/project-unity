@@ -16,6 +16,7 @@ namespace DawnGuard.BlackwoodLTD
         public CoastCameraRig CameraRig {get;private set;}
         Material ink,mint,orange,cyan,soil,pebble,grass;
         GameObject drone,preview;Renderer previewRenderer;Transform[] droneRotors;float takeoff;
+        public CoastGrenadePresentation Grenade {get;private set;}
         public CoastDronePresentation Drone {get;private set;}
         LineRenderer range,selection,grid,construction;
         LineRenderer[] routes=new LineRenderer[3];
@@ -42,6 +43,7 @@ namespace DawnGuard.BlackwoodLTD
             BuildTerrain();BuildCamp();BuildMenuActors();
             drone=Place(catalog.source.dronePrefab,units,new Vector3(root.Game.S.droneX,.45f,root.Game.S.droneZ),1.15f,.65f);var legacy=drone.GetComponentInChildren<BlackwoodModel>();droneRotors=legacy!=null?legacy.rotors:new Transform[0];
             Drone=drone.AddComponent<CoastDronePresentation>();Drone.Initialize(units,Camera,mint,orange);
+            if(catalog.grenadePrefab!=null){var go=new GameObject("Grenade presentation");go.transform.SetParent(units,false);Grenade=go.AddComponent<CoastGrenadePresentation>();Grenade.Initialize(root,drone.transform,units,catalog.grenadePrefab,orange,ink);}
             preview=Part("Placement ghost",units,Vector3.zero,new Vector3(.97f,.08f,.97f),mint);previewRenderer=preview.GetComponent<Renderer>();preview.SetActive(false);
             range=Line("Range",mint,.028f,units);selection=Line("Selection",orange,.05f,units);grid=Line("Local grid",mint,.014f,units);construction=Line("Construction beam",cyan,.035f,units);
             for(int i=0;i<3;i++)routes[i]=Line("Route "+i,orange,.065f,terrain);
@@ -197,7 +199,7 @@ namespace DawnGuard.BlackwoodLTD
             Vector3 droneTarget=new Vector3(g.S.droneX,Mathf.Lerp(.45f,2.6f,Mathf.SmoothStep(0,1,takeoff)),g.S.droneZ);
             if(constructionTime>0){constructionTime-=root.Paused?0:dt;construction.positionCount=2;construction.SetPosition(0,drone.transform.position);construction.SetPosition(1,constructionTarget+Vector3.up*.3f);}else construction.positionCount=0;
             if(!root.Paused){var delta=droneTarget-drone.transform.position;drone.transform.position=Vector3.MoveTowards(drone.transform.position,droneTarget,9*dt);if(delta.x*delta.x+delta.z*delta.z>.01f)drone.transform.rotation=Quaternion.Slerp(drone.transform.rotation,Quaternion.LookRotation(new Vector3(delta.x,0,delta.z)),dt*5);Drone.Visual.localRotation=Quaternion.Slerp(Drone.Visual.localRotation,Quaternion.Euler(g.S.droneMoving?8:0,0,0),dt*5);}if(!root.Paused&&droneRotors!=null)foreach(var rotor in droneRotors)if(rotor!=null)rotor.Rotate(0,850*dt,0,Space.Self);
-            Drone.Refresh();
+            Drone.Refresh();if(Grenade!=null)Grenade.Refresh(dt);
             if(g.S.repairRemaining>0){var target=g.Building(g.S.repairTarget);if(target!=null){construction.positionCount=2;construction.SetPosition(0,drone.transform.position);construction.SetPosition(1,new Vector3(target.x+.5f,.5f,target.z+.5f));}}
             if(lastRevision!=g.Map.Revision){lastRevision=g.Map.Revision;for(int front=0;front<3;front++){var cells=g.Map.Route(front);routes[front].positionCount=cells.Count;for(int i=0;i<cells.Count;i++)routes[front].SetPosition(i,new Vector3(cells[i].x+1,.045f,cells[i].z+1));}}
             bool showRoutes=g.S.phase==CoastPhase.Day&&(root.SelectedTool!=null||root.Moving);for(int i=0;i<3;i++){routes[i].enabled=showRoutes;routes[i].startWidth=routes[i].endWidth=i==root.WatchedFront?.08f:.028f;}
@@ -228,10 +230,10 @@ namespace DawnGuard.BlackwoodLTD
                     else{float size=g.Rules.Enemy(e.kind).visualScale;u=Actor(catalog.Enemy(e.kind),e.kind,new Vector3(e.x,0,e.z),size,units);}
                     enemies[e.id]=u;}
                 if(u.health==null){u.healthBack=Line("Health background",ink,.09f,u.go.transform);u.health=Line("Health",e.kind=="boss"||e.kind=="sapper"?orange:e.kind=="armored"?cyan:mint,.045f,u.go.transform);}
-                Vector3 pos=e.coreApproach?new Vector3(e.x,0,e.z):new Vector3(e.x+(e.id%3-1)*.18f,0,e.z+((e.id/3)%3-1)*.13f);Vector3 direction=pos-u.go.transform.position;
+                Vector3 pos=new Vector3(g.EnemyX(e),0,g.EnemyZ(e));Vector3 direction=pos-u.go.transform.position;
                 u.go.transform.position=pos;if(e.attacking){var b=g.Building(e.wallTarget);direction=(b==null?new Vector3(g.Map.CampX,0,CoastMap.CoreZ):new Vector3(b.x+.5f,0,b.z+.5f))-pos;}
                 if(direction.sqrMagnitude>.0001f&&!root.Paused)u.go.transform.rotation=Quaternion.Slerp(u.go.transform.rotation,Quaternion.LookRotation(direction),dt*12);
-                Animate(u,e.moving,e.attacking,root.Paused,e.moving?g.Rules.Enemy(e.kind).speed:0);
+                Animate(u,e.moving&&e.knockRemaining<=0,e.attacking,root.Paused,e.moving?g.Rules.Enemy(e.kind).speed:0);
                 float barHeight=g.Rules.Enemy(e.kind).visualScale*1.6f+.25f;Vector3 bar=pos+Vector3.up*barHeight;
                 u.healthBack.positionCount=u.health.positionCount=2;u.healthBack.SetPosition(0,bar-Vector3.right*.35f);u.healthBack.SetPosition(1,bar+Vector3.right*.35f);
                 u.health.SetPosition(0,bar-Vector3.right*.34f-Vector3.forward*.012f);u.health.SetPosition(1,bar+Vector3.right*(-.34f+.68f*Mathf.Clamp01(e.hp/g.Rules.Enemy(e.kind).hp))-Vector3.forward*.012f);
@@ -252,6 +254,7 @@ namespace DawnGuard.BlackwoodLTD
         }
         public void OnEvent(CoastEvent e)
         {
+            if(Grenade!=null)Grenade.OnEvent(e);
             if(e.kind=="build"){constructionTime=1.5f;constructionTarget=new Vector3(e.x,0,e.z);root.Game.CommandDrone(e.x,e.z);return;}
             if(e.kind=="gun"||e.kind=="tesla"||e.kind=="arcane"||e.kind=="cryo")
             {
@@ -263,6 +266,7 @@ namespace DawnGuard.BlackwoodLTD
         public bool TryGround(Vector2 screen,out Vector3 point){var ray=Camera.ScreenPointToRay(screen);float distance;var plane=new Plane(Vector3.up,Vector3.zero);if(plane.Raycast(ray,out distance)){point=ray.GetPoint(distance);return true;}point=Vector3.zero;return false;}
         public void Preview(Vector2 screen)
         {
+            if(Grenade!=null){Vector3 target;bool show=root.GrenadeTargeting&&!root.Paused&&(root.Hud==null||!root.Hud.ServiceOpen)&&TryGround(screen,out target);if(show){TryGround(screen,out target);Grenade.Preview(target,true);}else Grenade.Preview(Vector3.zero,false);if(root.GrenadeTargeting)return;}
             string kind=root.SelectedTool;var moving=root.Game.Building(root.SelectedBuilding);if(root.Moving&&moving!=null)kind=moving.kind;
             if(kind==null||root.Game.S.phase!=CoastPhase.Day||root.Paused||root.Hud!=null&&root.Hud.ServiceOpen){ClearPreview();return;}
             Vector3 p;if(!TryGround(screen,out p))return;int x=Mathf.FloorToInt(p.x),z=Mathf.FloorToInt(p.z);string reason;
@@ -291,7 +295,7 @@ namespace DawnGuard.BlackwoodLTD
             if(Mathf.Abs(x-27)<1.7f&&Mathf.Abs(p.z-4.7f)<1.7f)return "power";
             return null;
         }
-        public void ResetUnits(){takeoff=0;drone.transform.position=new Vector3(root.Game.S.droneX,.45f,root.Game.S.droneZ);foreach(var d in new[]{buildings,enemies,workers}){foreach(var kv in d)Destroy(kv.Value.go);d.Clear();}foreach(var u in corpses)Destroy(u.go);corpses.Clear();foreach(var stack in pool.Values)foreach(var u in stack)Destroy(u.go);pool.Clear();lastRevision=-1;}
+        public void ResetUnits(){if(Grenade!=null)Grenade.Reset();takeoff=0;drone.transform.position=new Vector3(root.Game.S.droneX,.45f,root.Game.S.droneZ);foreach(var d in new[]{buildings,enemies,workers}){foreach(var kv in d)Destroy(kv.Value.go);d.Clear();}foreach(var u in corpses)Destroy(u.go);corpses.Clear();foreach(var stack in pool.Values)foreach(var u in stack)Destroy(u.go);pool.Clear();lastRevision=-1;}
     }
 }
 

@@ -14,12 +14,15 @@ namespace DawnGuard.BlackwoodLTD
         {
             float tx=e.nx+1,tz=e.nz+1,dx=tx-e.x,dz=tz-e.z,length=(float)Math.Sqrt(dx*dx+dz*dz);
             if(length<.00001f)return true;dx/=length;dz/=length;
+            float lane=(e.id%3-1)*.45f,lx=-dz*lane,lz=dx*lane;
+            if(!CrowdFree(e.x+lx,e.z+lz,.38f)){lx=0;lz=0;}
+            float blend=Math.Min(1,step*5);e.laneX+=(lx-e.laneX)*blend;e.laneZ+=(lz-e.laneZ)*blend;
             foreach(var other in S.enemies)
             {
                 if(other.id==e.id||other.hp<=0||other.attacking||other.coreApproach)continue;
                 int ours=Map.Distances[e.nx,e.nz],theirs=Map.Distances[other.nx,other.nz];
                 if(theirs>ours||theirs==ours&&other.id>e.id)continue;
-                float ox=other.x-e.x,oz=other.z-e.z,along=ox*dx+oz*dz;if(along<=0)continue;
+                float ox=EnemyX(other)-EnemyX(e),oz=EnemyZ(other)-EnemyZ(e),along=ox*dx+oz*dz;if(along<=0)continue;
                 float across=ox*dz-oz*dx,gap=(PersonalSpace(e.kind)+PersonalSpace(other.kind))*.5f;
                 if(Math.Abs(across)>=gap)continue;
                 float clearance=along-(float)Math.Sqrt(Math.Max(0,gap*gap-across*across));step=Math.Min(step,Math.Max(0,clearance));
@@ -32,8 +35,9 @@ namespace DawnGuard.BlackwoodLTD
 
             foreach(var e in S.enemies)
             {
-                if(e.hp<=0)continue;var spec=Rules.Enemy(e.kind);e.slow=Math.Max(0,e.slow-dt);e.attacking=false;
-                if(e.coreApproach){TickCoreRing(e,dt);if(S.phase==CoastPhase.Defeat)return;continue;}
+                if(e.hp<=0)continue;var spec=Rules.Enemy(e.kind);
+                if(e.knockRemaining>0){e.knockRemaining=Math.Max(0,e.knockRemaining-dt);e.attacking=false;continue;}e.slow=Math.Max(0,e.slow-dt);e.attacking=false;
+                if(e.coreApproach){e.laneX=e.laneZ=0;TickCoreRing(e,dt);if(S.phase==CoastPhase.Defeat)return;continue;}
                 // A clear route always wins. Only a barrier whose removal reconnects this
                 // enemy to the command node is eligible when the route is actually blocked.
                 if(Map.Distances[e.nx,e.nz]<0&&TickSapper(e,dt))continue;
@@ -148,7 +152,7 @@ namespace DawnGuard.BlackwoodLTD
                 CoastEnemy target=null;float best=float.MaxValue;
                 foreach(var e in S.enemies)
                 {
-                    float distance=Distance2(b.x+.5f,b.z+.5f,e.x,e.z);if(e.hp<=0||distance>spec.range*spec.range)continue;
+                    float distance=Distance2(b.x+.5f,b.z+.5f,EnemyX(e),EnemyZ(e));if(e.hp<=0||distance>spec.range*spec.range)continue;
                     int ax=Math.Max(0,Math.Min(Map.Width-1,e.nx)),az=Math.Max(0,Math.Min(Map.Depth-1,e.nz));
                     float score=b.order==TargetOrder.Nearest?distance:b.order==TargetOrder.Strongest?-e.hp:Map.Distances[ax,az]+distance*.0001f;
                     if(score<best){best=score;target=e;}
@@ -163,17 +167,17 @@ namespace DawnGuard.BlackwoodLTD
                     for(int jump=0;jump<2;jump++)
                     {
                         CoastEnemy chosen=null;float closest=1.75f*1.75f;
-                        foreach(var e in S.enemies)if(e.hp>0&&!hit.Contains(e.id)){float d=Distance2(e.x,e.z,previous.x,previous.z);if(d<closest){closest=d;chosen=e;}}
-                        if(chosen==null)break;hit.Add(chosen.id);Hit(b,chosen,(jump==0?12:8)*multiplier,false,previous.x,previous.z);previous=chosen;
+                        foreach(var e in S.enemies)if(e.hp>0&&!hit.Contains(e.id)){float d=Distance2(EnemyX(e),EnemyZ(e),EnemyX(previous),EnemyZ(previous));if(d<closest){closest=d;chosen=e;}}
+                        if(chosen==null)break;hit.Add(chosen.id);Hit(b,chosen,(jump==0?12:8)*multiplier,false,EnemyX(previous),EnemyZ(previous));previous=chosen;
                     }
                 }
-                if(b.kind=="cryo")foreach(var e in S.enemies)if(e.hp>0&&Distance2(e.x,e.z,target.x,target.z)<=2.25f)e.slow=2;
+                if(b.kind=="cryo")foreach(var e in S.enemies)if(e.hp>0&&Distance2(EnemyX(e),EnemyZ(e),EnemyX(target),EnemyZ(target))<=2.25f)e.slow=2;
             }
         }
         void Hit(CoastBuilding b,CoastEnemy e,float amount,bool physical,float x,float z)
         {
             float damage=amount*(physical?Rules.Enemy(e.kind).physical:1);b.damageDone+=Math.Min(damage,Math.Max(0,e.hp));e.hp-=damage;
-            Emit(b.kind,b.id,e.id,x,z,0,e.x,e.z);
+            Emit(b.kind,b.id,e.id,x,z,0,EnemyX(e),EnemyZ(e));
         }
         void RemoveDead()
         {
@@ -181,6 +185,7 @@ namespace DawnGuard.BlackwoodLTD
         }
         public bool Support(int id,bool repair)
         {
+            if(GrenadeBusy)return Fail("Дрон занят гранатой");
             if(S.phase!=CoastPhase.Night)return Fail("Поддержка доступна ночью");if(S.supportCharges<=0||S.supportCooldown>0)return Fail("Нет заряда или идёт перезарядка");
             var b=Building(id);if(b==null)return Fail("Выберите защиту на поле");
             if(repair){if(b.hp>=Rules.Defense(b.kind).hp)return Fail("Ремонт не нужен");if(!Spend(0,10))return false;S.repairTarget=id;S.repairRemaining=4;S.droneMoving=false;}
@@ -192,6 +197,7 @@ namespace DawnGuard.BlackwoodLTD
             if(!Finite(x)||!Finite(z))return false;
             if(S.phase!=CoastPhase.Day&&S.phase!=CoastPhase.Night)return false;
             if(S.repairRemaining>0)return Fail("Дрон занят ремонтом");
+            if(GrenadeBusy)return Fail("Дрон выполняет загрузку или сброс");
             S.droneTargetX=Math.Max(.8f,Math.Min(Map.Width-.8f,x));S.droneTargetZ=Math.Max(.8f,Math.Min(Map.Depth-.8f,z));S.droneMoving=true;return true;
         }
         void TickDrone(float dt)

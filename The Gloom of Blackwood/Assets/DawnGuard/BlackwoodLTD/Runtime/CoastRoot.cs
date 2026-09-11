@@ -22,6 +22,7 @@ namespace DawnGuard.BlackwoodLTD
         public bool HasCheckpoint {get{return !string.IsNullOrEmpty(savePath)&&File.Exists(savePath+".day-start");}}
         public string SelectedTool {get;private set;}
         public int SelectedBuilding {get;private set;}
+        public bool GrenadeTargeting {get;private set;}
         public bool Moving {get;private set;}
         public string Notice {get;private set;}="Выберите барьер или защитника. Север отмечен стрелкой.";
         public static string TestSavePath;
@@ -50,7 +51,7 @@ namespace DawnGuard.BlackwoodLTD
         {
             if(Game==null)return;float dt=Mathf.Min(Time.unscaledDeltaTime,.15f);
 #if ENABLE_INPUT_SYSTEM
-            if(Keyboard.current!=null&&Keyboard.current.escapeKey.wasPressedThisFrame){if(Hud.ServiceOpen)Hud.CloseService();else if(SelectedTool!=null||Moving)ClearSelection();else if(MenuOpen)EnterGame();else TogglePause();}
+            if(Keyboard.current!=null&&Keyboard.current.escapeKey.wasPressedThisFrame){if(Hud.ServiceOpen)Hud.CloseService();else if(SelectedTool!=null||Moving||GrenadeTargeting)ClearSelection();else if(MenuOpen)EnterGame();else TogglePause();}
             if(Keyboard.current!=null&&!MenuOpen&&!Hud.ServiceOpen)
             {
                 var k=Keyboard.current;Vector2 move=new Vector2((k.dKey.isPressed||k.rightArrowKey.isPressed?1:0)-(k.aKey.isPressed||k.leftArrowKey.isPressed?1:0),(k.wKey.isPressed||k.upArrowKey.isPressed?1:0)-(k.sKey.isPressed||k.downArrowKey.isPressed?1:0));
@@ -72,10 +73,11 @@ namespace DawnGuard.BlackwoodLTD
         public void FocusDrone(){if(!MenuOpen&&!Hud.ServiceOpen)World.FocusDrone();}
         public void Act(Func<bool> action){if(Paused){Toast("Вернитесь в игру, чтобы выполнить действие");return;}bool ok=action();Toast(ok?"Готово":Game.LastError);if(ok){Save();Audio.Click();}Hud.Refresh();}
         public void ChooseTool(string kind){SelectedTool=kind;SelectedBuilding=0;Moving=false;Hud.CloseService();Toast(catalog.rules.Defense(kind).description);}
-        public void ClearSelection(){SelectedTool=null;SelectedBuilding=0;Moving=false;World.ClearPreview();}
+        public void ClearSelection(){GrenadeTargeting=false;SelectedTool=null;SelectedBuilding=0;Moving=false;World.ClearPreview();}
         public void ClickBoard(Vector2 screen)
         {
             if(Paused||Hud.ServiceOpen)return;Vector3 p;if(!World.TryGround(screen,out p))return;
+            if(GrenadeTargeting){Act(()=>Game.TargetGrenade(p.x,p.z));if(Game.S.grenadeMission)ClearSelection();return;}
             int x=Mathf.FloorToInt(p.x),z=Mathf.FloorToInt(p.z);
             if(SelectedTool!=null&&Game.S.phase==CoastPhase.Day){string kind=SelectedTool;Act(()=>Game.Build(kind,x,z));return;}
             if(Moving&&SelectedBuilding>0){int id=SelectedBuilding;Act(()=>Game.Move(id,x,z));Moving=false;return;}
@@ -85,6 +87,12 @@ namespace DawnGuard.BlackwoodLTD
         }
         public void FlyDrone(Vector2 screen)
         {if(Paused||Hud.ServiceOpen)return;Vector3 p;if(World.TryGround(screen,out p)){if(Game.CommandDrone(p.x,p.z))Toast("Дрон следует к точке · Space — найти дрон");else Toast(Game.LastError);}}
+        public void GrenadeAction()
+        {
+            if(Paused)return;
+            if(Game.S.grenadeState==GrenadeState.LOADED&&!Game.GrenadeBusy){ClearSelection();GrenadeTargeting=true;Toast("Выберите точку сброса ЛКМ · Esc — отменить");}
+            else Act(()=>Game.LoadGrenade());
+        }
         public void MoveSelected(){if(Game.S.phase==CoastPhase.Day&&SelectedBuilding>0){Moving=true;Toast("Выберите новое место. Перенос использованной защиты стоит камень.");}}
         public void EnterGame(){MenuOpen=false;ManualPause=false;Hud.CloseService();World.ClearPreview();}
         public void OpenMenu(){MenuOpen=true;ManualPause=false;Save();Hud.CloseService();}
@@ -117,7 +125,7 @@ namespace DawnGuard.BlackwoodLTD
     public sealed class CoastPointer : MonoBehaviour,IPointerClickHandler,IPointerMoveHandler,IBeginDragHandler,IDragHandler,IEndDragHandler
     {
         public CoastRoot root;bool dragging;float released;
-        public void OnPointerClick(PointerEventData e){if(!dragging&&Time.unscaledTime-released>.1f){if(e.button==PointerEventData.InputButton.Right){if(root.SelectedTool!=null||root.Moving)root.ClearSelection();else root.FlyDrone(e.position);}else if(e.button==PointerEventData.InputButton.Left)root.ClickBoard(e.position);}}
+        public void OnPointerClick(PointerEventData e){if(!dragging&&Time.unscaledTime-released>.1f){if(e.button==PointerEventData.InputButton.Right){if(root.SelectedTool!=null||root.Moving||root.GrenadeTargeting)root.ClearSelection();else root.FlyDrone(e.position);}else if(e.button==PointerEventData.InputButton.Left)root.ClickBoard(e.position);}}
         public void OnPointerMove(PointerEventData e){if(!root.MenuOpen)root.World.Preview(e.position);}
         public void OnBeginDrag(PointerEventData e){dragging=true;}
         public void OnDrag(PointerEventData e){if(!root.MenuOpen&&!root.Hud.ServiceOpen)root.World.Pan(e.delta);}

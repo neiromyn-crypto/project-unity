@@ -1,1 +1,1 @@
-step5b-after frame=0 requested=False window=(x:200.00, y:79.00, width:1370.00, height:659.00) UTC=2026-09-10T15:48:07.5185857Z
+step6-loaded frame=0 requested=False window=(x:200.00, y:79.00, width:1370.00, height:659.00) UTC=2026-09-10T16:24:21.4903903Z

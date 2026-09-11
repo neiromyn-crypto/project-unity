@@ -1,0 +1,1 @@
+minimumMovingSpacing=1,194569 lane=0,45 frames=5001

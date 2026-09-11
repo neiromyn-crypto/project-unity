@@ -21,7 +21,7 @@ namespace DawnGuard.BlackwoodLTD
         public bool ServiceOpen {get{return service!=null&&service.activeSelf;}}
         GameObject gameUi,menu,dayBar,nightBar,service,settings,pause,results,confirmation,selectionBox;
         Text credits,stone,power,workers,camp,phase,threat,notice,selected,continueText,roundTitle,roundText,serviceTitle,serviceBody,support,selectedStats;
-        Image hpFill,operatorFill;Button startNight;Text nextLabel,operatorText;
+        Image hpFill,operatorFill;Button grenadeButton;Text grenadeLabel;Button startNight;Text nextLabel,operatorText;
         readonly Dictionary<string,BlackwoodPanel> buildPanels=new Dictionary<string,BlackwoodPanel>();
         readonly Dictionary<string,Button> buildButtons=new Dictionary<string,Button>();
         readonly List<GameObject> serviceActions=new List<GameObject>();string serviceId;float refreshAt;
@@ -118,9 +118,10 @@ namespace DawnGuard.BlackwoodLTD
             Text(dayBar.transform,"Ранняя ночь сокращает дневную добычу",1165,-105,377,26,16,Muted).alignment=TextAnchor.MiddleCenter;
             nightBar=Box(gameUi.transform,"Night support",new Vector2(.5f,0),new Vector2(-580,131),new Vector2(1160,113),Ink);
             support=Text(nightBar.transform,"",20,-14,275,82,21,Cream);
-            Button(nightBar.transform,"РЕМОНТ\n10 КАМ.",309,-14,250,84,()=>root.Act(()=>root.Game.Support(root.SelectedBuilding,true)));
-            Button(nightBar.transform,"ПЕРЕГРУЗКА\n+25% СКОРОСТИ",578,-14,270,84,()=>root.Act(()=>root.Game.Support(root.SelectedBuilding,false)));
-            Button(nightBar.transform,"ПРИОРИТЕТ ЦЕЛИ",867,-14,275,84,()=>{root.Game.Prioritize(root.SelectedBuilding);root.Save();},Orange);
+            grenadeButton=Button(nightBar.transform,"ЗАГРУЗИТЬ",284,-14,235,84,()=>root.GrenadeAction(),Orange);grenadeLabel=grenadeButton.GetComponentInChildren<Text>();
+            Button(nightBar.transform,"РЕМОНТ\n10 КАМ.",532,-14,190,84,()=>root.Act(()=>root.Game.Support(root.SelectedBuilding,true)));
+            Button(nightBar.transform,"ПЕРЕГРУЗКА\n+25% СКОРОСТИ",735,-14,205,84,()=>root.Act(()=>root.Game.Support(root.SelectedBuilding,false)));
+            Button(nightBar.transform,"ПРИОРИТЕТ ЦЕЛИ",953,-14,190,84,()=>{root.Game.Prioritize(root.SelectedBuilding);root.Save();},Orange);
             selectionBox=Box(gameUi.transform,"Selection details",new Vector2(0,1),new Vector2(20,-111),new Vector2(286,288),Ink);
             selected=Text(selectionBox.transform,"",16,-17,257,37,22,Cream);selectedStats=Text(selectionBox.transform,"",16,-62,257,74,18,Muted);
             Button(selectionBox.transform,"ПЕРЕНЕСТИ",16,-149,254,45,()=>root.MoveSelected());
@@ -209,7 +210,9 @@ namespace DawnGuard.BlackwoodLTD
             string enemiesText="";foreach(var pair in counts){enemiesText+=(enemiesText.Length==0?"":"  ")+g.Rules.Enemy(pair.Key).title+" ×"+pair.Value;}
             threat.text=sidesText+"\n\n"+enemiesText;threat.fontSize=counts.Count>3?15:18;
             notice.text=s.operatorHP<=0?"ОПЕРАТОР ПОГИБ — СВЯЗЬ ПОТЕРЯНА":s.campHP<=0?"ЯДРО РАЗРУШЕНО — ОПЕРАТОР УЯЗВИМ":s.campHP<g.Rules.campHP*.25f?"КРИТИЧЕСКАЯ ПРОЧНОСТЬ КОМАНДНОГО УЗЛА":root.Notice;dayBar.SetActive(day);nightBar.SetActive(s.phase==CoastPhase.Night);startNight.interactable=day&&!root.Paused;
-            support.text="ДРОН — ПОДДЕРЖКА\nЗаряды: "+s.supportCharges+" / 2"+(s.supportCooldown>0?" • "+Mathf.CeilToInt(s.supportCooldown)+" с":"");
+            support.text="ГРАНАТЫ "+s.grenadeCharges+" / "+g.Rules.grenade.charges+"\nПоддержка: "+s.supportCharges+" / 2"+(s.supportCooldown>0?" • "+Mathf.CeilToInt(s.supportCooldown)+" с":"");
+            grenadeLabel.text=g.GrenadeBusy?(s.grenadeState==GrenadeState.DROPPED?"СБРОС":s.grenadeMission?"ЛЕТИТ К ЦЕЛИ":"ЗАГРУЗКА…"):s.grenadeState==GrenadeState.LOADED?(root.GrenadeTargeting?"ВЫБЕРИТЕ ЦЕЛЬ":"ЗАГРУЖЕНА\nВЫБРАТЬ ЦЕЛЬ"):s.grenadeCharges>0?"ЗАГРУЗИТЬ\nНА ПЛОЩАДКЕ":"НЕТ ГРАНАТ";
+            grenadeButton.interactable=!root.Paused&&!g.GrenadeBusy&&(s.grenadeCharges>0||s.grenadeState==GrenadeState.LOADED);
             foreach(var pair in buildButtons){var d=g.Rules.Defense(pair.Key);bool unlocked=(s.tech&d.unlock)==d.unlock;pair.Value.interactable=day&&!root.Paused;buildPanels[pair.Key].color=root.SelectedTool==pair.Key?new Color(.16f,.37f,.37f):unlocked?Panel:Ink;}
             var b=g.Building(root.SelectedBuilding);selectionBox.SetActive(b!=null&&!ServiceOpen&&day&&!root.MenuOpen);if(b!=null){var d=g.Rules.Defense(b.kind);selected.text=d.title;selectedStats.text="ПРОЧНОСТЬ "+Mathf.CeilToInt(b.hp)+" / "+d.hp+"\n"+(d.damage>0?"УРОН "+(d.damage*(1+.2f*s.weaponLevels[CoastSession.WeaponIndex(b.kind)])).ToString("0.#")+" • КД "+d.cooldown+" с\nЦЕЛЬ: "+b.order:"ПЕРЕНОС / РЕМОНТ / ПРОДАЖА");}
             if(ServiceOpen)UpdateService();

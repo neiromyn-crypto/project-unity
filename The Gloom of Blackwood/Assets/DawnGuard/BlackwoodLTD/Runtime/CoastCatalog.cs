@@ -8,6 +8,7 @@ namespace DawnGuard.BlackwoodLTD
         public CoastRules rules=CoastRules.Create();
         public GameCatalog source;
         public CoastForestProfile forest;
+        public GameObject grenadePrefab;
         public GameObject operatorPlatform,operatorPrefab;
         public float operatorStandingHeight=.5f;
         public CoastEnemyVisual[] enemyVisuals;

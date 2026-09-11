@@ -5,6 +5,7 @@ using DawnGuard.Core;
 namespace DawnGuard.BlackwoodLTD
 {
     public enum CoastPhase { Day, Night, Debrief, Victory, Defeat }
+    public enum GrenadeState { AVAILABLE, LOADING, LOADED, DROPPED, RELOADING }
     public enum WorkerJob { Outbound, Mining, Inbound, Unloading, Sheltered }
     public enum TargetOrder { First, Nearest, Strongest }
 
@@ -18,6 +19,7 @@ namespace DawnGuard.BlackwoodLTD
     {
         public string id, title,role;
         public float hp, speed, damage, attackInterval=1, visualScale=.72f, physical=1;
+        public float knockbackMultiplier=1;
         public int reward;
     }
     [Serializable] public sealed class CoastSpawn
@@ -36,6 +38,7 @@ namespace DawnGuard.BlackwoodLTD
         public int version=4, width=44, depth=36, startingCredits=220, startingStone=100, dawnCredits=100;
         // campHP is retained as the existing serialized integrity field; it now protects the command node.
         public float firstDay=120, daySeconds=90, campHP=300, operatorHP=100;
+        public GrenadeSpec grenade=new GrenadeSpec();
         public DefenseSpec[] defenses;
         public EnemySpec[] enemies;
         public CoastWave[] waves;
@@ -57,9 +60,9 @@ namespace DawnGuard.BlackwoodLTD
                 },
                 enemies=new[] {
                     new EnemySpec {id="walker",title="БРОДЯГА",role="Basic Walker",hp=48,speed=.85f,damage=10,attackInterval=1.25f,reward=2,visualScale=.82f},
-                    new EnemySpec {id="runner",title="КИБЕР-ДЕМОН",role="Fast Enemy",hp=32,speed=1.45f,damage=6,attackInterval=.8f,reward=3,visualScale=.9f},
-                    new EnemySpec {id="brute",title="ТОЛСТЯК",role="Heavy / Brute",hp=200,speed=.6f,damage=24,attackInterval=2,reward=12,visualScale=1.15f},
-                    new EnemySpec {id="special",title="КОСТЯНАЯ ВЕДЬМА",role="Special Enemy",hp=90,speed=.8f,damage=12,attackInterval=1.5f,reward=8,visualScale=.9f}
+                    new EnemySpec {id="runner",title="КИБЕР-ДЕМОН",role="Fast Enemy",hp=32,speed=1.45f,damage=6,attackInterval=.8f,reward=3,visualScale=.75f},
+                    new EnemySpec {id="brute",title="ТОЛСТЯК",role="Heavy / Brute",hp=200,speed=.6f,damage=24,attackInterval=2,reward=12,visualScale=1.15f,knockbackMultiplier=.35f},
+                    new EnemySpec {id="special",title="КОСТЯНАЯ ВЕДЬМА",role="Special Enemy",hp=90,speed=.8f,damage=12,attackInterval=1.5f,reward=8,visualScale=.9f,knockbackMultiplier=.65f}
                 },
                 waves=new[] {
                     W("Защитить оператора","8 бродяг с севера. Прикройте путь к командному узлу.",G("walker",0,8,1,2.5f)),
@@ -81,6 +84,7 @@ namespace DawnGuard.BlackwoodLTD
     }
     [Serializable] public sealed class CoastEnemy
     {
+        public float laneX,laneZ,knockX,knockZ,knockRemaining;
         public int attackSlot=-1,ringWaypoint;public bool coreApproach;
         public int id,front,nx,nz,wallTarget;
         public string kind;
@@ -105,6 +109,9 @@ namespace DawnGuard.BlackwoodLTD
         public int queuedWorker,queuedTech,queuedWeapon=-1,spawnCursor,delivered,killed,supportCharges=2;
         public float supportCooldown,droneX=14,droneZ=6,repairRemaining;
         public float droneTargetX,droneTargetZ;public bool droneMoving;
+        public GrenadeState grenadeState;
+        public int grenadeCharges=2;public bool grenadeMission;
+        public float grenadeTimer,grenadeX,grenadeZ;
         public int repairTarget;
         public List<CoastBuilding> buildings=new List<CoastBuilding>();
         public List<CoastEnemy> enemies=new List<CoastEnemy>();

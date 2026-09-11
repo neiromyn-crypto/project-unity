@@ -1,0 +1,60 @@
+PASS User grenade wrapper bound
+PASS Original user grenade mesh
+PASS Original grenade albedo bound
+PASS Day loading rejected
+PASS Night starts with two charges
+PASS HUD starts physical loading
+PASS Loading mission cannot be interrupted by move
+PASS Loading completes at Pad, charge retained until drop
+PASS Real grenade attached under drone
+PASS Grenade below drone
+PASS Loaded HUD enables ground targeting
+PASS Reusable radius preview shown
+PASS Ground click confirms flight
+PASS No teleport on targeting
+PASS Arrival releases one charge
+PASS Real flight reached target
+PASS Mission does not lock camera
+PASS No instant click explosion
+PASS Grenade detached during drop
+PASS Visible ballistic fall
+PASS Exactly one AoE event
+PASS Killed enemy enters existing cleanup
+PASS Edge survivor takes falloff damage
+PASS Heavy damaged
+PASS Survivor knocked back
+PASS Knockback visibly displaces actor
+PASS Survivor returns to path
+PASS Explosion never repeats
+PASS Second charge requires physical reload
+PASS Second physical pickup completes
+PASS Second mission accepted
+PASS Two explosions maximum per night
+PASS Configured max/min/radius damage
+PASS Heavy knockback 35 percent at equal distance
+PASS Path resumes after displacement
+PASS Mid-fall save resumes exactly once
+PASS Grenade save roundtrip
+PASS Dawn cancels unfinished mission without locking drone
+PASS Crowd avoids complete overlap; min=1,194569
+PASS Deterministic lanes used
+PASS Moving bodies maintain readable spacing
+PASS Three fronts reach Core
+PASS Ten attack points preserved
+PASS Animated Walker(Clone) / Move
+PASS Animated Walker(Clone) / Attack
+PASS Animated Walker(Clone) / Death
+PASS Death terminal: Walker(Clone)
+PASS Animated Runner(Clone) / Move
+PASS Animated Runner(Clone) / Attack
+PASS Animated Runner(Clone) / Death
+PASS Death terminal: Runner(Clone)
+PASS Animated Brute(Clone) / Move
+PASS Animated Brute(Clone) / Attack
+PASS Animated Brute(Clone) / Death
+PASS Death terminal: Brute(Clone)
+PASS Animated Special(Clone) / Move
+PASS Animated Special(Clone) / Attack
+PASS Animated Special(Clone) / Death
+PASS Death terminal: Special(Clone)
+PASS Zero runtime errors/exceptions
